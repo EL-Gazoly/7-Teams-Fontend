@@ -7,7 +7,23 @@ export default {
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily:{
+        'poppins': ['Poppins', 'sans-serif'],
+      },
+      backgroundImage: {
+        "primary-gradient" : "linear-gradient(90deg, #0B150C -50.62%, rgba(59, 214, 84, 0.87) 92.05%)",
+        "disconnected-gradient" : "linear-gradient(90deg, #E7EBE8 -147.49%, rgba(74, 84, 75, 0.87) 91.85%)"
+      },
+      colors: {
+        "primary": "#50D766",
+        "secondary" : "#5555555c",
+        "success" : "#3ABD4C",
+        "error" : "#FF1F64",
+        "disconnected" : "#DFEBE1",
+        "subtext" : "#A5A5A5",
+      }
+    },
   },
   darkMode: "class",
   plugins: [nextui()]
