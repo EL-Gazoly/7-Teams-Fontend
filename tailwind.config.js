@@ -17,6 +17,7 @@ export default {
       },
       colors: {
         "primary": "#50D766",
+        "secondary-light": "#42464B",
         "secondary" : "#5555555c",
         "success" : "#3ABD4C",
         "error" : "#FF1F64",
@@ -26,5 +27,18 @@ export default {
     },
   },
   darkMode: "class",
-  plugins: [nextui()]
+  plugins: [nextui({
+    themes:{
+      light: {
+        colors: {
+          "primary" : "#50D766"
+        }
+      },
+      dark:{
+        colors: {
+          "primary" : "#3ABD4C"
+        }
+      }
+    }
+  })]
 }
