@@ -1,10 +1,9 @@
+import {Input} from "@nextui-org/react";
 function App() {
   return (
-    <>
-     <h1>
-        
-    </h1>   
-    </>
+    <div className="w-[350px]">
+    <Input type="email" label="Email" />   
+    </div>
   )
 }
 
