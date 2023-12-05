@@ -1,8 +1,12 @@
 import React from 'react'
+import ControlCard from '../../Components/ContraolCard'
 
 const HeadsetsPage = () => {
   return (
-    <div>HeadsetsPage</div>
+    <div className='flex flex-col'>
+      <ControlCard />
+      
+    </div>
   )
 }
 

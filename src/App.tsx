@@ -5,13 +5,15 @@ function App() {
   return (
     <div className=" font-poppins w-screen h-screen bg-[#E9EBEE] overflow-x-hidden flex">
       <SideBar />
-      <div className=" flex-1">
+      <div className=" w-full h-full flex items-center justify-center">
+        <div className=" w-[1000px] h-full">
         <Routes>
           <Route path="/" element={<HeadsetsPage />} />
           <Route path="/students"   element={<HeadsetsPage />}/>
           <Route path="/courses"  element={<HeadsetsPage />}/>
         </Routes>
         </div>
+      </div>
     </div>
   )
 }
