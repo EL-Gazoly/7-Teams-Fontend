@@ -1,0 +1,116 @@
+
+import {Tabs, Tab, Image} from "@nextui-org/react";
+
+import {useState} from 'react'
+import LogoImage from '../../assets/SideBar/Open/logo.png'
+import SelectedHeadset from '../../assets/SideBar/Open/Selected/headset.svg'
+import Headset from '../../assets/SideBar/Open/default/headset.svg'
+import SelectedCourses from '../../assets/SideBar/Open/Selected/courses.png'
+import Courses from '../../assets/SideBar/Open/default/courses.svg'
+import SelectedStudents from '../../assets/SideBar/Open/Selected/students.png'
+import Students from '../../assets/SideBar/Open/default/students.svg'
+import SelectedLibrary from '../../assets/SideBar/Open/Selected/library.png'
+import library from '../../assets/SideBar/Open/default/library.svg'
+import SelectedReports from '../../assets/SideBar/Open/Selected/reports.png'
+import Reports from '../../assets/SideBar/Open/default/reports.svg'
+import SelectedCertificates from '../../assets/SideBar/Open/Selected/certificates.png'
+import Certificates from '../../assets/SideBar/Open/default/certificates.svg'
+import SelectedDashboard from '../../assets/SideBar/Open/Selected/dashboard.png'
+import Dashboard from '../../assets/SideBar/Open/default/dashboard.svg'
+import SelectedLogs from '../../assets/SideBar/Open/Selected/logs.png'
+import Logs from '../../assets/SideBar/Open/default/logs.svg'
+import SelectedSettings from '../../assets/SideBar/Open/Selected/settings.png'
+import Settings from '../../assets/SideBar/Open/default/settings.svg'
+
+const SideBar = () => {
+    const [active, setActive] = useState("")
+  return (
+    
+    <div className=' w-[213px] h-screen flex flex-col px-5 py-[53px] gap-y-10 bg-[#F7F9FC] overflow-y-hidden'
+    style={{
+        filter : "drop-shadow(0px 3.25px 21.125px rgba(0, 0, 0, 0.25))"
+    }}
+    >
+
+        <div className="flex items-center justify-center font-medium text-[#42464B]">
+            <Image src={LogoImage} width={153} height={49} />
+
+        </div>
+
+        <Tabs classNames={{
+            "base" : "text-white",
+            "tabList" : "flex flex-col w-full h-full bg-transparent space-y-7",
+            "cursor" : "h-[46px] flex items-center justify-center rounded-[6.5px]",
+        }}
+        color="primary"
+        selectedKey={active}
+        onSelectionChange={(key) => setActive(key as any)}
+        aria-label="sidebar tabs"
+        >
+             <Tab key={"headset"}  title={
+                <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-sm mr-4">
+                    <Image src={active === "headset" ? SelectedHeadset : Headset} width={25} height={25} />
+                    <span>Headsets</span>
+                </div>
+            } />
+            <Tab key={"students"} title={
+                <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-sm mr-6">
+                    <Image src={active=== "students" ? SelectedStudents : Students} width={20} height={20} radius="none"/>
+                    <span>Students</span>
+                </div>
+            } />
+            <Tab key={"courses"}   title={
+                <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-sm mr-6">
+                    <Image src={active==="courses" ? SelectedCourses : Courses} width={25} height={25} radius="none" />
+                    <span>Courses</span>
+                </div>
+            } />
+            <Tab key={"library"}   title={
+                <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-sm mr-8">
+                    <Image src={active==="library" ? SelectedLibrary : library} width={25} height={25} radius="none"  />
+                    <span>Library</span>
+                </div>
+            } />
+            <Tab key={"reports"}   title={
+                <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-sm  mr-8">
+                    <Image src={active==="reports" ? SelectedReports : Reports} radius="none" />
+                    <span>Reports</span>
+                </div>
+            } />
+            <Tab key={"certificates"}   title={
+                <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-sm  mr-2">
+                    <Image src={active==="certificates" ? SelectedCertificates : Certificates} radius="none" />
+                    <span>Certificates</span>
+                </div>
+            } />
+            <Tab key={"dashboard"}   title={
+                <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-sm mr-3">
+                    <Image src={active==="dashboard" ? SelectedDashboard : Dashboard} width={25} height={25} radius="none" />
+                    <span>Dashboard</span>
+                </div>
+            } />
+            <Tab key={"logs"}   title={
+                <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-sm mr-2">
+                    <Image src={active==="logs" ? SelectedLogs : Logs} width={25} height={25} radius="none" />
+                    <span>System Log</span>
+                </div>
+            } />
+     
+            <Tab key={"settings"}   title={
+                <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-xs">
+                    <Image src={active==="settings" ? SelectedSettings : Settings} radius="none"/>
+                    <span>General settings</span>
+                </div>
+            } />
+
+            <Tab className=" invisible"/>
+           
+            
+        </Tabs>
+        
+    </div>
+    
+  )
+}
+
+export default SideBar

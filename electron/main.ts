@@ -1,15 +1,6 @@
 import { app, BrowserWindow } from 'electron'
 import path from 'node:path'
 
-// The built directory structure
-//
-// ├─┬─┬ dist
-// │ │ └── index.html
-// │ │
-// │ ├─┬ dist-electron
-// │ │ ├── main.js
-// │ │ └── preload.js
-// │
 process.env.DIST = path.join(__dirname, '../dist')
 process.env.VITE_PUBLIC = app.isPackaged ? process.env.DIST : path.join(process.env.DIST, '../public')
 
@@ -24,6 +15,10 @@ function createWindow() {
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
     },
+    minWidth: 1280,
+    minHeight: 832,
+    width: 1280,
+    height: 832,
   })
 
   // Test active push message to Renderer-process.

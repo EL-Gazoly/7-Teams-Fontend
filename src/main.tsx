@@ -5,16 +5,19 @@ import './index.css'
 import {NextUIProvider} from '@nextui-org/react'
 import { AuthProvider } from './contexts/AuthContext.tsx'
 import { LanguageProvider } from './contexts/LanguageContext.tsx'
+import { HashRouter } from 'react-router-dom'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-      <NextUIProvider>
-        <LanguageProvider>
-          <AuthProvider>
-            <App />
-          </AuthProvider>
-        </LanguageProvider>
-      </NextUIProvider>
+      <HashRouter>
+        <NextUIProvider>
+          <LanguageProvider>
+            <AuthProvider>
+              <App />
+            </AuthProvider>
+          </LanguageProvider>
+        </NextUIProvider>
+      </HashRouter>
   </React.StrictMode>,
 )
 

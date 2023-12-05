@@ -31,7 +31,10 @@ export default {
     themes:{
       light: {
         colors: {
-          "primary" : "#50D766"
+          "primary" : {
+            foreground: "#FFFFFF",
+            background: "#50D766",
+          }
         }
       },
       dark:{
