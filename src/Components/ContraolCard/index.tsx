@@ -6,7 +6,11 @@ import Placeholder from '../../assets/ControlCard/placeholder.jpeg'
 import "./style.css"
 const ControlCard = () => {
   return (  
-    <div className='w-full h-[103px] rounded-b-[14px] Control-card-bg light flex items-center px-[26px] justify-between'>
+    <div className='w-full h-[103px] rounded-b-[14px] Control-card-bg light flex items-center px-[26px] justify-between'
+    style={{
+      backdropFilter: "blur(4.406332015991211px)"
+    }}
+    >
         <div className='flex items-center gap-x-[14px] text-[#292D32] text-2xl font-bold'>
             <Image src={HeadsetLight} width={30} height={30} radius='none' />
             <span>Headset</span>
