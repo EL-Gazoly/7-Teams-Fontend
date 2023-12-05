@@ -21,93 +21,100 @@ import SelectedLogs from '../../assets/SideBar/Open/Selected/logs.png'
 import Logs from '../../assets/SideBar/Open/default/logs.svg'
 import SelectedSettings from '../../assets/SideBar/Open/Selected/settings.png'
 import Settings from '../../assets/SideBar/Open/default/settings.svg'
+import ArrowIcon from '../../assets/SideBar/Open/arrow.png'
 
 const SideBar = () => {
     const [active, setActive] = useState("")
   return (
-    
-    <div className=' w-[213px] h-screen flex flex-col px-5 py-[53px] gap-y-10 bg-[#F7F9FC] overflow-y-hidden'
-    style={{
-        filter : "drop-shadow(0px 3.25px 21.125px rgba(0, 0, 0, 0.25))"
-    }}
-    >
-
-        <div className="flex items-center justify-center font-medium text-[#42464B]">
-            <Image src={LogoImage} width={153} height={49} />
-
-        </div>
-
-        <Tabs classNames={{
-            "base" : "text-white",
-            "tabList" : "flex flex-col w-full h-full bg-transparent space-y-7",
-            "cursor" : "h-[46px] flex items-center justify-center rounded-[6.5px]",
+    <div className=" relative">
+        <div className=' w-[213px] h-screen flex flex-col px-5 py-[53px] gap-y-10 bg-[#F7F9FC] overflow-y-hidden'
+        style={{
+            filter : "drop-shadow(0px 3.25px 21.125px rgba(0, 0, 0, 0.25))"
         }}
-        color="primary"
-        selectedKey={active}
-        onSelectionChange={(key) => setActive(key as any)}
-        aria-label="sidebar tabs"
         >
-             <Tab key={"headset"}  title={
-                <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-sm mr-4">
-                    <Image src={active === "headset" ? SelectedHeadset : Headset} width={25} height={25} />
-                    <span>Headsets</span>
-                </div>
-            } />
-            <Tab key={"students"} title={
-                <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-sm mr-6">
-                    <Image src={active=== "students" ? SelectedStudents : Students} width={20} height={20} radius="none"/>
-                    <span>Students</span>
-                </div>
-            } />
-            <Tab key={"courses"}   title={
-                <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-sm mr-6">
-                    <Image src={active==="courses" ? SelectedCourses : Courses} width={25} height={25} radius="none" />
-                    <span>Courses</span>
-                </div>
-            } />
-            <Tab key={"library"}   title={
-                <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-sm mr-8">
-                    <Image src={active==="library" ? SelectedLibrary : library} width={25} height={25} radius="none"  />
-                    <span>Library</span>
-                </div>
-            } />
-            <Tab key={"reports"}   title={
-                <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-sm  mr-8">
-                    <Image src={active==="reports" ? SelectedReports : Reports} radius="none" />
-                    <span>Reports</span>
-                </div>
-            } />
-            <Tab key={"certificates"}   title={
-                <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-sm  mr-2">
-                    <Image src={active==="certificates" ? SelectedCertificates : Certificates} radius="none" />
-                    <span>Certificates</span>
-                </div>
-            } />
-            <Tab key={"dashboard"}   title={
-                <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-sm mr-3">
-                    <Image src={active==="dashboard" ? SelectedDashboard : Dashboard} width={25} height={25} radius="none" />
-                    <span>Dashboard</span>
-                </div>
-            } />
-            <Tab key={"logs"}   title={
-                <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-sm mr-2">
-                    <Image src={active==="logs" ? SelectedLogs : Logs} width={25} height={25} radius="none" />
-                    <span>System Log</span>
-                </div>
-            } />
-     
-            <Tab key={"settings"}   title={
-                <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-xs">
-                    <Image src={active==="settings" ? SelectedSettings : Settings} radius="none"/>
-                    <span>General settings</span>
-                </div>
-            } />
 
-            <Tab className=" invisible"/>
-           
-            
-        </Tabs>
+            <div className="flex items-center justify-center font-medium text-[#42464B]">
+                <Image src={LogoImage} width={153} height={49} />
+
+            </div>
+
+            <Tabs classNames={{
+                "base" : "text-white",
+                "tabList" : "flex flex-col w-full h-full bg-transparent space-y-7",
+                "cursor" : "h-[46px] flex items-center justify-center rounded-[6.5px]",
+            }}
+            color="primary"
+            selectedKey={active}
+            onSelectionChange={(key) => setActive(key as any)}
+            aria-label="sidebar tabs"
+            >
+                <Tab key={"headset"}  title={
+                    <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-sm mr-4">
+                        <Image src={active === "headset" ? SelectedHeadset : Headset} width={25} height={25} />
+                        <span>Headsets</span>
+                    </div>
+                } />
+                <Tab key={"students"} title={
+                    <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-sm mr-6">
+                        <Image src={active=== "students" ? SelectedStudents : Students} width={20} height={20} radius="none"/>
+                        <span>Students</span>
+                    </div>
+                } />
+                <Tab key={"courses"}   title={
+                    <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-sm mr-6">
+                        <Image src={active==="courses" ? SelectedCourses : Courses} width={25} height={25} radius="none" />
+                        <span>Courses</span>
+                    </div>
+                } />
+                <Tab key={"library"}   title={
+                    <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-sm mr-8">
+                        <Image src={active==="library" ? SelectedLibrary : library} width={25} height={25} radius="none"  />
+                        <span>Library</span>
+                    </div>
+                } />
+                <Tab key={"reports"}   title={
+                    <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-sm  mr-8">
+                        <Image src={active==="reports" ? SelectedReports : Reports} radius="none" />
+                        <span>Reports</span>
+                    </div>
+                } />
+                <Tab key={"certificates"}   title={
+                    <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-sm  mr-2">
+                        <Image src={active==="certificates" ? SelectedCertificates : Certificates} radius="none" />
+                        <span>Certificates</span>
+                    </div>
+                } />
+                <Tab key={"dashboard"}   title={
+                    <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-sm mr-3">
+                        <Image src={active==="dashboard" ? SelectedDashboard : Dashboard} width={25} height={25} radius="none" />
+                        <span>Dashboard</span>
+                    </div>
+                } />
+                <Tab key={"logs"}   title={
+                    <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-sm mr-2">
+                        <Image src={active==="logs" ? SelectedLogs : Logs} width={25} height={25} radius="none" />
+                        <span>System Log</span>
+                    </div>
+                } />
         
+                <Tab key={"settings"}   title={
+                    <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-xs">
+                        <Image src={active==="settings" ? SelectedSettings : Settings} radius="none"/>
+                        <span>General settings</span>
+                    </div>
+                } />
+
+                <Tab className=" invisible"/>
+            
+                
+            </Tabs>
+            
+        </div>
+        <div className=" absolute top-[50%] right-[-35%]">
+                    <div className=" w-[147px] h-5 rounded-3xl bg-primary rotate-90 flex items-center justify-center cursor-pointer">
+                       <Image src={ArrowIcon} radius="none" className=" rotate-90"/>
+                    </div>
+        </div>
     </div>
     
   )
