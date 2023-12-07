@@ -2,6 +2,7 @@ import React from 'react'
 import ControlCard from '../../Components/ContraolCard'
 import ChooseHeadsetSection from './ChooseHeadsetSection'
 import ChooseCourseSection from './ChooseCourseSection'
+import HeadsetsSection from './HeadsetsSection'
 
 const HeadsetsPage = () => {
   return (
@@ -10,6 +11,7 @@ const HeadsetsPage = () => {
       <div>
         <ChooseHeadsetSection />
         <ChooseCourseSection />
+        <HeadsetsSection />
 
       </div>
       
