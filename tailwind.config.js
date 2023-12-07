@@ -10,6 +10,7 @@ export default {
     extend: {
       fontFamily:{
         'poppins': ['Poppins', 'sans-serif'],
+        'cairo' : ['Poppins', 'sans-serif']
       },
       backgroundImage: {
         "primary-gradient" : "linear-gradient(90deg, #0B150C -50.62%, rgba(59, 214, 84, 0.87) 92.05%)",

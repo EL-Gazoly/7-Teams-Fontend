@@ -6,16 +6,16 @@ import Placeholder from '../../assets/ControlCard/placeholder.jpeg'
 import "./style.css"
 const ControlCard = () => {
   return (  
-    <div className='w-full h-[103px] rounded-b-[14px] Control-card-bg light flex items-center px-[26px] justify-between'
+    <div className='w-full h-[103px] rounded-b-[14px] Control-card-bg light flex items-center px-[26px] justify-between flex-row-reverse'
     style={{
       backdropFilter: "blur(4.406332015991211px)"
     }}
     >
-        <div className='flex items-center gap-x-[14px] text-[#292D32] text-2xl font-bold'>
+        <div className='flex items-center gap-x-[14px] text-[#292D32] text-2xl font-bold flex-row-reverse'>
             <Image src={HeadsetLight} width={30} height={30} radius='none' />
-            <span>Headset</span>
+            <span>نظارة الواقع الافتراضي</span>
         </div>
-        <div className=' flex items-center gap-x-6'>
+        <div className=' flex items-center gap-x-6 flex-row-reverse'>
             <Switch
                 color='primary'
                 size='lg'
@@ -49,11 +49,11 @@ const ControlCard = () => {
                   <Image src={logoutIcon}  radius='none' />
                 </Button>
              </div>
-                <div className='flex items-center gap-x-4'>
+                <div className='flex items-center gap-x-4 flex-row-reverse'>
                   <Avatar src={Placeholder} className='w-[57px] h-[57px] object-center' />
-                  <div className=' flex flex-col gap-y-[7px] text-[#292D32]'>
+                  <div className=' flex flex-col gap-y-[7px] text-[#292D32] text-right'>
                     <span className=' text-xs font-bold'>Sameh Ahmed</span>
-                    <span className='text-[10px] font-medium'>Profile</span>
+                    <span className='text-[10px] font-medium'>الملف الشخصي</span>
                   </div>
 
                 </div>

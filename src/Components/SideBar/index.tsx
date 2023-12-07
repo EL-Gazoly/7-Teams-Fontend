@@ -49,58 +49,59 @@ const SideBar = () => {
             aria-label="sidebar tabs"
             >
                 <Tab key={"headset"}  title={
-                    <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-sm mr-4">
+                    <div className=" w-[159px] flex items-center justify-start mx-2 gap-x-2 mr-4 mt-3 font-medium text-sm  flex-row-reverse">
                         <Image src={active === "headset" ? SelectedHeadset : Headset} width={25} height={25} />
-                        <span>Headsets</span>
+                        <span className=" text-[13px]">نظارة الواقع الافتراضي </span>
+                    </div>
+                } />
+                 <Tab key={"courses"}   title={
+                    <div className="w-[159px]  flex items-center  justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
+                        <Image src={active==="courses" ? SelectedCourses : Courses} width={25} height={25} radius="none" />
+                        <span>المناهج التعليمية</span>
                     </div>
                 } />
                 <Tab key={"students"} title={
-                    <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-sm mr-6">
+                    <div className=" w-[159px]  flex items-center justify-start gap-x-4 mr-4 mt-3 font-medium text-sm  flex-row-reverse">
                         <Image src={active=== "students" ? SelectedStudents : Students} width={20} height={20} radius="none"/>
-                        <span>Students</span>
+                        <span>الطلاب</span>
                     </div>
                 } />
-                <Tab key={"courses"}   title={
-                    <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-sm mr-6">
-                        <Image src={active==="courses" ? SelectedCourses : Courses} width={25} height={25} radius="none" />
-                        <span>Courses</span>
-                    </div>
-                } />
+               
                 <Tab key={"library"}   title={
-                    <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-sm mr-8">
+                    <div className=" w-[159px]  flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
                         <Image src={active==="library" ? SelectedLibrary : library} width={25} height={25} radius="none"  />
-                        <span>Library</span>
+                        <span>الوسائط المحفوظة</span>
                     </div>
                 } />
                 <Tab key={"reports"}   title={
-                    <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-sm  mr-8">
+                    <div className=" w-[159px]  flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm   flex-row-reverse">
                         <Image src={active==="reports" ? SelectedReports : Reports} radius="none" />
-                        <span>Reports</span>
+                        <span>التقارير</span>
                     </div>
                 } />
                 <Tab key={"certificates"}   title={
-                    <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-sm  mr-2">
+                    <div className=" w-[159px]  flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm   flex-row-reverse">
                         <Image src={active==="certificates" ? SelectedCertificates : Certificates} radius="none" />
-                        <span>Certificates</span>
+                        <span>الشهادات</span>
                     </div>
                 } />
                 <Tab key={"dashboard"}   title={
-                    <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-sm mr-3">
+                    <div className=" w-[159px]  flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
                         <Image src={active==="dashboard" ? SelectedDashboard : Dashboard} width={25} height={25} radius="none" />
-                        <span>Dashboard</span>
+                        <span>لوحة التحكم</span>
                     </div>
                 } />
                 <Tab key={"logs"}   title={
-                    <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-sm mr-2">
+                    <div className=" w-[159px]  flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
                         <Image src={active==="logs" ? SelectedLogs : Logs} width={25} height={25} radius="none" />
-                        <span>System Log</span>
+                        <span>سجل النظام</span>
                     </div>
                 } />
         
                 <Tab key={"settings"}   title={
-                    <div className=" flex items-center justify-center gap-x-4 mt-3 font-medium text-xs">
+                    <div className=" w-[159px]  flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-xs flex-row-reverse">
                         <Image src={active==="settings" ? SelectedSettings : Settings} radius="none"/>
-                        <span>General settings</span>
+                        <span>الاعدادات العامة</span>
                     </div>
                 } />
 
@@ -110,9 +111,9 @@ const SideBar = () => {
             </Tabs>
             
         </div>
-        <div className=" absolute top-[50%] right-[-35%]">
+        <div className=" absolute top-[50%] left-[-35%]">
                     <div className=" w-[147px] h-5 rounded-3xl bg-primary rotate-90 flex items-center justify-center cursor-pointer">
-                       <Image src={ArrowIcon} radius="none" className=" rotate-90"/>
+                       <Image src={ArrowIcon} radius="none" className=" -rotate-90"/>
                     </div>
         </div>
     </div>

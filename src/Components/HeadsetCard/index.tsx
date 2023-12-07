@@ -19,7 +19,7 @@ const HeadsetCard = () => {
                 boxShadow: "0px 2.791px 2.791px 0px rgba(0, 0, 0, 0.25)"
             }}
         >
-                <span className=' text-[9.7px] font-semibold text-white'>Connected</span>
+                <span className=' text-[9.7px] font-semibold text-white'>متصل الان</span>
                 <div className=' w-[6.979px] h-[6.979px] rounded-full bg-[#45FF5F]'/>
         </div>
 
@@ -33,7 +33,7 @@ const HeadsetCard = () => {
                 <div className=' w-5 h-2 rounded-[1.4] bg-[#E8E2E2]'/>
             </div>
             <div className='flex flex-col gap-y-2'>
-                <span className='text-[#122333] text-sm font-semibold'>Headset 1</span>
+                <span className='text-[#122333] text-sm font-semibold'>نظاره رقم 1</span>
                 <span className=' text-[#A5A5A5] text-[8.5px]'>Meta Quest 2</span>
             </div>
           
@@ -42,7 +42,7 @@ const HeadsetCard = () => {
     </CardBody>
     <CardFooter className='  h-[47px] bg-[#FDFAFA] flex items-center justify-center' >
             <Button className=' w-[61px] h-[20.24px] text-white flex text-[11px] items-center justify-center rounded-md bg-[#292D32]'>
-                Select
+                تحديد
             </Button>
     </CardFooter>
     

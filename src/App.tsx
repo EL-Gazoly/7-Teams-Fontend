@@ -4,7 +4,7 @@ import HeadsetsPage from "./pages/Headset"
 import './App.css'
 function App() {
   return (
-    <div className=" font-poppins w-screen h-screen bg-[#E9EBEE] overflow-x-hidden flex">
+    <div className="  w-screen h-screen bg-[#E9EBEE] overflow-x-hidden flex flex-row-reverse">
       <SideBar />
       <div className=" w-full h-full flex items-center justify-center">
         <div className=" w-[1000px] h-full">
