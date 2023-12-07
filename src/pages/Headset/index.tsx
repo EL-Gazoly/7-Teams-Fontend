@@ -8,6 +8,7 @@ const HeadsetsPage = () => {
       <ControlCard />
       <div>
         <ChooseHeadsetSection />
+        
       </div>
       
     </div>
