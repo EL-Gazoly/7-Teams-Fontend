@@ -1,6 +1,7 @@
 import React from 'react'
 import ControlCard from '../../Components/ContraolCard'
 import ChooseHeadsetSection from './ChooseHeadsetSection'
+import ChooseCourseSection from './ChooseCourseSection'
 
 const HeadsetsPage = () => {
   return (
@@ -8,7 +9,8 @@ const HeadsetsPage = () => {
       <ControlCard />
       <div>
         <ChooseHeadsetSection />
-        
+        <ChooseCourseSection />
+
       </div>
       
     </div>
