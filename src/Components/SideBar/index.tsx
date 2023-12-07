@@ -1,6 +1,8 @@
 
 import {Tabs, Tab, Image} from "@nextui-org/react";
 
+import { useNavigate, useLocation } from "react-router-dom";
+
 import {useState} from 'react'
 import LogoImage from '../../assets/SideBar/Open/logo.png'
 import SelectedHeadset from '../../assets/SideBar/Open/Selected/headset.svg'
@@ -25,6 +27,13 @@ import ArrowIcon from '../../assets/SideBar/Open/arrow.png'
 
 const SideBar = () => {
     const [active, setActive] = useState("")
+    const navigate = useNavigate()
+    const location = useLocation()
+
+    const handleNavigation = (path : string) => {
+        setActive(path)
+        navigate(path)
+    }
   return (
     <div className=" relative">
         <div className=' w-[213px] h-screen flex flex-col px-5 py-[53px] gap-y-10 bg-[#F7F9FC] overflow-y-hidden'
@@ -44,63 +53,63 @@ const SideBar = () => {
                 "cursor" : "h-[46px] flex items-center justify-center rounded-[6.5px]",
             }}
             color="primary"
-            selectedKey={active}
-            onSelectionChange={(key) => setActive(key as any)}
+            selectedKey={location.pathname}
+            onSelectionChange={(key : string) => handleNavigation(key)}
             aria-label="sidebar tabs"
             >
-                <Tab key={"headset"}  title={
+                <Tab key={"/"}  title={
                     <div className=" w-[159px] flex items-center justify-start mx-2 gap-x-2 mr-4 mt-3 font-medium text-sm  flex-row-reverse">
-                        <Image src={active === "headset" ? SelectedHeadset : Headset} width={25} height={25} />
+                        <Image src={active === "/" ? SelectedHeadset : Headset} width={25} height={25} />
                         <span className=" text-[13px]">نظارة الواقع الافتراضي </span>
                     </div>
                 } />
-                 <Tab key={"courses"}   title={
+                 <Tab key={"/courses"}   title={
                     <div className="w-[159px]  flex items-center  justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
-                        <Image src={active==="courses" ? SelectedCourses : Courses} width={25} height={25} radius="none" />
+                        <Image src={active==="/courses" ? SelectedCourses : Courses} width={25} height={25} radius="none" />
                         <span>المناهج التعليمية</span>
                     </div>
                 } />
-                <Tab key={"students"} title={
+                <Tab key={"/students"} title={
                     <div className=" w-[159px]  flex items-center justify-start gap-x-4 mr-4 mt-3 font-medium text-sm  flex-row-reverse">
-                        <Image src={active=== "students" ? SelectedStudents : Students} width={20} height={20} radius="none"/>
+                        <Image src={active=== "/students" ? SelectedStudents : Students} width={20} height={20} radius="none"/>
                         <span>الطلاب</span>
                     </div>
                 } />
                
-                <Tab key={"library"}   title={
+                <Tab key={"/library"}   title={
                     <div className=" w-[159px]  flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
-                        <Image src={active==="library" ? SelectedLibrary : library} width={25} height={25} radius="none"  />
+                        <Image src={active==="/library" ? SelectedLibrary : library} width={25} height={25} radius="none"  />
                         <span>الوسائط المحفوظة</span>
                     </div>
                 } />
-                <Tab key={"reports"}   title={
+                <Tab key={"/reports"}   title={
                     <div className=" w-[159px]  flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm   flex-row-reverse">
-                        <Image src={active==="reports" ? SelectedReports : Reports} radius="none" />
+                        <Image src={active==="/reports" ? SelectedReports : Reports} radius="none" />
                         <span>التقارير</span>
                     </div>
                 } />
-                <Tab key={"certificates"}   title={
+                <Tab key={"/certificates"}   title={
                     <div className=" w-[159px]  flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm   flex-row-reverse">
-                        <Image src={active==="certificates" ? SelectedCertificates : Certificates} radius="none" />
+                        <Image src={active==="/certificates" ? SelectedCertificates : Certificates} radius="none" />
                         <span>الشهادات</span>
                     </div>
                 } />
-                <Tab key={"dashboard"}   title={
+                <Tab key={"/dashboard"}   title={
                     <div className=" w-[159px]  flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
-                        <Image src={active==="dashboard" ? SelectedDashboard : Dashboard} width={25} height={25} radius="none" />
+                        <Image src={active==="/dashboard" ? SelectedDashboard : Dashboard} width={25} height={25} radius="none" />
                         <span>لوحة التحكم</span>
                     </div>
                 } />
-                <Tab key={"logs"}   title={
+                <Tab key={"/logs"}   title={
                     <div className=" w-[159px]  flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
-                        <Image src={active==="logs" ? SelectedLogs : Logs} width={25} height={25} radius="none" />
+                        <Image src={active==="/logs" ? SelectedLogs : Logs} width={25} height={25} radius="none" />
                         <span>سجل النظام</span>
                     </div>
                 } />
         
-                <Tab key={"settings"}   title={
+                <Tab key={"/settings"}   title={
                     <div className=" w-[159px]  flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-xs flex-row-reverse">
-                        <Image src={active==="settings" ? SelectedSettings : Settings} radius="none"/>
+                        <Image src={active==="/settings" ? SelectedSettings : Settings} radius="none"/>
                         <span>الاعدادات العامة</span>
                     </div>
                 } />
