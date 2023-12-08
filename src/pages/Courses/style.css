@@ -1,0 +1,27 @@
+.course-store-card{
+    width: 330px;
+    height: 340px;
+    flex-shrink: 0;
+    border-radius: 8px;
+}
+.fire-fighthing{
+    width: 1134px;
+height: 341px;
+flex-shrink: 0;
+border-radius: 8px;
+
+background-size: cover;
+}
+.fire-fighthing.dark{
+    background-image: url("../../assets/courses/fireFighting-bg.png");
+}
+.fire-fighthing.light{
+    background-image: url("../../assets/courses/fireFighting-light-bg.png");
+    width: 1000px;
+}
+.courses{
+    max-width: 1028px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 26px;
+}
