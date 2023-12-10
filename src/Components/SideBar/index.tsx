@@ -31,9 +31,14 @@ const SideBar = () => {
     const location = useLocation()
 
     const handleNavigation = (path : string) => {
-        setActive(path)
+        setActive(getFirstWordFromPath(path))
         navigate(path)
     }
+    const getFirstWordFromPath = (path) => {
+        const firstWord = path.split("/")[1]; // Get the first word after splitting by "/"
+        return `/${firstWord}`;
+    };
+
   return (
     <div className=" relative">
         <div className=' w-[213px] h-screen flex flex-col px-5 py-[53px] gap-y-10 bg-[#F7F9FC] overflow-y-hidden'
@@ -53,7 +58,7 @@ const SideBar = () => {
                 "cursor" : "h-[46px] flex items-center justify-center rounded-[6.5px]",
             }}
             color="primary"
-            selectedKey={location.pathname}
+            selectedKey={getFirstWordFromPath(location.pathname)} 
             onSelectionChange={(key : string) => handleNavigation(key)}
             aria-label="sidebar tabs"
             >

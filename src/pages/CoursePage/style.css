@@ -1,0 +1,15 @@
+video{
+    object-fit: cover;
+}
+.vdieo-backdrop{
+    width: 1000px;
+    height:412px;
+    background-image: url('../../assets/coursePage/video-backdrop.png');
+}
+.about{
+    width: 1000px;
+    height: 208px;
+    flex-shrink: 0;
+    fill: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(59.5px);
+}

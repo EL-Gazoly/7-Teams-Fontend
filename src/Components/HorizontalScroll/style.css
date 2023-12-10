@@ -1,0 +1,32 @@
+.horizontal-scroll-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.image-container {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+}
+
+.scroll-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  font-size: 24px;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.scroll-button.left {
+  left: 6px;
+}
+
+.scroll-button.right {
+  right: 6px;
+}
