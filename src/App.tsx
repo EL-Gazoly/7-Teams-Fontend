@@ -10,6 +10,7 @@ import Library from "./pages/LibraryPage"
 import CertificatesPage from "./pages/Certificates"
 import GeneralSettingsPage from "./pages/Settings"
 import AdminsPage from "./pages/Admins"
+import CreateAdmin from "./pages/CreateAdmin"
 function App() {
   return (
     <div className="  w-screen h-screen bg-[#E9EBEE] overflow-hidden flex flex-row-reverse">
@@ -27,6 +28,7 @@ function App() {
           <Route path="/certificates" element={<CertificatesPage />} />
           <Route path="/settings" element={<GeneralSettingsPage />} />
           <Route path="/settings/admins" element={<AdminsPage />} />
+          <Route path="/settings/admins/create" element={<CreateAdmin />} />
         </Routes>
         </div>
       </div>

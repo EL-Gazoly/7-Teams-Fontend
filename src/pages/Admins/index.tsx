@@ -16,7 +16,7 @@ const AdminsPage = () => {
         <div className="flex mt-4 flex-col items-center gap-y-4">
             <div className=' h-36 w-full bg-[#F7F9FC] flex justify-between items-center px-7'>
                     <Button className=' px-4  h-12 gap-x-4 flex items-center justify-center bg-primary rounded-lg'
-                        onPress={() => navigate('/students/create')}
+                        onPress={() => navigate('/settings/admins/create')}
                     >
                         <Image src={AddIcon} />
                         <span className=' text-white text-sm font-bold '>إضافة مسؤول جديد </span>
