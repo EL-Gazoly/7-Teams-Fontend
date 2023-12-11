@@ -11,14 +11,18 @@ import StackSelected from '../../assets/students/stack-selected.svg'
 import StackUnSelected from '../../assets/students/stack-unselected.svg'
 import StudentsStackViews from '../../Components/StudentsView/Stack'
 import StudentsGridView from '../../Components/StudentsView/Grid'
+import { useNavigate } from 'react-router-dom'
 const StudentsPage = () => {
     const [activeTab, setActiveTab] = useState("stack")
+    const navigate = useNavigate()
   return (
     <React.Fragment>
         <ControlCard />
         <div className=' mt-4 flex flex-col gap-y-5'>
             <div className=' h-36 w-full bg-[#F7F9FC] flex justify-between items-center px-7'>
-                <Button className=' px-4  h-12 gap-x-4 flex items-center justify-center bg-primary rounded-lg'>
+                <Button className=' px-4  h-12 gap-x-4 flex items-center justify-center bg-primary rounded-lg'
+                    onPress={() => navigate('/students/create')}
+                >
                     <Image src={AddIcon} />
                     <span className=' text-white text-sm font-bold '>إضافة طالب</span>
                     <Image src={UserIcon} />
