@@ -16,13 +16,13 @@ const GeneralSettingsPage = () => {
                     <span >المسؤولون</span>
 
             </Link>
-            <div className="flex flex-col w-[217px] h-[158px] bg-light-bg rounded-lg items-center justify-center">
+            <Link to="/settings/roles" className="flex flex-col w-[217px] h-[158px] bg-light-bg rounded-lg items-center justify-center">
                     <div className=" w-[97px] h-[97px] bg-[#F4F5F7] rounded-full flex items-center justify-center ">
                         <Image src={AdminPic} width={64} height={64} />
                     </div>
                     <span >الأدوار</span>
 
-            </div>
+            </Link>
 
 
         </div>

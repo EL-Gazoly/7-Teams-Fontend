@@ -11,6 +11,7 @@ import CertificatesPage from "./pages/Certificates"
 import GeneralSettingsPage from "./pages/Settings"
 import AdminsPage from "./pages/Admins"
 import CreateAdmin from "./pages/CreateAdmin"
+import RolesPage from "./pages/Roles"
 function App() {
   return (
     <div className="  w-screen h-screen bg-[#E9EBEE] overflow-hidden flex flex-row-reverse">
@@ -29,6 +30,7 @@ function App() {
           <Route path="/settings" element={<GeneralSettingsPage />} />
           <Route path="/settings/admins" element={<AdminsPage />} />
           <Route path="/settings/admins/create" element={<CreateAdmin />} />
+          <Route path="/settings/roles" element={<RolesPage />} />
         </Routes>
         </div>
       </div>
