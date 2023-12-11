@@ -3,7 +3,7 @@ import { Avatar } from '@nextui-org/react'
 import placeholder from '../../../assets/students/placeholder.jpg'
 const StudentCard = () => {
   return (
-    <div className=' w-[244px] h-[124px] bg-white rounded-md flex flex-col items-center justify-center relative'>
+    <div className=' w-[246px] h-[127px] bg-white rounded-md flex flex-col items-center justify-center relative'>
             <div className=' absolute top-0 left-[37%] w-[65px] h-6 py-[2px] px-[5px]
                 flex items-center justify-center gap-x-[5px]
              rounded-b bg-primary flex-row-reverse
