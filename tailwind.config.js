@@ -24,7 +24,8 @@ export default {
         "error" : "#FF1F64",
         "disconnected" : "#DFEBE1",
         "subtext" : "#A5A5A5",
-        "text-black" : "#122333"
+        "text-black" : "#122333",
+        "light-bg" : "#FDFDFE"
       }
     },
   },
