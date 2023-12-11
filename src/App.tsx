@@ -8,6 +8,7 @@ import StudentsPage from "./pages/Students"
 import CreateStudent from "./pages/CreateStudent"
 import Library from "./pages/LibraryPage"
 import CertificatesPage from "./pages/Certificates"
+import GeneralSettingsPage from "./pages/Settings"
 function App() {
   return (
     <div className="  w-screen h-screen bg-[#E9EBEE] overflow-hidden flex flex-row-reverse">
@@ -23,6 +24,7 @@ function App() {
           <Route path="/students/create" element={<CreateStudent />} />
           <Route path="/library" element={<Library />} />
           <Route path="/certificates" element={<CertificatesPage />} />
+          <Route path="/settings" element={<GeneralSettingsPage />} />
         </Routes>
         </div>
       </div>
