@@ -1,29 +1,26 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
 
-import Chemistry from '../../../assets/SelectCourse/SelectSubject/chemistry.svg'
-import Physics from '../../../assets/SelectCourse/SelectSubject/physics.svg'
-import Biology from '../../../assets/SelectCourse/SelectSubject/biology.svg'
-import Geology from '../../../assets/SelectCourse/SelectSubject/geology.svg'
 
-
-
-
-const SelectSubject = ( props) => {
-  const [selectedOption, setSelectedOption] = useState(props.selectedCourse);
+const SelectChapter = ( props) => {
+  const [selectedOption, setSelectedOption] = useState();
 
   const handleChange = (selectedOption) => {
     setSelectedOption(selectedOption);
-    props.setSelectedSubject(selectedOption.value);
+    props.setSelectedChapter({ value: selectedOption.value  });
     
   };
-  const transformedOptions = Object.keys(props.options).map((field) => {
-    return {
-      value: field,
-      label: props.options[field].name,
-      image: props.options[field].icon,
-    };
-  });
+   const selectedSubjectChapters = props.SelectdSubject
+    ? props.options[props.SelectdSubject]?.chapters
+    : [];
+
+  // Transforming chapters into options required by react-select
+  const transformedChapters = Object.entries(selectedSubjectChapters).map((chapter) => ({
+        value: chapter[0],
+        label: chapter[0],  
+        image :  props.options[props.SelectdSubject].icon
+}));
+  
 
   const customStyles = {
     control: (provided) => ({
@@ -140,9 +137,9 @@ const SelectSubject = ( props) => {
   return (
     <div className="App">
       <Select
-        options={transformedOptions}
+        options={transformedChapters}
         styles={customStyles}
-        placeholder=" اختر المنهج "
+        placeholder=" اختر الفصل "
         value={selectedOption}
         onChange={handleChange}
         isSearchable={true}
@@ -164,4 +161,4 @@ const SelectSubject = ( props) => {
 
 
 
-export default SelectSubject;
+export default SelectChapter;

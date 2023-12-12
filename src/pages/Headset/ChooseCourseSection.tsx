@@ -1,10 +1,18 @@
 import SelectCourse from '../../Components/SelectCourse'
 import SelectSubject from '../../Components/SelectCourse/SelectSubject'
+import SelectChapter from '../../Components/SelectCourse/SelectChapter'
 import { Button } from '@nextui-org/react'
 import { useState } from 'react'
 
+import options from '../../Components/SelectCourse/options'
+
 const ChooseCourseSection = () => {
   const [SelectdSubject, setSelectedSubject] = useState(null)
+  const [SelectedChapter, setSelectedChapter] = useState(null)
+  const [SelectedExpirment, setSelectedExpriemnt] = useState(null)
+
+
+
   return (
     <div className='w-full bg-white/50 h-[85px] inline-flex items-center px-[30px] gap-x-4'
     style={{
@@ -12,8 +20,8 @@ const ChooseCourseSection = () => {
     }}
     >
     
-        <SelectSubject setSelectedSubject={setSelectedSubject} SelectdSubject={SelectdSubject}/>
-        <SelectCourse />
+        <SelectSubject options={options} setSelectedSubject={setSelectedSubject} />
+        <SelectChapter options={options}  SelectdSubject={SelectdSubject} setSelectedChapter={setSelectedChapter} />
         <SelectCourse />
         <SelectCourse />
 
