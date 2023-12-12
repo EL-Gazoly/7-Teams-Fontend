@@ -9,7 +9,7 @@ import ChooseRole from './ChooseRole';
 const CreateAdmin = () => {
     const [selectedImage, setSelectedImage] = useState(null);
   return (
-    <>
+    <div className=' pb-5'>
     <ControlCard/> 
     <div className=' mt-6 w-full h-[803px] bg-[#FDFDFE] rounded-lg  pt-[75px] px-[113px]
         flex flex-col gap-y-12
@@ -79,7 +79,7 @@ const CreateAdmin = () => {
     </div>
 
 
-</>
+</div>
   )
 }
 
