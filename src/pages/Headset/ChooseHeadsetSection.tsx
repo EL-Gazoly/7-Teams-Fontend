@@ -9,7 +9,6 @@ const ChooseHeadsetSection = () => {
         direction : "rtl"
       }}
     >
-      {/* <div className='w-[239px] h-[35px] py-[7px] px-4 flex items-center gap-x-4 bg-[#444] text-white font-medium rounded-[7px]'> */}
         <Checkbox  
         classNames={{
           base: cn(
@@ -56,14 +55,6 @@ const ChooseHeadsetSection = () => {
           <input className='w-full h-full bg-transparent placeholder:text-[#929496] text-sm font-medium focus: ' placeholder='البحث' />
 
       </div>
-
-
-      
-
-
-        
-
-      
 
     </div>
   )
