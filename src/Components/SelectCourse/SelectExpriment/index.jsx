@@ -1,23 +1,28 @@
-import React, {  useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
 
 
-
-const SelectSubject = ( props) => {
-  const [selectedOption, setSelectedOption] = useState(props.selectedCourse);
+const SelectChapter = ( props) => {
+  const [selectedOption, setSelectedOption] = useState();
 
   const handleChange = (selectedOption) => {
     setSelectedOption(selectedOption);
-    props.setSelectedSubject(selectedOption.value);
+    props.setSelectedExpriemnt({ value: selectedOption.value  });
     
   };
-  const transformedOptions = Object.keys(props.options).map((field) => {
-    return {
-      value: field,
-      label: props.options[field].name,
-      image: props.options[field].icon,
-    };
-  });
+   const selectedSubjectChapters = props.SelectdSubject
+    ? props.options[props.SelectdSubject]?.chapters
+    : [];
+
+  // Transforming chapters into options required by react-select
+  const allExperiments = Object.values(selectedSubjectChapters).flatMap((chapter) => 
+  chapter.map((experiment) => ({
+      value: experiment.value,
+      label: experiment.name,
+      image: experiment.icon,
+    }))
+    
+  );
 
   const customStyles = {
     control: (provided) => ({
@@ -134,9 +139,9 @@ const SelectSubject = ( props) => {
   return (
     <div className="App">
       <Select
-        options={transformedOptions}
+        options={allExperiments}
         styles={customStyles}
-        placeholder=" اختر المنهج "
+        placeholder=" اختر التجربه "
         value={selectedOption}
         onChange={handleChange}
         isSearchable={true}
@@ -158,4 +163,4 @@ const SelectSubject = ( props) => {
 
 
 
-export default SelectSubject;
+export default SelectChapter;

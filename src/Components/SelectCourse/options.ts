@@ -26,12 +26,12 @@ const options = {
             value : "liquid"
           },
           {
-            name : "البروده",
+            name : "كمادات باردة",
             icon : ColdExpriment,
             value : "cold"
           },
           {
-            name : "الحراره",
+            name : "حرارة نوعية",
             icon : HeatExpriment,
             value : "heat"
           },
@@ -49,12 +49,12 @@ const options = {
             value : "liquid"
           },
           {
-            name : "البروده",
+            name : "كمادات باردة",
             icon : ColdExpriment,
             value : "cold"
           },
           {
-            name : "الحراره",
+            name : "حرارة نوعية",
             icon : HeatExpriment,
             value : "heat"
           },
@@ -72,12 +72,12 @@ const options = {
             value : "liquid"
           },
           {
-            name : "البروده",
+            name : "كمادات باردة",
             icon : ColdExpriment,
             value : "cold"
           },
           {
-            name : "الحراره",
+            name : "حرارة نوعية",
             icon : HeatExpriment,
             value : "heat"
           },
@@ -95,12 +95,12 @@ const options = {
             value : "liquid"
           },
           {
-            name : "البروده",
+            name : "كمادات باردة",
             icon : ColdExpriment,
             value : "cold"
           },
           {
-            name : "الحراره",
+            name : "حرارة نوعية",
             icon : HeatExpriment,
             value : "heat"
           },
@@ -124,12 +124,12 @@ const options = {
             value : "liquid"
           },
           {
-            name : "البروده",
+            name : "كمادات باردة",
             icon : ColdExpriment,
             value : "cold"
           },
           {
-            name : "الحراره",
+            name : "حرارة نوعية",
             icon : HeatExpriment,
             value : "heat"
           },
@@ -147,12 +147,12 @@ const options = {
             value : "liquid"
           },
           {
-            name : "البروده",
+            name : "كمادات باردة",
             icon : ColdExpriment,
             value : "cold"
           },
           {
-            name : "الحراره",
+            name : "حرارة نوعية",
             icon : HeatExpriment,
             value : "heat"
           },
@@ -170,12 +170,12 @@ const options = {
             value : "liquid"
           },
           {
-            name : "البروده",
+            name : "كمادات باردة",
             icon : ColdExpriment,
             value : "cold"
           },
           {
-            name : "الحراره",
+            name : "حرارة نوعية",
             icon : HeatExpriment,
             value : "heat"
           },
@@ -193,12 +193,12 @@ const options = {
             value : "liquid"
           },
           {
-            name : "البروده",
+            name : "كمادات باردة",
             icon : ColdExpriment,
             value : "cold"
           },
           {
-            name : "الحراره",
+            name : "حرارة نوعية",
             icon : HeatExpriment,
             value : "heat"
           },
@@ -222,12 +222,12 @@ const options = {
             value : "liquid"
           },
           {
-            name : "البروده",
+            name : "كمادات باردة",
             icon : ColdExpriment,
             value : "cold"
           },
           {
-            name : "الحراره",
+            name : "حرارة نوعية",
             icon : HeatExpriment,
             value : "heat"
           },
@@ -244,12 +244,12 @@ const options = {
             value : "liquid"
           },
           {
-            name : "البروده",
+            name : "كمادات باردة",
             icon : ColdExpriment,
             value : "cold"
           },
           {
-            name : "الحراره",
+            name : "حرارة نوعية",
             icon : HeatExpriment,
             value : "heat"
           },
@@ -266,12 +266,12 @@ const options = {
             value : "liquid"
           },
           {
-            name : "البروده",
+            name : "كمادات باردة",
             icon : ColdExpriment,
             value : "cold"
           },
           {
-            name : "الحراره",
+            name : "حرارة نوعية",
             icon : HeatExpriment,
             value : "heat"
           },
@@ -288,12 +288,12 @@ const options = {
             value : "liquid"
           },
           {
-            name : "البروده",
+            name : "كمادات باردة",
             icon : ColdExpriment,
             value : "cold"
           },
           {
-            name : "الحراره",
+            name : "حرارة نوعية",
             icon : HeatExpriment,
             value : "heat"
           },
@@ -317,12 +317,12 @@ const options = {
             value : "liquid"
           },
           {
-            name : "البروده",
+            name : "كمادات باردة",
             icon : ColdExpriment,
             value : "cold"
           },
           {
-            name : "الحراره",
+            name : "حرارة نوعية",
             icon : HeatExpriment,
             value : "heat"
           },
@@ -339,12 +339,12 @@ const options = {
             value : "liquid"
           },
           {
-            name : "البروده",
+            name : "كمادات باردة",
             icon : ColdExpriment,
             value : "cold"
           },
           {
-            name : "الحراره",
+            name : "حرارة نوعية",
             icon : HeatExpriment,
             value : "heat"
           },
@@ -361,12 +361,12 @@ const options = {
             value : "liquid"
           },
           {
-            name : "البروده",
+            name : "كمادات باردة",
             icon : ColdExpriment,
             value : "cold"
           },
           {
-            name : "الحراره",
+            name : "حرارة نوعية",
             icon : HeatExpriment,
             value : "heat"
           },
@@ -383,12 +383,12 @@ const options = {
             value : "liquid"
           },
           {
-            name : "البروده",
+            name : "كمادات باردة",
             icon : ColdExpriment,
             value : "cold"
           },
           {
-            name : "الحراره",
+            name : "حرارة نوعية",
             icon : HeatExpriment,
             value : "heat"
           },

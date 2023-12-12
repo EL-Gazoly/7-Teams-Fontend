@@ -1,6 +1,8 @@
 import SelectCourse from '../../Components/SelectCourse'
 import SelectSubject from '../../Components/SelectCourse/SelectSubject'
 import SelectChapter from '../../Components/SelectCourse/SelectChapter'
+import SelectExpirment from '../../Components/SelectCourse/SelectExpriment'
+import SelectHowToStart from '../../Components/SelectCourse/SelectHowToOpen'
 import { Button } from '@nextui-org/react'
 import { useState } from 'react'
 
@@ -22,8 +24,8 @@ const ChooseCourseSection = () => {
     
         <SelectSubject options={options} setSelectedSubject={setSelectedSubject} />
         <SelectChapter options={options}  SelectdSubject={SelectdSubject} setSelectedChapter={setSelectedChapter} />
-        <SelectCourse />
-        <SelectCourse />
+        <SelectExpirment options={options}  SelectdSubject={SelectdSubject} SelectedChapter={SelectedChapter} setSelectedChapter={setSelectedExpriemnt} />
+        <SelectHowToStart />
 
         <Button className=' flex items-center justify-center px-[14px] py-[7px] rounded-[7px]' color='primary'    
         >ابدا التجربه</Button>

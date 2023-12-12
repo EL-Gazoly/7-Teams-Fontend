@@ -1,23 +1,24 @@
-import React, {  useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
+import unSelectedStart from '../../../assets/SelectCourse/SelectHowtoStart/unselected.svg'
+import SelectedStart from '../../../assets/SelectCourse/SelectHowtoStart/selected.svg'
+const options = [
+  { value: 'full', label: "أبدأ الشرح ", image : unSelectedStart, selected : SelectedStart},
+  { value: 'expriment', label: "أبدأ التجربة " , image : unSelectedStart, selected : SelectedStart},
+  { value: 'practical', label: "أبدأ الأختبار العملي" , image : unSelectedStart, selected : SelectedStart},
+  { value: 'theortical  ', label: "أبدأ الأختبار النظري" , image : unSelectedStart, selected : SelectedStart},
+];
 
 
 
-const SelectSubject = ( props) => {
+const SelectHowToStart = ( props) => {
   const [selectedOption, setSelectedOption] = useState(props.selectedCourse);
 
   const handleChange = (selectedOption) => {
     setSelectedOption(selectedOption);
-    props.setSelectedSubject(selectedOption.value);
+    props.setSelectedCourse(selectedOption.value);
     
   };
-  const transformedOptions = Object.keys(props.options).map((field) => {
-    return {
-      value: field,
-      label: props.options[field].name,
-      image: props.options[field].icon,
-    };
-  });
 
   const customStyles = {
     control: (provided) => ({
@@ -134,19 +135,17 @@ const SelectSubject = ( props) => {
   return (
     <div className="App">
       <Select
-        options={transformedOptions}
+        options={options}
         styles={customStyles}
-        placeholder=" اختر المنهج "
+        placeholder=" طريقة فتح التجربة "
         value={selectedOption}
         onChange={handleChange}
         isSearchable={true}
         getOptionLabel={(option) => (
-          <div className='selected flex items-center gap-x-6 text-xs font-medium'
-            style={{
-              direction: "rtl"
-            }}
-          >
-            <img src={option.image} alt={option.label} style={customStyles.optionImage} className=' w-10 h-10'/>
+          <div className='selected flex  items-center gap-x-6 text-xs font-medium'>
+            <img src={selectedOption !== option ? option.image : option.selected} alt={option.label} style={customStyles.optionImage} className={`
+              ${selectedOption !== option ? "w-10   h-10" : " w-4 h-5 mr-2"}
+            `}/>
             <span className={`${ selectedOption && selectedOption.value === "Ultrasound" ? 'text-[10px]' : ''}`}> {option.label} </span>
           </div>
         )}
@@ -158,4 +157,4 @@ const SelectSubject = ( props) => {
 
 
 
-export default SelectSubject;
+export default SelectHowToStart;
