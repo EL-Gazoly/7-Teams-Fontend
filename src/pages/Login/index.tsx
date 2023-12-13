@@ -49,7 +49,8 @@ const LoginPage = () => {
        
     }
     if(adminLoading|| userLoading) toast.loading("Loading...")
-    if(adminError || userError) toast.error("Invalid Credentials")
+    if(adminError) toast.error(adminError.message )
+    if (userError)  toast.error(userError.message)
 
     return (
         <div className='login-bg fixed inset-0 w-screen h-screen flex items-center justify-center'>

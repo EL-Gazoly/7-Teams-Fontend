@@ -53,7 +53,7 @@ const StudentsStackViews = ({ students }: StudentStackProps) => {
               <span className='text-text-black text-sm font-b old'>{student.name}</span>
             </TableCell>
             <TableCell>
-              <span className='text-xs font-semibold text-primary'>{student.generatedId}</span>
+              <span className='text-xs font-semibold text-primary'>#{student.generatedId}</span>
             </TableCell>
             <TableCell className='relative'>
               <div className='absolute top-[40%] right-[35%] w-[60px] h-[26px] bg-primary rounded flex flex-row-reverse items-center justify-center gap-x-[4px]'>
