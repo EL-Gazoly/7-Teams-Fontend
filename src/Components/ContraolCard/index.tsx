@@ -7,6 +7,10 @@ import "./style.css"
 import { useNavigate } from 'react-router-dom'
 const ControlCard = () => {
   const navigate = useNavigate()
+  const handelLogout = () =>{
+    document.cookie = `Authorization=; path=/; max-age=${0}`;
+    navigate('/login')
+  }
   return (  
     <div className='w-full h-[103px] rounded-b-[14px] Control-card-bg light flex items-center px-[26px] justify-between flex-row-reverse'
     style={{
@@ -48,7 +52,7 @@ const ControlCard = () => {
                   <Image src={LanguageIcon} width={35} height={35} radius='none' />
                 </Button>
                 <Button isIconOnly className='    bg-secondary '
-                  onClick={()=> navigate('/login')}
+                  onClick={handelLogout}
                 >
                   <Image src={logoutIcon}  radius='none' />
                 </Button>
