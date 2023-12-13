@@ -52,7 +52,7 @@ const AdminsTable = () => {
 
       </TableHeader>
       <TableBody>
-      {
+      {users &&
       users.admin.users.map((user, index) => (
           <TableRow key={index} className='border-b border-[#292d32]/50'>
           <TableCell className='flex items-center justify-center'>

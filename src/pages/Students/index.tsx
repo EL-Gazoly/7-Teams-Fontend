@@ -91,9 +91,11 @@ const StudentsPage = () => {
                 </div>
 
             </div>
+            {students && 
+            activeTab === "stack" ? <StudentsStackViews students={students?.admin.students} /> : <StudentsGridView students={students?.admin.students} />
+                
+            }
             
-            {activeTab === "stack" ? <StudentsStackViews students={students.admin.students} /> : <StudentsGridView students={students.admin.students} />}
-
 
         </div>
 

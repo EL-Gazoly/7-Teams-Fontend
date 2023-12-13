@@ -42,9 +42,9 @@ const StudentsStackViews = ({ students }: StudentStackProps) => {
         <TableColumn>رمز الدخول</TableColumn>
         <TableColumn>الحاله</TableColumn>
       </TableHeader>
-      
+
       <TableBody>
-        {students.map((student, index) => (
+        {students && students.map((student, index) => (
           <TableRow key={index}>
             <TableCell className='flex items-center justify-center'>
               <Avatar src={data.img} className='w-[49px] h-[49px]' />
