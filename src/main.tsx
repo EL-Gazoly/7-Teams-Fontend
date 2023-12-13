@@ -6,6 +6,12 @@ import {NextUIProvider} from '@nextui-org/react'
 import { AuthProvider } from './contexts/AuthContext.tsx'
 import { LanguageProvider } from './contexts/LanguageContext.tsx'
 import { HashRouter } from 'react-router-dom'
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+
+const client = new ApolloClient({
+  uri: 'http://localhost:3000/',
+  cache: new InMemoryCache(),
+});
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
@@ -13,7 +19,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <NextUIProvider>
           <LanguageProvider>
             <AuthProvider>
-              <App />
+              <ApolloProvider client={client}>
+                <App />
+              </ApolloProvider>
             </AuthProvider>
           </LanguageProvider>
         </NextUIProvider>
