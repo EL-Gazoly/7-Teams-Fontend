@@ -2,6 +2,8 @@ import React from 'react'
 import { Table, TableHeader, TableBody,TableColumn, TableRow, TableCell
     ,Avatar } from '@nextui-org/react'
 import Placeholder from '../../assets/students/placeholder.jpg'
+import { GetUsers } from '../../graphql/users'
+import { useQuery } from '@apollo/client'
     
     const data ={
       img : Placeholder,
@@ -11,6 +13,10 @@ import Placeholder from '../../assets/students/placeholder.jpg'
       connected : true
     }
 const AdminsTable = () => {
+  const { loading, error, data: users } = useQuery(GetUsers);
+  if (loading) console.log('loading')
+  if (error) console.log(error)
+  console.log(users)  
   return (
     <Table
     isHeaderSticky
@@ -47,20 +53,20 @@ const AdminsTable = () => {
       </TableHeader>
       <TableBody>
       {
-      new Array(10).fill(undefined).map((_, index) => (
+      users.admin.users.map((user, index) => (
           <TableRow key={index} className='border-b border-[#292d32]/50'>
           <TableCell className='flex items-center justify-center'>
               <Avatar src={data.img} className='w-[49px] h-[49px]' />
           </TableCell>
           <TableCell>
-              <span className='text-text-black text-sm font-bold'>{data.name}</span>
+              <span className='text-text-black text-sm font-bold'>{user.name}</span>
           </TableCell>
           <TableCell>
-              <span className='text-xs font-semibold text-text-black'>{data.email}</span>
+              <span className='text-xs font-semibold text-text-black'>{user.email}</span>
           </TableCell>
           <TableCell className='relative'>
               <span className='text-[10px] font-medium absolute top-[40%] right-[20%]  rounded bg-text-black w-[60px] h-[26px]  flex items-center justify-center text-white'>
-                  {data.role}
+                  {user.roles.name}
 
               </span>
           </TableCell>
