@@ -6,10 +6,29 @@ import {NextUIProvider} from '@nextui-org/react'
 import { AuthProvider } from './contexts/AuthContext.tsx'
 import { LanguageProvider } from './contexts/LanguageContext.tsx'
 import { HashRouter } from 'react-router-dom'
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink  } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+
+const httpLink = createHttpLink({
+  uri: 'http://localhost:3000/',
+});
+
+
+
+const authLink = setContext((_, { headers }) => {
+  const cookie = document.cookie.split(';').find((cookie) => cookie.startsWith('Authorization'));
+  const token = cookie?.split('=')[1];
+  return {
+      headers: {
+          ...headers,
+          authorization: token ? `${token}` : '',
+      },
+  };
+});
+
 
 const client = new ApolloClient({
-  uri: 'http://localhost:3000/',
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 

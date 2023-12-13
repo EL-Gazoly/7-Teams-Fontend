@@ -5,8 +5,14 @@ import SelectCard from '../../assets/Landing/HeadsetCard/select.png'
 import { useState } from 'react'
 import SucessGif from '../../assets/Landing/HeadsetCard/sucesss.gif'
 
+type HeadsetProps = {
+    device : {
+        name : string,
+        macAddress : string,
+    }
+}
 
-const HeadsetCard = () => {
+const HeadsetCard = ({device} : HeadsetProps) => {
     const [isSelected, setSelected] = useState(false)
   return (
     <Card className={` w-[235.818px] h-[265.851px] rounded-[5.583px] overflow-hidden
@@ -40,7 +46,7 @@ const HeadsetCard = () => {
             </div>
             <div className='flex flex-col gap-y-2'>
                 <span className='text-[#122333] text-sm font-semibold'>نظاره رقم 1</span>
-                <span className=' text-[#A5A5A5] text-[8.5px]'>Meta Quest 2</span>
+                <span className=' text-[#A5A5A5] text-[8.5px]'> {device.name}  </span>
             </div>
           
 
