@@ -1,5 +1,5 @@
 import SideBar from "./Components/SideBar"
-import { HashRouter as Router, Routes, Route } from "react-router-dom"
+import { HashRouter as Router, Routes, Route, useLocation } from "react-router-dom"
 import HeadsetsPage from "./pages/Headset"
 import './App.css'
 import CoursesPage from "./pages/Courses"
@@ -12,15 +12,18 @@ import GeneralSettingsPage from "./pages/Settings"
 import AdminsPage from "./pages/Admins"
 import CreateAdmin from "./pages/CreateAdmin"
 import RolesPage from "./pages/Roles"
+import LoginPage from "./pages/Login"
 function App() {
+  const location = useLocation();
+  const isLoginPage = location.pathname === '/login';
   return (
     <div className="  w-screen h-screen bg-[#E9EBEE] overflow-hidden flex flex-row-reverse">
-      <SideBar />
+       {!isLoginPage && <SideBar />}
       <div className=" w-full h-full flex items-center justify-center">
         <div className=" w-[1000px] h-full overflow-y-auto overflow-x-hidden scroll">
         <Routes>
-          <Route path="/" element={<HeadsetsPage />} />
-          
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/" element={<HeadsetsPage />} /> 
           <Route path="/courses"  element={<CoursesPage />}/>
           <Route path="/students"   element={<StudentsPage />}/>
           <Route path="/courses/:course"   element={<CoursePage />}/>
