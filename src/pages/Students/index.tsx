@@ -13,9 +13,18 @@ import StackUnSelected from '../../assets/students/stack-unselected.svg'
 import StudentsStackViews from '../../Components/StudentsView/Stack'
 import StudentsGridView from '../../Components/StudentsView/Grid'
 import { useNavigate } from 'react-router-dom'
+
+import { getStudents } from '../../graphql/students'
+import { useQuery } from '@apollo/client'
+
+
 const StudentsPage = () => {
+    const { loading, error, data: students } = useQuery(getStudents);
     const [activeTab, setActiveTab] = useState("stack")
     const navigate = useNavigate()
+    if (loading) console.log('loading')
+    if (error) console.log(error.message)
+    console.log(students)
   return (
     <React.Fragment>
         <ControlCard />
@@ -83,7 +92,7 @@ const StudentsPage = () => {
 
             </div>
             
-            {activeTab === "stack" ? <StudentsStackViews /> : <StudentsGridView />}
+            {activeTab === "stack" ? <StudentsStackViews students={students.admin.students} /> : <StudentsGridView students={students.admin.students} />}
 
 
         </div>
