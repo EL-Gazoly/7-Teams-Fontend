@@ -13,31 +13,35 @@ import AdminsPage from "./pages/Admins"
 import CreateAdmin from "./pages/CreateAdmin"
 import RolesPage from "./pages/Roles"
 import LoginPage from "./pages/Login"
+import { Toaster } from "sonner"
 function App() {
   const location = useLocation();
   const isLoginPage = location.pathname === '/login';
   return (
-    <div className="  w-screen h-screen bg-[#E9EBEE] overflow-hidden flex flex-row-reverse">
-       {!isLoginPage && <SideBar />}
-      <div className=" w-full h-full flex items-center justify-center">
-        <div className=" w-[1000px] h-full overflow-y-auto overflow-x-hidden scroll">
-        <Routes>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/" element={<HeadsetsPage />} /> 
-          <Route path="/courses"  element={<CoursesPage />}/>
-          <Route path="/students"   element={<StudentsPage />}/>
-          <Route path="/courses/:course"   element={<CoursePage />}/>
-          <Route path="/students/create" element={<CreateStudent />} />
-          <Route path="/library" element={<Library />} />
-          <Route path="/certificates" element={<CertificatesPage />} />
-          <Route path="/settings" element={<GeneralSettingsPage />} />
-          <Route path="/settings/admins" element={<AdminsPage />} />
-          <Route path="/settings/admins/create" element={<CreateAdmin />} />
-          <Route path="/settings/roles" element={<RolesPage />} />
-        </Routes>
+    <>
+     <Toaster position="top-right" richColors   />
+      <div className="  w-screen h-screen bg-[#E9EBEE] overflow-hidden flex flex-row-reverse">
+        {!isLoginPage && <SideBar />}
+        <div className=" w-full h-full flex items-center justify-center">
+          <div className=" w-[1000px] h-full overflow-y-auto overflow-x-hidden scroll">
+          <Routes>
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/" element={<HeadsetsPage />} /> 
+            <Route path="/courses"  element={<CoursesPage />}/>
+            <Route path="/students"   element={<StudentsPage />}/>
+            <Route path="/courses/:course"   element={<CoursePage />}/>
+            <Route path="/students/create" element={<CreateStudent />} />
+            <Route path="/library" element={<Library />} />
+            <Route path="/certificates" element={<CertificatesPage />} />
+            <Route path="/settings" element={<GeneralSettingsPage />} />
+            <Route path="/settings/admins" element={<AdminsPage />} />
+            <Route path="/settings/admins/create" element={<CreateAdmin />} />
+            <Route path="/settings/roles" element={<RolesPage />} />
+          </Routes>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

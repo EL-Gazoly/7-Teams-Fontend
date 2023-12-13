@@ -14,7 +14,7 @@ const client = new ApolloClient({
 });
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-    <React.StrictMode>
+  
       <HashRouter>
         <NextUIProvider>
           <LanguageProvider>
@@ -26,7 +26,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           </LanguageProvider>
         </NextUIProvider>
       </HashRouter>
-  </React.StrictMode>,
+ ,
 )
 
 // Remove Preload scripts loading
