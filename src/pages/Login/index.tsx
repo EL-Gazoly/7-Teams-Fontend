@@ -43,8 +43,8 @@ const LoginPage = () => {
 
     if(adminData || userData) {
         toast.success("Login sucess")
-        adminData && console.log("this is admin token", adminData?.loginAdmin?.token )
-        userData && console.log("this is user token", userData?.loginUser?.token )
+        if (adminData) document.cookie = `Authorization=${adminData?.loginAdmin?.token}; path=/; max-age=${30 * 24 * 60 * 60}`;
+        if (userData) document.cookie = `Authorization=${userData?.loginUser?.token}; path=/; max-age=${30 * 24 * 60 * 60}`;
         navigate('/')
        
     }
