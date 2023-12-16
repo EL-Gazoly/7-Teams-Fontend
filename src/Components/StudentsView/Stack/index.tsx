@@ -1,6 +1,5 @@
 import React from 'react';
 import { Table, TableHeader, TableBody, TableColumn, TableRow, TableCell, Avatar } from '@nextui-org/react';
-import Placeholder from '../../../assets/students/placeholder.jpg';
 import noPic from '../../../assets/students/noPic.svg'
 
 type Student = {
@@ -14,12 +13,6 @@ type StudentStackProps = {
 };
 
 const StudentsStackViews = ({ students }: StudentStackProps) => {
-  const data = {
-    img: Placeholder,
-    name: "احمد حامد",
-    id: 256182,
-    connected: true,
-  };
   if (students) console.log(students);
 
   return (
@@ -63,7 +56,7 @@ const StudentsStackViews = ({ students }: StudentStackProps) => {
               <div className='absolute top-[40%] right-[35%] w-[60px] h-[26px] bg-primary rounded flex flex-row-reverse items-center justify-center gap-x-[4px]'>
                 <div className='w-[6px] h-[6px] rounded-full bg-white mt-[2px]' />
                 <span className='text-white text-[8px]'>
-                  {data.connected && "متصل الان"}
+                  {true && "متصل الان"}
                 </span>
               </div>
             </TableCell>

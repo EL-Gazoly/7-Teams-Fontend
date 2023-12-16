@@ -1,6 +1,5 @@
 import React from 'react'
 import { Avatar } from '@nextui-org/react'
-import placeholder from '../../../assets/students/placeholder.jpg'
 import noPic from '../../../assets/students/noPic.svg'
 
 type studentCardProps = {
