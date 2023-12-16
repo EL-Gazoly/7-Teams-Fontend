@@ -1,10 +1,11 @@
 import React from 'react'
 import { Avatar } from '@nextui-org/react'
 import placeholder from '../../../assets/students/placeholder.jpg'
+import noPic from '../../../assets/students/noPic.svg'
 
 type studentCardProps = {
   student : {
-    imgUrl : string,
+    imageUrl : string,
     name : string,
     generatedId : number,
   }
@@ -21,7 +22,9 @@ const StudentCard = ({student} : studentCardProps) => {
                 <div className=' w-[6px] h-[6px] rounded-full bg-[#2DEC4C] mt-[2px]' />
             </div>
             <div className=' mt-2 ml-9 flex items-center justify-center gap-x-9 flex-row-reverse'>
-                <Avatar src={placeholder} className=' w-[68px] h-[68px]' />
+                <div className='  w-[68px] h-[68px] bg-[#F6F6F6] rounded-full flex items-center justify-center'>
+                  {student.imageUrl ? <Avatar className=' w-full h-full' src={`${import.meta.env.VITE_API_URL}${student.imageUrl}`} fallback={noPic}/> : <img src={noPic} alt="" /> }
+                </div>
                 <div className=' flex flex-col text-xs font-bold gap-y-[5px] text-center'>
                     <span className=' text-text-black'>{student.name}</span>
                     <span className=' text-primary text-xs font-medium'>#{student.generatedId}</span>

@@ -2,7 +2,7 @@ import StudentCard from "./item"
 
 type studentsGridProps = {
   students : [{
-    imgUrl : string,
+    imageUrl : string,
     name : string,
     generatedId : number,
 

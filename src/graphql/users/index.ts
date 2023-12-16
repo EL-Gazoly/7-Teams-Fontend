@@ -6,6 +6,7 @@ query getUsers {
     users {
       name
       email
+      imageUrl
       roles {
         name
       }

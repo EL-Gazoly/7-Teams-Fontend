@@ -1,9 +1,10 @@
 import React from 'react';
 import { Table, TableHeader, TableBody, TableColumn, TableRow, TableCell, Avatar } from '@nextui-org/react';
 import Placeholder from '../../../assets/students/placeholder.jpg';
+import noPic from '../../../assets/students/noPic.svg'
 
 type Student = {
-  imgUrl: string;
+  imageUrl: string;
   name: string;
   generatedId: number;
 };
@@ -19,6 +20,7 @@ const StudentsStackViews = ({ students }: StudentStackProps) => {
     id: 256182,
     connected: true,
   };
+  if (students) console.log(students);
 
   return (
     <Table
@@ -47,7 +49,9 @@ const StudentsStackViews = ({ students }: StudentStackProps) => {
         {students && students.map((student, index) => (
           <TableRow key={index}>
             <TableCell className='flex items-center justify-center'>
-              <Avatar src={data.img} className='w-[49px] h-[49px]' />
+              <div className=' w-12 h-12 bg-[#F6F6F6] rounded-full flex items-center justify-center'>
+                  {student.imageUrl ? <Avatar className=' w-11 h-11' src={`${import.meta.env.VITE_API_URL}${student.imageUrl}`} fallback={noPic}/> : <img src={noPic} alt="" /> }
+              </div>
             </TableCell>
             <TableCell>
               <span className='text-text-black text-sm font-b old'>{student.name}</span>
