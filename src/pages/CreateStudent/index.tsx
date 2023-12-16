@@ -6,6 +6,7 @@ import AddIcon from '../../assets/students/add.svg'
 import { createStudent } from '../../graphql/students';
 import { useMutation } from '@apollo/client';
 import { toast } from 'sonner';
+import Loading from '../../Components/Loading';
 
 
 const CreateStudent = () => {
@@ -32,9 +33,14 @@ const CreateStudent = () => {
             
          
         }
-        if (loading) console.log('loading')
-        if (error) console.log(error.message)
-        if (data) console.log(data)
+
+
+        if (loading) return <Loading />
+        if (error) toast.error(error.message)
+        if (data) {
+            toast.success('Student created successfully')
+        }
+
 
   return (
     <>
