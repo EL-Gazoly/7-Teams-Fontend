@@ -14,3 +14,11 @@ query Students {
     }
 }
 `
+
+export const createStudent = gql`
+mutation createStudent($data: CreateStudentInput!, $image: Upload) {
+  createStudent(data: $data, image: $image) {
+    name
+  }
+}
+`

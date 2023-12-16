@@ -3,7 +3,8 @@ import NoPic from '../../assets/students/no-pic-light.svg'
 import { Button } from "@nextui-org/react";
 export function UploadImage({
   selectedImage,
-    setSelectedImage
+    setSelectedImage,
+    setSelectedFile
 }) {
     const handleImageUpload = (event) => {
         const file = event.target.files[0];
@@ -11,7 +12,7 @@ export function UploadImage({
         if (file && (file.type === 'image/png' || file.type === 'image/jpeg')) {
           const reader = new FileReader();
           reader.onload = (e) => {
-            
+            setSelectedFile(file);
             setSelectedImage(e.target.result);
           };
           reader.readAsDataURL(file);

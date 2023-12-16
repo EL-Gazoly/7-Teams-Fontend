@@ -3,13 +3,39 @@ import React, {useState, useRef} from 'react'
 import ControlCard from '../../Components/ContraolCard'
 import { Button, Image } from '@nextui-org/react';
 import AddIcon from '../../assets/students/add.svg'
+import { createStudent } from '../../graphql/students';
+import { useMutation } from '@apollo/client';
+import { toast } from 'sonner';
 
 
 const CreateStudent = () => {
     const [selectedImage, setSelectedImage] = useState(null);
+    const [selectedFile, setSelectedFile] = useState(null);
+
+    const [createStudentMutation, {data, loading , error}] = useMutation(createStudent);
 
       const nameRef = useRef<HTMLInputElement>(null)
       const idRef = useRef<HTMLInputElement>(null)
+
+        const handleCreateStudent = async () => {
+            const name = nameRef.current?.value
+            const id = idRef.current?.value
+            const image = selectedFile
+            if(!name || !id ) return toast.error('Please fill all fields')
+            await createStudentMutation({variables : {
+                data : {
+                  name : name,
+                  facilityId: id,
+                },
+                image : image
+            }})
+            
+         
+        }
+        if (loading) console.log('loading')
+        if (error) console.log(error.message)
+        if (data) console.log(data)
+
   return (
     <>
         <ControlCard/> 
@@ -22,21 +48,21 @@ const CreateStudent = () => {
             }}
         >
 
-                <UploadImage   selectedImage={selectedImage} setSelectedImage={setSelectedImage}  />
+                <UploadImage   selectedImage={selectedImage} setSelectedImage={setSelectedImage}  setSelectedFile={setSelectedFile} />
                 
                 <div className='flex flex-row-reverse items-center gap-x-[22px]'>
                     <div className=' flex flex-col gap-y-[5px] text-right text-text-black'>
                         <label htmlFor="name" className=' mr-1' >الاسم</label>
                         <input type="text" className=' text-right w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] px-4
                             
-                        ' placeholder='اسم الطالب هنا' />
+                        ' placeholder='اسم الطالب هنا' ref={nameRef} />
 
                     </div>
                     <div className=' flex flex-col gap-y-[5px] text-right text-text-black'>
                         <label htmlFor="id"  className=' mr-1' >رقم الطالب</label>
                         <input type="text" className=' text-right w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] px-4
                             
-                        ' placeholder='رقم الطالب هنا' />
+                        ' placeholder='رقم الطالب هنا' ref={idRef} />
 
                     </div>
 
@@ -44,7 +70,9 @@ const CreateStudent = () => {
                 <div className=' w-full items-center justify-center flex mt-24'>
                 <Button className=' w-[177px] h-[51px] py-2 px-4 rounded-lg flex items-center justify-center gap-x-2 
                     bg-[#4E5464]
-                '>
+                '
+                    onPress={handleCreateStudent}
+                >
                     <Image src={AddIcon} />
                     <span className=' text-white text-sm font-bold '>إضافة طالب</span>
 

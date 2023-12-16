@@ -6,10 +6,13 @@ import {NextUIProvider} from '@nextui-org/react'
 import { AuthProvider } from './contexts/AuthContext.tsx'
 import { LanguageProvider } from './contexts/LanguageContext.tsx'
 import { HashRouter } from 'react-router-dom'
-import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink  } from '@apollo/client';
+import { ApolloClient, InMemoryCache, ApolloProvider  } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import  createUploadLink from "apollo-upload-client/createUploadLink.mjs";
 
-const httpLink = createHttpLink({
+
+
+const httpLink = createUploadLink({
   uri: `${import.meta.env.VITE_API_URL}/graphql`,
 });
 
