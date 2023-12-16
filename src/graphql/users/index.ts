@@ -14,3 +14,14 @@ query getUsers {
   }
 }
 `
+export const CreateUser = gql`
+mutation CreateUser($data: CreateUserInput!, $image: Upload) {
+  createUser(data: $data, image: $image) {
+    name
+    email
+    roles {
+      name
+    }
+  }
+}
+`

@@ -10,11 +10,10 @@ const options = [
 
 
 const ChooseRole = (props) => {
-    const [selectedOption, setSelectedOption] = useState(props.selectedCourse);
+ 
 
     const handleChange = (selectedOption) => {
-      setSelectedOption(selectedOption);
-      props.setSelectedCourse(selectedOption.value);
+      props.setSelectRole(selectedOption);
       
     };
   
@@ -125,24 +124,21 @@ const ChooseRole = (props) => {
     };
   
     useEffect(() => {
-      if(props.emptyCourse){
-        setSelectedOption(null);
-        props.setEmptyCourse(false);
-      }
+     props.setSelectRole(null);
   
     }, [props.emptyCourse]);
   return (
     <div className="App">
     <Select
-      options={options}
+      options={props.roles}
       styles={customStyles}
       placeholder="اختر الدور من هنا"
-      value={selectedOption}
+      value={props.selectRole}
       onChange={handleChange}
       isSearchable={true}
       getOptionLabel={(option) => (
         <div className='selected flex items-center gap-x-6 text-xs font-medium'>
-          <span className={`${ selectedOption && selectedOption.value === "Ultrasound" ? 'text-[10px]' : ''}`}> {option.label} </span>
+          <span > {option.label} </span>
         </div>
       )}
     />
