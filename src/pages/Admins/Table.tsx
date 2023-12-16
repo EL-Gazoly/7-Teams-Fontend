@@ -1,17 +1,11 @@
 import React from 'react'
 import { Table, TableHeader, TableBody,TableColumn, TableRow, TableCell
     ,Avatar } from '@nextui-org/react'
-import Placeholder from '../../assets/students/placeholder.jpg'
 import { GetUsers } from '../../graphql/users'
 import { useQuery } from '@apollo/client'
+import noPic from '../../assets/students/noPic.svg'
+import EditIcon from '../../assets/settings/vuesax/linear/vuesax/linear/user-edit.svg'
     
-    const data ={
-      img : Placeholder,
-      name : "احمد حامد",
-      email : "Ahmedhamed25@gmail.com",
-      role: " مسئول ",
-      connected : true
-    }
 const AdminsTable = () => {
   const { loading, error, data: users } = useQuery(GetUsers);
   if (loading) console.log('loading')
@@ -56,7 +50,9 @@ const AdminsTable = () => {
       users.admin.users.map((user, index) => (
           <TableRow key={index} className='border-b border-[#292d32]/50'>
           <TableCell className='flex items-center justify-center'>
-              <Avatar src={data.img} className='w-[49px] h-[49px]' />
+          <div className=' w-12 h-12 bg-[#F6F6F6] rounded-full flex items-center justify-center'>
+                  {user.imageUrl ? <Avatar className=' w-11 h-11' src={`${import.meta.env.VITE_API_URL}${user.imageUrl}`} fallback={noPic}/> : <img src={noPic} alt="" /> }
+              </div>
           </TableCell>
           <TableCell>
               <span className='text-text-black text-sm font-bold'>{user.name}</span>
@@ -73,14 +69,11 @@ const AdminsTable = () => {
           <TableCell className='relative'>
               <div className='absolute top-[40%] right-[35%] w-[60px] h-[26px] bg-primary rounded flex flex-row-reverse items-center justify-center gap-x-[4px]'>
               <div className='w-[6px] h-[6px] rounded-full bg-white mt-[2px]' />
-              <span className='text-white text-[8px]'>{data.connected && "متصل الان"}</span>
+              <span className='text-white text-[8px]'>{true && "متصل الان"}</span>
               </div>
           </TableCell>
           <TableCell className='relative'>
-              <div className='absolute top-[40%] right-[35%] w-[60px] h-[26px] bg-primary rounded flex flex-row-reverse items-center justify-center gap-x-[4px]'>
-              <div className='w-[6px] h-[6px] rounded-full bg-white mt-[2px]' />
-              <span className='text-white text-[8px]'>{data.connected && "متصل الان"}</span>
-              </div>
+            <img src={EditIcon} alt=""  className=' absolute top-[40%] right-[30%]'/>
           </TableCell>
           </TableRow>
       ))
