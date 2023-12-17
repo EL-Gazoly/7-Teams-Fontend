@@ -1,5 +1,5 @@
 import SideBar from "./Components/SideBar"
-import { HashRouter as Router, Routes, Route, useLocation } from "react-router-dom"
+import { HashRouter as Router, Routes, Route, useLocation, useNavigate} from "react-router-dom"
 import HeadsetsPage from "./pages/Headset"
 import './App.css'
 import CoursesPage from "./pages/Courses"
@@ -15,9 +15,12 @@ import RolesPage from "./pages/Roles"
 import LoginPage from "./pages/Login"
 import { Toaster } from "sonner"
 import ProtectedRoutes from './utils/ProtectedRoutes'
+import HeadsetPage from "./pages/HeadsetPage"
 function App() {
   const location = useLocation();
   const isLoginPage = location.pathname === '/login';
+  const navigate = useNavigate();
+  if (location.pathname === '/')  navigate('/headsets');
   return (
     <>
      <Toaster position="top-right" richColors   />
@@ -28,7 +31,8 @@ function App() {
           <Routes>
             <Route path="/login" element={<LoginPage />} />
             <Route element={<ProtectedRoutes />}>
-                <Route path="/" element={<HeadsetsPage />} /> 
+                <Route path="/headsets" element={<HeadsetsPage />} /> 
+                <Route path="/headsets/:mac"  element={<HeadsetPage />}/>
                 <Route path="/courses"  element={<CoursesPage />}/>
                 <Route path="/students"   element={<StudentsPage />}/>
                 <Route path="/courses/:course"   element={<CoursePage />}/>

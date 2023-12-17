@@ -62,9 +62,9 @@ const SideBar = () => {
             onSelectionChange={(key : string) => handleNavigation(key)}
             aria-label="sidebar tabs"
             >
-                <Tab key={"/"}  title={
+                <Tab key={"/headsets"}  title={
                     <div className=" w-[159px] flex items-center justify-start mx-2 gap-x-2 mr-4 mt-3 font-medium text-sm  flex-row-reverse">
-                        <Image src={active === "/" ? SelectedHeadset : Headset} width={25} height={25} />
+                        <Image src={active === "/headsets" ? SelectedHeadset : Headset} width={25} height={25} />
                         <span className=" text-[13px]">نظارة الواقع الافتراضي </span>
                     </div>
                 } />
