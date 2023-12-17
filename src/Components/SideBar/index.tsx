@@ -26,7 +26,7 @@ import Settings from '../../assets/SideBar/Open/default/settings.svg'
 import ArrowIcon from '../../assets/SideBar/Open/arrow.png'
 
 const SideBar = () => {
-    const [active, setActive] = useState("")
+    const [active, setActive] = useState("/headsets")
     const navigate = useNavigate()
     const location = useLocation()
 

@@ -14,7 +14,9 @@ export default {
       },
       backgroundImage: {
         "primary-gradient" : "linear-gradient(90deg, #0B150C -50.62%, rgba(59, 214, 84, 0.87) 92.05%)",
-        "disconnected-gradient" : "linear-gradient(90deg, #E7EBE8 -147.49%, rgba(74, 84, 75, 0.87) 91.85%)"
+        "disconnected-gradient" : "linear-gradient(90deg, #E7EBE8 -147.49%, rgba(74, 84, 75, 0.87) 91.85%)",
+        "screen-shot-gradient" : "linear-gradient(70deg, #2BBFF6 26.24%, #09ADE5 88.6%)",
+        "video-gradient" : "linear-gradient(72deg, #F16C98 19.29%, #DB4771 84.88%)",
       },
       colors: {
         "primary": "#50D766",
