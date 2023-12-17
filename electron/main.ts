@@ -1,9 +1,10 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, ipcMain } from 'electron';
+import IpcFunctions from './IpcFunctions';
 import path from 'node:path'
 
 process.env.DIST = path.join(__dirname, '../dist')
 process.env.VITE_PUBLIC = app.isPackaged ? process.env.DIST : path.join(process.env.DIST, '../public')
-
+const ipcFunctions = new IpcFunctions();
 
 let win: BrowserWindow | null
 // 🚧 Use ['ENV_NAME'] avoid vite:define plugin - Vite@2.x
@@ -50,6 +51,13 @@ app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow()
   }
+  ipcMain.on('list-devices', ipcFunctions.handleListDevices);
+  ipcMain.on('connect', ipcFunctions.handleConnect);
+  ipcMain.on('screenshot', ipcFunctions.handleScreenshot);
+  ipcMain.on('start-stream', ipcFunctions.handleStartStream);
+  ipcMain.on('screenrecord', ipcFunctions.handleScreenRecord);
+  ipcMain.on('stop-screenrecord', ipcFunctions.handleStopScreenRecord);
+  ipcMain.on('disconnect', ipcFunctions.KillServer);
 })
 
 app.whenReady().then(createWindow)
