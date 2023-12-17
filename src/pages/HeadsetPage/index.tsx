@@ -2,6 +2,7 @@ import { FirstCard } from './FirstCard';
 import ControlCard from '../../Components/ContraolCard'
 import SecondCard from './SecondCard';
 import ThridCard from './ThridCard';
+import FourthCard from './FourthCard';
 
 
 const HeadsetPage = () => {
@@ -16,7 +17,7 @@ const HeadsetPage = () => {
           </div>
           <div className='w-full flex items-center gap-x-4 flex-row-reverse'>
             <ThridCard />
-            <SecondCard />
+            <FourthCard />
           </div>
 
         </div>
