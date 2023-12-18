@@ -1,4 +1,4 @@
-import React from 'react'
+import {useState} from 'react'
 import ControlCard from '../../Components/ContraolCard'
 import SearchIcon from '../../assets/Landing/ChooseHeadset/search.png'
 import AddIcon from '../../assets/students/add.svg'
@@ -9,7 +9,12 @@ import AdminsTable from './Table'
 
 
 const AdminsPage = () => {
+    const [searchQuery, setSearchQuery] = useState<String>("");
     const navigate = useNavigate()
+
+    const handleSearch = (event) => {
+        setSearchQuery(event.target.value.toLowerCase());
+    };
   return (
     <div>
         <ControlCard />
@@ -25,13 +30,14 @@ const AdminsPage = () => {
                     
                     <div className='w-[346px] h-12 bg-[#F0F2F4] rounded-lg px-[18px] gap-x-[10px] flex items-center justify-center'>
                         
-                        <input type="text" className='flex-1 bg-transparent text-right text-xs placeholder:text-[#929496] font-medium' placeholder='البحث' />
+                        <input type="text" className='flex-1 bg-transparent text-right text-xs placeholder:text-[#929496] font-medium'
+                         placeholder='البحث' onChange={handleSearch} />
                         <img src={SearchIcon} alt="" />
 
                     </div>
 
             </div>
-            <AdminsTable />
+            <AdminsTable searchQuery={searchQuery} />
 
         </div>
     </div>

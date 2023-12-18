@@ -6,11 +6,25 @@ import { useQuery } from '@apollo/client'
 import noPic from '../../assets/students/noPic.svg'
 import EditIcon from '../../assets/settings/vuesax/linear/vuesax/linear/user-edit.svg'
     
-const AdminsTable = () => {
-  const { loading, error, data: users } = useQuery(GetUsers);
+const AdminsTable = ({searchQuery }) => {
+  const { loading, error, data: usersData } = useQuery(GetUsers);
   if (loading) console.log('loading')
   if (error) console.log(error)
-  console.log(users)  
+
+  let users = usersData?.admin.users || [];
+
+  if (searchQuery) {
+    users = users.filter((user) => {
+      return (
+        user.name.toLowerCase().includes(searchQuery) ||
+        user.email.toLowerCase().includes(searchQuery) ||
+        user.roles.name.toLowerCase().includes(searchQuery)
+      );
+    });
+  }
+
+  if (users) console.log(users) 
+  
   return (
     <Table
     isHeaderSticky
@@ -46,8 +60,8 @@ const AdminsTable = () => {
 
       </TableHeader>
       <TableBody>
-      {users &&
-      users.admin.users.map((user, index) => (
+      {usersData &&
+      users.map((user, index) => (
           <TableRow key={index} className='border-b border-[#292d32]/50'>
           <TableCell className='flex items-center justify-center'>
           <div className=' w-12 h-12 bg-[#F6F6F6] rounded-full flex items-center justify-center'>
