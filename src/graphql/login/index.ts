@@ -14,6 +14,19 @@ export const LOGINUSER  = gql`
   loginUser(email: $email, hashedPassword: $hashedPassword) {
     token
     name
+    roles {
+      name
+      isDevicesAccess
+      isLogsAccess
+      isReportsAccess
+      isRolesAccess
+      isStudentsAccess
+      isUsersAccess
+      isCoursesAccsess
+      isCertificatesAccess
+      isDashboardAccess
+      isLibraryAccess
+    }
   }
 }
 `

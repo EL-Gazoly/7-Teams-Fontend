@@ -9,6 +9,7 @@ const ControlCard = () => {
   const navigate = useNavigate()
   const handelLogout = () =>{
     document.cookie = `Authorization=; path=/; max-age=${0}`;
+    localStorage.clear()
     navigate('/login')
   }
   return (  

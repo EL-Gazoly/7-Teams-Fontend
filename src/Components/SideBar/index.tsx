@@ -39,6 +39,8 @@ const SideBar = () => {
         return `/${firstWord}`;
     };
 
+    console.log(localStorage.getItem('isAdmin'))
+
   return (
     <div className=" relative">
         <div className=' w-[213px] h-screen flex flex-col px-5 py-[53px] gap-y-10 bg-[#F7F9FC] overflow-y-hidden'
@@ -62,62 +64,133 @@ const SideBar = () => {
             onSelectionChange={(key : string) => handleNavigation(key)}
             aria-label="sidebar tabs"
             >
-                <Tab key={"/headsets"}  title={
+             {(localStorage.getItem('isAdmin') === 'true' ||
+                localStorage.getItem('isDevicesAccess') === 'true') && (
+                <Tab
+                key={"/headsets"}
+                title={
                     <div className=" w-[159px] flex items-center justify-start mx-2 gap-x-2 mr-4 mt-3 font-medium text-sm  flex-row-reverse">
                         <Image src={active === "/headsets" ? SelectedHeadset : Headset} width={25} height={25} />
                         <span className=" text-[13px]">نظارة الواقع الافتراضي </span>
                     </div>
-                } />
-                 <Tab key={"/courses"}   title={
-                    <div className="w-[159px]  flex items-center  justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
-                        <Image src={active==="/courses" ? SelectedCourses : Courses} width={25} height={25} radius="none" />
-                        <span>المناهج التعليمية</span>
-                    </div>
-                } />
-                <Tab key={"/students"} title={
-                    <div className=" w-[159px]  flex items-center justify-start gap-x-4 mr-4 mt-3 font-medium text-sm  flex-row-reverse">
-                        <Image src={active=== "/students" ? SelectedStudents : Students} width={20} height={20} radius="none"/>
-                        <span>الطلاب</span>
-                    </div>
-                } />
+                } 
+                />
+            )}
+                {
+                    (
+                        localStorage.getItem('isAdmin') === 'true' ||
+                        localStorage.getItem('isCoursesAccsess') === 'true' ||
+                        localStorage.getItem('isCoursesAccsess') === 'true'
+                    ) && (
+                        <Tab key={"/courses"}   title={
+                            <div className="w-[159px]  flex items-center  justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
+                                <Image src={active==="/courses" ? SelectedCourses : Courses} width={25} height={25} radius="none" />
+                                <span>المناهج التعليمية</span>
+                            </div>
+                        } />
+                    )
+                    
+                }
                
-                <Tab key={"/library"}   title={
-                    <div className=" w-[159px]  flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
-                        <Image src={active==="/library" ? SelectedLibrary : library} width={25} height={25} radius="none"  />
-                        <span>الوسائط المحفوظة</span>
-                    </div>
-                } />
-                <Tab key={"/reports"}   title={
-                    <div className=" w-[159px]  flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm   flex-row-reverse">
-                        <Image src={active==="/reports" ? SelectedReports : Reports} radius="none" />
-                        <span>التقارير</span>
-                    </div>
-                } />
-                <Tab key={"/certificates"}   title={
-                    <div className=" w-[159px]  flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm   flex-row-reverse">
-                        <Image src={active==="/certificates" ? SelectedCertificates : Certificates} radius="none" />
-                        <span>الشهادات</span>
-                    </div>
-                } />
-                <Tab key={"/dashboard"}   title={
-                    <div className=" w-[159px]  flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
-                        <Image src={active==="/dashboard" ? SelectedDashboard : Dashboard} width={25} height={25} radius="none" />
-                        <span>لوحة التحكم</span>
-                    </div>
-                } />
-                <Tab key={"/logs"}   title={
-                    <div className=" w-[159px]  flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
-                        <Image src={active==="/logs" ? SelectedLogs : Logs} width={25} height={25} radius="none" />
-                        <span>سجل النظام</span>
-                    </div>
-                } />
+               {
+                (
+                    localStorage.getItem('isAdmin') === 'true' ||
+                    localStorage.getItem('isStudentsAccess') === 'true'
+                ) && (
+                    <Tab key={"/students"}   title={
+                        <div className=" w-[159px] flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
+                            <Image src={active==="/students" ? SelectedStudents : Students} width={25} height={25} radius="none" />
+                            <span>الطلاب</span>
+                        </div>
+                    } />
+                )
+               }
+
+
+                {
+                 (
+                      localStorage.getItem('isAdmin') === 'true' ||
+                      localStorage.getItem('isLibraryAccess') === 'true'
+                 ) && (
+                      <Tab key={"/library"}   title={
+                            <div className=" w-[159px] flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
+                             <Image src={active==="/library" ? SelectedLibrary : library} width={25} height={25} radius="none" />
+                             <span>الوسائط المحفوظة</span>
+                            </div>
+                      } />
+                 )
+                }
+
+                {
+                 (
+                      localStorage.getItem('isAdmin') === 'true' ||
+                      localStorage.getItem('isReportsAccess') === 'true'
+                 ) && (
+                      <Tab key={"/reports"}   title={
+                            <div className=" w-[159px] flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
+                             <Image src={active==="/reports" ? SelectedReports : Reports} width={25} height={25} radius="none" />
+                             <span>التقارير</span>
+                            </div>
+                      } />
+                 )
+                }
+
+                {
+                 (
+                      localStorage.getItem('isAdmin') === 'true' ||
+                      localStorage.getItem('isCertificatesAccess') === 'true'
+                 ) && (
+                      <Tab key={"/certificates"}   title={
+                            <div className=" w-[159px] flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
+                             <Image src={active==="/certificates" ? SelectedCertificates : Certificates} width={25} height={25} radius="none" />
+                             <span>الشهادات</span>
+                            </div>
+                      } />
+                 )
+                }
+
+                {
+                 (
+                      localStorage.getItem('isAdmin') === 'true' ||
+                      localStorage.getItem('isDashboardAccess') === 'true'
+                 ) && (
+                      <Tab key={"/dashboard"}   title={
+                            <div className=" w-[159px] flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
+                             <Image src={active==="/dashboard" ? SelectedDashboard : Dashboard} width={25} height={25} radius="none" />
+                             <span>لوحة التحكم</span>
+                            </div>
+                      } />
+                 )
+                }
+
+                {
+                 (
+                      localStorage.getItem('isAdmin') === 'true' ||
+                      localStorage.getItem('isLogsAccess') === 'true'
+                 ) && (
+                      <Tab key={"/logs"}   title={
+                            <div className=" w-[159px] flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
+                             <Image src={active==="/logs" ? SelectedLogs : Logs} width={25} height={25} radius="none" />
+                             <span>سجل النظام</span>
+                            </div>
+                        } />
+                    )
+                }
+
+                {
+                 (
+                      localStorage.getItem('isAdmin') === 'true' ||
+                      localStorage.getItem('isSettingsAccess') === 'true'
+                 ) && (
+                      <Tab key={"/settings"}   title={
+                            <div className=" w-[159px] flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
+                             <Image src={active==="/settings" ? SelectedSettings : Settings} width={25} height={25} radius="none" />
+                             <span>الاعدادات العامة</span>
+                            </div>
+                        } />
+                    )
+                }
         
-                <Tab key={"/settings"}   title={
-                    <div className=" w-[159px]  flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-xs flex-row-reverse">
-                        <Image src={active==="/settings" ? SelectedSettings : Settings} radius="none"/>
-                        <span>الاعدادات العامة</span>
-                    </div>
-                } />
 
                 <Tab className=" invisible"/>
             

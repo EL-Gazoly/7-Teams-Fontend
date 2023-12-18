@@ -43,9 +43,25 @@ const LoginPage = () => {
 
     if(adminData || userData) {
         toast.success("Login sucess")
-        if (adminData) document.cookie = `Authorization=${adminData?.loginAdmin?.token}; path=/; max-age=${30 * 24 * 60 * 60}`;
-        if (userData) document.cookie = `Authorization=${userData?.loginUser?.token}; path=/; max-age=${30 * 24 * 60 * 60}`;
-        navigate('/')
+        if (adminData){
+             document.cookie = `Authorization=${adminData?.loginAdmin?.token}; path=/; max-age=${30 * 24 * 60 * 60}`
+            localStorage.setItem('isAdmin', 'true')
+    };
+        if (userData){    
+            console.log(userData?.loginUser?.roles)
+            document.cookie = `Authorization=${userData?.loginUser?.token}; path=/; max-age=${30 * 24 * 60 * 60}`
+            localStorage.setItem('isDevicesAccess', `${userData?.loginUser?.roles?.isDevicesAccess}`)
+            localStorage.setItem('isStudentsAccess', `${userData?.loginUser?.roles?.isStudentsAccess}`)
+            localStorage.setItem('isRolesAccess', `${userData?.loginUser?.roles?.isRolesAccess}`)
+            localStorage.setItem('isUsersAccess', `${userData?.loginUser?.roles?.isUsersAccess}`)
+            localStorage.setItem('isReportsAccess', `${userData?.loginUser?.roles?.isReportsAccess}`)
+            localStorage.setItem('isLogsAccess', `${userData?.loginUser?.roles?.isLogsAccess}`)
+            localStorage.setItem('isCertificatesAccess', `${userData?.loginUser?.roles?.isCertificatesAccess}`)
+            localStorage.setItem('isLibraryAccess', `${userData?.loginUser?.roles?.isLibraryAccess}`)
+            localStorage.setItem('isCoursesAccsess', `${userData?.loginUser?.roles?.isCoursesAccsess}`)
+            localStorage.setItem('isDashboardAccess', `${userData?.loginUser?.roles?.isDashboardAccess}`)
+        };
+        navigate('/headsets')
        
     }
     if(adminLoading|| userLoading) toast.loading("Loading...")
