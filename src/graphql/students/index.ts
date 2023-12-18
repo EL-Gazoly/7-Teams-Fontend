@@ -4,6 +4,7 @@ export const getStudents = gql`
 query Students {
     admin {
         students {
+        studentId
         name
         imageUrl
         generatedId
