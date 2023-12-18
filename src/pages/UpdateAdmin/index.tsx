@@ -108,7 +108,9 @@ const UpdateAdmin = () => {
 
     if (errorUpdateUser) toast.error(errorUpdateUser.message)
 
-    if (dataUpdateUser) toast.success('User created sucessfully')
+    if (dataUpdateUser) {toast.success('User created sucessfully')
+    
+}
 
 
    
