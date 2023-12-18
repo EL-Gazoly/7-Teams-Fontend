@@ -1,24 +1,40 @@
 import { UploadImage } from './UploadImage';
-import React, {useState, useRef} from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import ControlCard from '../../Components/ContraolCard'
-import { Button, Image } from '@nextui-org/react';
+import { Button, Image, user } from '@nextui-org/react';
 import AddIcon from '../../assets/students/add.svg'
 import ChooseRole from './ChooseRole';
 import { useMutation, useQuery } from '@apollo/client';
 import { CreateUser } from '../../graphql/users';
 import { getRoles } from '../../graphql/role';
+import { getUser } from '../../graphql/users';
 import Loading from '../../Components/Loading';
 import { toast } from 'sonner';
+import { useParams } from 'react-router-dom';
 
 
 const UpdateAdmin = () => {
+    const { id } = useParams<{id : string}>();
+
     const [selectedImage, setSelectedImage] = useState(null);
     const [sleectedFile, setSelectedFile] = useState(null);
     const [selectRole, setSelectRole] = useState({value : '' , label : ""});
     const { loading: loadingRoles , error: errorRoles, data: roles } = useQuery(getRoles);
+    const { loading: loadingUser , error: errorUser, data: dataUser } = useQuery(getUser, {
+        variables : {
+            userId : id
+        }
+    });
+  
 
     const [createUser, { loading: loadingCreateUser, error: errorCreateUser, data: dataCreateUser }] = useMutation(CreateUser);
 
+    useEffect(() => {
+        if (dataUser) {
+            setSelectRole({value : dataUser.user.roles.id , label : dataUser.user.roles.name})
+            dataUser.user.imageUrl && setSelectedImage(`${import.meta.env.VITE_API_URL}${dataUser.user.imageUrl}`)
+        }
+    }, [dataUser])
 
 
     const nameRef = useRef<HTMLInputElement>();
@@ -52,8 +68,13 @@ const UpdateAdmin = () => {
     }
 
     let reactSelectOptions 
-    if (loadingRoles) return <Loading />
-    if (errorRoles) console.log(errorRoles.message)
+    if (loadingRoles || loadingUser ) return <Loading />
+    if (errorRoles) {
+        console.log(errorRoles)
+    }
+    if (errorUser) {
+        console.log(errorUser)
+    }
     if (roles) {
          reactSelectOptions = roles.admin.roles.map(({ id, name }) => ({
             value: id,
@@ -66,6 +87,9 @@ const UpdateAdmin = () => {
 
     if (dataCreateUser) toast.success('User created sucessfully')
 
+    if(dataUser) console.log(dataUser)
+
+   
   return (
     <div className=' pb-5'>
     <ControlCard/> 
@@ -83,14 +107,18 @@ const UpdateAdmin = () => {
                     <div className=' flex flex-col gap-y-[5px] text-right text-text-black'>
                         <label htmlFor="name" className=' mr-1' >الاسم</label>
                         <input type="text" className=' text-right w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] px-4  
-                        ' placeholder='اسم الطالب هنا' ref={nameRef} />
+                        ' placeholder='اسم الطالب هنا' ref={nameRef}
+                        defaultValue={dataUser && dataUser.user.name}
+                        />
 
                     </div>
                     <div className=' flex flex-col gap-y-[5px] text-right text-text-black'>
                         <label htmlFor="id"  className=' mr-1' > الايميل</label>
                         <input type="text" className=' text-right w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] px-4
                             
-                        ' placeholder=' ايميل المسؤول هنا' ref={emailRef} />
+                        ' placeholder=' ايميل المسؤول هنا' ref={emailRef} 
+                        defaultValue={dataUser && dataUser.user.email}
+                        />
 
                     </div>
 
@@ -138,7 +166,7 @@ const UpdateAdmin = () => {
     </div>
 
 
-</div>
+    </div>
   )
 }
 

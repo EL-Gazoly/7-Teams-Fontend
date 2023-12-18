@@ -26,3 +26,17 @@ mutation CreateUser($data: CreateUserInput!, $image: Upload) {
   }
 }
 `
+
+export const getUser = gql`
+  query getUser($userId: String!) {
+  user(id: $userId) {
+    imageUrl
+    name
+    email
+    roles {
+      name
+      id
+    }
+  }
+}
+`
