@@ -10,10 +10,8 @@ export const LOGINADMIN = gql`
 `;
 
 export const LOGINUSER  = gql`
-    mutation LoginUser($email: String!, $hashedPassword: String!) {
+mutation LoginUser($email: String!, $hashedPassword: String!) {
   loginUser(email: $email, hashedPassword: $hashedPassword) {
-    token
-    name
     roles {
       name
       isDevicesAccess
@@ -22,10 +20,10 @@ export const LOGINUSER  = gql`
       isRolesAccess
       isStudentsAccess
       isUsersAccess
+      isLibraryAccess
+      isDashboardAccess
       isCoursesAccsess
       isCertificatesAccess
-      isDashboardAccess
-      isLibraryAccessw
     }
   }
 }
