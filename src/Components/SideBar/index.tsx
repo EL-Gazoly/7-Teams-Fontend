@@ -180,7 +180,8 @@ const SideBar = () => {
                 {
                  (
                       localStorage.getItem('isAdmin') === 'true' ||
-                      localStorage.getItem('isSettingsAccess') === 'true'
+                      localStorage.getItem('isRolesAccess') === 'true' ||
+                      localStorage.getItem('isUsersAccess') === 'true'
                  ) && (
                       <Tab key={"/settings"}   title={
                             <div className=" w-[159px] flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">

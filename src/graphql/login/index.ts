@@ -25,7 +25,7 @@ export const LOGINUSER  = gql`
       isCoursesAccsess
       isCertificatesAccess
       isDashboardAccess
-      isLibraryAccess
+      isLibraryAccessw
     }
   }
 }
