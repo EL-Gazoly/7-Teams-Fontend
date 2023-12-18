@@ -2,7 +2,27 @@ import React from "react";
 import ChooseGrade from '../../Components/ChooseGrade'
 import ChooseCourse from './ChooseCourse.jsx'
 import ChooseStudent from './ChooseStudent.jsx'
-export function FirstSection({}) {
+
+type Props = {
+    grade: {value: string, label: string};
+    setGrade: React.Dispatch<React.SetStateAction<{
+        value: string;
+        label: string;
+    }>>
+    course: {value: string, label: string};
+    setCourse: React.Dispatch<React.SetStateAction<{
+        value: string;
+        label: string;
+    }>>;
+    student: {value: string, label: string};
+    setStudent:  React.Dispatch<React.SetStateAction<{
+        value: string;
+        label: string;
+    }>>;
+
+}
+
+export function FirstSection({grade, setGrade, course, setCourse, student, setStudent}: Props) {
   return <div className=' w-full h-96 rounded-lg bg-light-bg px-[75px] py-5 
                 flex flex-col gap-y-5 
                 text-text-black items-end
@@ -13,15 +33,21 @@ export function FirstSection({}) {
                 }}>
                     <div className=' flex flex-col gap-y-1 text-right'>
                     <label htmlFor="grade" className=' text-sm font-semibold mr-1'>المرحله التعليميه</label>
-                    <ChooseGrade />
+                    <ChooseGrade grade={grade} setGrade={setGrade} />
                     </div>
                     <div className=' flex flex-col gap-y-1 text-right'>
                     <label htmlFor="grade" className=' text-sm font-semibold mr-1'>المنهج التعليمي</label>
-                    <ChooseCourse />
+                    <ChooseCourse 
+                    course={course}
+                    setCourse={setCourse}
+                    />
                     </div>
                     <div className=' flex flex-col gap-y-1 text-right'>
                     <label htmlFor="grade" className=' text-sm font-semibold mr-1'>اسم الطالب</label>
-                    <ChooseStudent />
+                    <ChooseStudent 
+                    student={student}
+                    setStudent={setStudent}
+                    />
                     </div>
                     <div className=' flex flex-col gap-y-1 text-right'>
                     <label htmlFor="grade" className=' text-sm font-semibold mr-1'>الوصف</label>

@@ -10,8 +10,7 @@ const ChooseStudent = (props) => {
     const { loading, error, data } = useQuery(getStudents);
 
     const handleChange = (selectedOption) => {
-      setSelectedOption(selectedOption);
-      props.setSelectedCourse(selectedOption.value);
+        props.setStudent(selectedOption)
       
     };
   
@@ -142,7 +141,7 @@ const ChooseStudent = (props) => {
       options={options}
       styles={customStyles}
       placeholder="اختر القسم من هنا"
-      value={selectedOption}
+      value={props.student}
       onChange={handleChange}
       isSearchable={true}
       getOptionLabel={(option) => (

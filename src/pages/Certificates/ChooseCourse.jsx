@@ -19,8 +19,7 @@ const ChooseCourse = (props) => {
     const [selectedOption, setSelectedOption] = useState(props.selectedCourse);
 
     const handleChange = (selectedOption) => {
-      setSelectedOption(selectedOption);
-      props.setSelectedCourse(selectedOption.value);
+        props.setCourse(selectedOption)
       
     };
   
@@ -143,7 +142,7 @@ const ChooseCourse = (props) => {
       options={options}
       styles={customStyles}
       placeholder="اختر القسم من هنا"
-      value={selectedOption}
+      value={props.course}
       onChange={handleChange}
       isSearchable={true}
       getOptionLabel={(option) => (
