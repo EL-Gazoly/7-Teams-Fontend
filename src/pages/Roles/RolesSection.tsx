@@ -2,7 +2,11 @@ import {useRef} from 'react'
 import { Switch, Divider } from '@nextui-org/react'
 import Permession from './Roleitem'
 
-const RolesSection = () => {
+type RolesSectionProps = {
+    disabled : boolean
+}
+
+const RolesSection = ({disabled} : RolesSectionProps) => {
     const headsetRef = useRef(false)
     const coursesRef = useRef(false)
     const studentsRef= useRef(false)
@@ -11,7 +15,8 @@ const RolesSection = () => {
     const certificatesRef = useRef(false)
     const dashboardRef = useRef(false)
     const logsRef = useRef(false)
-    const settignsRef= useRef(false)
+    const rolesRef = useRef(false)
+    const usersRef= useRef(false)
 
     const permessions = {
         headset : {
@@ -54,24 +59,32 @@ const RolesSection = () => {
             description : "سيكون لدى المستخدم في هذا الدور القدرة على عرض قسم سجل النظام ورؤية كل الأشياء التي حدثت في النظام.",
             permession : logsRef
         },
-        settigns : {
-            name : "الاعدادات العامة",
-            description : "سيكون لدى المستخدم في هذا الدور القدرة على الاطلاع على الإعدادات العامة للنظام بأكمله.",
-            permession : settignsRef
+        roles : {
+            name : "التحكم في الأدوار",
+            description : " سيكون لدى المستخدم في هذا الدور القدرة على عرض الأدوار وأضافة ادوار للمستخدين او ازالتها",
+            permession : rolesRef
+        },
+        users : {
+            name : "التحكم في المسؤولين",
+            description : "سيكون لدى المستخدم في هذا الدور القدرة على الاطلاع عالتحم الكامل في اضافة وحذف والأطلاع علي المسؤولين ",
+            permession : usersRef
         },
     }
   return (
-    <div className=' flex flex-col items-center gap-y-[18px] '>
+    <div className={`flex flex-col items-center gap-y-[18px]
+    ${disabled ? 'opacity-50' : ''}
+    `}>
         <div className=' flex flex-col gap-y-2 items-end  text-right text-text-black '>
             <label htmlFor="name" className=' text-xs font-bold text-right'>أسم الدور</label>
             <input type="text" className=' w-[781.531px] h-[58.361px] rounded-md bg-[#E1E4E8] px-5 text-right' 
+            disabled={disabled}
                 style={{
                     backdropFilter: "blur(23.259841918945312px)"
                 }}
             />
         </div>
         {Object.keys(permessions).map(permessionsKey => (
-            <Permession permessions={permessions} permesssionKey={permessionsKey}/>
+            <Permession permessions={permessions} permesssionKey={permessionsKey} disabled={disabled}/>
         ))}
       
 

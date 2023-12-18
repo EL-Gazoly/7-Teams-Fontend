@@ -3,8 +3,9 @@ import { Switch, Divider, cn } from '@nextui-org/react'
 type permessionprops = {
     permessions : Object
     permesssionKey : string
+    disabled : boolean
 }
-const Permession = ({permessions, permesssionKey} : permessionprops) => {
+const Permession = ({permessions, permesssionKey, disabled} : permessionprops) => {
   return (
     <>
         <div  className=' w-full flex flex-row-reverse justify-between items-end text-right'>
@@ -23,13 +24,14 @@ const Permession = ({permessions, permesssionKey} : permessionprops) => {
                   )
                 
                 }}
+                isDisabled={disabled}
             />
 
             
 
 
         </div>
-        <Divider className=' bg-[#919396] mt-5'/>
+      { permesssionKey !== 'users' &&  <Divider className=' bg-[#919396] mt-5'/>}
     </>
   )
 }
