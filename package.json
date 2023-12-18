@@ -11,9 +11,13 @@
   "dependencies": {
     "@apollo/client": "^3.8.8",
     "@nextui-org/react": "^2.2.9",
+    "adbkit": "^2.11.1",
     "apollo-upload-client": "^18.0.1",
+    "bluebird": "^3.7.2",
+    "electron-store": "^8.1.0",
     "framer-motion": "^10.16.12",
     "graphql": "^16.8.1",
+    "jimp": "^0.22.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.20.1",
