@@ -74,7 +74,11 @@ const AdminsTable = ({searchQuery }) => {
               <span className='text-xs font-semibold text-text-black'>{user.email}</span>
           </TableCell>
           <TableCell className='relative'>
-              <span className='text-[10px] font-medium absolute top-[40%] right-[20%]  rounded bg-text-black w-[60px] h-[26px]  flex items-center justify-center text-white'>
+              <span className='text-[10px] font-medium absolute top-[40%] right-[20%]  rounded bg-text-black max-w-[80px] py-1  flex items-center justify-center text-white'
+                style={{
+                  wordBreak : 'keep-all'
+                }}              
+              >
                   {user.roles.name}
 
               </span>
