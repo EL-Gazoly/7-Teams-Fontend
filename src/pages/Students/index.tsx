@@ -19,12 +19,29 @@ import { useQuery } from '@apollo/client'
 
 
 const StudentsPage = () => {
-    const { loading, error, data: students } = useQuery(getStudents);
+    const { loading, error, data: studentsData } = useQuery(getStudents);
     const [activeTab, setActiveTab] = useState("stack")
+    const [searchQuery, setSearchQuery] = useState<String>("");
+
+    const handleSearch = (event) => {
+        setSearchQuery(event.target.value.toLowerCase());
+    };
+
+    let students = studentsData?.admin.students || []; 
+
+    if (searchQuery) {
+        students = students.filter((student) => {
+            return (
+                student.name.toLowerCase().includes(searchQuery)
+            );
+        });
+    }
+
+
     const navigate = useNavigate()
     if (loading) console.log('loading')
     if (error) console.log(error.message)
-    console.log(students)
+    console.log(studentsData)
   return (
     <React.Fragment>
         <ControlCard />
@@ -40,7 +57,8 @@ const StudentsPage = () => {
                 
                 <div className='w-[346px] h-12 bg-[#F0F2F4] rounded-lg px-[18px] gap-x-[10px] flex items-center justify-center'>
                     
-                    <input type="text" className='flex-1 bg-transparent text-right text-xs placeholder:text-[#929496] font-medium' placeholder='البحث' />
+                    <input type="text" className='flex-1 bg-transparent text-right text-xs placeholder:text-[#929496] font-medium' 
+                    placeholder='البحث' onChange={handleSearch} />
                     <img src={SearchIcon} alt="" />
 
                 </div>
@@ -92,7 +110,7 @@ const StudentsPage = () => {
 
             </div>
             {students && 
-            activeTab === "stack" ? <StudentsStackViews students={students?.admin.students} /> : <StudentsGridView students={students?.admin.students} />
+            activeTab === "stack" ? <StudentsStackViews students={students} /> : <StudentsGridView students={students} />
                 
             }
             
