@@ -13,7 +13,7 @@ const AdminsPage = () => {
     const navigate = useNavigate()
 
     const handleSearch = (event) => {
-        setSearchQuery(event.target.value.toLowerCase());
+        setSearchQuery(event.target.value.toString().toLowerCase());
     };
   return (
     <div>

@@ -24,16 +24,18 @@ const StudentsPage = () => {
     const [searchQuery, setSearchQuery] = useState<String>("");
 
     const handleSearch = (event) => {
-        setSearchQuery(event.target.value.toLowerCase());
+        
+        setSearchQuery(event.target.value.toString().toLowerCase());
     };
 
     let students = studentsData?.admin.students || []; 
 
     if (searchQuery) {
         students = students.filter((student) => {
-            return (
-                student.name.toLowerCase().includes(searchQuery)
-            );
+           return (
+            student.name.toLowerCase().includes(searchQuery) ||
+            student.generatedId.toString().includes(searchQuery) 
+           )
         });
     }
 
@@ -41,7 +43,6 @@ const StudentsPage = () => {
     const navigate = useNavigate()
     if (loading) console.log('loading')
     if (error) console.log(error.message)
-    console.log(studentsData)
   return (
     <React.Fragment>
         <ControlCard />

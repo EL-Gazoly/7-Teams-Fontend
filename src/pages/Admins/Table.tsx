@@ -16,14 +16,13 @@ const AdminsTable = ({searchQuery }) => {
   if (searchQuery) {
     users = users.filter((user) => {
       return (
-        user.name.toLowerCase().includes(searchQuery) ||
-        user.email.toLowerCase().includes(searchQuery) ||
-        user.roles.name.toLowerCase().includes(searchQuery)
+        user.name.toString().toLowerCase().includes(searchQuery) ||
+        user.email.toString().toLowerCase().includes(searchQuery) ||
+        user.roles.name.toString().toLowerCase().includes(searchQuery)
       );
     });
   }
 
-  if (users) console.log(users) 
   
   return (
     <Table
