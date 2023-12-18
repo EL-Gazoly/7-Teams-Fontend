@@ -5,7 +5,7 @@ import { Button, Image, user } from '@nextui-org/react';
 import AddIcon from '../../assets/students/add.svg'
 import ChooseRole from './ChooseRole';
 import { useMutation, useQuery } from '@apollo/client';
-import { CreateUser } from '../../graphql/users';
+import { updateUser } from '../../graphql/users';
 import { getRoles } from '../../graphql/role';
 import { getUser } from '../../graphql/users';
 import Loading from '../../Components/Loading';
@@ -27,14 +27,21 @@ const UpdateAdmin = () => {
     });
   
 
-    const [createUser, { loading: loadingCreateUser, error: errorCreateUser, data: dataCreateUser }] = useMutation(CreateUser);
+    const [update, { loading: loadingUpdateUser, error: errorUpdateUser, data: dataUpdateUser }] = useMutation(updateUser);
 
     useEffect(() => {
         if (dataUser) {
-            setSelectRole({value : dataUser.user.roles.id , label : dataUser.user.roles.name})
-            dataUser.user.imageUrl && setSelectedImage(`${import.meta.env.VITE_API_URL}${dataUser.user.imageUrl}`)
+            setSelectRole(prevState => ({
+                ...prevState,
+                value: dataUser.user.roles.id,
+                label: dataUser.user.roles.name
+            }));
+    
+            if (dataUser.user.imageUrl) {
+                setSelectedImage(`${import.meta.env.VITE_API_URL}${dataUser.user.imageUrl}`);
+            }
         }
-    }, [dataUser])
+    }, [dataUser]);
 
 
     const nameRef = useRef<HTMLInputElement>();
@@ -47,28 +54,44 @@ const UpdateAdmin = () => {
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
         const confirmPassword = confirmPasswordRef.current.value;
-        const image = sleectedFile;
+        const image = sleectedFile ? sleectedFile : null;
         const role = selectRole.value;
-        if( !name || !email || !password || !confirmPassword || !role ) return toast.error('Please fill all fields')
+        if( !name || !email || !role ) return toast.error('Please fill all fields')
         if (password !== confirmPassword) return toast.error('Password not match')
-        
-        await createUser({
-            variables : {
-                data: {
-                    name,
-                    email,
-                    hashedPassword : password,
-                    roleId: role,
+
+        if ((selectedImage && !sleectedFile)){
+            await update({
+                variables : {
+                    updateUserId: id,
+                    data: {
+                        name,
+                        email,
+                        hashedPassword : password,
+                        roleId: role,
+                    }
                 },
-                image : image ? image : null
-            },
+            })
+        }
+        else {
+            await update({
+                variables : {
+                    updateUserId: id,
+                    data: {
+                        name,
+                        email,
+                        hashedPassword : password,
+                        roleId: role,
+                    },
+                    image : image ? image : null
+                },
+                
             
-        
-        })
+            })
+        }
     }
 
     let reactSelectOptions 
-    if (loadingRoles || loadingUser ) return <Loading />
+    if (loadingRoles || loadingUser || loadingUpdateUser ) return <Loading />
     if (errorRoles) {
         console.log(errorRoles)
     }
@@ -82,12 +105,11 @@ const UpdateAdmin = () => {
           }));
     }
 
-    if (loadingCreateUser) return <Loading />
-    if (errorCreateUser) toast.error(errorCreateUser.message)
 
-    if (dataCreateUser) toast.success('User created sucessfully')
+    if (errorUpdateUser) toast.error(errorUpdateUser.message)
 
-    if(dataUser) console.log(dataUser)
+    if (dataUpdateUser) toast.success('User created sucessfully')
+
 
    
   return (

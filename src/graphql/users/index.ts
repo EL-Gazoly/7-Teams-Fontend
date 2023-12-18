@@ -40,3 +40,17 @@ export const getUser = gql`
   }
 }
 `
+
+export const updateUser = gql`
+mutation UpdateUser($updateUserId: String!, $data: UpdateUserInput!, $image: Upload) {
+  updateUser(id: $updateUserId, data: $data, image: $image) {
+    name
+    email
+    imageUrl
+    roles {
+      id
+      name
+    }
+  }
+}
+`
