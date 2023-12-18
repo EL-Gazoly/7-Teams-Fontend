@@ -10,3 +10,11 @@ query Roles {
   }
 }
 `
+
+export const createRole = gql`
+mutation CreateRole($data: CreateRoleInput!) {
+  createRole(data: $data) {
+    name
+  }
+}
+`

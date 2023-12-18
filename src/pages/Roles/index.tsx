@@ -1,11 +1,58 @@
-import {useState} from 'react'
+import {useState, useRef} from 'react'
 import ControlCard from '../../Components/ContraolCard'
 import { Button, Image} from '@nextui-org/react';
 import AddIcon from '../../assets/students/add.svg'
 import RolesSection from './RolesSection';
 
+import { createRole } from '../../graphql/role';
+import { useMutation } from '@apollo/client';
+import Loading from '../../Components/Loading';
+import { toast } from 'sonner';
+
+
 const RolesPage = () => {
-  const [disabled, setDisabled] = useState(false)
+  const [disabled, setDisabled] = useState(true)
+
+  
+  const nameRef = useRef<HTMLInputElement>()
+  const [isHeadsetAcsess, setIsHeadsetAccsess] = useState(false)
+  const [isCourseAcsess, setIsCourseAccsess] = useState(false)
+  const [isStudentAcsess, setIsStudentAccsess] = useState(false)
+  const [isLibraryAcsess, setIsLibraryAccsess] = useState(false)
+  const [isReportAcsess, setIsReportAccsess] = useState(false)
+  const [isCertificateAcsess, setIsCertificateAccsess] = useState(false)
+  const [isDashboardAcsess, setIsDashboardAccsess] = useState(false)
+  const [isLogsAcsess, setIsLogsAccsess] = useState(false)
+  const [isRoleAcsess, setIsRoleAccsess] = useState(false)
+  const [isUserAcsess, setIsUserAccsess] = useState(false)
+
+  const [createRoleMutation, {data, loading , error}] = useMutation(createRole)
+
+  const handelSave = () => {
+    createRoleMutation({
+      variables: {
+        data: {
+          name: nameRef.current.value,
+          isDevicesAccess: isHeadsetAcsess,
+          isCoursesAccsess: isCourseAcsess,
+          isStudentsAccess: isStudentAcsess,
+          isLibraryAccess: isLibraryAcsess,
+          isReportsAccess: isReportAcsess,
+          isCertificatesAccess: isCertificateAcsess,
+          isDashboardAccess: isDashboardAcsess,
+          isLogsAccess: isLogsAcsess,
+          isRolesAccess: isRoleAcsess,
+          isUsersAccess: isUserAcsess,
+        }
+        
+      }
+    })
+  }
+  if (loading) return <Loading />
+  if (error) toast.error(error.message)
+  if (data) {
+    toast.success('Role created successfully')
+}
   return (
     <>
     <ControlCard />
@@ -21,10 +68,34 @@ const RolesPage = () => {
 
             </div>
 
-            <RolesSection disabled={disabled}/>
+            <RolesSection disabled={disabled} nameRef={nameRef} 
+            
+            permssions={{
+              isHeadsetAcsess,
+              isCourseAcsess,
+              isStudentAcsess,
+              isLibraryAcsess,
+              isReportAcsess,
+              isCertificateAcsess,
+              isDashboardAcsess,
+              isLogsAcsess,
+              isRoleAcsess,
+              isUserAcsess,
+              setIsHeadsetAccsess,
+              setIsCourseAccsess,
+              setIsStudentAccsess,
+              setIsLibraryAccsess,
+              setIsReportAccsess,
+              setIsCertificateAccsess,
+              setIsDashboardAccsess,
+              setIsLogsAccsess,
+              setIsRoleAccsess,
+              setIsUserAccsess,
+            }}
+            />
 
             <div className=' w-full items-center justify-center flex  mt-9'>
-              <Button color='primary' className=' w-32 h-12 py-[6px] px-4 rounded-md'> حفظ </Button>
+              <Button color='primary' className=' w-32 h-12 py-[6px] px-4 rounded-md' onPress={handelSave}> حفظ </Button>
             </div>
 
         </div>

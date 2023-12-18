@@ -6,6 +6,8 @@ type permessionprops = {
     disabled : boolean
 }
 const Permession = ({permessions, permesssionKey, disabled} : permessionprops) => {
+
+
   return (
     <>
         <div  className=' w-full flex flex-row-reverse justify-between items-end text-right'>
@@ -13,7 +15,9 @@ const Permession = ({permessions, permesssionKey, disabled} : permessionprops) =
                 <span className=' text-xl font-bold'>{permessions[permesssionKey].name}</span>
                 <p className=' text-[#46434382] w-[493px]'>{permessions[permesssionKey].description}</p>
             </div>
-            <Switch ref={permessions[permesssionKey].permession}
+            <Switch
+                isSelected={permessions[permesssionKey].selected}
+                onValueChange={permessions[permesssionKey].onChange}
                 classNames={{
                 base: " w-[56px] h-6 mb-5  ",
                 wrapper : " w-[56px] h-6 bg-[#646262]",
