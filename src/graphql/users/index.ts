@@ -4,6 +4,7 @@ export const GetUsers = gql`
 query getUsers {
   admin {
     users {
+      id
       name
       email
       imageUrl

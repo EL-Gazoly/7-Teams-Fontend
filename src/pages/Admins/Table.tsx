@@ -5,6 +5,7 @@ import { GetUsers } from '../../graphql/users'
 import { useQuery } from '@apollo/client'
 import noPic from '../../assets/students/noPic.svg'
 import EditIcon from '../../assets/settings/vuesax/linear/vuesax/linear/user-edit.svg'
+import { Link } from 'react-router-dom'
     
 const AdminsTable = ({searchQuery }) => {
   const { loading, error, data: usersData } = useQuery(GetUsers);
@@ -90,7 +91,12 @@ const AdminsTable = ({searchQuery }) => {
               </div>
           </TableCell>
           <TableCell className='relative'>
-            <img src={EditIcon} alt=""  className=' absolute top-[40%] right-[30%]'/>
+            <div className='absolute top-[40%] right-[30%]' >
+              <Link to={`/settings/admins/update/${user.id}`}  >
+                <img src={EditIcon} alt=""  />
+              </Link>
+            </div>
+            
           </TableCell>
           </TableRow>
       ))

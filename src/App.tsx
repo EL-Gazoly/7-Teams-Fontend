@@ -16,6 +16,7 @@ import LoginPage from "./pages/Login"
 import { Toaster } from "sonner"
 import ProtectedRoutes from './utils/ProtectedRoutes'
 import HeadsetPage from "./pages/HeadsetPage"
+import UpadteAdmin from "./pages/UpdateAdmin"
 function App() {
   const location = useLocation();
   const isLoginPage = location.pathname === '/login';
@@ -42,6 +43,7 @@ function App() {
                 <Route path="/settings" element={<GeneralSettingsPage />} />
                 <Route path="/settings/admins" element={<AdminsPage />} />
                 <Route path="/settings/admins/create" element={<CreateAdmin />} />
+                <Route path="/settings/admins/update/:id" element={<UpadteAdmin />} />
                 <Route path="/settings/roles" element={<RolesPage />} />
             </Route>
           </Routes>
