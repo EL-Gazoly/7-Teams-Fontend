@@ -7,7 +7,7 @@ import { Image, Button } from '@nextui-org/react';
 const SecondCard = () => {
   const ipcRenderer = (window as any).ipcRenderer;
   const handelStream = () => {
-    ipcRenderer.send('start-stream')
+    ipcRenderer.send('connect', '192.168.1.7')
     
   }
 

@@ -1,6 +1,7 @@
 const adbkit = require('adbkit');
 import Bluebird from 'bluebird';
 const path = require('path');
+const fs = require('fs');
 
 /**
  * ADB class for managing Android Debug Bridge (ADB) operations.
