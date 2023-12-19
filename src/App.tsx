@@ -17,21 +17,26 @@ import { Toaster } from "sonner"
 import ProtectedRoutes from './utils/ProtectedRoutes'
 import HeadsetPage from "./pages/HeadsetPage"
 import UpadteAdmin from "./pages/UpdateAdmin"
+import Landing from "./pages/Landing"
 function App() {
   const location = useLocation();
   const isLoginPage = location.pathname === '/login';
   const navigate = useNavigate();
-  if (location.pathname === '/')  navigate('/headsets');
+
+  if (location.pathname === '/') navigate('/headsets');
+
+
   return (
     <>
      <Toaster position="top-right" richColors   />
       <div className="  w-screen h-screen bg-[#E9EBEE] overflow-hidden flex flex-row-reverse">
-        {!isLoginPage && <SideBar />}
+        {!isLoginPage &&  <SideBar />}
         <div className=" w-full h-full flex items-center justify-center">
           <div className=" w-[1000px] h-full overflow-y-auto overflow-x-hidden scroll">
           <Routes>
             <Route path="/login" element={<LoginPage />} />
             <Route element={<ProtectedRoutes />}>
+                <Route path="/" element={<Landing />} />
                 <Route path="/headsets" element={<HeadsetsPage />} /> 
                 <Route path="/headsets/:mac"  element={<HeadsetPage />}/>
                 <Route path="/courses"  element={<CoursesPage />}/>
