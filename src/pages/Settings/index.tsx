@@ -7,7 +7,7 @@ import { Link } from "react-router-dom"
 const GeneralSettingsPage = () => {
   return (
     <div>
-        <ControlCard />
+        <ControlCard icon="Settings" title=' الاعدادت العامة  ' neasted={false}/>
         <div className=" mt-6 flex flex-row-reverse items-center justify-start gap-x-[22px] text-text-black font-medium">
           {   (
                       localStorage.getItem('isAdmin') === 'true' ||

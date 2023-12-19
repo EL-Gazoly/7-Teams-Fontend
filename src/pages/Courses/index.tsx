@@ -11,7 +11,7 @@ const CoursesPage = () => {
     const navigate = useNavigate()
   return (  
     <React.Fragment>
-        <ControlCard />
+              <ControlCard icon="Courses" title=' المناهج التعليمية ' neasted={false}/>
             <div className=' mt-[18px] flex flex-col items-center gap-y-8  w-full '>
                 <Card className=" h-[300px] rounded-[7px] fire-fighthing light ">
                     

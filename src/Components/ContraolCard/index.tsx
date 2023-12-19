@@ -1,17 +1,62 @@
 import HeadsetLight from '../../assets/ControlCard/Light/Headset.png'
+import CoursesLight from '../../assets/ControlCard/Light/Courses.png'
+import StudentLight from '../../assets/ControlCard/Light/Users.png'
+import LibraryLight from '../../assets/ControlCard/Light/Library.png'
+import CertificateLight from '../../assets/ControlCard/Light/Certificates.png'
+import SystemIconLight from '../../assets/ControlCard/Light/System.png'
+import ReportLight from '../../assets/ControlCard/Light/Reports.png'
+import SettingLight from '../../assets/ControlCard/Light/Settings.png'
+import DashboardLight from '../../assets/ControlCard/Light/Dashboard.png'
+
+import BackIconLight from '../../assets/ControlCard/Light/Iconsax/Outline/arrowleft.svg'
+
+
 import { Image, Switch, cn, Button, Avatar } from '@nextui-org/react'
 import LanguageIcon from '../../assets/ControlCard/language.svg'
 import logoutIcon from '../../assets/ControlCard/logout.svg'
 import Placeholder from '../../assets/ControlCard/placeholder.jpeg'
 import "./style.css"
 import { useNavigate } from 'react-router-dom'
-const ControlCard = () => {
+
+type Props ={
+  icon : string
+  title : string
+  neasted: boolean
+}
+
+const ControlCard = ({icon, title, neasted}:Props) => {
+
+
   const navigate = useNavigate()
   const handelLogout = () =>{
     document.cookie = `Authorization=; path=/; max-age=${0}`;
     localStorage.clear()
     navigate('/login')
   }
+
+  const getIcon = (icon) => {
+    switch (icon) {
+      case 'Headset' :
+        return HeadsetLight;
+      case 'Courses' : 
+        return CoursesLight;
+      case 'Students':
+        return StudentLight;
+      case 'Library' : 
+        return LibraryLight;
+      case 'Reports' :
+        return ReportLight;
+      case 'Certificates' :
+        return CertificateLight;
+      case 'Dashboard' :
+        return DashboardLight;
+      case 'System': 
+        return SystemIconLight;
+      case 'Settings' :
+        return SettingLight
+    }
+  }
+
   return (  
     <div className='w-full h-[103px] rounded-b-[14px] Control-card-bg light flex items-center px-[26px] justify-between flex-row-reverse'
     style={{
@@ -19,8 +64,17 @@ const ControlCard = () => {
     }}
     >
         <div className='flex items-center gap-x-[14px] text-[#292D32] text-2xl font-bold flex-row-reverse'>
-            <Image src={HeadsetLight} width={30} height={30} radius='none' />
-            <span>نظارة الواقع الافتراضي</span>
+          {neasted && 
+          <div className=' w-11 h-11 rounded-full bg-[#F0F2F4] flex items-center justify-center cursor-pointer'
+            onClick={() => navigate(-1)}
+          >
+             <img src={BackIconLight} alt="" className=' rotate-180' />
+          </div>
+         
+          
+          }
+            <Image src={getIcon(icon)} width={30} height={30} radius='none' />
+            <span> {title} </span>
         </div>
         <div className=' flex items-center gap-x-6 flex-row-reverse'>
             <Switch
@@ -49,14 +103,14 @@ const ControlCard = () => {
               </svg>}
              />
              <div className=' flex items-center gap-x-2'>
-                <Button isIconOnly className='    bg-secondary '>
-                  <Image src={LanguageIcon} width={35} height={35} radius='none' />
-                </Button>
-                <Button isIconOnly className='    bg-secondary '
+                <div  className='  w-11 h-10 rounded-[14px] flex items-center justify-center   bg-secondary '>
+                  <Image src={LanguageIcon} width={21} height={21} radius='none' />
+                </div>
+                <div  className='  w-11 h-10 rounded-[14px] flex items-center justify-center   bg-secondary '
                   onClick={handelLogout}
                 >
-                  <Image src={logoutIcon}  radius='none' />
-                </Button>
+                  <Image src={logoutIcon} width={21} height={21}  radius='none' />
+                </div>
              </div>
                 <div className='flex items-center gap-x-4 flex-row-reverse'>
                   <Avatar src={Placeholder} className='w-[57px] h-[57px] object-center' />

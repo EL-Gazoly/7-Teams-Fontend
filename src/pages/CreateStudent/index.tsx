@@ -41,7 +41,7 @@ const CreateStudent = () => {
 
   return (
     <>
-      <ControlCard />
+      <ControlCard icon="Students" title=' الطلاب ' neasted={true}/>
       <div
         className='mt-6 w-full h-[628px] bg-[#FDFDFE] rounded-lg pt-[75px] px-[113px] flex flex-col gap-y-12'
         style={{

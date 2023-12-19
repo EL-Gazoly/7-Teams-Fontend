@@ -68,7 +68,8 @@ const CreateAdmin = () => {
 
   return (
     <div className=' pb-5'>
-    <ControlCard/> 
+    <ControlCard icon="Settings" title='  أضافة مسؤل جديد  ' neasted={true}/>
+
     <div className=' mt-6 w-full h-[803px] bg-[#FDFDFE] rounded-lg  pt-[75px] px-[113px]
         flex flex-col gap-y-12
     '

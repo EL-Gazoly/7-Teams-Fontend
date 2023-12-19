@@ -7,7 +7,7 @@ import HeadsetsSection from './HeadsetsSection'
 const HeadsetsPage = () => {
   return (
     <div className='flex flex-col gap-y-[17px] pb-5'>
-      <ControlCard />
+      <ControlCard icon="Headset" title=' نظارة الواقع الافتراضي ' neasted={false}/>
       <div>
         <ChooseHeadsetSection />
         <ChooseCourseSection />

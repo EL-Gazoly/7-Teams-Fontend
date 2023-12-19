@@ -13,7 +13,7 @@ const CoursePage = () => {
   return (
      
     <React.Fragment>
-        <ControlCard />
+        <ControlCard icon="Courses" title=' المناهج التعليمية ' neasted={true}/>
         <div className='mt-[18px] flex flex-col gap-y-5 items-center pb-8'>
             <div className=' relative'>
                 <video src={ChemistryVideo} autoPlay loop muted className=' w-[1000px] h-[413px] object-cover rounded-lg' />

@@ -55,7 +55,7 @@ const RolesPage = () => {
 }
   return (
     <>
-    <ControlCard />
+    <ControlCard icon="Settings" title='  الأدوار  ' neasted={true}/>
         <div className=' mt-[38px] flex flex-col items-center gap-y-7 pb-9'>
             <div className=' flex items-center justify-center w-full'>
                 <Button className=' w-[183px] h-11 py-[7px] px-4 rounded-md ' color='primary'

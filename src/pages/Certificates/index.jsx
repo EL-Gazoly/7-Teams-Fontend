@@ -40,7 +40,7 @@ const CertificatesPage = () => {
 
   return (
     <React.Fragment>
-        <ControlCard />
+       <ControlCard icon="Certificates" title=' الشهادات  ' neasted={false}/>
         <div className=' mt-5 flex flex-col gap-y-4 pb-5'>
           <FirstSection 
             grade={grade}
