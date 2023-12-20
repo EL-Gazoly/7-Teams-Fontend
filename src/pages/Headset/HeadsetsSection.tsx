@@ -12,10 +12,8 @@ const HeadsetsSection = () => {
   const [renderComponents, setRenderComponents] = useState(false);
 
   useEffect(() => {
-    if(devices && devices.admin.devices.length > 0){
-      const devicesMap = devices.admin.devices.map((device) => {
-        return device.macAddress;
-      });
+    if (devices && devices.admin.devices.length > 0) {
+      const devicesMap = devices.admin.devices.map((device) => device.macAddress);
 
       devicesMap.forEach((mac) => {
         const deviceQuery = ref(db, `/Devices/${mac}`);
@@ -31,14 +29,17 @@ const HeadsetsSection = () => {
     }
   }, [devices]);
 
-  if (loading) return <div className=' mt-5'><Loading /></div>;
+  if (loading) return <div className='mt-5'><Loading /></div>;
   if (error) console.log(error.message);
 
+  const allDevicesRendered = devices && renderComponents && devicesList.length === devices.admin.devices.length;
+
   return (
-    <div className=' mt-6 grid grid-cols-4 max-w-full gap-y-4 gap-x-[18px] pr-1 ' style={{ direction: 'rtl' }}>
-      {devices && renderComponents && devicesList.length === devices.admin.devices.length && devices.admin.devices.map((device, index) => (
-        <HeadsetCard key={index} device={device} index={index} deviceStatus={devicesList[index]} />
-      ))}
+    <div className='mt-6 grid grid-cols-4 max-w-full gap-y-4 gap-x-[18px] pr-1' style={{ direction: 'rtl' }}>
+      {allDevicesRendered &&
+        devices.admin.devices.map((device, index) => (
+          <HeadsetCard key={index} device={device} index={index} deviceStatus={devicesList[index]} />
+        ))}
     </div>
   );
 };

@@ -1,97 +1,68 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Card, CardHeader, CardBody, CardFooter, Button, Image } from '@nextui-org/react';
 import OnlineIcon from '../../assets/Landing/HeadsetCard/online.svg';
 import OfflineIcon from '../../assets/Landing/HeadsetCard/wifi-square.svg';
 import HeadsetImage from '../../assets/Landing/HeadsetCard/headset.png';
 import SelectCard from '../../assets/Landing/HeadsetCard/select.png';
 import SucessGif from '../../assets/Landing/HeadsetCard/sucesss.gif';
-
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 type HeadsetProps = {
   index?: number;
-  device: {
-    name: string;
-    macAddress: string;
-  };
-  deviceStatus: deviceStatus;
+  device: { name: string; macAddress: string };
+  deviceStatus: { AppStatus: string; Battery: number; Connected: boolean };
 };
 
-type deviceStatus = {
-  AppStatus: string;
-  Battery: number;
-  Connected: boolean;
-}
-
-const HeadsetCard = ({ device, index , deviceStatus }: HeadsetProps) => {
-  console.log(deviceStatus)
+const HeadsetCard = ({ device, index, deviceStatus }: HeadsetProps) => {
   const [isSelected, setSelected] = useState(false);
+  const navigate = useNavigate();
 
-  const toggleSelected = () => {
-    setSelected(!isSelected);
+  const toggleSelected = () => setSelected(!isSelected);
+
+  const connectedIcon = deviceStatus?.Connected ? OnlineIcon : OfflineIcon;
+
+  const batteryLevelClass = (level: number) => {
+    if (!deviceStatus?.Connected) return "bg-[#E8E2E2]";
+    return level >= 66 ? "bg-[#2DEC4C]" : level >= 33 ? "bg-[#2DEC4C]" : "bg-[#E8E2E2]";
   };
 
   return (
-    <Link to={`/headsets/${device.macAddress}`}>
-      <Card
-        className={`w-[235.818px] h-[265.851px] rounded-[5.583px] overflow-hidden ${
-          isSelected && 'border-3 border-primary'
-        } relative`}
-        style={{
-          boxShadow: '0px 2.225px 31.146px 0px rgba(0, 0, 0, 0.10)',
-        }}
-      >
-        <CardHeader className='relative w-full h-[37px]'>
-          <Image src={deviceStatus?.Connected ? OnlineIcon : OfflineIcon} className='mt-3' />
-          <div
-            className='absolute top-0 left-2 flex w-[79.345px] h-[28.612px] px-[5.583px] py-[2.791px] items-center justify-center gap-x-[5.583px] rounded-b-[2.791px] bg-primary'
-            style={{
-              boxShadow: '0px 2.791px 2.791px 0px rgba(0, 0, 0, 0.25)',
-            }}
-          >
-            <span className='text-[9.7px] font-semibold text-white'>متصل الان</span>
-            <div className='w-[6.979px] h-[6.979px] rounded-full bg-[#45FF5F]' />
-          </div>
-        </CardHeader>
 
-        <CardBody className='flex flex-col items-center gap-y-2 text-center overflow-hidden h-[182px]'>
-          <Image src={HeadsetImage} className='z-0' />
-          <div className={`flex items-center gap-x-[3px]  `}>
-            <div className={`w-5 h-2 rounded-sm ${deviceStatus?.Connected ? deviceStatus.Battery >= 0 ? " bg-[#2DEC4C]" : "bg-[#E8E2E2]" : "bg-[#E8E2E2]" }`}/>
-            <div className={`w-5 h-2 rounded-sm ${deviceStatus?.Connected ? deviceStatus.Battery >= 33 ? " bg-[#2DEC4C]" : "bg-[#E8E2E2]"  : "bg-[#E8E2E2]" }`}/>
-            <div className={`w-5 h-2 rounded-sm ${deviceStatus?.Connected ? deviceStatus.Battery >= 66 ? " bg-[#2DEC4C]" : "bg-[#E8E2E2]" : "bg-[#E8E2E2]"   }`}/>
-            
-          </div>
-          <div className='flex flex-col gap-y-2'>
-            <span className='text-[#122333] text-sm font-semibold'>نظاره رقم {index+1}</span>
-            <span className='text-[#A5A5A5] text-[8.5px]'>{device.name}</span>
-          </div>
-        </CardBody>
+  
+      <div className={`w-[235.818px] h-[265.851px] bg-white flex flex-col items-center justify-center rounded-[5.583px] overflow-hidden ${isSelected && 'border-3 border-primary'} relative`} style={{ boxShadow: '0px 2.225px 31.146px 0px rgba(0, 0, 0, 0.10)' }}>
+          <button className=' bg-white w-full' onClick={()=> navigate(`/headsets/${device.macAddress}`)}>
+            <div className='relative w-full h-[37px] pt-3' >
+              <Image src={connectedIcon} className=' mr-4' />
+              <div className='absolute top-0 left-2 flex w-[79.345px] h-[28.612px] px-[5.583px] py-[2.791px] items-center justify-center gap-x-[5.583px] rounded-b-[2.791px] bg-primary' style={{ boxShadow: '0px 2.791px 2.791px 0px rgba(0, 0, 0, 0.25)' }}>
+                <span className='text-[9.7px] font-semibold text-white'>متصل الان</span>
+                <div className='w-[6.979px] h-[6.979px] rounded-full bg-[#45FF5F]' />
+              </div>
+            </div>
 
-        <CardFooter className='h-[47px] bg-[#FDFAFA] flex items-center justify-center'>
-          <Button
-            className={`w-[61px] h-[20.24px] text-white flex text-[11px] items-center justify-center rounded-md ${
-              isSelected ? 'bg-[#E94848] pt-1' : 'bg-[#292D32]'
-            }`}
-            onPress={toggleSelected}
-          >
-            {isSelected ? ' الغاء التحديد' : 'تحديد'}
-          </Button>
-        </CardFooter>
+            <div className='flex flex-col items-center gap-y-2 text-center overflow-hidden h-[182px]'>
+                <Image src={HeadsetImage} className='z-0' />
+                <div className='flex items-center gap-x-[3px]'>
+                  {[0, 33, 66].map((level) => (
+                    <div key={level} className={`w-5 h-2 rounded-sm ${batteryLevelClass(deviceStatus?.Battery)}`} />
+                  ))}
+                </div>
+                <div className='flex flex-col gap-y-2'>
+                  <span className='text-[#122333] text-sm font-semibold'>نظاره رقم {index + 1}</span>
+                  <span className='text-[#A5A5A5] text-[8.5px]'>{device.name}</span>
+                </div>
+            </div>
+            </button>
+            <div className='h-[47px] w-full bg-[#FDFAFA] flex items-center justify-center'>
+            <Button className={`w-[61px] h-[20.24px] text-white flex text-[11px] items-center justify-center rounded-md ${isSelected ? 'bg-[#E94848] pt-1' : 'bg-[#292D32]'}`} onPress={toggleSelected}>
+              {isSelected ? ' الغاء التحديد' : 'تحديد'}
+            </Button>
+            </div>
 
-        {isSelected && (
-          <div className='absolute bottom-[-1%] left-[-2%]'>
-            <Image src={SelectCard} />
-          </div>
-        )}
-
-        {isSelected && (
-          <div className='absolute inset-0 bg-white mt-10'>
-            <img src={SucessGif} />
-          </div>
-        )}
-      </Card>
-    </Link>
+          
+          {isSelected && <div className='absolute bottom-[-1%] left-[-2%]'><Image src={SelectCard} /></div>}
+        {false && <div className='absolute inset-0 bg-white mt-10'><img src={SucessGif} /></div>}
+      </div>
+    
   );
 };
 
