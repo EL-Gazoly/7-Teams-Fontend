@@ -13,3 +13,14 @@ export const GetDevices = gql`
   }
 }
 `
+
+export const GetDevice = gql`
+query DeviceByMac($macAddress: String!) {
+  deviceByMac(macAddress: $macAddress) {
+    name
+    student {
+      name
+    }
+  }
+}
+`

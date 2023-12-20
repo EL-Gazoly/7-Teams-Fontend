@@ -57,9 +57,9 @@ const HeadsetCard = ({ device, index , deviceStatus }: HeadsetProps) => {
         <CardBody className='flex flex-col items-center gap-y-2 text-center overflow-hidden h-[182px]'>
           <Image src={HeadsetImage} className='z-0' />
           <div className={`flex items-center gap-x-[3px]  `}>
-            <div className={`w-5 h-2 rounded-[1.4] bg-[#2DEC4C] ${deviceStatus?.Connected ? deviceStatus.Battery >= 0 ? " bg-[#2DEC4C]" : "bg-[#E8E2E2]" : "bg-[#E8E2E2]" }`}/>
-            <div className={`w-5 h-2 rounded-[1.4] bg-[#2DEC4C] ${deviceStatus?.Connected ? deviceStatus.Battery >= 33 ? " bg-[#2DEC4C]" : "bg-[#E8E2E2]"  : "bg-[#E8E2E2]" }`}/>
-            <div className={`w-5 h-2 rounded-[1.4] bg-[#2DEC4C] ${deviceStatus?.Connected ? deviceStatus.Battery >= 66 ? " bg-[#2DEC4C]" : "bg-[#E8E2E2]" : "bg-[#E8E2E2]"   }`}/>
+            <div className={`w-5 h-2 rounded-sm ${deviceStatus?.Connected ? deviceStatus.Battery >= 0 ? " bg-[#2DEC4C]" : "bg-[#E8E2E2]" : "bg-[#E8E2E2]" }`}/>
+            <div className={`w-5 h-2 rounded-sm ${deviceStatus?.Connected ? deviceStatus.Battery >= 33 ? " bg-[#2DEC4C]" : "bg-[#E8E2E2]"  : "bg-[#E8E2E2]" }`}/>
+            <div className={`w-5 h-2 rounded-sm ${deviceStatus?.Connected ? deviceStatus.Battery >= 66 ? " bg-[#2DEC4C]" : "bg-[#E8E2E2]" : "bg-[#E8E2E2]"   }`}/>
             
           </div>
           <div className='flex flex-col gap-y-2'>

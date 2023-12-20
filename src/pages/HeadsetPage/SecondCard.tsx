@@ -7,34 +7,12 @@ import db from '../../config/firebase'
 import { ref, update, onValue} from 'firebase/database'
 
 type Props = {
-  mac: string
+  ipcRenderer: any
 }
 
-const SecondCard = ({mac} : Props) => {
-const ipcRenderer = (window as any).ipcRenderer;
+const SecondCard = ({ipcRenderer} : Props) => {
 const [isRecording, setIsRecording] = useState(false)
 
-useEffect(() => {
-  const deviceQuery = ref(db, `/Devices/${mac}`);
-  const ipQuery = ref(db, `/Devices/${mac}/Get-IP`);
-
-  update(deviceQuery, { "Get-IP": "get" });
-
-  const handleIPQuery = (snapshot) => {
-    const ipInfo = snapshot.val();
-    if (ipInfo !== 'get') ipcRenderer.send('connect', ipInfo);
-  };
-
-  onValue(ipQuery, handleIPQuery);
-
-  const connectReplyHandler = (arg) => { if (arg === 'connected') console.log('connected'); };
-  ipcRenderer.on('connect-reply', connectReplyHandler);
-
-  
-}, [mac]);
-
-
-  
   const handelStream = () => {
     ipcRenderer.send('start-stream')
     console.log('start-streaming')
