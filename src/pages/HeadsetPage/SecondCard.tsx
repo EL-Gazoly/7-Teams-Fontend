@@ -13,25 +13,25 @@ type Props = {
 const SecondCard = ({mac} : Props) => {
 const ipcRenderer = (window as any).ipcRenderer;
 
-  useEffect(() => {
-    const deviceQuery = ref(db, `/Devices/${mac}`);
-    const ipQuery = ref(db, `/Devices/${mac}/Get-IP`);
-    update(deviceQuery, {
-      "Get-IP": "get"
-      })
-     onValue(ipQuery, (snapshot) => {
-        const ipInfo = snapshot.val()
-        if (ipInfo !== 'get') {
-          ipcRenderer.send('connect', ipInfo)
-        }
-      })
+useEffect(() => {
+  const deviceQuery = ref(db, `/Devices/${mac}`);
+  const ipQuery = ref(db, `/Devices/${mac}/Get-IP`);
 
-    ipcRenderer.on('connect-reply', ( arg: any) => {
-      if (arg === 'connected') {
-        console.log('connected')
-      }
-    })
-  }, [mac])
+  update(deviceQuery, { "Get-IP": "get" });
+
+  const handleIPQuery = (snapshot) => {
+    const ipInfo = snapshot.val();
+    if (ipInfo !== 'get') ipcRenderer.send('connect', ipInfo);
+  };
+
+  onValue(ipQuery, handleIPQuery);
+
+  const connectReplyHandler = (arg) => { if (arg === 'connected') console.log('connected'); };
+  ipcRenderer.on('connect-reply', connectReplyHandler);
+
+  
+}, [mac]);
+
 
   
   const handelStream = () => {
