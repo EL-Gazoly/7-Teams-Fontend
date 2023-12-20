@@ -59,7 +59,7 @@ const HeadsetCard = ({ device, index, deviceStatus }: HeadsetProps) => {
             </button>
             <div className=' absolute  bottom-0 h-[47px] w-full bg-[#FDFAFA] flex items-center justify-center'>
             <Button className={`w-[61px] h-[20.24px] text-white flex text-[11px] items-center justify-center rounded-md ${isSelected ? 'bg-[#E94848] pt-1' : 'bg-[#292D32]'}`} onPress={toggleSelected}
-              isDisabled={!deviceStatus.Connected}
+              isDisabled={!deviceStatus?.Connected}
             >
               {isSelected ? ' الغاء التحديد' : 'تحديد'}
             </Button>
