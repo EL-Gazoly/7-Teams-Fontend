@@ -1,13 +1,41 @@
-import React from 'react';
+import {useEffect} from 'react';
 import StreamIcon from '../../assets/headset page/stream.png';
 import ScreenShotIcon from '../../assets/headset page/screenshot.png';
 import RecoardIcon from '../../assets/headset page/recoard.png';
 import { Image, Button } from '@nextui-org/react';
+import db from '../../config/firebase'
+import { ref, update, onValue} from 'firebase/database'
 
-const SecondCard = () => {
-  const ipcRenderer = (window as any).ipcRenderer;
+type Props = {
+  mac: string
+}
+
+const SecondCard = ({mac} : Props) => {
+const ipcRenderer = (window as any).ipcRenderer;
+
+  useEffect(() => {
+    const deviceQuery = ref(db, `/Devices/${mac}`);
+    const ipQuery = ref(db, `/Devices/${mac}/Get-IP`);
+    update(deviceQuery, {
+      "Get-IP": "get"
+      })
+     onValue(ipQuery, (snapshot) => {
+        const ipInfo = snapshot.val()
+        if (ipInfo !== 'get') {
+          ipcRenderer.send('connect', ipInfo)
+        }
+      })
+
+    ipcRenderer.on('connect-reply', ( arg: any) => {
+      if (arg === 'connected') {
+        console.log('connected')
+      }
+    })
+  }, [mac])
+
+  
   const handelStream = () => {
-    ipcRenderer.send('connect', '192.168.1.7')
+    ipcRenderer.send('connect', mac)
     
   }
 
