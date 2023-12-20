@@ -17,6 +17,7 @@ export default {
         "disconnected-gradient" : "linear-gradient(90deg, #E7EBE8 -147.49%, rgba(74, 84, 75, 0.87) 91.85%)",
         "screen-shot-gradient" : "linear-gradient(70deg, #2BBFF6 26.24%, #09ADE5 88.6%)",
         "video-gradient" : "linear-gradient(72deg, #F16C98 19.29%, #DB4771 84.88%)",
+        'disabled': 'linear-gradient(90deg, #E7EBE8 -147.49%, rgba(74, 84, 75, 0.87) 91.85%)'
       },
       colors: {
         "primary": "#50D766",

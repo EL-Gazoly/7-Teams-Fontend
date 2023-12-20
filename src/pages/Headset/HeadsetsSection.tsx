@@ -23,9 +23,6 @@ const HeadsetsSection = () => {
         });
       });
 
-      setTimeout(() => {
-        setRenderComponents(true);
-      }, 10);
     }
   }, [devices]);
 
@@ -36,7 +33,7 @@ const HeadsetsSection = () => {
 
   return (
     <div className='mt-6 grid grid-cols-4 max-w-full gap-y-4 gap-x-[18px] pr-1' style={{ direction: 'rtl' }}>
-      {allDevicesRendered &&
+      {
         devices.admin.devices.map((device, index) => (
           <HeadsetCard key={index} device={device} index={index} deviceStatus={devicesList[index]} />
         ))}
