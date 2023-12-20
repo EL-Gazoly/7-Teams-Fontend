@@ -2,10 +2,12 @@ import React from 'react'
 import HeadsetCard from '../../Components/HeadsetCard'
 import { useQuery } from '@apollo/client'
 import { GetDevices } from '../../graphql/devices'
-
+import Loading from '../../Components/Loading'
 const HeadsetsSection = () => {
   const { loading, error, data: devices } = useQuery(GetDevices);
-  if (loading) console.log('loading')
+  if (loading) return <div className=' mt-5'>
+    <Loading />
+    </div>
   if (error) console.log(error.message)
   console.log(devices)
   return (

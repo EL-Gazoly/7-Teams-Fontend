@@ -12,11 +12,7 @@ const ChooseStudent = (props) => {
         props.setStudent(selectedOption)
       
     };
-   useEffect(() => {
-    if(loading){
-      props.setIsLoading(loading)
-    }
-   }, [loading]);
+  
     const customStyles = {
       control: (provided) => ({
         ...provided,

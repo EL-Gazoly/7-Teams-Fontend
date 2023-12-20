@@ -6,10 +6,11 @@ import { useQuery } from '@apollo/client'
 import noPic from '../../assets/students/noPic.svg'
 import EditIcon from '../../assets/settings/vuesax/linear/vuesax/linear/user-edit.svg'
 import { Link } from 'react-router-dom'
+import Loading from '../../Components/Loading'
     
 const AdminsTable = ({searchQuery }) => {
   const { loading, error, data: usersData } = useQuery(GetUsers);
-  if (loading) console.log('loading')
+  if (loading) return <Loading />
   if (error) console.log(error)
 
   let users = usersData?.admin.users || [];

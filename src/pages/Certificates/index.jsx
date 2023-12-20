@@ -94,7 +94,6 @@ const CertificatesPage = () => {
             setCourse={setCourse}
             student={student}
             setStudent={setStudent}
-            setIsLoading={setIsLoading}
           />
           <div className='w-full h-[667.78px] rounded-lg bg-light-bg py-6 px-20 text-text-black
             flex flex-col items-end gap-y-[38px]
