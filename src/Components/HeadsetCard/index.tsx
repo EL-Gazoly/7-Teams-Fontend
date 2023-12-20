@@ -8,13 +8,14 @@ import SucessGif from '../../assets/Landing/HeadsetCard/sucesss.gif';
 import { Link } from 'react-router-dom';
 
 type HeadsetProps = {
+  index?: number;
   device: {
     name: string;
     macAddress: string;
   };
 };
 
-const HeadsetCard = ({ device }: HeadsetProps) => {
+const HeadsetCard = ({ device, index }: HeadsetProps) => {
   const [isSelected, setSelected] = useState(false);
 
   const toggleSelected = () => {
@@ -52,7 +53,7 @@ const HeadsetCard = ({ device }: HeadsetProps) => {
             <div className='w-5 h-2 rounded-[1.4] bg-[#E8E2E2]' />
           </div>
           <div className='flex flex-col gap-y-2'>
-            <span className='text-[#122333] text-sm font-semibold'>نظاره رقم 1</span>
+            <span className='text-[#122333] text-sm font-semibold'>نظاره رقم {index+1}</span>
             <span className='text-[#A5A5A5] text-[8.5px]'>{device.name}</span>
           </div>
         </CardBody>
