@@ -16,8 +16,8 @@ const HeadsetPage = () => {
   const { mac } = useParams<{ mac: string }>()
   const [isLoading, setIsLoading] = useState(true)
   const [deviceState, setDeviceState] = useState({})
-  // const ipcRenderer = (window as any).ipcRenderer;
-  const ipcRenderer = ""
+  const ipcRenderer = (window as any).ipcRenderer;
+  
   const { data: device, loading, error } = useQuery(GetDevice, { variables: { macAddress: mac } })
   useEffect(() => {
     const deviceQuery = ref(db, `/Devices/${mac}`);
@@ -35,14 +35,14 @@ const HeadsetPage = () => {
     const handleIPQuery = (snapshot) => {
       const ipInfo = snapshot.val();
       if (ipInfo !== 'get')  console.log(ipInfo);
-      //ipcRenderer.send('connect', ipInfo);
+      ipcRenderer.send('connect', ipInfo);
     };
 
     onValue(deviceQuery, handleDeviceQuery);
     onValue(ipQuery, handleIPQuery);
   
     const connectReplyHandler = (arg) => { if (arg === 'connected') console.log('connected'); };
-    // ipcRenderer.on('connect-reply', connectReplyHandler);
+    ipcRenderer.on('connect-reply', connectReplyHandler);
     
   }, [mac]);
 
