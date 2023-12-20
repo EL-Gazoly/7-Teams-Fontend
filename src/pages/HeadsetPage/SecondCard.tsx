@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import StreamIcon from '../../assets/headset page/stream.png';
 import ScreenShotIcon from '../../assets/headset page/screenshot.png';
 import RecoardIcon from '../../assets/headset page/recoard.png';
@@ -12,6 +12,7 @@ type Props = {
 
 const SecondCard = ({mac} : Props) => {
 const ipcRenderer = (window as any).ipcRenderer;
+const [isRecording, setIsRecording] = useState(false)
 
 useEffect(() => {
   const deviceQuery = ref(db, `/Devices/${mac}`);
@@ -35,8 +36,8 @@ useEffect(() => {
 
   
   const handelStream = () => {
-    ipcRenderer.send('connect', mac)
-    
+    ipcRenderer.send('start-stream')
+    console.log('start-streaming')
   }
 
   const handelScreenShot = () => {
@@ -44,7 +45,14 @@ useEffect(() => {
   }
 
   const hadnelRecoard = () => {
+    setIsRecording(!isRecording)
+    if (isRecording) {
+        ipcRenderer.send('stop-screenrecord')
+        console.log('stop-screenrecord')
+        return
+    }
     ipcRenderer.send('screenrecord')
+    console.log('screenrecord')
   }
 
 

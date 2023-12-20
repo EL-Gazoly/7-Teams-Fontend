@@ -12,7 +12,7 @@ const HeadsetsSection = () => {
   console.log(devices)
   return (
     <div className=' mt-6 grid grid-cols-4 max-w-full gap-y-4 gap-x-[18px] pr-1'>
-        {devices.admin.devices.map((device, index) => (
+        {devices && devices.admin.devices.map((device, index) => (
           <HeadsetCard key={index} device={device} index={index} />
         ))}
             
