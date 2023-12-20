@@ -9,16 +9,20 @@ import html2canvas from 'html2canvas';
 import { SendEmail } from '../../graphql/email'
 import { useMutation } from '@apollo/client';
 import EnterEmailModal from './Modal';
-import toast from 'sonner'
+import { toast } from 'sonner';
 const CertificatesPage = () => {
   const [grade, setGrade] = useState({value: '', label: ''})
   const [course, setCourse] = useState({value: '', label: ''})
   const [student, setStudent] = useState({value: '', label: ''})
+  const [isLoading, setIsLoading] = useState(false)
+
+  if(isLoading) return <Loading />
+  
   const [email, setEmail] = useState('')
 
   const [sendEmail, {data, error, loading}] = useMutation(SendEmail)
 
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const {isOpen, onOpen, onClose} = useDisclosure();
 
   const convertAndPrint = () => {
     const divToPrint = document.querySelector('.certificateDiv');
@@ -74,17 +78,23 @@ const CertificatesPage = () => {
     }
   };
 
+  const handelOpen = () => {
+    onOpen()
+    console.log('open')
+  }
+
   return (
     <React.Fragment>
        <ControlCard icon="Certificates" title=' الشهادات  ' neasted={false}/>
         <div className=' mt-5 flex flex-col gap-y-4 pb-5'>
-          <FirstSection 
+        <FirstSection 
             grade={grade}
             setGrade={setGrade}
             course={course}
             setCourse={setCourse}
             student={student}
             setStudent={setStudent}
+            setIsLoading={setIsLoading}
           />
           <div className='w-full h-[667.78px] rounded-lg bg-light-bg py-6 px-20 text-text-black
             flex flex-col items-end gap-y-[38px]
@@ -108,7 +118,7 @@ const CertificatesPage = () => {
                    
                     <div className=' flex items-center gap-x-4'>
                         <Button className=' w-[192px]  h-12 py-2 px-4 flex items-center justify-center gap-x-2 rounded-lg bg-text-black text-white'
-                          onPress={()=> onOpen()}
+                          onPress={handelOpen}
                         >
                             <span className=' text-xs'>ارسال عبر البريد الالكتروني </span>
                             <Image src={MailIcon} width={21} height={21} radius='none'  className='mt-1'/>

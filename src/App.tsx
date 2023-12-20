@@ -31,7 +31,6 @@ function App() {
     navigate('/login')
   }
 
-  console.log(token)
 
   return (
     <>

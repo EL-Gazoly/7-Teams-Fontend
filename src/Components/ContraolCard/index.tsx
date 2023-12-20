@@ -73,7 +73,7 @@ const ControlCard = ({icon, title, neasted}:Props) => {
          
           
           }
-            <Image src={getIcon(icon)} width={30} height={30} radius='none' />
+            <img src={getIcon(icon)} className=' w-[30px] h-[30px]' />
             <span> {title} </span>
         </div>
         <div className=' flex items-center gap-x-6 flex-row-reverse'>
@@ -103,21 +103,23 @@ const ControlCard = ({icon, title, neasted}:Props) => {
               </svg>}
              />
              <div className=' flex items-center gap-x-2'>
-                <div  className='  w-11 h-10 rounded-[14px] flex items-center justify-center   bg-secondary '>
-                  <Image src={LanguageIcon} width={21} height={21} radius='none' />
+                <div  className='  w-11 h-10 rounded-[14px] flex items-center justify-center cursor-pointer   bg-secondary '>
+                  <img src={LanguageIcon} width={21} height={21} />
                 </div>
-                <div  className='  w-11 h-10 rounded-[14px] flex items-center justify-center   bg-secondary '
+                <div  className='  w-11 h-10 rounded-[14px] flex items-center justify-center cursor-pointer   bg-secondary '
                   onClick={handelLogout}
                 >
-                  <Image src={logoutIcon} width={21} height={21}  radius='none' />
+                  <img src={logoutIcon} width={21} height={21}   />
                 </div>
              </div>
                 <div className='flex items-center gap-x-4 flex-row-reverse'>
-                  <Avatar src={Placeholder} className='w-[57px] h-[57px] object-center' />
+                  <div className='w-[57px] h-[57px] rounded-full' >
+                      <img src={Placeholder} alt="" className='w-[57px] h-[57px] rounded-full' />
+                  </div>
                   <div className=' flex flex-col gap-y-[7px] text-[#292D32] text-right'>
                     <span className=' text-xs font-bold'>Sameh Ahmed</span>
                     <span className='text-[10px] font-medium'>الملف الشخصي</span>
-                  </div>
+                  </div> 
 
                 </div>
 

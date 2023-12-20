@@ -4,7 +4,6 @@ import { getStudents } from '../../graphql/students';
 import { useQuery } from '@apollo/client';
 import GroupIcon from '../../assets/students/group.png'
 
-
 const ChooseStudent = (props) => {
     const [selectedOption, setSelectedOption] = useState(props.selectedCourse);
     const { loading, error, data } = useQuery(getStudents);
@@ -13,7 +12,11 @@ const ChooseStudent = (props) => {
         props.setStudent(selectedOption)
       
     };
-  
+   useEffect(() => {
+    if(loading){
+      props.setIsLoading(loading)
+    }
+   }, [loading]);
     const customStyles = {
       control: (provided) => ({
         ...provided,
