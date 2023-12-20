@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Card, CardHeader, CardBody, CardFooter, Button, Image } from '@nextui-org/react';
 import OnlineIcon from '../../assets/Landing/HeadsetCard/online.svg';
+import OfflineIcon from '../../assets/Landing/HeadsetCard/wifi-square.svg';
 import HeadsetImage from '../../assets/Landing/HeadsetCard/headset.png';
 import SelectCard from '../../assets/Landing/HeadsetCard/select.png';
 import SucessGif from '../../assets/Landing/HeadsetCard/sucesss.gif';
@@ -13,9 +14,17 @@ type HeadsetProps = {
     name: string;
     macAddress: string;
   };
+  deviceStatus: deviceStatus;
 };
 
-const HeadsetCard = ({ device, index }: HeadsetProps) => {
+type deviceStatus = {
+  AppStatus: string;
+  Battery: number;
+  Connected: boolean;
+}
+
+const HeadsetCard = ({ device, index , deviceStatus }: HeadsetProps) => {
+  console.log(deviceStatus)
   const [isSelected, setSelected] = useState(false);
 
   const toggleSelected = () => {
@@ -33,9 +42,9 @@ const HeadsetCard = ({ device, index }: HeadsetProps) => {
         }}
       >
         <CardHeader className='relative w-full h-[37px]'>
-          <Image src={OnlineIcon} className='mt-3' />
+          <Image src={deviceStatus?.Connected ? OnlineIcon : OfflineIcon} className='mt-3' />
           <div
-            className='absolute top-0 right-2 flex w-[79.345px] h-[28.612px] px-[5.583px] py-[2.791px] items-center justify-center gap-x-[5.583px] rounded-b-[2.791px] bg-primary'
+            className='absolute top-0 left-2 flex w-[79.345px] h-[28.612px] px-[5.583px] py-[2.791px] items-center justify-center gap-x-[5.583px] rounded-b-[2.791px] bg-primary'
             style={{
               boxShadow: '0px 2.791px 2.791px 0px rgba(0, 0, 0, 0.25)',
             }}
@@ -47,10 +56,11 @@ const HeadsetCard = ({ device, index }: HeadsetProps) => {
 
         <CardBody className='flex flex-col items-center gap-y-2 text-center overflow-hidden h-[182px]'>
           <Image src={HeadsetImage} className='z-0' />
-          <div className='flex items-center gap-x-[3px]'>
-            <div className='w-5 h-2 rounded-[1.4] bg-[#2DEC4C]' />
-            <div className='w-5 h-2 rounded-[1.4] bg-[#2DEC4C]' />
-            <div className='w-5 h-2 rounded-[1.4] bg-[#E8E2E2]' />
+          <div className={`flex items-center gap-x-[3px]  `}>
+            <div className={`w-5 h-2 rounded-[1.4] bg-[#2DEC4C] ${deviceStatus?.Connected ? deviceStatus.Battery >= 0 ? " bg-[#2DEC4C]" : "bg-[#E8E2E2]" : "bg-[#E8E2E2]" }`}/>
+            <div className={`w-5 h-2 rounded-[1.4] bg-[#2DEC4C] ${deviceStatus?.Connected ? deviceStatus.Battery >= 33 ? " bg-[#2DEC4C]" : "bg-[#E8E2E2]"  : "bg-[#E8E2E2]" }`}/>
+            <div className={`w-5 h-2 rounded-[1.4] bg-[#2DEC4C] ${deviceStatus?.Connected ? deviceStatus.Battery >= 66 ? " bg-[#2DEC4C]" : "bg-[#E8E2E2]" : "bg-[#E8E2E2]"   }`}/>
+            
           </div>
           <div className='flex flex-col gap-y-2'>
             <span className='text-[#122333] text-sm font-semibold'>نظاره رقم {index+1}</span>
