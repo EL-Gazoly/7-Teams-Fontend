@@ -4,13 +4,21 @@ import ControlCard from '../../Components/ContraolCard'
 import CertificateTempelate from '../../assets/certificates/tempelate.webp'
 import PrintIcon from '../../assets/certificates/print.png'
 import MailIcon from '../../assets/certificates/mail.png'
-import { Image, Button } from '@nextui-org/react';
+import { Image, Button , useDisclosure} from '@nextui-org/react';
 import html2canvas from 'html2canvas';
-
+import { SendEmail } from '../../graphql/email'
+import { useMutation } from '@apollo/client';
+import EnterEmailModal from './Modal';
+import toast from 'sonner'
 const CertificatesPage = () => {
   const [grade, setGrade] = useState({value: '', label: ''})
   const [course, setCourse] = useState({value: '', label: ''})
   const [student, setStudent] = useState({value: '', label: ''})
+  const [email, setEmail] = useState('')
+
+  const [sendEmail, {data, error, loading}] = useMutation(SendEmail)
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const convertAndPrint = () => {
     const divToPrint = document.querySelector('.certificateDiv');
@@ -36,7 +44,35 @@ const CertificatesPage = () => {
     } else {
         console.error('Certificate div not found');
     }
-};
+  };
+
+  const sendCertificateAsFile = async () => {
+    const divToPrint = document.querySelector('.certificateDiv');
+    
+    if (divToPrint) {
+      try {
+        const canvas = await html2canvas(divToPrint);
+        const imageData = canvas.toDataURL('image/png');
+      
+        const blobData = await fetch(imageData).then(res => res.blob());
+        
+        const certificateFile = new File([blobData], 'certificate.png', { type: 'image/png' });
+        if (!email) {
+          toast.erro('الرجاء ادخال البريد الالكتروني')
+        }
+        await sendEmail({
+          variables: {
+            email: email,
+            certificate: certificateFile
+          }
+        });
+      } catch (error) {
+        console.error('Error converting to image and sending via mutation:', error);
+      }
+    } else {
+      console.error('Certificate div not found');
+    }
+  };
 
   return (
     <React.Fragment>
@@ -71,7 +107,9 @@ const CertificatesPage = () => {
                   </div>
                    
                     <div className=' flex items-center gap-x-4'>
-                        <Button className=' w-[192px]  h-12 py-2 px-4 flex items-center justify-center gap-x-2 rounded-lg bg-text-black text-white'>
+                        <Button className=' w-[192px]  h-12 py-2 px-4 flex items-center justify-center gap-x-2 rounded-lg bg-text-black text-white'
+                          onPress={()=> onOpen()}
+                        >
                             <span className=' text-xs'>ارسال عبر البريد الالكتروني </span>
                             <Image src={MailIcon} width={21} height={21} radius='none'  className='mt-1'/>
                            
@@ -93,6 +131,10 @@ const CertificatesPage = () => {
             
 
         </div>
+
+        <EnterEmailModal isOpen={isOpen} onClose={onClose} sendCertificateAsFile={sendCertificateAsFile}
+          email={email} setEmail={setEmail}
+        />
 
     </React.Fragment>
   )
