@@ -115,3 +115,16 @@ window.onmessage = ev => {
 }
 
 setTimeout(removeLoading, 4999)
+
+contextBridge.exposeInMainWorld("useLoading", useLoading);
+
+contextBridge.exposeInMainWorld("ipcRenderer", {
+  send: (channel, data) => ipcRenderer.send(channel, data),
+  on: (channel, func) => {
+    const listener = (event, ...args) => func(...args);
+    ipcRenderer.on(channel, listener);
+
+    // Return a function to remove the event listener
+    return () => ipcRenderer.removeListener(channel, listener);
+  }
+});
