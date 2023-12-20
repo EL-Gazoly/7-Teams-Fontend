@@ -6,6 +6,7 @@ import {exec} from 'child_process';
 const store = new Store();
 const adb = new ADB();
 
+let flag = false;
 class IpcFunctions{
      async handleListDevices(event) {
         try {
@@ -23,14 +24,15 @@ class IpcFunctions{
           store.delete('ip');
           await excuteCommand('adb disconnect');
           await adb.connectToDevice(arg, 5555)
-          .catch(async(err) =>{
+          .catch(async() =>{
             await excuteCommand(`adb tcpip 5555`)
             .then(async()=>{
               await adb.connectToDevice(arg, 5555)
             })
-            .catch(err=>{
+            .catch(()=>{
               console.log('Make sure you are on the same WIFI, if the problem persist Try connecting with USB')
               event.sender.send('connect-reply', 'Make sure you are on the same WIFI, if the problem persist Try connecting with USB');
+              return
             })
           })
           
@@ -55,15 +57,10 @@ class IpcFunctions{
         }
       }
       
-     
-      
-     
-      
       async  handleStartStream(event) {
         try {
+          flag = true
           const currentIP = store.get('ip')
-          console.log(currentIP)
-          console.log('Starting Stream')
             excuteCommand(`scrcpy -s ${currentIP} --video-bit-rate 8M --max-size 2048 --crop 1600:900:2017:510 -t --window-title B-Vision-Stream  --no-audio`);
           event.sender.send('start-stream-reply', 'Stream Started');
         } catch (err) {
@@ -86,24 +83,22 @@ class IpcFunctions{
 
     
     async  handleStopScreenRecord(event) {
-        try {
-            const currentIP = store.get('ip')
-            await connectToDeviceAndExecuteCommands(event)
-            .then(async()=>{
-            await isScrcpyRunning()
-            .then(async(isRunning)=>{
-              if(isRunning){
-                setTimeout(async()=>{
-                await excuteCommand(`scrcpy -s ${currentIP}  --video-bit-rate 8M --max-size 2048 --crop 1600:900:2017:510 -t --window-title B-Vision-Stream  --no-audio`);
-                }, 15000)
-              }
-            })
-          })
-            event.sender.send('stop-screenrecord-reply', 'Screen Record Stopped');
-        } catch (err) {
-            console.error('Something went wrong:', err.stack);
-            event.reply('error-reply', err);
-        }
+      try {
+        isScrcpyRunning()
+        .then(async (isRunning) => {
+         isRunning ? flag = true : flag = false
+        })
+        if ( !flag){
+        await connectToDeviceAndExecuteCommands(event);
+      }
+      else {
+        await handleStopStreamAndScreenRecord(event);
+      }
+        event.sender.send('stop-screenrecord-reply', 'Screen Record Stopped');
+    } catch (err) {
+        console.error('Something went wrong:', err.stack);
+        event.reply('error-reply', err);
+    }
       
       
     }
@@ -173,5 +168,16 @@ async function isScrcpyRunning(){
       resolve(isRunning);
     });
   });
+}
+async function  handleStopStreamAndScreenRecord(event) {
+  try {
+      const currentIP = store.get('ip')
+      await connectToDeviceAndExecuteCommands(event);
+      await excuteCommand(`scrcpy -s ${currentIP}  --video-bit-rate 8M --max-size 2048 --crop 1600:900:2017:510 -t --window-title B-Vision-Stream  --no-audio`);
+      event.sender.send('stop-screenrecord-reply', 'Screen Record Stopped');
+  } catch (err) {
+      console.error('Something went wrong:', err.stack);
+      event.reply('error-reply', err);
+  }
 }
 export default IpcFunctions;
