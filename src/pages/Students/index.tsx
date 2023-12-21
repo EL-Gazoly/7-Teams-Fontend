@@ -72,7 +72,7 @@ const StudentsPage = () => {
                     <div className='flex w-fulll items-center justify-between flex-row-reverse '>
                         <div className='flex flex-row-reverse items-center gap-x-2 text-text-black'>
                             <h3 className=' text-lg font-bold'>الطلاب المسجلين في النظام</h3>
-                            <span className='text-xs font-medium'>( 632 طالب )</span>
+                            <span className='text-xs font-medium'>( {studentsData?.admin.students.length} طالب )</span>
                         </div>
                         <div className=' flex gap-x-4 flex-row-reverse items-center'>
                             <div className='flex items-center gap-x-[10px] '>
