@@ -9,31 +9,41 @@ import { useNavigate } from 'react-router-dom';
 
 type HeadsetProps = {
   index?: number;
-  device: { name: string; macAddress: string , student: {name: string}[] };
-  deviceStatus: { AppStatus: string; Battery: number; Connected: boolean };
+  device: { name: string; macAddress: string , student: {name: string}[];  selected: boolean; 
+    AppStatus: string; Battery: number; Connected: boolean 
+}
+  selectedHeadsets: any
+  setSelectedHeadsets: React.Dispatch<any>
 };
 
-const HeadsetCard = ({ device, index, deviceStatus }: HeadsetProps) => {
-  const [isSelected, setSelected] = useState(false);
+const HeadsetCard = ({ device, index, selectedHeadsets, setSelectedHeadsets }: HeadsetProps) => {
+  const [isSelected, setSelected] = useState(selectedHeadsets.selected);
   const navigate = useNavigate();
 
-  const toggleSelected = () => setSelected(!isSelected);
-
-  const connectedIcon = deviceStatus?.Connected ? OnlineIcon : OfflineIcon;
-
-  const batteryLevelClass = (level: number) => {
-    if (!deviceStatus?.Connected) return "bg-[#E8E2E2]";
-    return level >= 66 ? "bg-[#2DEC4C]" : level >= 33 ? "bg-[#2DEC4C]" : "bg-[#E8E2E2]";
+  const toggleSelected = () => {
+    setSelected(!isSelected);
+    setSelectedHeadsets((prev: any) => {
+      const newSelectedHeadsets = [...prev];
+      newSelectedHeadsets[index] = { ...newSelectedHeadsets[index], selected: !isSelected };
+      return newSelectedHeadsets;
+    });
   };
 
+  const connectedIcon = device?.Connected ? OnlineIcon : OfflineIcon;
+
+  const batteryLevelClass = (level: number) => {
+    if (!device?.Connected) return "bg-[#E8E2E2]";
+    return level >= 66 ? "bg-[#2DEC4C]" : level >= 33 ? "bg-[#2DEC4C]" : "bg-[#E8E2E2]";
+  };
+  device && console.log(device)
   return (
 
   
-      <div className={`w-[235.818px] h-[265.851px] bg-white flex flex-col  rounded-[5.583px] overflow-hidden ${isSelected && 'border-3 border-primary'} relative
-      ${!deviceStatus?.Connected && 'opacity-40'}
+      <div className={`w-[235.818px] h-[265.851px] bg-white flex flex-col  rounded-[5.583px] overflow-hidden ${device.selected && 'border-3 border-primary'} relative
+      ${!device?.Connected && 'opacity-40'}
       `} style={{ boxShadow: '0px 2.225px 31.146px 0px rgba(0, 0, 0, 0.10)' }}>
           <button className=' bg-white w-full' onClick={()=> navigate(`/headsets/${device.macAddress}`)}
-            disabled={!deviceStatus?.Connected}
+            disabled={!device?.Connected}
           >
             <div className='relative w-full h-[37px] pt-3' >
               <Image src={connectedIcon} className=' mr-4' />
@@ -48,7 +58,7 @@ const HeadsetCard = ({ device, index, deviceStatus }: HeadsetProps) => {
                 <Image src={HeadsetImage} className='z-0' width={143} height={77} />
                 <div className='flex items-center gap-x-[3px]'>
                   {[0, 33, 66].map((level) => (
-                    <div key={level} className={`w-5 h-2 rounded-sm ${batteryLevelClass(deviceStatus?.Battery)}`} />
+                    <div key={level} className={`w-5 h-2 rounded-sm ${batteryLevelClass(device?.Battery)}`} />
                   ))}
                 </div>
                 <div className='flex flex-col gap-y-2'>
@@ -58,15 +68,15 @@ const HeadsetCard = ({ device, index, deviceStatus }: HeadsetProps) => {
             </div>
             </button>
             <div className=' absolute  bottom-0 h-[47px] w-full bg-[#FDFAFA] flex items-center justify-center'>
-            <Button className={`w-[61px] h-[20.24px] text-white flex text-[11px] items-center justify-center rounded-md ${isSelected ? 'bg-[#E94848] pt-1' : 'bg-[#292D32]'}`} onPress={toggleSelected}
-              isDisabled={!deviceStatus?.Connected}
+            <Button className={`w-[61px] h-[20.24px] text-white flex text-[11px] items-center justify-center rounded-md ${device.selected ? 'bg-[#E94848] pt-1' : 'bg-[#292D32]'}`} onPress={toggleSelected}
+              isDisabled={!device?.Connected}
             >
-              {isSelected ? ' الغاء التحديد' : 'تحديد'}
+              {device.selected ? ' الغاء التحديد' : 'تحديد'}
             </Button>
             </div>
 
           
-          {isSelected && <div className='absolute bottom-[-1%] left-[-2%]'><Image src={SelectCard} /></div>}
+          {device.selected && <div className='absolute bottom-[-1%] left-[-2%]'><Image src={SelectCard} /></div>}
         {false && <div className='absolute inset-0 bg-white mt-10'><img src={SucessGif} /></div>}
       </div>
     
