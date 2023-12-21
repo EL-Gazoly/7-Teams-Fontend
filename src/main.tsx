@@ -39,13 +39,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   
       <HashRouter>
         <NextUIProvider>
-          <LanguageProvider>
-            <AuthProvider>
               <ApolloProvider client={client}>
                 <App />
               </ApolloProvider>
-            </AuthProvider>
-          </LanguageProvider>
         </NextUIProvider>
       </HashRouter>
  ,

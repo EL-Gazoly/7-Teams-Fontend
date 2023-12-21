@@ -18,6 +18,7 @@ import ProtectedRoutes from './utils/ProtectedRoutes'
 import HeadsetPage from "./pages/HeadsetPage"
 import UpadteAdmin from "./pages/UpdateAdmin"
 import Landing from "./pages/Landing"
+import ErrorPage from "./pages/error"
 function App() {
   const location = useLocation();
   const isLoginPage = location.pathname === '/login';
@@ -41,8 +42,9 @@ function App() {
           <div className=" w-[1000px] h-full overflow-y-auto overflow-x-hidden scroll">
           <Routes>
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/" element={<Landing />} />
+            <Route path="/$.0" element={<ErrorPage />} />
             <Route element={<ProtectedRoutes />}>
+                <Route path="/" element={<Landing />} />
                 <Route path="/headsets" element={<HeadsetsPage />} /> 
                 <Route path="/headsets/:mac"  element={<HeadsetPage />}/>
                 <Route path="/courses"  element={<CoursesPage />}/>
