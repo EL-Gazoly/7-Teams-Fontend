@@ -1,6 +1,16 @@
 import React, {  useEffect, useState } from 'react';
 import Select from 'react-select';
+import Chemistry from '../../../assets/SelectCourse/SelectSubject/chemistry.svg'
+import Physics from '../../../assets/SelectCourse/SelectSubject/physics.svg'
+import Biology from '../../../assets/SelectCourse/SelectSubject/biology.svg'
+import Geology from '../../../assets/SelectCourse/SelectSubject/geology.svg'
 
+const options = [
+  { value: 'chemistry', label: ' الكيمياء ', image: Chemistry },
+  { value: 'physics', label: ' الفيزياء ', image: Physics },
+  { value: 'biology', label: ' الاحياء ', image: Biology },
+  { value: 'geology', label: ' الجيولوجيا ', image: Geology },
+]
 
 
 const SelectSubject = ( props) => {
@@ -134,7 +144,7 @@ const SelectSubject = ( props) => {
   return (
     <div className="App">
       <Select
-        options={transformedOptions}
+        options={options}
         styles={customStyles}
         placeholder=" اختر المنهج "
         value={selectedOption}

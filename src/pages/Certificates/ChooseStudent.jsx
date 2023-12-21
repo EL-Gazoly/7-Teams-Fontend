@@ -126,32 +126,42 @@ const ChooseStudent = (props) => {
             image: GroupIcon,
         };
         });
+ 
   
-    useEffect(() => {
-      if(props.emptyCourse){
-        setSelectedOption(null);
-        props.setEmptyCourse(false);
-      }
-  
-    }, [props.emptyCourse]);
+
+  useEffect(() => {
+    if(props.emptyCourse){
+      setSelectedOption(null);
+      props.setEmptyCourse(false);
+    }
+
+  }, [props.emptyCourse]);
+
   return (
     <div className="App">
-    <Select
-      options={options}
-      styles={customStyles}
-      placeholder="اختر القسم من هنا"
-      value={props.student}
-      onChange={handleChange}
-      isSearchable={true}
-      getOptionLabel={(option) => (
-        <div className='selected flex items-center gap-x-6 text-xs font-medium'>
-          <img src={option.image} alt={option.label} style={customStyles.optionImage} className=' w-10 h-10'/>
-          <span className={`${ selectedOption && selectedOption.value === "Ultrasound" ? 'text-[10px]' : ''}`}> {option.label} </span>
-        </div>
-      )}
-    />
-  </div>
-  )
-}
+      <Select
+        options={options}
+        styles={customStyles}
+        placeholder=" اختر اسم الطالب"
+        value={selectedOption}
+        onChange={handleChange}
+        isSearchable={true}
+        getOptionLabel={(option) => (
+          <div className='selected flex items-center gap-x-6 text-xs font-medium'
+            style={{
+              direction: "rtl"
+            }}
+          >
+            <img src={option.image} alt={option.label} style={customStyles.optionImage} className=' w-10 h-10'/>
+            <span className={`${ selectedOption && selectedOption.value === "Ultrasound" ? 'text-[10px]' : ''}`}> {option.label} </span>
+          </div>
+        )}
+      />
+    </div>
+);
 
-export default ChooseStudent
+};
+
+
+
+export default ChooseStudent;
