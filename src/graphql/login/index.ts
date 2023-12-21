@@ -12,6 +12,7 @@ export const LOGINADMIN = gql`
 export const LOGINUSER  = gql`
 mutation LoginUser($email: String!, $hashedPassword: String!) {
   loginUser(email: $email, hashedPassword: $hashedPassword) {
+    token
     roles {
       name
       isDevicesAccess

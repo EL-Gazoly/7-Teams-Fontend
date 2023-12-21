@@ -35,6 +35,8 @@ const CreateAdmin = () => {
         const role = selectRole.value;
         if( !name || !email || !password || !confirmPassword || !role ) return toast.error('Please fill all fields')
         if (password !== confirmPassword) return toast.error('Password not match')
+
+        if (email.includes('admin')) return toast.error('Email can not contain admin')
         
         await createUser({
             variables : {

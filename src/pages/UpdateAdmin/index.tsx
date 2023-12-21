@@ -58,6 +58,7 @@ const UpdateAdmin = () => {
         const role = selectRole.value;
         if( !name || !email || !role ) return toast.error('Please fill all fields')
         if (password !== confirmPassword) return toast.error('Password not match')
+        if (email.includes('admin')) return toast.error('Email can not contain admin')
 
         if ((selectedImage && !sleectedFile)){
             await update({

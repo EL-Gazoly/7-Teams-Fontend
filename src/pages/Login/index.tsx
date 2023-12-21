@@ -48,7 +48,7 @@ const LoginPage = () => {
             localStorage.setItem('isAdmin', 'true')
     };
         if (userData){    
-            console.log(userData?.loginUser?.roles)
+            console.log(`this is the user token`, userData?.loginUser?.token)
             document.cookie = `Authorization=${userData?.loginUser?.token}; path=/; max-age=${30 * 24 * 60 * 60}`
             localStorage.setItem('isDevicesAccess', `${userData?.loginUser?.roles?.isDevicesAccess}`)
             localStorage.setItem('isStudentsAccess', `${userData?.loginUser?.roles?.isStudentsAccess}`)
