@@ -6,6 +6,7 @@ import LoginIcon from '../../assets/login/logo.png';
 import { Image, Button } from '@nextui-org/react';
 import { toast } from 'sonner';
 import { useNavigate } from 'react-router-dom';
+import LanguageIcon from '../../assets/ControlCard/language.svg'
 const LoginPage = () => {
     const emailRef = useRef<HTMLInputElement>();
     const passwordRef = useRef<HTMLInputElement>(); 
@@ -42,7 +43,7 @@ const LoginPage = () => {
     };
 
     if(adminData || userData) {
-        toast.success("Login sucess")
+        toast.success("تم تسجيل الدخول بنجاح")
         if (adminData){
              document.cookie = `Authorization=${adminData?.loginAdmin?.token}; path=/; max-age=${30 * 24 * 60 * 60}`
             localStorage.setItem('isAdmin', 'true')
@@ -64,13 +65,16 @@ const LoginPage = () => {
         navigate('/headsets')
        
     }
-    if(adminLoading|| userLoading) toast.loading("Loading...")
+    if(adminLoading|| userLoading) toast.loading(" جاري تسجيل الدخول... ")
     if(adminError) toast.error(adminError.message )
     if (userError)  toast.error(userError.message)
 
     return (
         <div className='login-bg fixed inset-0 w-screen h-screen flex items-center justify-center'>
-            <div className="w-[443px] h-[530px] rounded-xl bg-light-bg py-20 px-[84px]">
+            <div className="w-[443px] h-[530px] relative rounded-xl bg-light-bg py-20 px-[84px]">
+            <Button  isIconOnly className=' absolute top-5 right-6  w-11 h-10 rounded-[14px] flex items-center justify-center cursor-pointer   bg-secondary '>
+                  <img src={LanguageIcon} width={21} height={21} />
+                </Button>
                 <div className='flex flex-col w-[276.146px]'>
                     <div className='flex items-center justify-center'>
                         <Image src={LoginIcon} />

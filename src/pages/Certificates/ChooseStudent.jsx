@@ -113,7 +113,7 @@ const ChooseStudent = (props) => {
       input: (provided) => ({
         ...provided,
         caretColor: 'transparent',
-        color: 'white',
+        color: '#122333',
       }),
     
       

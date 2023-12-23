@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
 
+import LiquidExpirment from '../../../assets/SelectCourse/SelectExpriment/Chemistry/liquid.svg'
+import MetalExpriment from '../../../assets/SelectCourse/SelectExpriment/Chemistry/metals.png'
+import ColdExpriment from '../../../assets/SelectCourse/SelectExpriment/Chemistry/cold.png'
+import HeatExpriment from '../../../assets/SelectCourse/SelectExpriment/Chemistry/heat.svg'
 
 const SelectChapter = ( props) => {
   const [selectedOption, setSelectedOption] = useState();
@@ -23,6 +27,29 @@ const SelectChapter = ( props) => {
     }))
     
   );
+
+  const options = [
+    {
+      name : "اختبار الفلزات",
+      icon : MetalExpriment,
+      value : "metal"
+    },
+    {
+      name : "لزوجة السائل",
+      icon : LiquidExpirment,
+      value : "liquid"
+    },
+    {
+      name : "كمادات باردة",
+      icon : ColdExpriment,
+      value : "cold"
+    },
+    {
+      name : "حرارة نوعية",
+      icon : HeatExpriment,
+      value : "heat"
+    },
+  ]
 
   const customStyles = {
     control: (provided) => ({
@@ -139,9 +166,9 @@ const SelectChapter = ( props) => {
   return (
     <div className="App">
       <Select
-        options={allExperiments}
+        options={options}
         styles={customStyles}
-        placeholder=" اختر التجربه "
+        placeholder=" اختر التجربة "
         value={selectedOption}
         onChange={handleChange}
         isSearchable={true}
@@ -151,8 +178,8 @@ const SelectChapter = ( props) => {
               direction: "rtl"
             }}
           >
-            <img src={option.image} alt={option.label} style={customStyles.optionImage} className=' w-10 h-10'/>
-            <span className={`${ selectedOption && selectedOption.value === "Ultrasound" ? 'text-[10px]' : ''}`}> {option.label} </span>
+            <img src={option.icon} alt={option.name} style={customStyles.optionImage} className=' w-10 h-10'/>
+            <span className={`${ selectedOption && selectedOption.value === "Ultrasound" ? 'text-[10px]' : ''}`}> {option.name} </span>
           </div>
         )}
       />

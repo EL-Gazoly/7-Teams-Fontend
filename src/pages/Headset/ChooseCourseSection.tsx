@@ -28,7 +28,7 @@ const ChooseCourseSection = () => {
         <SelectHowToStart />
 
         <Button className=' flex items-center justify-center px-[14px] py-[7px] rounded-[7px]' color='primary'    
-        >ابدا التجربه</Button>
+        >ابدا التجربة</Button>
 
     </div>
   )

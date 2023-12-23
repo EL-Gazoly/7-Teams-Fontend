@@ -33,7 +33,7 @@ const StudentsStackViews = ({ students }: StudentStackProps) => {
     >
       <TableHeader className='bg-primary text-white rounded-none' style={{ direction: 'rtl' }}>
         <TableColumn className='rounded-none'>الصوره</TableColumn>
-        <TableColumn>ااسم المستخدم</TableColumn>
+        <TableColumn>اسم المستخدم</TableColumn>
         <TableColumn>رمز الدخول</TableColumn>
         <TableColumn>الحاله</TableColumn>
       </TableHeader>

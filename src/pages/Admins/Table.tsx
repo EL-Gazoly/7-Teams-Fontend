@@ -52,7 +52,7 @@ const AdminsTable = ({searchQuery }) => {
         className='bg-primary text-white rounded-none'
       >
         <TableColumn className=' rounded-none'>الصوره</TableColumn>
-        <TableColumn>ااسم المستخدم</TableColumn>
+        <TableColumn>اسم المستخدم</TableColumn>
         <TableColumn> الايميل </TableColumn>
         <TableColumn>اسم الدور</TableColumn>
         <TableColumn> الحاله</TableColumn>

@@ -103,14 +103,14 @@ const ControlCard = ({icon, title, neasted}:Props) => {
               </svg>}
              />
              <div className=' flex items-center gap-x-2'>
-                <div  className='  w-11 h-10 rounded-[14px] flex items-center justify-center cursor-pointer   bg-secondary '>
+                <Button isIconOnly  className='  w-11 h-10 rounded-[14px] flex items-center justify-center cursor-pointer   bg-secondary '>
                   <img src={LanguageIcon} width={21} height={21} />
-                </div>
-                <div  className='  w-11 h-10 rounded-[14px] flex items-center justify-center cursor-pointer   bg-secondary '
+                </Button>
+                <Button isIconOnly  className='  w-11 h-10 rounded-[14px] flex items-center justify-center cursor-pointer   bg-secondary '
                   onClick={handelLogout}
                 >
                   <img src={logoutIcon} width={21} height={21}   />
-                </div>
+                </Button>
              </div>
                 <div className='flex items-center gap-x-4 flex-row-reverse'>
                   <div className='w-[57px] h-[57px] rounded-full' >

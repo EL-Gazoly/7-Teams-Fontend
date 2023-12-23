@@ -33,10 +33,10 @@ const CreateAdmin = () => {
         const confirmPassword = confirmPasswordRef.current.value;
         const image = sleectedFile;
         const role = selectRole.value;
-        if( !name || !email || !password || !confirmPassword || !role ) return toast.error('Please fill all fields')
-        if (password !== confirmPassword) return toast.error('Password not match')
+        if( !name || !email || !password || !confirmPassword || !role ) return toast.error(' برجاء ملئ جميع الحقول ')
+        if (password !== confirmPassword) return toast.error(' كلمه المرور غير متطابقه ')
 
-        if (email.includes('admin')) return toast.error('Email can not contain admin')
+        if (email.includes('admin')) return toast.error(' برجاء اختيار ايميل لا يحتوي علي كلمه admin ')
         
         await createUser({
             variables : {
@@ -66,7 +66,7 @@ const CreateAdmin = () => {
     if (loadingCreateUser) return <Loading />
     if (errorCreateUser) toast.error(errorCreateUser.message)
 
-    if (dataCreateUser) toast.success('User created sucessfully')
+    if (dataCreateUser) toast.success('تم اضافة المسؤول بنجاح')
 
   return (
     <div className=' pb-5'>
@@ -86,7 +86,7 @@ const CreateAdmin = () => {
                     <div className=' flex flex-col gap-y-[5px] text-right text-text-black'>
                         <label htmlFor="name" className=' mr-1' >الاسم</label>
                         <input type="text" className=' text-right w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] px-4  
-                        ' placeholder='اسم الطالب هنا' ref={nameRef} />
+                        ' placeholder='اسم المسؤول هنا' ref={nameRef} />
 
                     </div>
                     <div className=' flex flex-col gap-y-[5px] text-right text-text-black'>

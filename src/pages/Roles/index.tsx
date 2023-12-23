@@ -51,7 +51,7 @@ const RolesPage = () => {
   if (loading) return <Loading />
   if (error) toast.error(error.message)
   if (data) {
-    toast.success('Role created successfully')
+    toast.success(' تم اضافه الدور بنجاح ')
 }
   return (
     <>

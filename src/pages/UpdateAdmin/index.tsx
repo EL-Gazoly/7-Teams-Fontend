@@ -56,9 +56,9 @@ const UpdateAdmin = () => {
         const confirmPassword = confirmPasswordRef.current.value;
         const image = sleectedFile ? sleectedFile : null;
         const role = selectRole.value;
-        if( !name || !email || !role ) return toast.error('Please fill all fields')
-        if (password !== confirmPassword) return toast.error('Password not match')
-        if (email.includes('admin')) return toast.error('Email can not contain admin')
+        if( !name || !email || !role ) return toast.error(' برجاء ملئ جميع الحقول ')
+        if (password !== confirmPassword) return toast.error(' كلمه المرور غير متطابقه ')
+        if (email.includes('admin')) return toast.error( ' برجاء اختيار ايميل لا يحتوي علي كلمه admin')
 
         if ((selectedImage && !sleectedFile)){
             await update({
@@ -109,7 +109,7 @@ const UpdateAdmin = () => {
 
     if (errorUpdateUser) toast.error(errorUpdateUser.message)
 
-    if (dataUpdateUser) {toast.success('User created sucessfully')
+    if (dataUpdateUser) {toast.success(' تم تعديل المسؤول بنجاح ')
     
 }
 
