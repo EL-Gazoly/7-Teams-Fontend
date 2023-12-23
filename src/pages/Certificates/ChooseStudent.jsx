@@ -121,7 +121,7 @@ const ChooseStudent = (props) => {
 
     const options = data?.admin.students.map((student) => {
         return {
-            value: student.studentId,
+            value: student.name,
             label: student.name,
             image: GroupIcon,
         };
