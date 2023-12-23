@@ -7,12 +7,15 @@ import { useMutation } from '@apollo/client';
 import { toast } from 'sonner';
 import Loading from '../../Components/Loading';
 import { UploadImage } from './UploadImage';
+import { getStudents } from '../../graphql/students';
 
 const CreateStudent = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
 
-  const [createStudentMutation, { data, loading, error }] = useMutation(createStudent);
+  const [createStudentMutation, { data, loading, error }] = useMutation(createStudent,{
+    refetchQueries: [{ query: getStudents }],
+  });
 
   const nameRef = useRef<HTMLInputElement>(null);
   const idRef = useRef<HTMLInputElement>(null);
@@ -29,7 +32,7 @@ const CreateStudent = () => {
           facilityId: id,
         },
         image: image,
-      },
+      }
     });
   };
 

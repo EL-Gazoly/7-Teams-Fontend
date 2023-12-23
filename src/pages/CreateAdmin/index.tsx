@@ -5,7 +5,7 @@ import { Button, Image } from '@nextui-org/react';
 import AddIcon from '../../assets/students/add.svg'
 import ChooseRole from './ChooseRole';
 import { useMutation, useQuery } from '@apollo/client';
-import { CreateUser } from '../../graphql/users';
+import { CreateUser, GetUsers } from '../../graphql/users';
 import { getRoles } from '../../graphql/role';
 import Loading from '../../Components/Loading';
 import { toast } from 'sonner';
@@ -17,7 +17,9 @@ const CreateAdmin = () => {
     const [selectRole, setSelectRole] = useState({value : '' , label : ""});
     const { loading: loadingRoles , error: errorRoles, data: roles } = useQuery(getRoles);
 
-    const [createUser, { loading: loadingCreateUser, error: errorCreateUser, data: dataCreateUser }] = useMutation(CreateUser);
+    const [createUser, { loading: loadingCreateUser, error: errorCreateUser, data: dataCreateUser }] = useMutation(CreateUser,{
+        refetchQueries : [{query : GetUsers}]
+    });
 
 
 
