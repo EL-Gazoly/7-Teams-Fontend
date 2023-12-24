@@ -4,7 +4,7 @@ import { Button, Image} from '@nextui-org/react';
 import AddIcon from '../../assets/students/add.svg'
 import RolesSection from '../../Components/RoleSection';
 
-import { createRole } from '../../graphql/role';
+import { createRole, GetRolesWithPermessions } from '../../graphql/role';
 import { useMutation } from '@apollo/client';
 import Loading from '../../Components/Loading';
 import { toast } from 'sonner';
@@ -26,7 +26,9 @@ const CreateRolePage = () => {
   const [isRoleAcsess, setIsRoleAccsess] = useState(false)
   const [isUserAcsess, setIsUserAccsess] = useState(false)
 
-  const [createRoleMutation, {data, loading , error}] = useMutation(createRole)
+  const [createRoleMutation, {data, loading , error}] = useMutation(createRole,{
+    refetchQueries: [GetRolesWithPermessions]
+  })
 
   const handelSave = () => {
     createRoleMutation({
