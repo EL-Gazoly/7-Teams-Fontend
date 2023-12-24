@@ -35,30 +35,29 @@ const HeadsetPage = () => {
     const handleIPQuery = (snapshot) => {
       const ipInfo = snapshot.val();
       if (ipInfo !== 'get') { 
-        // ipcRenderer.send('connect', ipInfo);
-        setIsLoading(false)
+        ipcRenderer.send('connect', ipInfo);
     }
     };
 
     onValue(deviceQuery, handleDeviceQuery);
     onValue(ipQuery, handleIPQuery);
 
-    // const connectReplyHandler = (event, arg) => {
-    //   if (arg === "Connected") setIsLoading(false);
-    // };
-    // ipcRenderer.on('connect-reply', connectReplyHandler);
+    const connectReplyHandler = (event, arg) => {
+      if (arg === "Connected") setIsLoading(false);
+    };
+    ipcRenderer.on('connect-reply', connectReplyHandler);
 
-    // const timeout = setTimeout(() => {
-    //   if (isLoading) {
-    //     navigate(-1)
-    //     toast.error(' اذا استمرت المشكله جرب توصيل الجهاز بالكمبيوتر مباشره ')
-    //     toast.error(' فشل الاتصال تاكد ان الجهاز متصل بنفس الشبكه ') 
-    //           }
-    // }, 60000);
+    const timeout = setTimeout(() => {
+      if (isLoading) {
+        navigate(-1)
+        toast.error(' اذا استمرت المشكله جرب توصيل الجهاز بالكمبيوتر مباشره ')
+        toast.error(' فشل الاتصال تاكد ان الجهاز متصل بنفس الشبكه ') 
+              }
+    }, 60000);
 
-    // return () => {
-    //   clearTimeout(timeout);
-    // };
+    return () => {
+      clearTimeout(timeout);
+    };
   }, [mac, isLoading]);
 
   if (error) console.log(error.message);
