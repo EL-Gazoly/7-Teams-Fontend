@@ -18,3 +18,11 @@ mutation CreateRole($data: CreateRoleInput!) {
   }
 }
 `
+
+export const updateRole = gql`
+mutation UpdateRole($updateRoleId: String!, $data: UpdateRoleInput!) {
+  updateRole(id: $updateRoleId, data: $data) {
+    name
+  }
+}
+`
