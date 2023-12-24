@@ -1,4 +1,5 @@
-import { Image, Button } from '@nextui-org/react'
+import { Image } from '@nextui-org/react'
+import SelectExpriment from './SelectExpriment'
 export function Item({
   icon,
     title,
@@ -11,11 +12,8 @@ export function Item({
                                 <Image src={icon} width={37} height={42} />
                                 <span> {title} </span>
                         </div>
-                        <Button className=' w-[95px] py-2 bg-primary-gradient text-white text-xs font-bold rounded-md'
-                        onPress={ () => setSelectedItem({icon,title})}
-                        >
-                            ابدا التجربه
-                        </Button>
+                      
+                      <SelectExpriment setSelectItem={setSelectedItem} />
 
                         
                         

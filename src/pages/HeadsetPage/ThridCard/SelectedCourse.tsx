@@ -15,11 +15,11 @@ type SelectedCourseProps = {
 const SelectedCourse = ({selectedItem , setSelectedItem} : SelectedCourseProps) => {
     
   return (
-    <div className=' selected-course absolute inset-0'>
+    <div className=' selected-course absolute inset-0 z-20'>
         <img src={CourseBg} alt="" className=' w-full h-full' />
         <div className=' absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center gap-y-[26px]'>
             <div className=' flex flex-col gap-y-[18px]'>
-                <Image src={selectedItem.icon} width={54} height={59} />
+                <Image src={selectedItem.icon} width={54} height={59} className=' ml-5'  radius='none' />
                 <span className=' text-text-black text-[21px] font-bold'> {selectedItem.title} </span>
             </div>
 
