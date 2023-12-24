@@ -20,6 +20,7 @@ import UpadteAdmin from "./pages/UpdateAdmin"
 import Landing from "./pages/Landing"
 import ErrorPage from "./pages/error"
 import CreateRolePage from "./pages/CreateRole"
+import UpdateRolePage from "./pages/UpdateRole"
 function App() {
   const location = useLocation();
   const isLoginPage = location.pathname === '/login';
@@ -60,6 +61,7 @@ function App() {
                 <Route path="/settings/admins/update/:id" element={<UpadteAdmin />} />
                 <Route path="/settings/roles" element={<RolesPage />} />
                 <Route path="/settings/roles/create" element={<CreateRolePage />} />
+                <Route path="/settings/roles/update/:id" element={<UpdateRolePage />} />
             </Route>
           </Routes>
           </div>

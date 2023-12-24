@@ -19,6 +19,25 @@ mutation CreateRole($data: CreateRoleInput!) {
 }
 `
 
+export const getRole = gql`
+  query getRole($roleId: String!) {
+  role(id: $roleId) {
+    id
+    name
+    isUsersAccess
+    isStudentsAccess
+    isRolesAccess
+    isReportsAccess
+    isLogsAccess
+    isLibraryAccess
+    isDevicesAccess
+    isDashboardAccess
+    isCoursesAccsess
+    isCertificatesAccess
+  }
+}
+`
+
 export const GetRolesWithPermessions = gql`
 query GetRolesWithPermessions {
   admin {

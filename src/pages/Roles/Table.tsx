@@ -111,7 +111,7 @@ const RolesTables = ({searchQuery}) => {
                         </div>
                     }
                       {role.isDevicesAccess && 
-                        <div className='flex items-center gap-x-2  w-[187px] '>
+                        <div className='flex items-center gap-x-2 col-span-2 '>
                             <div className=' w-1 h-1 bg-text-black mt-1' />
                             <span className=''> التحكم في نظارة الواقع الافتراضي </span>
                         </div>
