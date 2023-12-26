@@ -14,7 +14,6 @@ dist-electron
 build
 release
 *.local
-assets
 
 # Editor directories and files
 .vscode/*
@@ -26,4 +25,3 @@ assets
 *.njsproj
 *.sln
 *.sw?
-assets

@@ -21,6 +21,7 @@ import Landing from "./pages/Landing"
 import ErrorPage from "./pages/error"
 import CreateRolePage from "./pages/CreateRole"
 import UpdateRolePage from "./pages/UpdateRole"
+import Dashboard from "./pages/Dashboard"
 function App() {
   const location = useLocation();
   const isLoginPage = location.pathname === '/login';
@@ -62,6 +63,7 @@ function App() {
                 <Route path="/settings/roles" element={<RolesPage />} />
                 <Route path="/settings/roles/create" element={<CreateRolePage />} />
                 <Route path="/settings/roles/update/:id" element={<UpdateRolePage />} />
+                <Route path="/dashboard" element={<Dashboard />} />
             </Route>
           </Routes>
           </div>

@@ -17,3 +17,7 @@ input:focus{
     border: 6px solid transparent;
     background-clip: content-box;
   }
+  svg g path {
+    transition: all 0.3s ease; /* Adding a transition for smoothness */
+    border-radius: 6px; /* Adding border-radius for rounded corners */
+  }
