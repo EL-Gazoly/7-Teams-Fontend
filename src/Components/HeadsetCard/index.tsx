@@ -24,7 +24,7 @@ const HeadsetCard = ({ device, index, selectedHeadsets, setSelectedHeadsets }: H
         if(device.started){
           setSelectedHeadsets((prev: any) => {
             const newSelectedHeadsets = [...prev];
-            newSelectedHeadsets[index] = { ...newSelectedHeadsets[index], started: false };
+            newSelectedHeadsets[index] = { ...newSelectedHeadsets[index], started: false, selected: false };
             return newSelectedHeadsets;
           });
         }
