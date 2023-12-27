@@ -30,6 +30,8 @@ const CreateStudent = () => {
         data: {
           name: name,
           facilityId: id,
+          classId: "65d2322b-1d47-42b1-8739-f10a83378355",
+          teamId: "1781aa8d-369d-4875-8a32-c8aac39ea543"
         },
         image: image,
       }

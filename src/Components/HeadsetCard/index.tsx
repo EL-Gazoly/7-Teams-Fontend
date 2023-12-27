@@ -47,8 +47,8 @@ const HeadsetCard = ({ device, index, selectedHeadsets, setSelectedHeadsets }: H
           >
             <div className='relative w-full h-[37px] pt-3' >
               <Image src={connectedIcon} className=' mr-4' />
-              <div className='absolute top-0 left-2 flex w-[79.345px] h-[28.612px] px-[5.583px] py-[2.791px] items-center justify-center gap-x-[5.583px] rounded-b-[2.791px]
-               ${device.student.length === 0 ? " bg-disabled opacity-40  " : " bg-[#45FF5F] "}' style={{ boxShadow: '0px 2.791px 2.791px 0px rgba(0, 0, 0, 0.25)' }}>
+              <div className={`absolute top-0 left-2 flex w-[79.345px] h-[28.612px] px-[5.583px] py-[2.791px] items-center justify-center gap-x-[5.583px] rounded-b-[2.791px]
+               ${device.student.length === 0 ? " bg-disabled opacity-40  " : " bg-primary "}`} style={{ boxShadow: '0px 2.791px 2.791px 0px rgba(0, 0, 0, 0.25)' }}>
                 <span className='text-[9.7px] font-semibold text-white'>{device.student.length === 0 ? "غير متصل" : "متصل"}</span>
                 <div className={`w-[6.979px] h-[6.979px] rounded-full ${device.student.length === 0 ? " bg-[#DFEBE1]  " : " bg-[#45FF5F] "} `} />
               </div>
