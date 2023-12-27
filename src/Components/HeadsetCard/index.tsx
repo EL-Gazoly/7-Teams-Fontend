@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Card, CardHeader, CardBody, CardFooter, Button, Image } from '@nextui-org/react';
+import React, { useState, useEffect } from 'react';
+import { Button, Image } from '@nextui-org/react';
 import OnlineIcon from '../../assets/Landing/HeadsetCard/online.svg';
 import OfflineIcon from '../../assets/Landing/HeadsetCard/wifi-square.svg';
 import HeadsetImage from '../../assets/Landing/HeadsetCard/headset.png';
@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 type HeadsetProps = {
   index?: number;
   device: { name: string; macAddress: string , student: {name: string}[];  selected: boolean; 
-    AppStatus: string; Battery: number; Connected: boolean 
+    AppStatus: string; Battery: number; Connected: boolean; started: boolean;
 }
   selectedHeadsets: any
   setSelectedHeadsets: React.Dispatch<any>
@@ -19,6 +19,19 @@ type HeadsetProps = {
 const HeadsetCard = ({ device, index, selectedHeadsets, setSelectedHeadsets }: HeadsetProps) => {
   const [isSelected, setSelected] = useState(selectedHeadsets.selected);
   const navigate = useNavigate();
+  useEffect(() => {
+    const startCourse = setTimeout(() => {
+        if(device.started){
+          setSelectedHeadsets((prev: any) => {
+            const newSelectedHeadsets = [...prev];
+            newSelectedHeadsets[index] = { ...newSelectedHeadsets[index], started: false };
+            return newSelectedHeadsets;
+          });
+        }
+    }, 1750);
+
+    return () => clearInterval(startCourse);
+  }, [selectedHeadsets]);
 
   const toggleSelected = () => {
     setSelected(!isSelected);
@@ -63,7 +76,7 @@ const HeadsetCard = ({ device, index, selectedHeadsets, setSelectedHeadsets }: H
                 </div>
                 <div className='flex flex-col gap-y-2'>
                   <span className='text-[#122333] text-sm font-semibold'>نظاره رقم {index + 1}</span>
-                  <span className='text-[#A5A5A5] text-[8.5px]'>{device.name}</span>
+                  <span className='text-[#A5A5A5] text-[8.5px]'>{device.started.toString()}</span>
                 </div>
             </div>
             </button>
@@ -77,7 +90,7 @@ const HeadsetCard = ({ device, index, selectedHeadsets, setSelectedHeadsets }: H
 
           
           {device.selected && <div className='absolute bottom-[-1%] left-[-2%]'><Image src={SelectCard} /></div>}
-        {false && <div className='absolute inset-0 bg-white mt-10'><img src={SucessGif} /></div>}
+        {device.started && <div className='absolute inset-0 bg-white mt-10'><img src={SucessGif} /></div>}
       </div>
     
   );

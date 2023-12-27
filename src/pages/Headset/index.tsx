@@ -11,7 +11,7 @@ const HeadsetsPage = () => {
       <ControlCard icon="Headset" title=' نظارة الواقع الافتراضي ' neasted={false}/>
       <div>
         <ChooseHeadsetSection selectedHeadsets={selectedHeadsets} setSelectedHeadsets={setSelectedHeadsets } />
-        <ChooseCourseSection />
+        <ChooseCourseSection selectedHeadsets={selectedHeadsets} />
         <HeadsetsSection  selectedHeadsets={selectedHeadsets} setSelectedHeadsets={setSelectedHeadsets} />
 
       </div>

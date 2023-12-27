@@ -1,11 +1,9 @@
 import LiquidExpirment from '../../../assets/SelectCourse/SelectExpriment/Chemistry/liquid.svg'
-import MetalExpriment from '../../../assets/SelectCourse/SelectExpriment/Chemistry/metals.png'
-import ColdExpriment from '../../../assets/SelectCourse/SelectExpriment/Chemistry/cold.png'
 import HeatExpriment from '../../../assets/SelectCourse/SelectExpriment/Chemistry/heat.svg'
+import DenistyOfWood from '../../../assets/SelectCourse/SelectExpriment/Chemistry/DensityOfWood.svg'
 import ArrowIcon from '../../../assets/headset page/arrow.svg'
 import {  Dropdown,  DropdownTrigger,  DropdownMenu,  DropdownItem, Button, Image , Divider} from "@nextui-org/react";
 
-import React from 'react'
 
 const SelectExpriment = ({setSelectItem}) => {
   return (
@@ -29,6 +27,7 @@ const SelectExpriment = ({setSelectItem}) => {
                   startContent={<Image src={LiquidExpirment} width={18} height={18} radius='none' /> } 
                     onClick={()=> {
                       setSelectItem({
+                        value : "bf018686-aa10-40ba-99b8-a2d272110bb3",
                         icon : LiquidExpirment,
                         title : " تجربه السوائل  "
                       })
@@ -37,37 +36,28 @@ const SelectExpriment = ({setSelectItem}) => {
                    تجربة السوائل 
                 </DropdownItem>
                 <DropdownItem className='p-2 flex flex-row-reverse items-center gap-x-3 text-right border-b border-[#FFFEFE29] rounded-none'
-                  startContent={<Image src={MetalExpriment} width={18} height={18} radius='none' /> } 
+                  startContent={<Image src={HeatExpriment} width={18} height={18} radius='none' /> } 
                   onClick={()=> {
                     setSelectItem({
-                      icon : MetalExpriment,
-                      title : " اختبار الفلزات "
+                      value : "ace39607-1086-4ec6-a207-76969e5419c8",
+                      icon : HeatExpriment,
+                      title : "  استخدام موقد بنسن "
                     })
                   }}
                   >
-                   اختبار الفلزات
+                       استخدام موقد بنسن         
                 </DropdownItem>
                 <DropdownItem className=' p-3 flex flex-row-reverse items-center gap-x-3 text-right border-b border-[#FFFEFE29] rounded-none'
-                  startContent={<Image src={ColdExpriment} width={18} height={18} radius='none' /> }
+                  startContent={<Image src={DenistyOfWood} width={18} height={18} radius='none' /> }
                   onClick={()=> {
                     setSelectItem({
-                      icon : ColdExpriment,
-                      title : " كمادات باردة "
+                      value :  "e196ece4-990a-4944-8940-00ccc9de50a3",
+                      icon : DenistyOfWood,
+                      title : "  كثافة الخشب "
                     })
                   }}
                   >
-                   كمادات باردة
-                </DropdownItem>
-                <DropdownItem className='flex flex-row-reverse items-center gap-x-3 text-right border-b border-[#FFFEFE29] rounded-none p-3'
-                  startContent={<Image src={HeatExpriment} width={18} height={18} radius='none' /> }
-                  onClick={()=> {
-                    setSelectItem({
-                      icon : HeatExpriment,
-                      title : " حرارة نوعية "
-                    })
-                  }}
-                  >
-                   حرارة نوعية
+                    كثافة الخشب  
                 </DropdownItem>
                 
       

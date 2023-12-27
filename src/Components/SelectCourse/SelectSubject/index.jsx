@@ -4,13 +4,17 @@ import Select from 'react-select';
 
 
 const SelectSubject = ( props) => {
-  const [selectedOption, setSelectedOption] = useState(props.selectedCourse);
+  const [selectedOption, setSelectedOption] = useState(props.SelectdSubject);
 
   const handleChange = (selectedOption) => {
     setSelectedOption(selectedOption);
     props.setSelectedSubject(selectedOption.value);
-    
   };
+
+  useEffect(() => {
+    if (props.SelectdSubject== null)
+    setSelectedOption(props.SelectdSubject);
+  }, [props.SelectdSubject]);
   const transformedOptions = Object.keys(props.options).map((field) => {
     return {
       value: field,

@@ -3,22 +3,27 @@ import Select from 'react-select';
 import unSelectedStart from '../../../assets/SelectCourse/SelectHowtoStart/unselected.svg'
 import SelectedStart from '../../../assets/SelectCourse/SelectHowtoStart/selected.svg'
 const options = [
-  { value: 'full', label: "أبدأ الشرح ", image : unSelectedStart, selected : SelectedStart},
-  { value: 'expriment', label: "أبدأ التجربة " , image : unSelectedStart, selected : SelectedStart},
-  { value: 'practical', label: "أبدأ الأختبار العملي" , image : unSelectedStart, selected : SelectedStart},
-  { value: 'theortical  ', label: "أبدأ الأختبار النظري" , image : unSelectedStart, selected : SelectedStart},
+  { value: 'FullCourse', label: "أبدأ الشرح ", image : unSelectedStart, selected : SelectedStart},
+  { value: 'StartTraining', label: "أبدأ التجربة " , image : unSelectedStart, selected : SelectedStart},
+  { value: 'Practical', label: "أبدأ الأختبار العملي" , image : unSelectedStart, selected : SelectedStart},
+  { value: 'Theoretical  ', label: "أبدأ الأختبار النظري" , image : unSelectedStart, selected : SelectedStart},
 ];
 
 
 
 const SelectHowToStart = ( props) => {
-  const [selectedOption, setSelectedOption] = useState(props.selectedCourse);
+  const [selectedOption, setSelectedOption] = useState(props.SelectedHowToStart);
 
   const handleChange = (selectedOption) => {
     setSelectedOption(selectedOption);
-    props.setSelectedCourse(selectedOption.value);
+    props.setSelectedHowToStart(selectedOption.value);
     
   };
+
+  useEffect(() => {
+    if (props.SelectedHowToStart== null)
+    setSelectedOption(null);
+  }, [props.SelectedHowToStart]);
 
   const customStyles = {
     control: (provided) => ({

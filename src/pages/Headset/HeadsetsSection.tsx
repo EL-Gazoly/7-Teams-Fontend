@@ -21,7 +21,7 @@ const HeadsetsSection = ({setSelectedHeadsets, selectedHeadsets} : HeadsetProps)
     if (devices && devices.admin.devices.length > 0) {
       const devicesMap = devices.admin.devices.map((device) => device.macAddress);
       const devicesWithSelect = devices.admin.devices.map((device) => {
-        return { ...device, selected: false };
+        return { ...device, selected: false, started: false };
       });
   
       // Merge devices from different sources into one list

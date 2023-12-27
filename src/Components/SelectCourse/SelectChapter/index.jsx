@@ -3,13 +3,18 @@ import Select from 'react-select';
 
 
 const SelectChapter = ( props) => {
-  const [selectedOption, setSelectedOption] = useState();
+  const [selectedOption, setSelectedOption] = useState(props.SelectedChapter);
 
   const handleChange = (selectedOption) => {
     setSelectedOption(selectedOption);
-    props.setSelectedChapter({ value: selectedOption.value  });
+    props.setSelectedChapter(selectedOption.value);
     
   };
+ useEffect(() => {
+  if (props.SelectedChapter== null)
+    setSelectedOption(props.SelectedChapter);
+  }, [props.SelectedChapter]);
+
    const selectedSubjectChapters = props.SelectdSubject
     ? props.options[props.SelectdSubject]?.chapters
     : [];

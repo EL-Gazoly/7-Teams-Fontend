@@ -3,9 +3,6 @@ import {useState} from 'react'
 
 
 import Chemistry from '../../../assets/SelectCourse/SelectSubject/chemistry.svg'
-import Physics from '../../../assets/SelectCourse/SelectSubject/physics.svg'
-import Biology from '../../../assets/SelectCourse/SelectSubject/biology.svg'
-import Geology from '../../../assets/SelectCourse/SelectSubject/geology.svg'
 import SelectedCourse from './SelectedCourse';
 
 
@@ -28,10 +25,7 @@ const ThridCard = () => {
 
                 </div>
                 <div className=' flex flex-col w-full'>
-                <Item   icon={Physics} title={" الفيزياء "} setSelectedItem={setSelectedItem} />
-                <Item   icon={Chemistry} title={" الكيمياء "} setSelectedItem={setSelectedItem}  />
-                <Item   icon={Biology} title={" الاحياء "} setSelectedItem={setSelectedItem}  />
-                <Item   icon={Geology} title={" جيولجيا "} setSelectedItem={setSelectedItem}  />
+                  <Item   icon={Chemistry} title={" الكيمياء "} setSelectedItem={setSelectedItem}  /> 
                 </div>
 
             </div>

@@ -13,6 +13,8 @@
       const [connectedLength, setConnectedLength] = useState(0);
 
       const toggleSelected = () => {
+        
+        if (connectedLength === 0) return;
         setIsTrue(!isTrue);
         selectedHeadsets.forEach((device: any, index: number) => {
           if (device.Connected){
@@ -40,7 +42,7 @@
         if (selectedDevices.length === 0) {
           setIsTrue(false);
         }
-        if (selectedDevices.length === connectedDevices.length) {
+        if (selectedDevices.length === connectedDevices.length && connectedDevices.length !== 0) {
           setIsTrue(true);
         }
         if (selectedDevices.length < connectedDevices.length) {

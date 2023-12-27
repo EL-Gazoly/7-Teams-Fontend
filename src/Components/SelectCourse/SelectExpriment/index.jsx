@@ -2,18 +2,24 @@ import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
 
 import LiquidExpirment from '../../../assets/SelectCourse/SelectExpriment/Chemistry/liquid.svg'
-import MetalExpriment from '../../../assets/SelectCourse/SelectExpriment/Chemistry/metals.png'
-import ColdExpriment from '../../../assets/SelectCourse/SelectExpriment/Chemistry/cold.png'
 import HeatExpriment from '../../../assets/SelectCourse/SelectExpriment/Chemistry/heat.svg'
+import DenistyOfWood from '../../../assets/SelectCourse/SelectExpriment/Chemistry/DensityOfWood.svg'
 
-const SelectChapter = ( props) => {
-  const [selectedOption, setSelectedOption] = useState();
+const SelectExpirment = ( props) => {
+  const [selectedOption, setSelectedOption] = useState(props.SelectedExpirment);
 
   const handleChange = (selectedOption) => {
     setSelectedOption(selectedOption);
-    props.setSelectedExpriemnt({ value: selectedOption.value  });
-    
+    props.setSelectedExpriemnt( {
+      name : selectedOption.name,
+      value : selectedOption.value,
+    });
   };
+
+  useEffect(() => {
+    if (props.SelectedExpirment== null)
+    setSelectedOption(props.SelectedExpirment);
+  }, [props.SelectedExpirment]);
    const selectedSubjectChapters = props.SelectdSubject
     ? props.options[props.SelectdSubject]?.chapters
     : [];
@@ -30,24 +36,19 @@ const SelectChapter = ( props) => {
 
   const options = [
     {
-      name : "اختبار الفلزات",
-      icon : MetalExpriment,
-      value : "metal"
-    },
-    {
       name : "لزوجة السائل",
       icon : LiquidExpirment,
-      value : "liquid"
+      value : "bf018686-aa10-40ba-99b8-a2d272110bb3"
     },
     {
-      name : "كمادات باردة",
-      icon : ColdExpriment,
-      value : "cold"
+      name : " كثافة الخشب ",
+      icon : DenistyOfWood,
+      value : "e196ece4-990a-4944-8940-00ccc9de50a3"
     },
     {
-      name : "حرارة نوعية",
+      name : "  استخدام موقد بنسن ",
       icon : HeatExpriment,
-      value : "heat"
+      value : "ace39607-1086-4ec6-a207-76969e5419c8"
     },
   ]
 
@@ -190,4 +191,4 @@ const SelectChapter = ( props) => {
 
 
 
-export default SelectChapter;
+export default SelectExpirment;
