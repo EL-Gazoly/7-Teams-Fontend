@@ -24,7 +24,7 @@ function createWindow() {
     width: 1280,
     height: 832,
   })
-
+  win.setMenu(null)
   // Test active push message to Renderer-process.
   win.webContents.on('did-finish-load', () => {
     win?.webContents.send('main-process-message', (new Date).toLocaleString())
