@@ -4,7 +4,7 @@ import { Divider } from '@nextui-org/react';
 export const data = [
   ["Student", "number"],
   ["جديد", 62],
-  ["بدأو التدريب", 13],
+  ["بدأو التدريب", 15],
   ["خرحين", 23],
 
 ];
@@ -38,7 +38,7 @@ const SecondCard = () => {
               </div>
               <div className=' flex items-center gap-x-1 w-[118px] '>
                   <div className=' w-3 h-2 rounded bg-[#21FB45]'  />
-                  <span className=''>13% بدأو التدريب</span>
+                  <span className=''>15% بدأو التدريب</span>
               </div>
               <div className=' flex items-center gap-x-1 w-[118px] '>
                   <div className=' w-3 h-2 rounded bg-[#8DF49D]'  />
