@@ -19,8 +19,8 @@ const httpLink = createUploadLink({
 
 
 const authLink = setContext((_, { headers }) => {
-  const cookie = document.cookie.split(';').find((cookie) => cookie.startsWith('Authorization'));
-  const token = cookie?.split('=')[1];
+  const token =localStorage.getItem("sevenTeamAuth");
+  console.log(`this is `, token)
   return {
       headers: {
           ...headers,

@@ -55,12 +55,11 @@ const LoginPage = () => {
     if(adminData || userData) {
         toast.success("تم تسجيل الدخول بنجاح")
         if (adminData){
-             document.cookie = `Authorization=${adminData?.loginAdmin?.token}; path=/; max-age=${30 * 24 * 60 * 60}`
+            localStorage.setItem('sevenTeamAuth', `${adminData?.loginAdmin?.token}`)
             localStorage.setItem('isAdmin', 'true')
     };
         if (userData){    
-            console.log(`this is the user token`, userData?.loginUser?.token)
-            document.cookie = `Authorization=${userData?.loginUser?.token}; path=/; max-age=${30 * 24 * 60 * 60}`
+            localStorage.setItem('sevenTeamAuth', `${userData?.loginUser?.token}`)
             localStorage.setItem('isDevicesAccess', `${userData?.loginUser?.roles?.isDevicesAccess}`)
             localStorage.setItem('isStudentsAccess', `${userData?.loginUser?.roles?.isStudentsAccess}`)
             localStorage.setItem('isRolesAccess', `${userData?.loginUser?.roles?.isRolesAccess}`)
