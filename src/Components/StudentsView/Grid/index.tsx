@@ -5,6 +5,9 @@ type studentsGridProps = {
     imageUrl : string,
     name : string,
     generatedId : number,
+    device : {
+      name : string
+    }
 
   }]
 }

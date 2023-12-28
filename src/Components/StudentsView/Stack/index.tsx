@@ -6,6 +6,9 @@ type Student = {
   imageUrl: string;
   name: string;
   generatedId: number;
+  device: {
+    name: string;
+  };
 };
 
 type StudentStackProps = {
@@ -53,10 +56,10 @@ const StudentsStackViews = ({ students }: StudentStackProps) => {
               <span className='text-xs font-semibold text-primary'>#{student.generatedId}</span>
             </TableCell>
             <TableCell className='relative'>
-              <div className='absolute top-[40%] right-[35%] w-[60px] h-[26px] bg-primary rounded flex flex-row-reverse items-center justify-center gap-x-[4px]'>
+              <div className={`absolute top-[40%] right-[35%] w-[60px] h-[26px] ${student.device?.name ?   "bg-primary " : " bg-disconnected-gradient"} rounded flex flex-row-reverse items-center justify-center gap-x-[4px]`}>
                 <div className='w-[6px] h-[6px] rounded-full bg-white mt-[2px]' />
                 <span className='text-white text-[8px]'>
-                  {true && "متصل الان"}
+                  {student.device?.name ? "متصل الان" : "غير متصل"}
                 </span>
               </div>
             </TableCell>

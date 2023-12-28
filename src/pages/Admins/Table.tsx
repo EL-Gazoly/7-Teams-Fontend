@@ -86,9 +86,9 @@ const AdminsTable = ({searchQuery }) => {
               </span>
           </TableCell>
           <TableCell className='relative'>
-              <div className='absolute top-[40%] right-[35%] w-[60px] h-[26px] bg-primary rounded flex flex-row-reverse items-center justify-center gap-x-[4px]'>
+              <div className='absolute top-[40%] right-[35%] w-[60px] h-[26px]  bg-disconnected-gradient rounded flex flex-row-reverse items-center justify-center gap-x-[4px]'>
               <div className='w-[6px] h-[6px] rounded-full bg-white mt-[2px]' />
-              <span className='text-white text-[8px]'>{true && "متصل الان"}</span>
+              <span className='text-white text-[8px]'>{true && " غير متصل"}</span>
               </div>
           </TableCell>
           <TableCell className='relative'>

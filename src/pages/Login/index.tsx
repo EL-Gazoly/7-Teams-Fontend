@@ -35,6 +35,16 @@ const LoginPage = () => {
     };
 
     const handleLogin = () => {
+        if (!emailRef.current.value || !passwordRef.current.value) {
+            toast.error('الرجاء ادخال البريد الالكتروني وكلمة المرور');
+            return;
+        }
+        // check email regex
+        const emailRegex = /^\S+@\S+\.\S+$/;
+        if (!emailRegex.test(emailRef.current.value)) {
+            toast.error('الرجاء ادخال بريد الكتروني صحيح');
+            return;
+        }
         if (emailRef.current.value.includes('admin')) {
             handleAdminLogin();
         } else {

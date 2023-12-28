@@ -20,6 +20,7 @@ const HeadsetCard = ({ device, index, selectedHeadsets, setSelectedHeadsets }: H
   const [isSelected, setSelected] = useState(selectedHeadsets.selected);
   const navigate = useNavigate();
   useEffect(() => {
+    if (device.selected !== isSelected) setSelected(device.selected)
     const startCourse = setTimeout(() => {
         if(device.started){
           setSelectedHeadsets((prev: any) => {
