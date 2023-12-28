@@ -11,7 +11,6 @@ export function FirstCard({ device, deviceState }) {
     if (!connected) return "bg-[#E8E2E2]";
     return level >= 66 ? "bg-[#2DEC4C]" : level >= 33 ? "bg-[#2DEC4C]" : "bg-[#E8E2E2]";
   };
-
   return (
     <div className='w-[565px] h-[375px] rounded-[21px] bg-light-bg py-5 px-12 relative flex flex-col items-end'
          style={{ boxShadow: '0px 3.588px 13.454px 0px rgba(91, 89, 89, 0.25)' }}>
@@ -29,7 +28,7 @@ export function FirstCard({ device, deviceState }) {
       <div className='flex flex-col items-center justify-center w-full gap-y-2'>
         <Image src={HeadsetImage} width={170} height={104} />
         <div className="flex flex-col gap-y-1 items-center text-text-black text-center">
-          <span className='text-[22px] font-bold'>{device.student.length !== 0 ? device.student.name : "لا يوجد"}</span>
+          <span className='text-[22px] font-bold'>{device.student.length !== 0 ? device.student[0].name : "لا يوجد"}</span>
           <span className='text-xs font-poppins'>{device.name}</span>
         </div>
         <div className='flex flex-col mt-7 items-center gap-y-[14px]'>
