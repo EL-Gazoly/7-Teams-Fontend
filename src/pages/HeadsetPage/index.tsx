@@ -61,7 +61,6 @@ const HeadsetPage = () => {
   }, [mac, isLoading]);
 
   if (error) console.log(error.message);
-  if (!device) return <p>Not found</p>;
 
   return (
     <div>
