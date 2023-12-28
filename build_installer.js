@@ -15,18 +15,11 @@ const OUT_DIR = path.resolve(__dirname, './SevenTeams_installer');
 const msiCreator = new MSICreator({
     appDirectory: APP_DIR,
     outputDirectory: OUT_DIR,
-
-    // Configure metadata
-    description: 'This is a demo application',
-    exe: 'SevnTeams',
-    name: 'Seven Teams Desktop App',
+    description: 'First phase of sevenTeams dashboard',
+    exe: 'SevenTeams',
+    name: 'SevenTeams Desktop App',
     manufacturer: 'Bright Vision Technology Inc',
-    version: '2.0.0',
-
-    // Configure installer User Interface
-    ui: {
-        chooseDirectory: true
-    },
+    version: '1.0.0',
 });
 
 // 4. Create a .wxs template file
