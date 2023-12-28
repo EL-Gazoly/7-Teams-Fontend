@@ -14,6 +14,8 @@ dist-electron
 build
 release
 *.local
+SevenTeams-win32-x64
+SevenTeams_installer
 
 # Editor directories and files
 .vscode/*

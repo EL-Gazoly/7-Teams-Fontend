@@ -37,6 +37,7 @@
     "autoprefixer": "^10.4.16",
     "electron": "^22.3.17",
     "electron-builder": "^24.6.4",
+    "electron-wix-msi": "^5.0.0",
     "eslint": "^8.48.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
