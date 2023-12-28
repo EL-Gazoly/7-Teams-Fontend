@@ -11,6 +11,7 @@ type SelectedCourseProps = {
         value: string;
         icon: string;
         title: string;
+        label: string;
     };
     setSelectedItem: React.Dispatch<any>
 }
@@ -39,7 +40,7 @@ const SelectedCourse = ({selectedItem , setSelectedItem} : SelectedCourseProps) 
                 "Control-App": {
                     "Course": "com.SevenTeams.ScienceExperiments",
                     "ExperimentId": selectedItem.value,
-                    "ExperimentName": selectedItem.title,
+                    "ExperimentName": selectedItem.label,
                     "Type": type,
                     "Command" : "Open",
                 }

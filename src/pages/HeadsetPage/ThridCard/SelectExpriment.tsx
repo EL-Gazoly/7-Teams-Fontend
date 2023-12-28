@@ -29,7 +29,8 @@ const SelectExpriment = ({setSelectItem}) => {
                       setSelectItem({
                         value : "bf018686-aa10-40ba-99b8-a2d272110bb3",
                         icon : LiquidExpirment,
-                        title : " تجربه السوائل  "
+                        title : " تجربه السوائل  ",
+                        label: "LiquidViscosity"
                       })
                     }}
                   >
@@ -41,7 +42,8 @@ const SelectExpriment = ({setSelectItem}) => {
                     setSelectItem({
                       value : "ace39607-1086-4ec6-a207-76969e5419c8",
                       icon : HeatExpriment,
-                      title : "  استخدام موقد بنسن "
+                      title : "  استخدام موقد بنسن ",
+                      label: "EffectiveUseOfBunsenBurner"
                     })
                   }}
                   >
@@ -53,7 +55,8 @@ const SelectExpriment = ({setSelectItem}) => {
                     setSelectItem({
                       value :  "e196ece4-990a-4944-8940-00ccc9de50a3",
                       icon : DenistyOfWood,
-                      title : "  كثافة الخشب "
+                      title : "  كثافة الخشب ",
+                      label: "DensityOfWood"
                     })
                   }}
                   >

@@ -23,7 +23,7 @@ const ChooseCourseSection = ({selectedHeadsets}: ChooseCourseSectionProps) => {
 
   const handelOpenCourse = () => {
       selectedHeadsets.forEach((headset) => {
-        if (!headset.selected){
+        if (headset.selected){
           headset.started = true
           handelStartCourse(headset.macAddress)  
           setSelectedSubject(null)
@@ -43,7 +43,7 @@ const ChooseCourseSection = ({selectedHeadsets}: ChooseCourseSectionProps) => {
             "Control-App": {
                 "Course": "com.SevenTeams.ScienceExperiments",
                 "ExperimentId": SelectedExpirment.value,
-                "ExperimentName": SelectedExpirment.name,
+                "ExperimentName": SelectedExpirment.title,
                 "Type": SelectedHowToStart,
                 "Command" : "Open",
             }

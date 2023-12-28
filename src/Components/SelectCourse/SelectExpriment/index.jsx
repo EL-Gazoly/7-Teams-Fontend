@@ -13,6 +13,7 @@ const SelectExpirment = ( props) => {
     props.setSelectedExpriemnt( {
       name : selectedOption.name,
       value : selectedOption.value,
+      title : selectedOption.title,
     });
   };
 
@@ -38,17 +39,20 @@ const SelectExpirment = ( props) => {
     {
       name : "لزوجة السائل",
       icon : LiquidExpirment,
-      value : "bf018686-aa10-40ba-99b8-a2d272110bb3"
+      value : "bf018686-aa10-40ba-99b8-a2d272110bb3",
+      title: "LiquidViscosity"
     },
     {
       name : " كثافة الخشب ",
       icon : DenistyOfWood,
-      value : "e196ece4-990a-4944-8940-00ccc9de50a3"
+      value : "e196ece4-990a-4944-8940-00ccc9de50a3",
+      title: "DensityOfWood"
     },
     {
       name : "  استخدام موقد بنسن ",
       icon : HeatExpriment,
-      value : "ace39607-1086-4ec6-a207-76969e5419c8"
+      value : "ace39607-1086-4ec6-a207-76969e5419c8",
+      title: "EffectiveUseOfBunsenBurner"
     },
   ]
 
