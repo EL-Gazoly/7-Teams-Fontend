@@ -9,6 +9,8 @@ import { CreateUser, GetUsers } from '../../graphql/users';
 import { getRoles } from '../../graphql/role';
 import Loading from '../../Components/Loading';
 import { toast } from 'sonner';
+import EyeSlashIcon from '../../assets/login/EyeSlashIcon.svg'
+import EyeIcon from '../../assets/login/EyeIcon.svg'
 
 
 const CreateAdmin = () => {
@@ -16,6 +18,8 @@ const CreateAdmin = () => {
     const [sleectedFile, setSelectedFile] = useState(null);
     const [selectRole, setSelectRole] = useState({value : '' , label : ""});
     const [key, setKey] = useState(0)
+    const [showPassword, setShowPassword] = useState(false);
+    const [isIconshowed, setIsIconshowed] = useState('');
     const { loading: loadingRoles , error: errorRoles, data: roles } = useQuery(getRoles);
 
     const [createUser, { loading: loadingCreateUser, error: errorCreateUser, data: dataCreateUser }] = useMutation(CreateUser,{
@@ -121,16 +125,26 @@ const CreateAdmin = () => {
                 <div className='flex flex-row-reverse items-center gap-x-[22px]'>
                     <div className=' flex flex-col gap-y-[5px] text-right text-text-black'>
                         <label htmlFor="name" className=' mr-1' >كلمة المرور</label>
-                        <input type="password" className=' text-right w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] px-4
-                            
-                        ' placeholder=' كلمه المرور هنا' ref={passwordRef} />
-
+                        <div className='w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] px-4 flex items-center '>
+                            <img src={showPassword ? EyeSlashIcon : EyeIcon} alt="" onClick={()=> setShowPassword(!showPassword)} 
+                            className={` cursor-pointer ${isIconshowed? 'block' : 'hidden'}`} />
+                            <input type={showPassword? "text" : "password"} className=' text-right flex-1  h-full bg-transparent
+                            ' placeholder=' كلمه المرور هنا' ref={passwordRef} 
+                                onChange={(e) => setIsIconshowed(e.target.value)}
+                            />
+                        </div>
+                    
                     </div>
                     <div className=' flex flex-col gap-y-[5px] text-right text-text-black'>
                         <label htmlFor="id"  className=' mr-1' >  تأكيد كلمة المرور</label>
-                        <input type="password" className=' text-right w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] px-4
-                            
-                        ' placeholder=' اعد كتابه كلمه المرور هنا'  ref={confirmPasswordRef}/>
+                        <div className='w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] px-4 flex items-center '>
+                            <img src={showPassword ? EyeSlashIcon : EyeIcon} alt="" onClick={()=> setShowPassword(!showPassword)} 
+                            className={` cursor-pointer ${isIconshowed? 'block' : 'hidden'}`} />
+                            <input type={showPassword? "text" : "password"} className=' text-right flex-1  h-full bg-transparent
+                            ' placeholder=' كلمه المرور هنا' ref={passwordRef} 
+                                onChange={(e) => setIsIconshowed(e.target.value)}
+                            />
+                        </div>
 
                     </div>
 
