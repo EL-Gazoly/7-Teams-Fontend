@@ -41,53 +41,115 @@ const UpdateAdmin = () => {
                 setSelectedImage(`${import.meta.env.VITE_API_URL}${dataUser.user.imageUrl}`);
             }
         }
-    }, [dataUser]);
+        if (dataUpdateUser) {
+            if (notifcationRef.current) return;
+            toast.success(' تم تعديل المسؤول بنجاح ')
+            notifcationRef.current = true;
+        }
+    
+    }, [dataUser, dataUpdateUser]);
 
 
     const nameRef = useRef<HTMLInputElement>();
     const emailRef = useRef<HTMLInputElement>();
     const passwordRef = useRef<HTMLInputElement>();
     const confirmPasswordRef = useRef<HTMLInputElement>();
+    const notifcationRef = useRef(false);
+
+    
+    const updateWithoutImage = async (name, email, password, role) => {
+        await update({
+            variables : {
+                updateUserId: id,
+                data: {
+                    name,
+                    email,
+                    hashedPassword : password,
+                    roleId: role,
+                }
+            },
+            
+        
+        })
+    }
+    const updateWithImageAndPassword = async (name, email, password, role , image) => {
+        await update({
+            variables : {
+                updateUserId: id,
+                data: {
+                    name,
+                    email,
+                    hashedPassword : password,
+                    roleId: role,
+                },
+                image : image ? image : null
+            },
+            
+        
+        })
+    }
+    const updateWithImageAndWithoutPassword = async (name, email, role , image) => {
+        await update({
+            variables : {
+                updateUserId: id,
+                data: {
+                    name,
+                    email,
+                    roleId: role,
+                },
+                image : image ? image : null
+            },
+            
+        
+        })
+    }
+
+    const updateWithoutImageAndPassword = async (name, email, role) => {
+        await update({
+            variables : {
+                updateUserId: id,
+                data: {
+                    name,
+                    email,
+                    roleId: role,
+                }
+            },
+            
+        
+        })
+    }
 
     const handelSubmit = async () => {
+        notifcationRef.current = false;
         const name = nameRef.current.value;
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
         const confirmPassword = confirmPasswordRef.current.value;
         const image = sleectedFile ? sleectedFile : null;
-        const role = selectRole.value;
-        if( !name || !email || !role ) return toast.error(' برجاء ملئ جميع الحقول ')
+        const role = selectRole ? selectRole.value : null;
+        console.log(role)
+        if( !name || !email || role===null ) return toast.error(' برجاء ملئ جميع الحقول ')
         if (password !== confirmPassword) return toast.error(' كلمه المرور غير متطابقه ')
         if (email.includes('admin')) return toast.error( ' برجاء اختيار ايميل لا يحتوي علي كلمه admin')
-
+        if (password && password.length < 6) return toast.error(' كلمه المرور يجب ان تكون اكبر من 8 حروف ')
+        const EmailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        if (!EmailRegex.test(email)) return toast.error(' برجاء ادخال ايميل صحيح ')
+        console.log(dataUser.user)
         if ((selectedImage && !sleectedFile)){
-            await update({
-                variables : {
-                    updateUserId: id,
-                    data: {
-                        name,
-                        email,
-                        hashedPassword : password,
-                        roleId: role,
-                    }
-                },
-            })
+            if (password && confirmPassword) {
+                updateWithImageAndPassword(name, email, password, role, image)
+            }
+            else  {
+                updateWithImageAndWithoutPassword(name, email, role, image)
+            }
         }
         else {
-            await update({
-                variables : {
-                    updateUserId: id,
-                    data: {
-                        name,
-                        email,
-                        hashedPassword : password,
-                        roleId: role,
-                    },
-                    image : image ? image : null
-                },
-                
-            
-            })
+            if (password && confirmPassword) {
+                updateWithoutImage(name, email, password, role)
+            }
+            else {
+                updateWithoutImageAndPassword(name, email, role)
+            }
         }
     }
 
@@ -109,10 +171,7 @@ const UpdateAdmin = () => {
 
     if (errorUpdateUser) toast.error(errorUpdateUser.message)
 
-    if (dataUpdateUser) {toast.success(' تم تعديل المسؤول بنجاح ')
     
-}
-
 
    
   return (
@@ -177,7 +236,7 @@ const UpdateAdmin = () => {
              onPress={handelSubmit}
             >
                 <Image src={AddIcon} />
-                <span className=' text-white text-sm font-bold '>إضافة مسؤول جديد </span>
+                <span className=' text-white text-sm font-bold '> تعديل المسؤول  </span>
 
             </Button>
             </div>

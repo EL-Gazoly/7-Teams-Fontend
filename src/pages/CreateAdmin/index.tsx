@@ -34,11 +34,14 @@ const CreateAdmin = () => {
         const password = passwordRef.current.value;
         const confirmPassword = confirmPasswordRef.current.value;
         const image = sleectedFile;
-        const role = selectRole.value;
+        const role = selectRole?.value;
         if( !name || !email || !password || !confirmPassword || !role ) return toast.error(' برجاء ملئ جميع الحقول ')
         if (password !== confirmPassword) return toast.error(' كلمه المرور غير متطابقه ')
 
         if (email.includes('admin')) return toast.error(' برجاء اختيار ايميل لا يحتوي علي كلمه admin ')
+        if (password.length < 6) return toast.error(' كلمه المرور يجب ان تكون اكبر من 8 حروف ')
+        const EmailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        if (!EmailRegex.test(email)) return toast.error(' برجاء ادخال ايميل صحيح ')
         
         await createUser({
             variables : {
