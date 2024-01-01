@@ -1,6 +1,6 @@
 import { LOGINADMIN, LOGINUSER } from '../../graphql/login';
 import { useMutation } from '@apollo/client';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import './style.css';
 import LoginIcon from '../../assets/login/logo.png';
 import { Image, Button } from '@nextui-org/react';
@@ -19,6 +19,19 @@ const LoginPage = () => {
 
     const [loginAdmin, { data: adminData, loading: adminLoading, error: adminError }] = useMutation(LOGINADMIN);
     const [loginUser, { data: userData, loading: userLoading, error: userError }] = useMutation(LOGINUSER);
+
+    useEffect(() => {
+        if(adminError || userError) {
+            if(adminError?.message =='Invalid password' || userError?.message =='Invalid passwo' )
+                toast.error("كلمة المرور غير صحيحة")
+            else if (adminError?.message =='Not Authorised!' || userError?.message =='Not Authorised!' )
+                toast.error("البريد الالكتروني غير صحيح")
+            else {
+                toast.error("حدث خطأ ما")
+                console.log(adminError?.message || userError?.message)
+            }
+        }
+    }, [adminError, userError]);
 
     const handleAdminLogin = () => {
         loginAdmin({
@@ -79,8 +92,8 @@ const LoginPage = () => {
        
     }
     if(adminLoading|| userLoading) toast.loading(" جاري تسجيل الدخول... ")
-    if(adminError) toast.error(adminError.message )
-    if (userError)  toast.error(userError.message)
+    
+   
 
     return (
         <div className='login-bg fixed inset-0 w-screen h-screen flex items-center justify-center'>
