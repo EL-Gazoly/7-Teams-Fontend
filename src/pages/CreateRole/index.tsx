@@ -27,7 +27,7 @@ const CreateRolePage = () => {
   const [isUserAcsess, setIsUserAccsess] = useState(false)
 
   const [createRoleMutation, {data, loading , error}] = useMutation(createRole,{
-    refetchQueries: [GetRolesWithPermessions]
+    refetchQueries: [{query: GetRolesWithPermessions}]
   })
 
   const handelSave = () => {

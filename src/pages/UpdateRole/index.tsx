@@ -32,7 +32,7 @@ const UpdateRolePage = () => {
   
 
   const [updateRoleMutation, {data: updatedRole, loading , error}] = useMutation(updateRole,{
-    refetchQueries: [GetRolesWithPermessions, getRole]
+    refetchQueries: [{query: GetRolesWithPermessions}, {query: getRole, variables: {roleId: id}}]
   })
 
     const {data: roleData, loading: roleLoading, error: roleError} = useQuery(getRole, {
