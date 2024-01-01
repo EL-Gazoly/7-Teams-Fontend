@@ -1,15 +1,19 @@
 import { LOGINADMIN, LOGINUSER } from '../../graphql/login';
 import { useMutation } from '@apollo/client';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import './style.css';
 import LoginIcon from '../../assets/login/logo.png';
 import { Image, Button } from '@nextui-org/react';
 import { toast } from 'sonner';
 import { useNavigate } from 'react-router-dom';
 import LanguageIcon from '../../assets/ControlCard/language.svg'
+import EyeSlashIcon from '../../assets/login/EyeSlashIcon.svg'
+import EyeIcon from '../../assets/login/EyeIcon.svg'
 const LoginPage = () => {
     const emailRef = useRef<HTMLInputElement>();
     const passwordRef = useRef<HTMLInputElement>(); 
+    const [showPassword, setShowPassword] = useState(false);
+    const [isIconshowed, setIsIconshowed] = useState('');
 
     const navigate = useNavigate();
 
@@ -96,8 +100,15 @@ const LoginPage = () => {
                         </div>
                         <div className="password mt-5 flex flex-col text-right gap-y-[5px]">
                             <label htmlFor="password" className='text-[#3D3C3C] text-xs'>كلمة المرور</label>
-                            <input type="password" placeholder='ادخل كلمة المرور' ref={passwordRef}
-                                className='text-right w-[276px] h-12 bg-[#E6E8EB66] placeholder:text-[#2929295C] text-xs rounded-md px-4' />
+                            <div className='w-[276px] h-12 bg-[#E6E8EB66] text-right flex items-center justify-between px-4 rounded-md'>
+                            <img src={showPassword ? EyeSlashIcon : EyeIcon} alt="" onClick={()=> setShowPassword(!showPassword)}
+                                className={` cursor-pointer ${isIconshowed? 'block' : 'hidden'}`}
+                            />
+                            <input type={showPassword? "text" : "password"} placeholder='ادخل كلمة المرور' ref={passwordRef}
+                                className=' flex-1 h-full bg-transparent  text-right placeholder:text-[#2929295C] text-xs  ' 
+                                    onChange={(e) => setIsIconshowed(e.target.value)}
+                                />
+                            </div>
                         </div>
                     </div>
                     <div className='flex items-center justify-start mt-2'>
