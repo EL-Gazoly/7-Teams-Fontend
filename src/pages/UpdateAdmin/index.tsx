@@ -42,6 +42,10 @@ const UpdateAdmin = () => {
             if (dataUser.user.imageUrl) {
                 setSelectedImage(`${import.meta.env.VITE_API_URL}${dataUser.user.imageUrl}`);
             }
+            else {
+                setSelectedImage(null);
+                console.log('no image')
+            }
         }
         if (dataUpdateUser) {
             if (notifcationRef.current) return;
@@ -139,23 +143,23 @@ const UpdateAdmin = () => {
         console.log(dataUser.user)
         if ((selectedImage && !sleectedFile)){
             if (password && confirmPassword) {
-                console.log(' update without image but with password')
                 updateWithoutImage(name, email, password, role)
             }
             else  {
-              
-                console.log(' update without image and without password')
                 updateWithoutImageAndPassword(name, email, role)
             }
         }
         else {
             if (password && confirmPassword) {
-                console.log(' update with image and password')
                 updateWithImageAndPassword(name, email, password, role, image)
             }
             else {
-                console.log(' update with image and without password')
+              if (selectedImage && sleectedFile) {
                 updateWithImageAndWithoutPassword(name, email, role, image)
+              }
+                else {
+                    updateWithoutImageAndPassword(name, email, role)
+                }
             }
         }
     }
