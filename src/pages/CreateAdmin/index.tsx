@@ -1,5 +1,5 @@
 import { UploadImage } from './UploadImage';
-import React, {useState, useRef} from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import ControlCard from '../../Components/ContraolCard'
 import { Button, Image } from '@nextui-org/react';
 import AddIcon from '../../assets/students/add.svg'
@@ -15,6 +15,7 @@ const CreateAdmin = () => {
     const [selectedImage, setSelectedImage] = useState(null);
     const [sleectedFile, setSelectedFile] = useState(null);
     const [selectRole, setSelectRole] = useState({value : '' , label : ""});
+    const [key, setKey] = useState(0)
     const { loading: loadingRoles , error: errorRoles, data: roles } = useQuery(getRoles);
 
     const [createUser, { loading: loadingCreateUser, error: errorCreateUser, data: dataCreateUser }] = useMutation(CreateUser,{
@@ -23,10 +24,24 @@ const CreateAdmin = () => {
 
 
 
+
     const nameRef = useRef<HTMLInputElement>();
     const emailRef = useRef<HTMLInputElement>();
     const passwordRef = useRef<HTMLInputElement>();
     const confirmPasswordRef = useRef<HTMLInputElement>();
+
+    useEffect(()=>{
+        if (dataCreateUser) {
+            toast.success('تم اضافة المسؤول بنجاح')
+            nameRef.current.value = ''
+            emailRef.current.value = ''
+            passwordRef.current.value = ''
+            confirmPasswordRef.current.value= ''
+            setSelectedImage(null)
+            setSelectedFile(null)
+            setKey(key+1)
+        }
+    }, [dataCreateUser])
 
     const handelSubmit = async () => {
         const name = nameRef.current.value;
@@ -71,7 +86,7 @@ const CreateAdmin = () => {
     if (loadingCreateUser) return <Loading />
     if (errorCreateUser) toast.error(errorCreateUser.message)
 
-    if (dataCreateUser) toast.success('تم اضافة المسؤول بنجاح')
+   
 
   return (
     <div className=' pb-5'>
@@ -85,7 +100,7 @@ const CreateAdmin = () => {
             backdropFilter : "blur(24.30045509338379px)"
         }}
     >
-            <UploadImage   selectedImage={selectedImage} setSelectedImage={setSelectedImage} setSelectedFile={setSelectedFile}   />
+            <UploadImage   selectedImage={selectedImage} setSelectedImage={setSelectedImage} setSelectedFile={setSelectedFile}  key={key}  />
             <div className=' flex flex-col items-center gap-y-3'>
                 <div className='flex flex-row-reverse items-center gap-x-[22px]'>
                     <div className=' flex flex-col gap-y-[5px] text-right text-text-black'>
