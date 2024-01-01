@@ -5,7 +5,7 @@ import { Button, Image, user } from '@nextui-org/react';
 import AddIcon from '../../assets/students/add.svg'
 import ChooseRole from './ChooseRole';
 import { useMutation, useQuery } from '@apollo/client';
-import { updateUser } from '../../graphql/users';
+import { updateUser, GetUsers } from '../../graphql/users';
 import { getRoles } from '../../graphql/role';
 import { getUser } from '../../graphql/users';
 import Loading from '../../Components/Loading';
@@ -27,7 +27,9 @@ const UpdateAdmin = () => {
     });
   
 
-    const [update, { loading: loadingUpdateUser, error: errorUpdateUser, data: dataUpdateUser }] = useMutation(updateUser);
+    const [update, { loading: loadingUpdateUser, error: errorUpdateUser, data: dataUpdateUser }] = useMutation(updateUser, {
+        refetchQueries : [{query : getUser , variables : {userId : id}}, GetUsers ]
+    });
 
     useEffect(() => {
         if (dataUser) {
@@ -137,18 +139,23 @@ const UpdateAdmin = () => {
         console.log(dataUser.user)
         if ((selectedImage && !sleectedFile)){
             if (password && confirmPassword) {
-                updateWithImageAndPassword(name, email, password, role, image)
+                console.log(' update without image but with password')
+                updateWithoutImage(name, email, password, role)
             }
             else  {
-                updateWithImageAndWithoutPassword(name, email, role, image)
+              
+                console.log(' update without image and without password')
+                updateWithoutImageAndPassword(name, email, role)
             }
         }
         else {
             if (password && confirmPassword) {
-                updateWithoutImage(name, email, password, role)
+                console.log(' update with image and password')
+                updateWithImageAndPassword(name, email, password, role, image)
             }
             else {
-                updateWithoutImageAndPassword(name, email, role)
+                console.log(' update with image and without password')
+                updateWithImageAndWithoutPassword(name, email, role, image)
             }
         }
     }
