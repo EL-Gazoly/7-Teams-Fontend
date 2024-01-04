@@ -134,11 +134,11 @@ const UpdateAdmin = () => {
         notifcationRef.current = false;
         const name = nameRef.current.value;
         const email = emailRef.current.value;
-        const password = passwordRef.current.value;
-        const confirmPassword = confirmPasswordRef.current.value;
+        const password = passwordRef?.current.value;
+        const confirmPassword = confirmPasswordRef?.current.value;
         const image = sleectedFile ? sleectedFile : null;
         const role = selectRole ? selectRole.value : null;
-        console.log(role)
+        console.log(password, confirmPassword)
         if( !name || !email || role===null ) return toast.error(' برجاء ملئ جميع الحقول ')
         if (password !== confirmPassword) return toast.error(' كلمه المرور غير متطابقه ')
         if (email.includes('admin')) return toast.error( ' برجاء اختيار ايميل لا يحتوي علي كلمه admin')
@@ -242,7 +242,7 @@ const UpdateAdmin = () => {
                             <img src={showPassword ? EyeSlashIcon : EyeIcon} alt="" onClick={()=> setShowPassword(!showPassword)} 
                             className={` cursor-pointer ${isIconshowed? 'block' : 'hidden'}`} />
                             <input type={showPassword? "text" : "password"} className=' text-right flex-1  h-full bg-transparent
-                            ' placeholder=' كلمه المرور هنا' ref={passwordRef} 
+                            ' placeholder=' كلمه المرور هنا' ref={confirmPasswordRef} 
                                 onChange={(e) => setIsIconshowed(e.target.value)}
                             />
                         </div>

@@ -141,7 +141,7 @@ const CreateAdmin = () => {
                             <img src={showPassword ? EyeSlashIcon : EyeIcon} alt="" onClick={()=> setShowPassword(!showPassword)} 
                             className={` cursor-pointer ${isIconshowed? 'block' : 'hidden'}`} />
                             <input type={showPassword? "text" : "password"} className=' text-right flex-1  h-full bg-transparent
-                            ' placeholder=' كلمه المرور هنا' ref={passwordRef} 
+                            ' placeholder=' كلمه المرور هنا' ref={confirmPasswordRef} 
                                 onChange={(e) => setIsIconshowed(e.target.value)}
                             />
                         </div>
