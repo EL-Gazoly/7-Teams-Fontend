@@ -37,9 +37,8 @@ function App() {
           <Routes>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/$.0" element={<ErrorPage />} />
-           
+            <Route path="/" element={<Landing />} />
             <Route element={<ProtectedRoutes />}>
-                <Route path="/" element={<Landing />} />
                 <Route path="/headsets" element={<HeadsetsPage />} /> 
                 <Route path="/headsets/:mac"  element={<HeadsetPage />}/>
                 <Route path="/courses"  element={<CoursesPage />}/>
