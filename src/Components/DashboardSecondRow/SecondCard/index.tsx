@@ -1,26 +1,44 @@
 import React from 'react'
-import { Chart } from "react-google-charts";
 import { Divider } from '@nextui-org/react';
-export const data = [
-  ["Student", "number"],
-  ["جديد", 62],
-  ["بدأو التدريب", 15],
-  ["خرحين", 23],
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Doughnut } from 'react-chartjs-2';
 
-];
+ChartJS.register(ArcElement, Tooltip, Legend);
 
-export const options = {
-  legend: "none",
-  pieSliceText: "none",
-  slices: {
-    0: { color: "#009017", borderRadius: '50%' },
-    1: { color: "#21FB45" },
-    2: { color: "#8DF49D" },
+export const data = {
+  labels: [' جدد ', ' بدأو التدريب ', ' خرحين '],
+  datasets: [
+    {
+      label: '# طلاب',
+      data: [62, 15, 23],
+      backgroundColor: [
+        '#009017',
+        '#21FB45',
+        '#8DF49D',
+      ],
+      borderColor: [
+        '#009017',
+        '#21FB45',
+        '#8DF49D',
+  
+      ],
+      borderRadius: 6, 
+      borderWidth: 1,
+    },
+  ],
+};
+
+const options = {
+  plugins: {
+    legend: {
+      display: false,
+    },
+    tooltip: {
+      enabled: true,
+    },
   },
-  pieHole: 0.5,
-  sliceVisibilityThreshold: 0.1,
-  backgroundColor: 'transparent', 
-}
+  cutoutPercentage: 50,
+};
 
 const SecondCard = () => {
   return (
@@ -50,14 +68,10 @@ const SecondCard = () => {
           </div>
 
         </div>
-        <div className=' absolute top-[20%] right-[-5%]'>
-          <Chart
-          chartType="PieChart"
+        <div className=' absolute top-[32%] right-[3%] w-[140px] h-[140px]'>
+          <Doughnut data={data} 
+            
             options={options}
-            data={data}
-            width={"200px"}
-            height={"200px"}
-        
           />
 
         </div>
