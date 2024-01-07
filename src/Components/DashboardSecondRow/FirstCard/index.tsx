@@ -11,7 +11,6 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { display } from 'html2canvas/dist/types/css/property-descriptors/display';
 
 ChartJS.register(
   CategoryScale,
