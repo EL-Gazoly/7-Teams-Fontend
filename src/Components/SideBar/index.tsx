@@ -3,7 +3,7 @@ import {Tabs, Tab, Image} from "@nextui-org/react";
 
 import { useNavigate, useLocation } from "react-router-dom";
 
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import LogoImage from '../../assets/SideBar/Open/logo.png'
 import SelectedHeadset from '../../assets/SideBar/Open/Selected/headset.svg'
 import Headset from '../../assets/SideBar/Open/default/headset.svg'
@@ -38,6 +38,10 @@ const SideBar = () => {
         const firstWord = path.split("/")[1]; // Get the first word after splitting by "/"
         return `/${firstWord}`;
     };
+
+    useEffect(() => {
+        setActive(getFirstWordFromPath(location.pathname))
+    }, [])
 
     console.log(localStorage.getItem('isAdmin'))
 

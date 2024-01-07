@@ -68,7 +68,7 @@ const options = {
 
 const FirstCard = () => {
   return (
-    <div className=' w-[290px] h-[254px] rounded-lg bg-white py-[15px] px-2 flex flex-col gap-y-[10px] relative'>
+    <div className=' w-[290px] h-[254px] rounded-2xl bg-white py-[15px] px-2 flex flex-col gap-y-[10px] relative'>
       <span className=' text-[#444]  font-bold mx-1'> اجمالي ساعات التدريب. </span>
       <div className=' w-full h-[140px] mt-2 '>
         <Line data={data} options={options} />

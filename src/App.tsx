@@ -28,7 +28,9 @@ function App() {
 
 
   return (
-    <>
+    <div style={{
+      fontFamily: 'Cairo'
+    }}>
      <Toaster position="top-right" richColors   />
       <div className="  w-screen h-screen bg-[#E9EBEE] overflow-hidden flex flex-row-reverse">
         {!isLoginPage &&  <SideBar />}
@@ -60,7 +62,7 @@ function App() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

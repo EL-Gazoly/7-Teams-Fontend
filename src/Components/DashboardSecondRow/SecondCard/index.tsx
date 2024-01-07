@@ -42,7 +42,7 @@ const options = {
 
 const SecondCard = () => {
   return (
-    <div className=' w-[289px] h-[254px] rounded-lg bg-white py-[10px] flex flex-col gap-y-5 relative'>
+    <div className=' w-[289px] h-[254px] rounded-2xl bg-white py-[10px] flex flex-col gap-y-5 relative'>
       <span className=' text-base font-bold mx-4'>  عدد المتدربين المسجلين   </span>
       <Divider className=' w-full bg-[#E4E5E7]' />
       <div className=' mt-[10px] self-end flex items-center gap-x-6'>

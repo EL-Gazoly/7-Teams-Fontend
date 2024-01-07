@@ -8,7 +8,7 @@ const FirstRow = () => {
             <Item icon='user' title=' عدد المتدربين المسجلين في النظام.' description='5268' />
             <Item icon ='activeUser' title='  عدد المتدربين الذين بدأو التدريب بالفعل. ' description='4528' />
             <Item icon='clock' title='  اجمالي ساعات التدريب. ' description='  21h 21mins' />
-            <Item icon='certificate' title='   عدد المتدربين الخريجين (الحاصلين على شهادة). ' description='245' />
+            <Item icon='certificate' title='   عدد المتدربين الخريجين . ' description='245' />
         </div>
     </div>
   )
