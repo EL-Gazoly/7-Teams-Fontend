@@ -62,6 +62,7 @@ const SideBar = () => {
                 "base" : "text-white",
                 "tabList" : "flex flex-col w-full h-full bg-transparent space-y-7",
                 "cursor" : "h-[46px] flex items-center justify-center rounded-[6.5px]",
+                "tabContent" : " text-xs"
             }}
             color="primary"
             selectedKey={getFirstWordFromPath(location.pathname)} 
@@ -117,9 +118,9 @@ const SideBar = () => {
                       localStorage.getItem('isLibraryAccess') === 'true'
                  ) && (
                       <Tab key={"/library"}   title={
-                            <div className=" w-[159px] flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
+                            <div className=" w-[159px] flex items-center justify-start mr-4 gap-x-3 mt-3 font-medium text-sm  flex-row-reverse">
                              <Image src={active==="/library" ? SelectedLibrary : library} width={25} height={25} radius="none" />
-                             <span>الوسائط المحفوظة</span>
+                             <span >الوسائط المحفوظة</span>
                             </div>
                       } />
                  )
