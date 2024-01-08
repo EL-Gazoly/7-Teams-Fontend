@@ -74,7 +74,7 @@ const FirstCard = () => {
         <Line data={data} options={options} />
       </div>
       <Divider className=' w-full bg-[#EDF2F6]' />
-      <div className=' self-center w-[187px] flex items-center justify-between'>
+      <div className=' self-center w-[220px] flex items-center justify-between'>
         <div className=' flex items-center gap-x-5 '>
           <div className=' flex flex-col gap-y-[2px] items-center text-[10px] text-center'>
               <span className='text-[#444]  font-semibold'> هذ ا الشهر </span>
