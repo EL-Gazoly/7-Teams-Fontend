@@ -2,7 +2,7 @@ import React from 'react'
 import DashboardTable from './Table'
 import DashboardThridRowSecondCol from '../DashboardThridRowSecondCard'
 
-const DashboardThridRow = () => {
+const DashboardThridRow = ({studentExperiments}) => {
   return (
     <div className=' w-[10002px] flex items-center gap-x-2'>
          <div className=' w-[581px] h-[332px] rounded-2xl bg-white pt-[18px] text-text-black text-sm
@@ -14,7 +14,7 @@ const DashboardThridRow = () => {
           <DashboardTable />
         
         </div>
-     <DashboardThridRowSecondCol />
+     <DashboardThridRowSecondCol studentExperiments={studentExperiments} />
 
     </div>
    

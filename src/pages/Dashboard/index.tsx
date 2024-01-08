@@ -22,8 +22,8 @@ const Dashboard = () => {
             }}
         >
             <FirstRow data={data?.studentActuallyBegein} />
-            <SecondRow />
-            <DashboardThridRow />
+            <SecondRow timeByMonth={data?.timeByMonth} studentByGrade={data?.admin.Team} />
+            <DashboardThridRow studentExperiments={data?.studentExperiments} />
 
         </div>
       

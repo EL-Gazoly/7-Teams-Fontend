@@ -1,4 +1,4 @@
-import React from 'react';
+import {useEffect, useState} from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -9,6 +9,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import { set } from 'firebase/database';
 
 ChartJS.register(
   CategoryScale,
@@ -23,38 +24,58 @@ ChartJS.register(
 
 const labels = [' ثالث ثانوي ' , ' ثاني ثاوي' , ' اول ثانوي' , ' ثالث متوسط ', ' ثاني متوسط ', ' اول متوسط ' ]
 
-const data = {
-  labels: labels,
-  datasets: [
-    {
-      label: 'الطلاب',
-      data: [98, 66, 97, 131, 71, 98],
-      backgroundColor: [
-        '#CCCCCC',
-        '#CCCCCC',
-        '#CCCCCC',
-        '#CCCCCC',
-        '#CCCCCC',
-        '#CCCCCC',
-      ],
-      borderColor: [
-        '#CCCCCC',
-        '#CCCCCC',
-        '#CCCCCC',
-        '#CCCCCC',
-        '#CCCCCC',
-        '#CCCCCC',
-      ],
-      borderWidth: 1,
-      borderRadius: 3, 
-      barThickness: 30, 
-    },
-  ],
-
-}
 
 
-const ThridCard = () => {
+const ThridCard = ({studentByGrade}) => {
+  const [highFirst, setHighFirst] = useState(0)
+  const [highSecond, setHighSecond] = useState(0)
+  const [highThird, setHighThird] = useState(0)
+  const [middleFirst, setMiddleFirst] = useState(0)
+  const [middleSecond, setMiddleSecond] = useState(0)
+  const [middleThird, setMiddleThird] = useState(0)
+  useEffect(() => {
+    if(studentByGrade) {
+      const highFirst = studentByGrade[0]
+      setHighFirst(highFirst['classes'][0]['students'].length)
+      setHighSecond(highFirst['classes'][1]['students'].length)
+      setHighThird(highFirst['classes'][2]['students'].length)
+      const middleFirst = studentByGrade[1]
+      setMiddleFirst(middleFirst['classes'][0]['students'].length)
+      setMiddleSecond(middleFirst['classes'][1]['students'].length)
+      setMiddleThird(middleFirst['classes'][2]['students'].length)
+    }
+  }, [studentByGrade])
+
+  const data = {
+    labels: labels,
+    datasets: [
+      {
+        label: 'الطلاب',
+        data: [highThird,highSecond,highFirst,middleThird,middleSecond,middleFirst],
+        backgroundColor: [
+          '#CCCCCC',
+          '#CCCCCC',
+          '#CCCCCC',
+          '#CCCCCC',
+          '#CCCCCC',
+          '#CCCCCC',
+        ],
+        borderColor: [
+          '#CCCCCC',
+          '#CCCCCC',
+          '#CCCCCC',
+          '#CCCCCC',
+          '#CCCCCC',
+          '#CCCCCC',
+        ],
+        borderWidth: 1,
+        borderRadius: 3, 
+        barThickness: 30, 
+      },
+    ],
+  
+  }
+  
    // Find the index of the maximum value in the 'data' array
    const maxIndex = data.datasets[0].data.indexOf(Math.max(...data.datasets[0].data));
 

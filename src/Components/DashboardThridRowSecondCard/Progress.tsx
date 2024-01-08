@@ -3,14 +3,10 @@ import React from 'react'
 type Props = {
     value: number
     title: string
+    timeValue: string
 }
 
 const Progress = ({ value, title}: Props) => {
-    const [progress, setProgress] = React.useState(null)
-    React.useEffect(() => {
-        const progres = (value / 150) * 100
-        setProgress( progres)
-    }, [value])
   return (
     <div className=' w-[349.98px] flex flex-col gap-y-2'>
         <div className=' flex items-center justify-between'>
@@ -19,13 +15,13 @@ const Progress = ({ value, title}: Props) => {
                 style={{
                     direction: 'ltr'
                 }}
-            > 7 h 28 min </span>
+            > {value}h </span>
 
         </div>
         <div className=' relative w-full h-3 rounded-[3px] bg-[#F8F8FF]'>
                 <div className={`absolute inset-0  ${title===" الاجمالي " ? "bg-[#2DEC4C] " : "bg-[#CFCFD7] "} rounded-[3px]`}
                     style={{
-                        width: `${progress}%`
+                        width: `${value/150*100}%`
                     }}
                 />
         </div>

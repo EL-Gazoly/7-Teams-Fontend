@@ -1,4 +1,4 @@
-import React from 'react'
+import {useEffect, useState} from 'react'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -24,7 +24,7 @@ ChartJS.register(
 );
 import { Divider } from '@nextui-org/react';
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+const labels = ['الاسبوع الاول', 'الاسبوع الثاني', 'الاسبوع الثالث', 'الاسبوع الرابع'];
 
 export const data = {
   labels,
@@ -66,7 +66,37 @@ const options = {
   },
 };
 
-const FirstCard = () => {
+const FirstCard = ({timeByMonth}) => {
+  const [firstMonth, setFirstMonth] = useState([0])
+  const [secondMonth, setSecondMonth] = useState([0])
+  useEffect(() => {
+    if(timeByMonth) {
+    const firstFourValues = timeByMonth.slice(0, 4)
+    const lastFourValues = timeByMonth.slice(timeByMonth.length - 4, timeByMonth.length)
+    setFirstMonth(firstFourValues)
+    setSecondMonth(lastFourValues)
+    }
+  }, [timeByMonth])
+  
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: 'Area 1',
+        data: firstMonth,
+        fill: true,
+        backgroundColor: 'rgba(7, 224, 152, 0.2)',
+        borderColor: '#07E098',
+      },
+      {
+        label: 'Area 2',
+        data: secondMonth,
+        fill: true,
+        backgroundColor: 'rgba(0, 149, 255, 0.2)', 
+        borderColor: '#0095FF',
+      },
+    ],
+  };
   return (
     <div className=' w-[290px] h-[254px] rounded-2xl bg-white py-[15px] px-2 flex flex-col gap-y-[10px] relative'>
       <span className=' text-[#444]  font-bold mx-1'> اجمالي ساعات التدريب. </span>
