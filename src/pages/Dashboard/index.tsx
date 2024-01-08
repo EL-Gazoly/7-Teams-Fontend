@@ -4,13 +4,13 @@ import FirstRow from './FirstRow'
 import SecondRow from '../../Components/DashboardSecondRow'
 import DashboardThridRow from '../../Components/DashboardThridRow'
 import { useQuery } from '@apollo/client'
-import { getDashboardData } from '../../graphql/dashboard'
+import { getDashboardData , getTotalCourseTime} from '../../graphql/dashboard'
 import Loading from '../../Components/Loading'
 
 const Dashboard = () => {
   const {data, loading} = useQuery(getDashboardData)
-  if(loading) return <Loading />
-  if (data) console.log(data)
+  const {data: totalCourseTime, loading: totalCourseTimeLoading} = useQuery(getTotalCourseTime)
+  if(loading || totalCourseTimeLoading) return <Loading />
   
 
   return (
@@ -23,7 +23,7 @@ const Dashboard = () => {
         >
             <FirstRow data={data?.studentActuallyBegein} />
             <SecondRow timeByMonth={data?.timeByMonth} studentByGrade={data?.admin.Team} rolesCount={data?.admin.roles} />
-            <DashboardThridRow studentExperiments={data?.studentExperiments} />
+            <DashboardThridRow studentExperiments={data?.studentExperiments}  totalCourseTimeLoading={totalCourseTime}/>
 
         </div>
       

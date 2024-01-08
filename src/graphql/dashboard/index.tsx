@@ -40,5 +40,25 @@ export const getDashboardData = gql`
     }
 }
 
-    
+`
+export const getTotalCourseTime = gql`
+query Admin {
+  admin {
+    Team {
+      classes {
+        courses {
+          chapters {
+            expriments {
+              StudentExpriment {
+                totalPraticalTime
+                totalTheorticalTime
+                totalTrainingTime
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
 `

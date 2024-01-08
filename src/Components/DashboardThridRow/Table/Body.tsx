@@ -1,6 +1,6 @@
 import Chemistry from '../../../assets/SelectCourse/SelectSubject/chemistry.svg'
 
-const Body = () => {
+const Body = ({totalTime}) => {
   return (
     <div className=' flex items-center justify-between py-3'>
         <div className=' flex items-center gap-x-5 mx-5'>
@@ -11,8 +11,8 @@ const Body = () => {
 
             </div>
         </div>
-        <div className=' mx-8 flex items-center gap-x-2'>
-            <span> 245 ساعة 21 دقيقة </span>
+        <div className=' mx-12 flex items-center gap-x-2'>
+            <span> {totalTime} </span>
         </div>
         
       
