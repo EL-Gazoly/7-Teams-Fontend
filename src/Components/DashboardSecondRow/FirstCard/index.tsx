@@ -68,15 +68,34 @@ const options = {
 
 const FirstCard = ({timeByMonth}) => {
   const [firstMonth, setFirstMonth] = useState([0])
+  const [totalfirstMonth, setTotalFirstMonth] = useState(0)
   const [secondMonth, setSecondMonth] = useState([0])
+  const [totalSecondMonth, setTotalSecondMonth] = useState(0)
   useEffect(() => {
     if(timeByMonth) {
+    timeByMonth = timeByMonth.map((time) => msToTime(time))
+     
     const firstFourValues = timeByMonth.slice(0, 4)
     const lastFourValues = timeByMonth.slice(timeByMonth.length - 4, timeByMonth.length)
     setFirstMonth(firstFourValues)
     setSecondMonth(lastFourValues)
+    setTotalFirstMonth(firstFourValues.reduce((a, b) => a + b, 0))
+    setTotalSecondMonth(lastFourValues.reduce((a, b) => a + b, 0))
     }
   }, [timeByMonth])
+
+  // convert ms to hours
+  const msToTime = (duration) => {
+    let seconds = Math.floor((duration / 1000) % 60),
+      minutes = Math.floor((duration / (1000 * 60)) % 60),
+      hours = Math.floor(duration / (1000 * 60 * 60));
+  
+    hours = hours < 10 ? 0 + hours : hours;
+    minutes = minutes < 10 ? 0 + minutes : minutes;
+    seconds = seconds < 10 ? 0 + seconds : seconds;
+  
+    return hours ;
+  }
   
   const data = {
     labels,
@@ -108,7 +127,7 @@ const FirstCard = ({timeByMonth}) => {
         <div className=' flex items-center gap-x-5 '>
           <div className=' flex flex-col gap-y-[2px] items-center text-[10px] text-center'>
               <span className='text-[#444]  font-semibold'> هذ ا الشهر </span>
-              <span className=' text-[#787878] font-medium'> 686 </span>
+              <span className=' text-[#787878] font-medium'> {totalfirstMonth} </span>
           </div>
           <div className=' flex items-center'>
             <div className=' w-2 h-1 rounded-r-sm bg-[#05C283]' />
@@ -121,7 +140,7 @@ const FirstCard = ({timeByMonth}) => {
         <div className=' flex items-center gap-x-4 '>
           <div className=' flex flex-col gap-y-[2px] items-center text-[10px] text-center'>
               <span className='text-[#444]  font-semibold'>  الشهر الماضي </span>
-              <span className=' text-[#787878] font-medium'> 368 </span>
+              <span className=' text-[#787878] font-medium'> {totalSecondMonth} </span>
           </div>
           <div className=' flex items-center'>
             <div className=' w-2 h-1 rounded-r-sm bg-[#0080DA]' />
