@@ -1,14 +1,37 @@
-import React from 'react'
+import {useEffect, useState} from 'react'
 import Item  from './item'
+import { set } from 'firebase/database'
 
-const FirstRow = () => {
+const FirstRow = ({data}) => {
+  const [time, setTime] = useState("")
+  
+  const msToTime = (duration) => {
+    let seconds = Math.floor((duration / 1000) % 60),
+      minutes = Math.floor((duration / (1000 * 60)) % 60),
+      hours = Math.floor(duration / (1000 * 60 * 60));
+  
+    hours = hours < 10 ? 0 + hours : hours;
+    minutes = minutes < 10 ? 0 + minutes : minutes;
+    seconds = seconds < 10 ? 0 + seconds : seconds;
+  
+    return hours + "h " + minutes + "mins";
+  }
+
+  useEffect(() => {
+    if(data){
+      setTime(msToTime(data[3]))
+      
+      
+      
+    }
+  }, [data])
   return (
     <div className=' w-full '>
         <div className=' flex items-center justify-center gap-x-2'>
-            <Item icon='user' title=' عدد المتدربين المسجلين في النظام.' description='5268' />
-            <Item icon ='activeUser' title='  عدد المتدربين الذين بدأو التدريب بالفعل. ' description='4528' />
-            <Item icon='clock' title='  اجمالي ساعات التدريب. ' description='  21h 21mins' />
-            <Item icon='certificate' title='   عدد المتدربين الخريجين . ' description='245' />
+            <Item icon='user' title=' عدد المتدربين المسجلين في النظام.' description={data[0]} />
+            <Item icon ='activeUser' title='  عدد المتدربين الذين بدأو التدريب بالفعل. ' description={data[1]}/>
+            <Item icon='clock' title='  اجمالي ساعات التدريب. ' description={time} />
+            <Item icon='certificate' title='   عدد المتدربين الخريجين . ' description={data[2]} />
         </div>
     </div>
   )
