@@ -19,26 +19,39 @@ const DashboardThridRowSecondCol = ({studentExperiments}) => {
         setTotalTime(0)
         if(studentExperiments){
             if(timeValue === 'day'){
-                const {totalPraticalTime, totalTheorticalTime, totalTrainingTime} = studentExperiments.expriemntsByDay[0]
+                const {totalPraticalTime, totalTheorticalTime, totalTrainingTime} = studentExperiments?.expriemntsByDay[0] || {totalPraticalTime: 0, totalTheorticalTime: 0, totalTrainingTime: 0}
                 setTotalPraticalTime(convertmsToHours(totalPraticalTime))
                 setTotalTheorticalTime(convertmsToHours(totalTheorticalTime))
                 setTotalTrainingTime(convertmsToHours(totalTrainingTime))
                 setTotalTime(convertmsToHours(totalPraticalTime + totalTheorticalTime + totalTrainingTime))
             }else if(timeValue === 'month'){
+                let totalPraticalTimes = 0
+                let totalTheorticalTimes = 0
+                let totalTrainingTimes = 0
                 studentExperiments.expriementsByMonth.forEach(({totalPraticalTime, totalTheorticalTime, totalTrainingTime}) => {
-                    setTotalPraticalTime(convertmsToHours(totalPraticalTime))
-                    setTotalTheorticalTime(convertmsToHours(totalTheorticalTime))
-                    setTotalTrainingTime(convertmsToHours(totalTrainingTime))
-                    setTotalTime(convertmsToHours(totalPraticalTime + totalTheorticalTime + totalTrainingTime))
+                    totalPraticalTimes += totalPraticalTime
+                    totalTheorticalTimes += totalTheorticalTime
+                    totalTrainingTimes += totalTrainingTime
                 })
+                setTotalPraticalTime(convertmsToHours(totalPraticalTimes))
+                setTotalTheorticalTime(convertmsToHours(totalTheorticalTimes))
+                setTotalTrainingTime(convertmsToHours(totalTrainingTimes))
+                setTotalTime(convertmsToHours(totalPraticalTimes + totalTheorticalTimes + totalTrainingTimes))
             }
             else if(timeValue === 'year'){
+               let  totalPraticalTimes = 0
+                let  totalTheorticalTimes = 0
+                let  totalTrainingTimes = 0
                 studentExperiments.expriementsByYear.forEach(({totalPraticalTime, totalTheorticalTime, totalTrainingTime}) => {
-                    setTotalPraticalTime(convertmsToHours(totalPraticalTime))
-                    setTotalTheorticalTime(convertmsToHours(totalTheorticalTime))
-                    setTotalTrainingTime(convertmsToHours(totalTrainingTime))
-                    setTotalTime(convertmsToHours(totalPraticalTime + totalTheorticalTime + totalTrainingTime))
+                    console.log(totalPraticalTime, totalTheorticalTime, totalTrainingTime)
+                    totalPraticalTimes += totalPraticalTime
+                    totalTheorticalTimes += totalTheorticalTime
+                    totalTrainingTimes += totalTrainingTime
                 })
+                setTotalPraticalTime(convertmsToHours(totalPraticalTimes))
+                setTotalTheorticalTime(convertmsToHours(totalTheorticalTimes))
+                setTotalTrainingTime(convertmsToHours(totalTrainingTimes))
+                setTotalTime(convertmsToHours(totalPraticalTimes + totalTheorticalTimes + totalTrainingTimes))
             }
         }
 

@@ -19,6 +19,7 @@ const FirstRow = ({data}) => {
 
   useEffect(() => {
     if(data){
+      console.log(data)
       setTime(msToTime(data[3]))
       
       
