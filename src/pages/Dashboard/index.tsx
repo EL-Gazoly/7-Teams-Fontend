@@ -8,10 +8,12 @@ import { getDashboardData , getTotalCourseTime} from '../../graphql/dashboard'
 import Loading from '../../Components/Loading'
 
 const Dashboard = () => {
-  const {data, loading} = useQuery(getDashboardData)
-  const {data: totalCourseTime, loading: totalCourseTimeLoading} = useQuery(getTotalCourseTime)
+  const {data, loading, error} = useQuery(getDashboardData)
+  const {data: totalCourseTime, loading: totalCourseTimeLoading, error: totalCourseTimeError} = useQuery(getTotalCourseTime)
   if(loading || totalCourseTimeLoading) return <Loading />
-  
+  if (error || totalCourseTimeError) {
+    console.log(error?.message || totalCourseTime?.message)
+  }
 
   return (
     <div>
