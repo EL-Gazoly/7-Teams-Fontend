@@ -8,6 +8,7 @@ import { toast } from 'sonner';
 import Loading from '../../Components/Loading';
 import { UploadImage } from './UploadImage';
 import { getStudents } from '../../graphql/students';
+import AddWithExcel from '../../Components/AddWithExcelModal';
 
 const CreateStudent = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -84,7 +85,7 @@ const CreateStudent = () => {
             />
           </div>
         </div>
-        <div className='w-full items-center justify-center flex mt-24'>
+        <div className='w-full items-center justify-center flex flex-col gap-y-7 mt-20'>
           <Button
             className='w-[177px] h-[51px] py-2 px-4 rounded-lg flex items-center justify-center gap-x-2 bg-[#4E5464]'
             onPress={handleCreateStudent}
@@ -92,6 +93,8 @@ const CreateStudent = () => {
             <Image src={AddIcon} />
             <span className='text-white text-sm font-bold'>إضافة طالب</span>
           </Button>
+
+          <AddWithExcel />
         </div>
       </div>
     </>
