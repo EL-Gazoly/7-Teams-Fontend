@@ -23,3 +23,9 @@ mutation createStudent($data: CreateStudentInput!, $image: Upload) {
   }
 }
 `
+
+export const createStudentWithExcel = gql`
+    mutation UploadStudentByExcel($file: Upload) {
+    uploadStudentByExcel(file: $file) 
+  }
+`

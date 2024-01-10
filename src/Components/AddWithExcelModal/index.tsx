@@ -1,8 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button, useDisclosure, Modal, ModalHeader, ModalBody, ModalFooter, ModalContent } from '@nextui-org/react';
+import { useMutation } from '@apollo/client';
+import { toast } from 'sonner';
+import { createStudentWithExcel, getStudents } from '../../graphql/students';
+import Loading from '../Loading';
 const AddWithExcel = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [selectedFile, setSelectedFile] = useState(null);
+    const [createStudentWithExcelMutation, { data, loading, error }] = useMutation(createStudentWithExcel,{
+    refetchQueries: [{ query: getStudents }],
+    });
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -11,6 +18,28 @@ const AddWithExcel = () => {
   const handleDeleteFile = () => {
     setSelectedFile(null);
   };
+
+  const handleCreateStudentWithExcel = async () => {
+    const file = selectedFile;
+    if (!file) return toast.error('Please choose a file');
+    await createStudentWithExcelMutation({
+      variables: {
+        file: file,
+      }
+    });
+  };
+    
+    useEffect(() => {
+        if(data) {
+            toast.success('Students created successfully')
+            setSelectedFile(null)
+            onClose()
+        }
+        
+    }, [data])
+  if(loading) return <Loading />
+    if(error) toast.error(error.message)
+  
 
   return (
     <div>
@@ -52,6 +81,7 @@ const AddWithExcel = () => {
                         id='file-upload'
                         type='file'
                         className='hidden'
+                        accept='.xlsx, .xls'
                         onChange={handleFileChange}
                       />
                       <span>اختار ملف اكسيل</span>
@@ -65,7 +95,7 @@ const AddWithExcel = () => {
           <ModalFooter>
             {selectedFile && (
               <div className='w-full flex items-center justify-center'>
-                <Button color='primary'>
+                <Button color='primary' onPress={handleCreateStudentWithExcel}>
                   <span className='text-white text-sm font-bold'>إضافة</span>
                 </Button>
               </div>
