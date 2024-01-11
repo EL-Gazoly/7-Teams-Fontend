@@ -38,7 +38,7 @@ const AddWithExcel = () => {
         
     }, [data])
   if(loading) return <Loading />
-    if(error) toast.error(error.message)
+    if(error) toast.error(" حدث خطا ما  ")
   
 
   return (
