@@ -61,7 +61,6 @@ const HeadsetPage = () => {
   }, [mac, isLoading]);  
 
   if (error) console.log(error.message);
-  if (device) console.log(device.deviceByMac);
 
   return (
     <div>
