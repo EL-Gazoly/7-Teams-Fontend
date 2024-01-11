@@ -5,7 +5,7 @@ import Item from './item'
 
 
 
-const FourthCard = () => {
+const FourthCard = ({progress}) => {
   return (
     <div className=' w-[444px] h-[485px] rounded-[21px] bg-white
      py-7 flex flex-col gap-y-[6px] items-end
@@ -26,7 +26,7 @@ const FourthCard = () => {
       </div>
 
       <div className='mt-4 flex flex-col gap-y-[50px] items-center px-8 text-text-black text-xs'>
-        <Item icon={Chemistry} title={" الكيمياء "} percentage={45} />
+        <Item icon={Chemistry} title={" الكيمياء "} percentage={progress*100} />
 
       </div>
 

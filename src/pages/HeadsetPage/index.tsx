@@ -58,9 +58,10 @@ const HeadsetPage = () => {
     return () => {
       clearTimeout(timeout);
     };
-  }, [mac, isLoading]);
+  }, [mac, isLoading]);  
 
   if (error) console.log(error.message);
+  if (device) console.log(device.deviceByMac);
 
   return (
     <div>
@@ -79,7 +80,7 @@ const HeadsetPage = () => {
         </div>
         <div className='w-full flex items-center gap-x-4 flex-row-reverse'>
           <ThridCard />
-          <FourthCard />
+          <FourthCard progress={device.deviceByMac.student[0].studnetExpriment[0].progress} />
         </div>
       </div>
         )
