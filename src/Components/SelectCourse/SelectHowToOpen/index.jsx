@@ -6,7 +6,7 @@ const options = [
   { value: 'FullCourse', label: "أبدأ الشرح ", image : unSelectedStart, selected : SelectedStart},
   { value: 'StartTraining', label: "أبدأ التجربة " , image : unSelectedStart, selected : SelectedStart},
   { value: 'Practical', label: "أبدأ الأختبار العملي" , image : unSelectedStart, selected : SelectedStart},
-  { value: 'Theoretical  ', label: "أبدأ الأختبار النظري" , image : unSelectedStart, selected : SelectedStart},
+  { value: 'Theoretical', label: "أبدأ الأختبار النظري" , image : unSelectedStart, selected : SelectedStart},
 ];
 
 
