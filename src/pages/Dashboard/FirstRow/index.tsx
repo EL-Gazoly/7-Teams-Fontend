@@ -29,7 +29,7 @@ const FirstRow = ({data}) => {
   return (
     <div className=' w-full '>
         <div className=' flex items-center justify-center gap-x-2'>
-            <Item icon='user' title=' عدد المتدربين المسجلين في النظام.' description={data[0]} />
+            <Item icon='user' title=' عدد الطلاب المسجلين في النظام.' description={data[0]} />
             <Item icon ='activeUser' title='  عدد المتدربين الذين بدأو التدريب بالفعل. ' description={data[1]}/>
             <Item icon='clock' title='  اجمالي ساعات التدريب. ' description={time} />
             <Item icon='certificate' title='   عدد المتدربين الخريجين . ' description={data[2]} />

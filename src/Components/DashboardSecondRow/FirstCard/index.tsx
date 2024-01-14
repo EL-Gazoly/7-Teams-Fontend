@@ -101,14 +101,14 @@ const FirstCard = ({timeByMonth}) => {
     labels,
     datasets: [
       {
-        label: 'Area 1',
+        label: 'الشهر الحالي #',
         data: firstMonth,
         fill: true,
         backgroundColor: 'rgba(7, 224, 152, 0.2)',
         borderColor: '#07E098',
       },
       {
-        label: 'Area 2',
+        label: 'الشهر الماضي #',
         data: secondMonth,
         fill: true,
         backgroundColor: 'rgba(0, 149, 255, 0.2)', 

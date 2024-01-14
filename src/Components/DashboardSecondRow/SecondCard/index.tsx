@@ -69,7 +69,7 @@ const SecondCard = ({rolesCount}) => {
     labels: [' مدير النظام ', ' الإداريين التنفيذيين', ' المعلمين أو المشرفين '],
     datasets: [
       {
-        label: '# طلاب',
+        label: '# مسؤولين',
         data: [adminCount, supervisorCount, teacherCount],
         backgroundColor: [
           '#009017',
@@ -90,7 +90,7 @@ const SecondCard = ({rolesCount}) => {
 
   return (
     <div className=' w-[289px] h-[254px] rounded-2xl bg-white py-[10px] flex flex-col gap-y-5 relative'>
-      <span className=' text-base font-bold mx-4'>  عدد المديرين المسجلين   </span>
+      <span className=' text-base font-bold mx-4'>  عدد المسؤولين المسجلين   </span>
       <Divider className=' w-full bg-[#E4E5E7]' />
       <div className=' mt-[10px] self-end flex items-center gap-x-6'>
         <div className='flex flex-col gap-y-4 '>
