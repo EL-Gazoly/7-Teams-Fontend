@@ -37,7 +37,7 @@ const Item = ({icon, title, percentage} : Props) => {
         </div>
 
         <div className=' flex flex-row-reverse items-center gap-x-2 text-xs '>
-            <span className={`w-11 h-5 rounded-lg border ${getBorderColor()} ${getTextColor()} flex items-center justify-center `}>{percentage}%</span>
+            <span className={`w-11 h-5 rounded-lg border ${getBorderColor()} ${getTextColor()} flex items-center justify-center `}>{Math.floor(percentage)}%</span>
             <span className=' text-text-black font-medium'>  ٢٤  / نوفمبر      </span>
         </div>
 
