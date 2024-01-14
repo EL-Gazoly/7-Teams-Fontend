@@ -52,40 +52,17 @@ const ThridCard = ({studentByGrade}) => {
       {
         label: 'الطلاب',
         data: [highThird,highSecond,highFirst,middleThird,middleSecond,middleFirst],
-        backgroundColor: [
-          '#CCCCCC',
-          '#CCCCCC',
-          '#CCCCCC',
-          '#CCCCCC',
-          '#CCCCCC',
-          '#CCCCCC',
-        ],
-        borderColor: [
-          '#CCCCCC',
-          '#CCCCCC',
-          '#CCCCCC',
-          '#CCCCCC',
-          '#CCCCCC',
-          '#CCCCCC',
-        ],
+        backgroundColor: '#CCCCCC',
+        borderColor: '#CCCCCC',
         borderWidth: 1,
         borderRadius: 3, 
         barThickness: 30, 
+        hoverBackgroundColor: '#2DEC4C',
+        hoverBorderColor: '#2DEC4C',
       },
     ],
   
   }
-  
-   // Find the index of the maximum value in the 'data' array
-   const maxIndex = data.datasets[0].data.indexOf(Math.max(...data.datasets[0].data));
-
-   // Update the backgroundColor based on the maximum value
-   data.datasets[0].backgroundColor = data.datasets[0].data.map((value, index) =>
-     index === maxIndex ? '#2DEC4C' : '#CCCCCC'
-   );
-   data.datasets[0].borderColor = data.datasets[0].data.map((value, index) =>
-     index === maxIndex ? '#2DEC4C' : '#CCCCCC'
-   );
  
    const options = {
      responsive: true,
