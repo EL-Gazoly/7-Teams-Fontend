@@ -101,7 +101,7 @@ const HeadsetsSection = ({setSelectedHeadsets, selectedHeadsets, searchQuery, sh
     })
     
   }
-  if(devicesCount === selectedHeadsets.length && devicesCount !== 0 && showConnected){
+  if(showConnected){
     selectedHeadsets = selectedHeadsets.filter((device) => {
       return device.Connected
     })
