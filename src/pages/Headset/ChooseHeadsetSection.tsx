@@ -52,7 +52,6 @@
       }, [selectedHeadsets]);
 
       const handleSearch = (event) => setSearchQuery(event.target.value.toString().toLowerCase());
-    
 
       
       
