@@ -7,9 +7,11 @@
       setSelectedHeadsets: React.Dispatch<any>
       selectedHeadsets?: any[]
       setSearchQuery?: React.Dispatch<React.SetStateAction<string>>
+      showConnected?: boolean
+      setShowConnected?: React.Dispatch<React.SetStateAction<boolean>>
     }
 
-    const ChooseHeadsetSection = ({setSelectedHeadsets, selectedHeadsets, setSearchQuery} : Props) => {
+    const ChooseHeadsetSection = ({setSelectedHeadsets, selectedHeadsets, setSearchQuery, showConnected, setShowConnected} : Props) => {
       const [isTrue, setIsTrue] = useState(false);
       const [connectedLength, setConnectedLength] = useState(0);
 
@@ -86,6 +88,7 @@
             onChange={handleSearch}
           />
         </div>
+        <Checkbox color='primary' isSelected={showConnected} onValueChange={setShowConnected} />
       </div>
     );}
 

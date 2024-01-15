@@ -5,18 +5,19 @@ import { GetDevices } from '../../graphql/devices';
 import Loading from '../../Components/Loading';
 import db from '../../config/firebase';
 import { ref, onValue, set } from 'firebase/database';
+import { select } from '@nextui-org/react';
 
 type HeadsetProps = {
   setSelectedHeadsets: React.Dispatch<any>
   selectedHeadsets?: any[]
   searchQuery?: string
+  showConnected?: boolean
 }
 
 
-const HeadsetsSection = ({setSelectedHeadsets, selectedHeadsets, searchQuery} : HeadsetProps) => {
+const HeadsetsSection = ({setSelectedHeadsets, selectedHeadsets, searchQuery, showConnected} : HeadsetProps) => {
   const { loading, error, data: devices } = useQuery(GetDevices);
   const [devicesList, setDevicesList] = useState<any>([]);
-  const [devicesMap, setDevicesMap] = useState<any>([]);
   const [devicesCount, setDevicesCount] = useState<any>(0);
   
 
@@ -68,7 +69,6 @@ const HeadsetsSection = ({setSelectedHeadsets, selectedHeadsets, searchQuery} : 
   }, [devices]);
 
   useEffect(() => {
-    console.log(devicesCount, selectedHeadsets.length)
     if(devicesCount === selectedHeadsets.length && devicesCount !== 0){
       setSelectedHeadsets(
         selectedHeadsets
@@ -84,7 +84,9 @@ const HeadsetsSection = ({setSelectedHeadsets, selectedHeadsets, searchQuery} : 
         })
       );
     }
-  }, [devicesCount]);
+ 
+
+  }, [devicesCount, showConnected]);
   
 
   if (loading) return <div className='mt-5'><Loading /></div>;
@@ -98,6 +100,11 @@ const HeadsetsSection = ({setSelectedHeadsets, selectedHeadsets, searchQuery} : 
         )
     })
     
+  }
+  if(devicesCount === selectedHeadsets.length && devicesCount !== 0 && showConnected){
+    selectedHeadsets = selectedHeadsets.filter((device) => {
+      return device.Connected
+    })
   }
 
   return (
