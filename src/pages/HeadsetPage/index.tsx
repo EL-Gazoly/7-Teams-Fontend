@@ -19,7 +19,7 @@ const HeadsetPage = () => {
   const [deviceState, setDeviceState] = useState({});
   const ipcRenderer = (window as any).ipcRenderer;
 
-  const { data: device, loading, error } = useQuery(GetDevice, { variables: { macAddress: mac } });
+  const { data: device, loading, error } = useQuery(GetDevice, { variables: { macAddress: mac }, fetchPolicy: 'no-cache' });
 
   useEffect(() => {
     const deviceQuery = ref(db, `/Devices/${mac}`);

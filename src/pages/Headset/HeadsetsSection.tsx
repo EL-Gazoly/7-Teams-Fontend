@@ -16,7 +16,7 @@ type HeadsetProps = {
 
 
 const HeadsetsSection = ({setSelectedHeadsets, selectedHeadsets, searchQuery, showConnected} : HeadsetProps) => {
-  const { loading, error, data: devices } = useQuery(GetDevices);
+  const { loading, error, data: devices } = useQuery(GetDevices, { fetchPolicy: 'no-cache'});
   const [devicesList, setDevicesList] = useState<any>([]);
   const [devicesCount, setDevicesCount] = useState<any>(0);
   
