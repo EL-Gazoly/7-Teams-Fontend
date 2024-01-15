@@ -9,10 +9,11 @@ import { ref, onValue } from 'firebase/database';
 type HeadsetProps = {
   setSelectedHeadsets: React.Dispatch<any>
   selectedHeadsets?: any[]
+  searchQuery?: string
 }
 
 
-const HeadsetsSection = ({setSelectedHeadsets, selectedHeadsets} : HeadsetProps) => {
+const HeadsetsSection = ({setSelectedHeadsets, selectedHeadsets, searchQuery} : HeadsetProps) => {
   const { loading, error, data: devices } = useQuery(GetDevices);
   const [devicesList, setDevicesList] = useState<any>([]);
   
@@ -67,6 +68,16 @@ const HeadsetsSection = ({setSelectedHeadsets, selectedHeadsets} : HeadsetProps)
 
   if (loading) return <div className='mt-5'><Loading /></div>;
   if (error) console.log(error.message);
+
+  if(searchQuery){
+    selectedHeadsets = selectedHeadsets.filter((device) => {
+      if (device.student.length === 0) return false;
+      return (
+        device.student[0].name.toLowerCase().includes(searchQuery)
+        )
+    })
+    
+  }
 
   return (
     <div className='mt-6 grid grid-cols-4 max-w-full gap-y-4 gap-x-[18px] pr-1' style={{ direction: 'rtl' }}>

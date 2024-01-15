@@ -76,7 +76,7 @@ const HeadsetCard = ({ device, index, selectedHeadsets, setSelectedHeadsets }: H
                   ))}
                 </div>
                 <div className='flex flex-col gap-y-2'>
-                  <span className='text-[#122333] text-sm font-semibold'>نظاره رقم {index + 1}</span>
+                  <span className='text-[#122333] text-sm font-semibold'> {device.student.length >0 ? device.student[0].name : 'لا يوجد'} </span>
                   <span className='text-[#A5A5A5] text-[8.5px]'>{device.name}</span>
                 </div>
             </div>

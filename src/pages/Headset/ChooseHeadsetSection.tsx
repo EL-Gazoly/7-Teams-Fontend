@@ -6,9 +6,10 @@
     type Props ={
       setSelectedHeadsets: React.Dispatch<any>
       selectedHeadsets?: any[]
+      setSearchQuery?: React.Dispatch<React.SetStateAction<string>>
     }
 
-    const ChooseHeadsetSection = ({setSelectedHeadsets, selectedHeadsets} : Props) => {
+    const ChooseHeadsetSection = ({setSelectedHeadsets, selectedHeadsets, setSearchQuery} : Props) => {
       const [isTrue, setIsTrue] = useState(false);
       const [connectedLength, setConnectedLength] = useState(0);
 
@@ -50,6 +51,11 @@
         }
       }, [selectedHeadsets]);
 
+      const handleSearch = (event) => {
+        
+        setSearchQuery(event.target.value.toString().toLowerCase());
+    };
+
       
       
       return (
@@ -79,7 +85,9 @@
         {/* Search Input */}
         <div className='w-[262px] h-9 rounded-[7px] bg-[#6563630D]/5 flex items-center gap-x-[6.8px] px-3 py-2'>
           <Image src={SearchIcon} />
-          <input className='w-full h-full bg-transparent placeholder:text-[#929496] text-sm font-medium focus:' placeholder='البحث' />
+          <input className='w-full h-full bg-transparent placeholder:text-[#929496] text-sm font-medium focus:' placeholder='البحث'
+            onChange={handleSearch}
+          />
         </div>
       </div>
     );}
