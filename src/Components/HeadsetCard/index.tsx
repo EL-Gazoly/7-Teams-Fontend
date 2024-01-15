@@ -49,7 +49,6 @@ const HeadsetCard = ({ device, index, selectedHeadsets, setSelectedHeadsets }: H
     if (!device?.Connected) return "bg-[#E8E2E2]";
     return level >= 66 ? "bg-[#2DEC4C]" : level >= 33 ? "bg-[#2DEC4C]" : "bg-[#E8E2E2]";
   };
-  device && console.log(device)
   return (
 
   
@@ -60,7 +59,7 @@ const HeadsetCard = ({ device, index, selectedHeadsets, setSelectedHeadsets }: H
             disabled={!device?.Connected}
           >
             <div className='relative w-full h-[37px] pt-3' >
-              <Image src={connectedIcon} className=' mr-4' />
+              <img src={connectedIcon} className=' mr-4' />
               <div className={`absolute top-0 left-2 flex w-[79.345px] h-[28.612px] px-[5.583px] py-[2.791px] items-center justify-center gap-x-[5.583px] rounded-b-[2.791px]
                ${device.student.length === 0 ? " bg-disabled opacity-40  " : " bg-primary "}`} style={{ boxShadow: '0px 2.791px 2.791px 0px rgba(0, 0, 0, 0.25)' }}>
                 <span className='text-[9.7px] font-semibold text-white'>{device.student.length === 0 ? "غير متصل" : "متصل"}</span>
@@ -77,7 +76,7 @@ const HeadsetCard = ({ device, index, selectedHeadsets, setSelectedHeadsets }: H
                 </div>
                 <div className='flex flex-col gap-y-2'>
                   <span className='text-[#122333] text-sm font-semibold'> {device.student.length >0 ? device.student[0].name : 'لا يوجد'} </span>
-                  <span className='text-[#A5A5A5] text-[8.5px]'>{device.name}</span>
+                  <span className='text-[#A5A5A5] text-[8.5px]'>رقم النضاره {index+1}</span>
                 </div>
             </div>
             </button>

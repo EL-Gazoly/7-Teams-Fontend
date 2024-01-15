@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/client';
 import { GetDevices } from '../../graphql/devices';
 import Loading from '../../Components/Loading';
 import db from '../../config/firebase';
-import { ref, onValue } from 'firebase/database';
+import { ref, onValue, set } from 'firebase/database';
 
 type HeadsetProps = {
   setSelectedHeadsets: React.Dispatch<any>
@@ -16,6 +16,8 @@ type HeadsetProps = {
 const HeadsetsSection = ({setSelectedHeadsets, selectedHeadsets, searchQuery} : HeadsetProps) => {
   const { loading, error, data: devices } = useQuery(GetDevices);
   const [devicesList, setDevicesList] = useState<any>([]);
+  const [devicesMap, setDevicesMap] = useState<any>([]);
+  const [devicesCount, setDevicesCount] = useState<any>(0);
   
 
   useEffect(() => {
@@ -37,14 +39,13 @@ const HeadsetsSection = ({setSelectedHeadsets, selectedHeadsets, searchQuery} : 
       setSelectedHeadsets(mergedDevices);
   
       devicesMap.forEach((mac) => {
+        if(devicesMap[0] === mac) setDevicesCount(0) 
         const deviceQuery = ref(db, `/Devices/${mac}`);
         onValue(deviceQuery, (snapshot) => {
           const deviceInfo = snapshot.val();
       
           // Find the index of the device with the same MAC address in selected headsets
           const indexToUpdate = devices.admin.devices.findIndex((device) => device.macAddress === mac);
-
-          console.log(indexToUpdate)
       
           if (indexToUpdate !== -1) {
             // Update the existing device in the selected headsets list
@@ -60,10 +61,30 @@ const HeadsetsSection = ({setSelectedHeadsets, selectedHeadsets, searchQuery} : 
               { macAddress: mac, ...deviceInfo },
             ]);
           }
+          setDevicesCount((prevCount) => prevCount + 1);
         });
       });
     }
   }, [devices]);
+
+  useEffect(() => {
+    console.log(devicesCount, selectedHeadsets.length)
+    if(devicesCount === selectedHeadsets.length && devicesCount !== 0){
+      setSelectedHeadsets(
+        selectedHeadsets
+        .slice()
+        .sort((a, b) => {
+          // First, sort by 'Connected'
+          if (a.Connected !== b.Connected) {
+            return a.Connected ? -1 : 1;
+          }
+          
+          // If 'Connected' is the same, sort by 'device.student.length'
+          return a.student.length - b.student.length;
+        })
+      );
+    }
+  }, [devicesCount]);
   
 
   if (loading) return <div className='mt-5'><Loading /></div>;
