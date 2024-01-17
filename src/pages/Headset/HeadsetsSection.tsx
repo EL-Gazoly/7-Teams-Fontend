@@ -19,13 +19,14 @@ const HeadsetsSection = ({setSelectedHeadsets, selectedHeadsets, searchQuery, sh
   const { loading, error, data: devices } = useQuery(GetDevices, { fetchPolicy: 'no-cache'});
   const [devicesList, setDevicesList] = useState<any>([]);
   const [devicesCount, setDevicesCount] = useState<any>(0);
+  const [devicesMap, setDevicesMap] = useState<any>([]);
   
 
   useEffect(() => {
     if (devices && devices.admin.devices.length > 0) {
       const devicesMap = devices.admin.devices.map((device) => device.macAddress);
       const devicesWithSelect = devices.admin.devices.map((device) => {
-        return { ...device, selected: false, started: false };
+        return { ...device, selected: false, started: false, showen: true };
       });
   
       // Merge devices from different sources into one list
@@ -68,26 +69,7 @@ const HeadsetsSection = ({setSelectedHeadsets, selectedHeadsets, searchQuery, sh
     }
   }, [devices]);
 
-  useEffect(() => {
-    if(devicesCount === selectedHeadsets.length && devicesCount !== 0){
-      setSelectedHeadsets(
-        selectedHeadsets
-        .slice()
-        .sort((a, b) => {
-          // First, sort by 'Connected'
-          if (a.Connected !== b.Connected) {
-            return a.Connected ? -1 : 1;
-          }
-          
-          // If 'Connected' is the same, sort by 'device.student.length'
-          return a.student.length - b.student.length;
-        })
-      );
-    }
- 
 
-  }, [devicesCount, showConnected]);
-  
 
   if (loading) return <div className='mt-5'><Loading /></div>;
   if (error) console.log(error.message);
@@ -101,11 +83,6 @@ const HeadsetsSection = ({setSelectedHeadsets, selectedHeadsets, searchQuery, sh
     })
     
   }
-  if(showConnected){
-    selectedHeadsets = selectedHeadsets.filter((device) => {
-      return device.Connected
-    })
-  }
 
   return (
     <div className='mt-6 grid grid-cols-4 max-w-full gap-y-4 gap-x-[18px] pr-1' style={{ direction: 'rtl' }}>
@@ -113,6 +90,7 @@ const HeadsetsSection = ({setSelectedHeadsets, selectedHeadsets, searchQuery, sh
         selectedHeadsets.map((device, index) => (
           <HeadsetCard key={index} device={device} index={index}
           selectedHeadsets={selectedHeadsets[index]} setSelectedHeadsets={setSelectedHeadsets}
+          showConnected={showConnected}
           />
         ))}
     </div>

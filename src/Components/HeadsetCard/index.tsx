@@ -10,13 +10,14 @@ import { useNavigate } from 'react-router-dom';
 type HeadsetProps = {
   index?: number;
   device: { name: string; macAddress: string , student: {name: string}[];  selected: boolean; 
-    AppStatus: string; Battery: number; Connected: boolean; started: boolean;
+    AppStatus: string; Battery: number; Connected: boolean; started: boolean; showen: boolean;
 }
   selectedHeadsets: any
   setSelectedHeadsets: React.Dispatch<any>
+  showConnected?: boolean
 };
 
-const HeadsetCard = ({ device, index, selectedHeadsets, setSelectedHeadsets }: HeadsetProps) => {
+const HeadsetCard = ({ device, index, selectedHeadsets, setSelectedHeadsets, showConnected }: HeadsetProps) => {
   const [isSelected, setSelected] = useState(selectedHeadsets.selected);
   const navigate = useNavigate();
   useEffect(() => {
@@ -29,10 +30,34 @@ const HeadsetCard = ({ device, index, selectedHeadsets, setSelectedHeadsets }: H
             return newSelectedHeadsets;
           });
         }
-    }, 1750);
+    }, 1330);
 
     return () => clearInterval(startCourse);
   }, [selectedHeadsets]);
+
+  useEffect(() => {
+    if (showConnected && !device.Connected) {
+      setSelectedHeadsets((prev: any) => {
+        const newSelectedHeadsets = [...prev];
+        newSelectedHeadsets[index] = { ...newSelectedHeadsets[index], showen: false };
+        return newSelectedHeadsets;
+      });
+    }
+    else if (showConnected && device.Connected) {
+      setSelectedHeadsets((prev: any) => {
+        const newSelectedHeadsets = [...prev];
+        newSelectedHeadsets[index] = { ...newSelectedHeadsets[index], showen: true };
+        return newSelectedHeadsets;
+      });
+    }
+    else if (!showConnected) {
+      setSelectedHeadsets((prev: any) => {
+        const newSelectedHeadsets = [...prev];
+        newSelectedHeadsets[index] = { ...newSelectedHeadsets[index], showen: true };
+        return newSelectedHeadsets;
+      });
+    }
+  }, [showConnected]);
 
   const toggleSelected = () => {
     setSelected(!isSelected);
@@ -54,6 +79,7 @@ const HeadsetCard = ({ device, index, selectedHeadsets, setSelectedHeadsets }: H
   
       <div className={`w-[235.818px] h-[265.851px] bg-white flex flex-col  rounded-[5.583px] overflow-hidden ${device.selected && 'border-3 border-primary'} relative
       ${!device?.Connected && 'opacity-40'}
+      ${!device?.showen && 'hidden'}
       `} style={{ boxShadow: '0px 2.225px 31.146px 0px rgba(0, 0, 0, 0.10)' }}>
           <button className=' bg-white w-full' onClick={()=> navigate(`/headsets/${device.macAddress}`)}
             disabled={!device?.Connected}
