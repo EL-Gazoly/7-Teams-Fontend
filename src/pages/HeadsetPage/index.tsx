@@ -48,6 +48,7 @@ const HeadsetPage = () => {
         navigate(-1)
         toast.error(' فشل الاتصال تاكد ان الجهاز متصل بنفس الشبكه ') 
         toast.error(' اذا استمرت المشكله جرب توصيل الجهاز بالكمبيوتر مباشره ')
+        setIsLoading(false)
       }
     };
     ipcRenderer.on('connect-reply', connectReplyHandler);
