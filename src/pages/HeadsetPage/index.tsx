@@ -44,6 +44,11 @@ const HeadsetPage = () => {
 
     const connectReplyHandler = (event, arg) => {
       if (arg === "Connected") setIsLoading(false);
+      if (arg === "Make sure you are on the same WIFI, if the problem persist Try connecting with USB"){
+        navigate(-1)
+        toast.error(' فشل الاتصال تاكد ان الجهاز متصل بنفس الشبكه ') 
+        toast.error(' اذا استمرت المشكله جرب توصيل الجهاز بالكمبيوتر مباشره ')
+      }
     };
     ipcRenderer.on('connect-reply', connectReplyHandler);
 

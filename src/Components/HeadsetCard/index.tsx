@@ -30,7 +30,7 @@ const HeadsetCard = ({ device, index, selectedHeadsets, setSelectedHeadsets, sho
             return newSelectedHeadsets;
           });
         }
-    }, 1330);
+    }, 1360);
 
     return () => clearInterval(startCourse);
   }, [selectedHeadsets]);
