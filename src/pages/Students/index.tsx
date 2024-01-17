@@ -19,7 +19,7 @@ import { useQuery } from '@apollo/client'
 import Loading from '../../Components/Loading'
 
 const StudentsPage = () => {
-    const { loading, error, data: studentsData } = useQuery(getStudents);
+    const { loading, error, data: studentsData } = useQuery(getStudents, {fetchPolicy: 'no-cache'});
     const [activeTab, setActiveTab] = useState("stack")
     const [searchQuery, setSearchQuery] = useState<String>("");
 

@@ -79,7 +79,7 @@ const HeadsetPage = () => {
         </div>
         <div className='w-full flex items-center gap-x-4 flex-row-reverse'>
           <ThridCard />
-          <FourthCard progress={device.deviceByMac.student[0].studnetExpriment[0].progress} />
+          <FourthCard progress={device?.deviceByMac?.student[0]?.studnetExpriment[0]?.progress} />
         </div>
       </div>
         )

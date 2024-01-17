@@ -26,7 +26,7 @@ const FourthCard = ({progress}) => {
       </div>
 
       <div className='mt-4 flex flex-col gap-y-[50px] items-center px-8 text-text-black text-xs'>
-        <Item icon={Chemistry} title={" الكيمياء "} percentage={progress*100} />
+        <Item icon={Chemistry} title={" الكيمياء "} percentage={progress? progress*100 : 0} />
 
       </div>
 
