@@ -1,5 +1,5 @@
     import React, {useEffect, useState} from 'react';
-    import { Checkbox, Divider, cn, Image } from '@nextui-org/react';
+    import { Checkbox, Divider, cn, Image, Tooltip, Button } from '@nextui-org/react';
     import HeadsetImage from '../../assets/Landing/ChooseHeadset/headset.svg';
     import SearchIcon from '../../assets/Landing/ChooseHeadset/search.png';
 
@@ -88,7 +88,11 @@
             onChange={handleSearch}
           />
         </div>
+        <Tooltip content='إظهار النظارات المتصلة' placement='top-end' color='primary' offset={4} >
+        <div>
         <Checkbox color='primary' isSelected={showConnected} onValueChange={setShowConnected} />
+        </div>
+        </Tooltip>
       </div>
     );}
 
