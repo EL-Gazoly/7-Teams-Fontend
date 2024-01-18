@@ -14,6 +14,7 @@ const Dashboard = () => {
   if (error || totalCourseTimeError) {
     console.log(error?.message || totalCourseTime?.message)
   }
+  if (data) console.log(data?.admin.Team)
 
   return (
     <div>
