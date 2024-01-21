@@ -26,12 +26,6 @@ const labels = [' ثالث ثانوي ' , ' ثاني ثاوي' , ' اول ثان
 
 
 const ThridCard = ({studentByGrade}) => {
-  const [highFirst, setHighFirst] = useState(0)
-  const [highSecond, setHighSecond] = useState(0)
-  const [highThird, setHighThird] = useState(0)
-  const [middleFirst, setMiddleFirst] = useState(0)
-  const [middleSecond, setMiddleSecond] = useState(0)
-  const [middleThird, setMiddleThird] = useState(0)
   const [highFirstA, setHighFirstA] = useState(0)
   const [highSecondA, setHighSecondA] = useState(0)
   const [highThirdA, setHighThirdA] = useState(0)
@@ -50,82 +44,116 @@ const ThridCard = ({studentByGrade}) => {
   const [middleFirstC, setMiddleFirstC] = useState(0)
   const [middleSecondC, setMiddleSecondC] = useState(0)
   const [middleThirdC, setMiddleThirdC] = useState(0)
-
+  
   useEffect(() => {
+   
     if(studentByGrade) {
+      let HighFirstACounter = 0
+      let HighFirstBCounter = 0
+      let HighFirstCCounter = 0
+      let HighSecondACounter = 0
+      let HighSecondBCounter = 0
+      let HighSecondCCounter = 0
+      let HighThirdACounter = 0
+      let HighThirdBCounter = 0
+      let HighThirdCCounter = 0
+      let MiddleFirstACounter = 0
+      let MiddleFirstBCounter = 0
+      let MiddleFirstCCounter = 0
+      let MiddleSecondACounter = 0
+      let MiddleSecondBCounter = 0
+      let MiddleSecondCCounter = 0
+      let MiddleThirdACounter = 0
+      let MiddleThirdBCounter = 0
+      let MiddleThirdCCounter = 0
     const HightFirstStudents = studentByGrade[0]['classes'][0]['students']
     Object.keys(HightFirstStudents).forEach((key) => {
-      console.log(HightFirstStudents[key]['classalpha'])
       if(HightFirstStudents[key]['classalpha'] === 'A') {
-        setHighFirstA(highFirstA + 1)
+        HighFirstACounter++
+        console.log(HighFirstACounter)
+        setHighFirstA(HighFirstACounter)
       }else if(HightFirstStudents[key]['classalpha'] === 'B') {
-        setHighFirstB(highFirstB + 1)
+        HighFirstBCounter++
+        setHighFirstB(HighFirstBCounter)
       }
       else if(HightFirstStudents[key]['classalpha'] === 'C') {
-        setHighFirstC(highFirstC + 1)
+        HighFirstCCounter++
+        setHighFirstC(HighFirstCCounter)
       }
     })
     const HightSecondStudents = studentByGrade[0]['classes'][1]['students']
     Object.keys(HightSecondStudents).forEach((key) => {
-      console.log(HightSecondStudents[key]['classalpha'])
       if(HightSecondStudents[key]['classalpha'] === 'A') {
-        setHighSecondA(highSecondA + 1)
+        HighSecondACounter++
+        setHighSecondA(HighSecondACounter)
       }else if(HightSecondStudents[key]['classalpha'] === 'B') {
-        setHighSecondB(highSecondB + 1)
+        HighSecondBCounter++
+        setHighSecondB(HighSecondBCounter)
       }
       else if(HightSecondStudents[key]['classalpha'] === 'C') {
-        setHighSecondC(highSecondC + 1)
+        HighSecondCCounter++
+        setHighSecondC(HighSecondCCounter)
       }
     })
     const HightThirdStudents = studentByGrade[0]['classes'][2]['students']
     Object.keys(HightThirdStudents).forEach((key) => {
-      console.log(HightThirdStudents[key]['classalpha'])
       if(HightThirdStudents[key]['classalpha'] === 'A') {
-        setHighThirdA(highThirdA + 1)
+        HighThirdACounter++
+        setHighThirdA(HighThirdACounter)
       }else if(HightThirdStudents[key]['classalpha'] === 'B') {
-        setHighThirdB(highThirdB + 1)
+        HighThirdBCounter++
+        setHighThirdB(HighThirdBCounter)
       }
       else if(HightThirdStudents[key]['classalpha'] === 'C') {
-        setHighThirdC(highThirdC + 1)
+        HighThirdCCounter++
+        setHighThirdC(HighThirdCCounter)
       }
     })
     const MiddleFirstStudents = studentByGrade[1]['classes'][0]['students']
     Object.keys(MiddleFirstStudents).forEach((key) => {
-      console.log(MiddleFirstStudents[key]['classalpha'])
       if(MiddleFirstStudents[key]['classalpha'] === 'A') {
-        setMiddleFirstA(middleFirstA + 1)
+        MiddleFirstACounter++
+        setMiddleFirstA(MiddleFirstACounter)
       }else if(MiddleFirstStudents[key]['classalpha'] === 'B') {
-        setMiddleFirstB(middleFirstB + 1)
+        MiddleFirstBCounter++
+        setMiddleFirstB(MiddleFirstBCounter)
       }
       else if(MiddleFirstStudents[key]['classalpha'] === 'C') {
-        setMiddleFirstC(middleFirstC + 1)
+        MiddleFirstCCounter++
+        setMiddleFirstC(MiddleFirstCCounter)
       }
     })
     const MiddleSecondStudents = studentByGrade[1]['classes'][1]['students']
     Object.keys(MiddleSecondStudents).forEach((key) => {
-      console.log(MiddleSecondStudents[key]['classalpha'])
       if(MiddleSecondStudents[key]['classalpha'] === 'A') {
-        setMiddleSecondA(middleSecondA + 1)
+        MiddleSecondACounter++
+        setMiddleSecondA(MiddleSecondACounter)
       }else if(MiddleSecondStudents[key]['classalpha'] === 'B') {
-        setMiddleSecondB(middleSecondB + 1)
+        MiddleSecondBCounter++
+        setMiddleSecondB(MiddleSecondBCounter)
       }
       else if(MiddleSecondStudents[key]['classalpha'] === 'C') {
-        setMiddleSecondC(middleSecondC + 1)
+        MiddleSecondCCounter++
+        setMiddleSecondC(MiddleSecondCCounter)
       }
     })
     const MiddleThirdStudents = studentByGrade[1]['classes'][2]['students']
     Object.keys(MiddleThirdStudents).forEach((key) => {
-      console.log(MiddleThirdStudents[key]['classalpha'])
       if(MiddleThirdStudents[key]['classalpha'] === 'A') {
-        setMiddleThirdA(middleThirdA + 1)
+        MiddleThirdACounter++
+        setMiddleThirdA(MiddleThirdACounter)
       }else if(MiddleThirdStudents[key]['classalpha'] === 'B') {
-        setMiddleThirdB(middleThirdB + 1)
+        MiddleThirdBCounter++
+        setMiddleThirdB(MiddleThirdBCounter)
       }
       else if(MiddleThirdStudents[key]['classalpha'] === 'C') {
-        setMiddleThirdC(middleThirdC + 1)
+        MiddleThirdCCounter++
+        setMiddleThirdC(MiddleThirdCCounter)
       }
     })
+    console.log(highFirstA,highSecondA,highThirdA,middleFirstA,middleSecondA,middleThirdA)
     }
+
   }, [studentByGrade])
 
   const data = {
