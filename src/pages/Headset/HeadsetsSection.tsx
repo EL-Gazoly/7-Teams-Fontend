@@ -19,7 +19,7 @@ const HeadsetsSection = ({setSelectedHeadsets, selectedHeadsets, searchQuery, sh
   const { loading, error, data: devices } = useQuery(GetDevices, { fetchPolicy: 'no-cache'});
   const [devicesList, setDevicesList] = useState<any>([]);
   const [devicesCount, setDevicesCount] = useState<any>(0);
-  const [devicesMap, setDevicesMap] = useState<any>([]);
+  if(devices) console.log(devices)
   
 
   useEffect(() => {
@@ -78,7 +78,8 @@ const HeadsetsSection = ({setSelectedHeadsets, selectedHeadsets, searchQuery, sh
     selectedHeadsets = selectedHeadsets.filter((device) => {
       if (device.student.length === 0) return false;
       return (
-        device.student[0].name.toLowerCase().includes(searchQuery)
+        device.student[0].name.toLowerCase().includes(searchQuery) ||
+        device.student[0].generatedId.toString().includes(searchQuery)
         )
     })
     

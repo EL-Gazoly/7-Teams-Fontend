@@ -9,8 +9,9 @@ import { useNavigate } from 'react-router-dom';
 
 type HeadsetProps = {
   index?: number;
-  device: { name: string; macAddress: string , student: {name: string}[];  selected: boolean; 
+  device: { name: string; macAddress: string , student: {name: string, generatedId: string}[];  selected: boolean; 
     AppStatus: string; Battery: number; Connected: boolean; started: boolean; showen: boolean;
+    generatedId: string;
 }
   selectedHeadsets: any
   setSelectedHeadsets: React.Dispatch<any>
@@ -102,7 +103,7 @@ const HeadsetCard = ({ device, index, selectedHeadsets, setSelectedHeadsets, sho
                 </div>
                 <div className='flex flex-col gap-y-2'>
                   <span className='text-[#122333] text-sm font-semibold'> {device.student.length >0 ? device.student[0].name : 'لا يوجد'} </span>
-                  <span className='text-[#A5A5A5] text-[8.5px]'>رقم النضاره {index+1}</span>
+                  <span className='text-[#A5A5A5] text-[11px]'>#{device.student.length > 0? device.student[0]?.generatedId : '0000'}</span>
                 </div>
             </div>
             </button>
