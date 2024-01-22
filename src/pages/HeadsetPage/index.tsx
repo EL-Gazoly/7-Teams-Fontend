@@ -17,6 +17,7 @@ const HeadsetPage = () => {
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(true)
   const [deviceState, setDeviceState] = useState({});
+  const [progress, setProgress] = useState(0);
   const ipcRenderer = (window as any).ipcRenderer;
 
   const { data: device, loading, error } = useQuery(GetDevice, { variables: { macAddress: mac }, fetchPolicy: 'no-cache' });
@@ -66,7 +67,31 @@ const HeadsetPage = () => {
     };
   }, [mac, isLoading]);  
 
+  const getHighestProgress = (data) => {
+    const result = {};
+    data.forEach(item => {
+      const { exprimentId, progress } = item;
+      if (!(exprimentId in result) || progress > result[exprimentId].progress) {
+        result[exprimentId] = { exprimentId, progress };
+      }
+    });
+    return Object.values(result);
+  };
+
   if (error) console.log(error.message);
+
+  useEffect(() => {
+    let totalProgress = 0;
+    if (device){
+        const highestProgressForEachExperiment = getHighestProgress(device.deviceByMac.student[0].studnetExpriment) as any;
+        highestProgressForEachExperiment.forEach((expriment) => {
+          totalProgress += expriment.progress;
+        });
+        const total = totalProgress / 3;
+        setProgress(total);
+    }
+    
+  }, [device]);
 
   return (
     <div>
@@ -85,7 +110,7 @@ const HeadsetPage = () => {
         </div>
         <div className='w-full flex items-center gap-x-4 flex-row-reverse'>
           <ThridCard />
-          <FourthCard progress={device?.deviceByMac?.student[0]?.studnetExpriment[0]?.progress} />
+          <FourthCard progress={progress} />
         </div>
       </div>
         )
