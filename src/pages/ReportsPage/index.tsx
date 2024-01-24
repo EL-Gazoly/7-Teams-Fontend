@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import ControlCard from '../../Components/ContraolCard'
 import SearchIcon from '../../assets/Landing/ChooseHeadset/search.png'
 import PersonIcon from '../../assets/Reports/single.svg'
-import GroupIcon from '../../assets/Reports/team.png'
+import GroupIcon from '../../assets/Reports/group.png'
 import SchoolIcon from '../../assets/Reports/school.png'
 import ClasseIcon from '../../assets/Reports/classes.svg'
 
