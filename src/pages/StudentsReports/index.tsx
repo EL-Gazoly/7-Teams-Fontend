@@ -1,7 +1,7 @@
 import { SearchStudent } from './SearchStudent';
 import React, {useState} from 'react'
 import ControlCard from '../../Components/ContraolCard'
-import StackView from './StackView';
+import StackView from '../../Components/StudentsReportsStackView';
 import GridView from '../../Components/StudentsReportsGridView';
 
 
