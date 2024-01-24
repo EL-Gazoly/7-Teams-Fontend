@@ -5,6 +5,7 @@ import PersonIcon from '../../assets/Reports/single.svg'
 import GroupIcon from '../../assets/Reports/group.png'
 import SchoolIcon from '../../assets/Reports/school.png'
 import ClasseIcon from '../../assets/Reports/classes.svg'
+import { useNavigate } from 'react-router-dom'
 
 const list = [
     {
@@ -28,6 +29,7 @@ const list = [
 
 const ReportsPage = () => {
     const [search, setSearch] = useState('')
+    const navigate = useNavigate()
 
     if(search){
         console.log(search)
@@ -66,7 +68,11 @@ const ReportsPage = () => {
             >
                 {
                     searched.map((item,index) => (
-                        <div key={index} className=' w-[492px] h-64 rounded-lg bg-white flex flex-col items-center justify-center gap-y-5' >
+                        <div key={index} className={` w-[492px] h-64 rounded-lg bg-white flex flex-col items-center justify-center gap-y-5
+                        ${index === 0 ? ' cursor-pointer' : ''}
+                        `}
+                            onClick={() => index === 0 ? navigate('/reports/students') : null}
+                        >
                             {index !== 0 ?
                                     <div className=' w-32 h-32 bg-[#EEEFF2] rounded-full flex items-center justify-center'
                                         style={{
