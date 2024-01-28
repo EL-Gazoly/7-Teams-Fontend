@@ -1,0 +1,56 @@
+import React from 'react'
+import UserIcon from '../../assets/Reports/StudentReports/user.svg'
+import CertificateIcon from '../../assets/Reports/StudentReports/certificate.svg'
+import ReportsIcon from '../../assets/Reports/StudentReports/reports.svg'
+import ClockIcon from '../../assets/Reports/StudentReports/clock.svg'
+import Mask from '../../assets/Dashboard/mask.png'
+
+type Props ={
+    title: string
+    icon: string
+    description: string
+}
+
+const Card = ({title, icon, description}: Props) => {
+    const getIcon = () => {
+        switch (icon) {
+            case 'user':
+                return UserIcon
+            case 'repots':
+                return ReportsIcon
+            case 'clock':
+                return ClockIcon
+            case 'certificate':
+                return CertificateIcon
+            default:
+                return UserIcon
+        }
+    }
+  return (
+    <div className=' w-[240px] h-[135px] rounded-lg p-3 text-white relative'
+        style={{
+            backgroundImage: "linear-gradient(258deg, #3ABD4C  -0.65%, rgba(58, 189, 76, 0.48)  96.47%)"
+        }}
+    >
+        <div className=' flex flex-col gap-y-3 w-full'>
+            <div className=' flex items-center w-full justify-between '>
+                <span className=' text-[13px] font-bold ' > {title}</span>
+                <div className=' w-10 h-10 rounded-full flex items-center justify-center bg-white'>
+                    <img src={getIcon()} alt="" />
+                </div>
+
+            </div>
+
+            <span className=' text-[28px]  font-bold self-center'>{description} </span>
+
+        </div>
+
+        <div className=' absolute top-0 left-0'>
+            <img src={Mask} alt="" />
+        </div>
+      
+    </div>
+  )
+}
+
+export default Card

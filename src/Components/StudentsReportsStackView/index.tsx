@@ -1,7 +1,9 @@
 import React from 'react'
 import { Table, TableHeader, TableBody, TableColumn, TableRow, TableCell, Avatar } from '@nextui-org/react';
+import { useNavigate } from 'react-router-dom';
 
 const StackView = () => {
+    const navigate = useNavigate()
   return (
         <Table
         isHeaderSticky
@@ -28,22 +30,22 @@ const StackView = () => {
       </TableHeader>
       <TableBody>
         <TableRow>
-            <TableCell className='flex items-center justify-center'>
+            <TableCell className='flex items-center justify-center cursor-pointer' onClick={()=> navigate(`/reports/students/1`)}>
                 <Avatar className=' w-12 h-12' src='https://avatars.githubusercontent.com/u/44036562?v=4' />
             </TableCell>
-            <TableCell>
+            <TableCell className=' cursor-pointer'onClick={()=> navigate(`/reports/students/1`)} >
                 <span className='text-[#292D32] text-sm font-bold'>محمد احمد</span>
             </TableCell>
-            <TableCell>
+            <TableCell className=' cursor-pointer'onClick={()=> navigate(`/reports/students/1`)}>
                 <span className='text-xs font-semibold text-primary '>#245682</span>
             </TableCell>
-            <TableCell>
+            <TableCell className=' cursor-pointer'onClick={()=> navigate(`/reports/students/1`)}>
                 <span className='text-sm font-bold text-[#292D32]'>مدرسه النور</span>
             </TableCell>
-            <TableCell>
+            <TableCell className=' cursor-pointer'onClick={()=> navigate(`/reports/students/1`)}>
                 <span className='text-sm font-bold text-[#292D32]'>الاول الاعدادي</span>
             </TableCell>
-            <TableCell>
+            <TableCell className=' cursor-pointer'onClick={()=> navigate(`/reports/students/1`)}>
                 <span className='text-sm font-bold text-[#292D32]'>الاعدادي</span>
             </TableCell>
         </TableRow>
