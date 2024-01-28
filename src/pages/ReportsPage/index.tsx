@@ -69,9 +69,10 @@ const ReportsPage = () => {
                 {
                     searched.map((item,index) => (
                         <div key={index} className={` w-[492px] h-64 rounded-lg bg-white flex flex-col items-center justify-center gap-y-5
-                        ${index === 0 || index === 2 ? ' cursor-pointer' : ''}
+                        ${index !== 3 ? ' cursor-pointer' : ''}
                         `}
                             onClick={() => index === 0 ? navigate('/reports/students') : 
+                            index === 1 ? navigate('/reports/classes') :
                             index === 2 ? navigate('/reports/stages') :
                         null}
                         >
