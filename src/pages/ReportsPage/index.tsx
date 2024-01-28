@@ -69,9 +69,11 @@ const ReportsPage = () => {
                 {
                     searched.map((item,index) => (
                         <div key={index} className={` w-[492px] h-64 rounded-lg bg-white flex flex-col items-center justify-center gap-y-5
-                        ${index === 0 ? ' cursor-pointer' : ''}
+                        ${index === 0 || index === 1 ? ' cursor-pointer' : ''}
                         `}
-                            onClick={() => index === 0 ? navigate('/reports/students') : null}
+                            onClick={() => index === 0 ? navigate('/reports/students') : 
+                            index === 1 ? navigate('/reports/stages') :
+                        null}
                         >
                             {index !== 0 ?
                                     <div className=' w-32 h-32 bg-[#EEEFF2] rounded-full flex items-center justify-center'

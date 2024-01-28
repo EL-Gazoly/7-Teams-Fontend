@@ -25,6 +25,7 @@ import Dashboard from "./pages/Dashboard"
 import ReportsPage from "./pages/ReportsPage"
 import StudentsReports from "./pages/StudentsReports"
 import StudentReportsPage from "./pages/StudentReportPage"
+import StagesReportsPage from "./pages/StagesReportsPage"
 function App() {
   const location = useLocation();
   const isLoginPage = location.pathname === '/login';
@@ -63,6 +64,7 @@ function App() {
                 <Route path='/reports' element={<ReportsPage/>} />
                 <Route path= '/reports/students' element={<StudentsReports/>} />
                 <Route path = '/reports/students/:id' element={<StudentReportsPage/>} />
+                <Route path= '/reports/stages' element={<StagesReportsPage/>} />
             </Route>
           </Routes>
           </div>
