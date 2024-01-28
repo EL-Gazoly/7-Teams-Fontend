@@ -3,6 +3,7 @@ import ControlCard from '../../Components/ContraolCard'
 import StagesReportFirstRow from '../../Components/StagesReportsFirstRow'
 import StageSecondRow from '../../Components/StageSecondRow'
 import StageThirdRow from '../../Components/StageThirdRow'
+import StageReportsFourthRow from '../../Components/StageReportsFoutrhRow'
 
 const StageReportPage = () => {
   return (
@@ -16,6 +17,7 @@ const StageReportPage = () => {
            <StagesReportFirstRow />
            <StageSecondRow />
            <StageThirdRow />
+           <StageReportsFourthRow />
 
         </div>
       
