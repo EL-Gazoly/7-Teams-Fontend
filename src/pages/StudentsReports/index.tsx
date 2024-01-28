@@ -8,7 +8,7 @@ import GridView from '../../Components/StudentsReportsGridView';
 
 
 const StudentsReports = () => {
-    const [activeTab, setActiveTab] = useState("stack")
+    const [activeTab, setActiveTab] = useState("grid")
   return (
     <React.Fragment>
         <ControlCard icon="Reports" title='التقارير' neasted={true} />
