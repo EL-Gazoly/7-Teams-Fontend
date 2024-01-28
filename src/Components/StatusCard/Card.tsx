@@ -16,7 +16,7 @@ const Card = ({title, icon, description}: Props) => {
         switch (icon) {
             case 'user':
                 return UserIcon
-            case 'repots':
+            case 'reports':
                 return ReportsIcon
             case 'clock':
                 return ClockIcon
