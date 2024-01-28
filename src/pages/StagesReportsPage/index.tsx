@@ -2,31 +2,38 @@ import React, {useState} from 'react'
 import ControlCard from '../../Components/ContraolCard'
 import SearchIcon from '../../assets/Landing/ChooseHeadset/search.png'
 import GroupIcon from '../../assets/Reports/group.png'
+import { Link } from 'react-router-dom'
 const list = [
   
     {
         title : "الصف الأول المتوسط",
         icon : GroupIcon,
+        link: '/reports/stages/first-middle'
     },
     {
         title : "الصف الثاني المتوسط",
         icon : GroupIcon,
+        link: '/reports/stages/second-middle'
     },
     {
         title : "الصف الثالث المتوسط",
         icon : GroupIcon,
+        link: '/reports/stages/third-middle'
     },
     {
         title : "الصف الأول الثانوي",
         icon : GroupIcon,
+        link: '/reports/stages/first-high'
     },
     {
         title : "الصف الثاني الثانوي",
         icon : GroupIcon,
+        link: '/reports/stages/second-high'
     },
     {
         title : "الصف الثالث الثانوي",
         icon : GroupIcon,
+        link: '/reports/stages/third-high'
     },
 ]
 
@@ -64,13 +71,13 @@ const StagesReportsPage = () => {
             >
                 {searched.map((item) => {
                     return (
-                        <div className=' w-60 h-28 bg-white rounded flex items-center px-[22px] gap-x-2'>
+                        <Link to={item.link} className=' w-60 h-28 bg-white rounded flex items-center px-[22px] gap-x-2'>
                             <div className=' w-[68px] h-[68px] bg-[#EEEFF2] rounded-full flex items-center justify-center'>
                                 <img src={item.icon} alt="" className=' w-9 h-9 ' />
                             </div>  
                             <span className=' text-xs font-bold'>{item.title}</span>
 
-                        </div>
+                        </Link>
                     )
                 })}
 
