@@ -1,6 +1,7 @@
 import React from 'react'
 import ControlCard from '../../Components/ContraolCard'
 import StagesReportFirstRow from '../../Components/StagesReportsFirstRow'
+import StageSecondRow from '../../Components/StageSecondRow'
 
 const StageReportPage = () => {
   return (
@@ -12,6 +13,7 @@ const StageReportPage = () => {
             }}
         >
            <StagesReportFirstRow />
+           <StageSecondRow />
 
         </div>
       
