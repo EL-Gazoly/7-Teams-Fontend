@@ -7,8 +7,7 @@ import PersonIcon from '../../assets/Reports/single.svg'
 const StudentCard = () => {
   return (
     <div className=' w-[461px] h-[324px] py-[50px] px-[30px] flex flex-col gap-y-[26px] bg-white rounded-lg'>
-        <div className=' w-full flex items-center justify-between '>
-            <img src={Dots} alt="" />
+        <div className=' w-full flex items-center justify-end '>
             <Button className=' bg-primary-gradient text-white w-[90px] h-[35px]'>
                 <img src={PrinterIcon} alt="" />
                 <span className=' text-xs'> طباعه </span>

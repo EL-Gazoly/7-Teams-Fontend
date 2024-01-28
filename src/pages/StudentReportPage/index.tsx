@@ -1,6 +1,7 @@
 import React from 'react'
 import ControlCard from '../../Components/ContraolCard'
 import StudentReportsFirstRow from '../../Components/StudentReportsFirstRow'
+import StudentReportsSecondRow from '../../Components/StudentReportsSecondRow'
 const StudentReportsPage = () => {
   return (
     <div >
@@ -12,6 +13,7 @@ const StudentReportsPage = () => {
             }}
         >
             <StudentReportsFirstRow />
+            <StudentReportsSecondRow />
 
         </div>
       
