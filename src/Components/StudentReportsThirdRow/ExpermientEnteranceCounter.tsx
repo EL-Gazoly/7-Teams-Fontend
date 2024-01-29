@@ -62,7 +62,7 @@ const ExpermientEnteranceCounter = ({expermients}) => {
                     <div className='flex items-center gap-x-8 '>
                         <span className=' font-medium'>03</span>
                         <img src={HeatExpriment} alt="" className=' w-5 h-5' />
-                        <span className=' font-bold'> تحديد الحجم</span>
+                        <span className=' font-bold'>  استخدام موقد بنسن</span>
                     </div>
                     <div className=' w-[41px] h-[42px] flex items-center justify-center bg-[#E8E9EB] font-medium'>
                             {heat}
