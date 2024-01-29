@@ -15,8 +15,6 @@ const StudentResults = ({expermients}) => {
         setPartical(totalPractical + expermient.practicalTestGrade)
         setTheortical(totalTheortical + expermient.theoreticalTestGrade)
       })
-      console.log(totalPractical)
-      console.log(totalTheortical)
     }
   }, [expermients])
   
