@@ -40,14 +40,14 @@ const options = {
   cutoutPercentage: 50,
 };
 
-const DoughuntChart = ({}) => {
+const DoughuntChart = ({traininigEntrance, theorticalEntrance, praticalEntrance}) => {
   
    const data = {
     labels: [' عدد مرات الدخول علي التدريب', ' عدد مرات الدخول علي الاختبار النظري', ' عدد مرات الدخول علي الاختبار العملي'],
     datasets: [
       {
         label: '# مرات الدخول',
-        data: [11, 42, 24],
+        data: [traininigEntrance, theorticalEntrance, praticalEntrance],
         backgroundColor: [
           '#009017',
           '#21FB45',

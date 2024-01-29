@@ -5,8 +5,6 @@ import grade from 'letter-grade'
 const StatusCard = ({data, expermients}) => {
   const [totalTime, setTotalTime] = useState(0)
   const [totalEntrance, setTotalEntrance] = useState(0)
-  const [maxTheortical, setMaxTheortical] = useState(0)
-  const [maxPractical, setMaxPractical] = useState(0)
   const [totalMarks, setTotalMarks] = useState(0)
   const [totalFinished, setTotalFinished] = useState(0)
   if(data) console.log(data)
