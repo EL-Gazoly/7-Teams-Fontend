@@ -1,10 +1,25 @@
-import React from 'react'
+import {useState, useEffect} from 'react'
 import { Divider } from '@nextui-org/react'
 import Chemistry from '../../assets/SelectCourse/SelectSubject/chemistry.svg'
 import Physics from '../../assets/SelectCourse/SelectSubject/physics.svg'
 import Biology from '../../assets/SelectCourse/SelectSubject/biology.svg'
 import Geology from '../../assets/SelectCourse/SelectSubject/geology.svg'
-const StudentResults = () => {
+import grade from 'letter-grade'
+const StudentResults = ({expermients}) => {
+  const [totalPractical, setPartical] = useState(0)
+  const [totalTheortical, setTheortical] = useState(0)
+  useEffect(() => {
+    if(expermients) {
+      expermients = Object.values(expermients)
+      expermients.forEach((expermient)=>{
+        setPartical(totalPractical + expermient.practicalTestGrade)
+        setTheortical(totalTheortical + expermient.theoreticalTestGrade)
+      })
+      console.log(totalPractical)
+      console.log(totalTheortical)
+    }
+  }, [expermients])
+  
   return (
     <div className=' w-[458px] h-[354px] px-9 py-7 bg-white rounded-lg flex flex-col gap-y-5'>
       
@@ -42,8 +57,8 @@ const StudentResults = () => {
                     direction: 'ltr'
                   }}
                 >
-                  <span className=' text-text-black text-xs font-medium'>A+</span>
-                  <span className=' text-text-black text-xs font-medium'>A+</span>
+                  <span className=' text-text-black text-xs font-medium'>{grade(totalPractical)}</span>
+                  <span className=' text-text-black text-xs font-medium'>{grade(totalTheortical)}</span>
                 </div>
 
               </div>

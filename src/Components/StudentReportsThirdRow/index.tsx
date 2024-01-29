@@ -2,10 +2,10 @@ import React from 'react'
 import StudentResults from './StudentResults'
 import ExpermientEnteranceCounter from './ExpermientEnteranceCounter'
 
-const StudentReportsThirdRow = () => {
+const StudentReportsThirdRow = ({expermients}) => {
   return (
     <div className='flex items-center gap-x-2'>
-        <StudentResults />
+        <StudentResults  expermients={expermients}/>
         <ExpermientEnteranceCounter />
       
     </div>

@@ -2,7 +2,7 @@ import {useState} from 'react'
 import { Tabs, Tab, Divider } from '@nextui-org/react'
 import Progress from './Progress'
 
-const StudentTimeCounter = () => {
+const StudentTimeCounter = ({expermients}) => {
     const [timeValue, setTimeValue] = useState<'day' | 'month' | 'year'>('day')
   return (
     <div className=' w-[532px] h-[325px] bg-white rounded-lg px-11 py-8 flex flex-col gap-y-4'>

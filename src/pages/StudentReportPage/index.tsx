@@ -69,7 +69,7 @@ const StudentReportsPage = () => {
         >
             <StudentReportsFirstRow data={data} expermients={experiments} />
             <StudentReportsSecondRow expermients={experiments} />
-            <StudentReportsThirdRow />
+            <StudentReportsThirdRow expermients={experiments} />
 
         </div>
       
