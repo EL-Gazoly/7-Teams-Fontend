@@ -6,7 +6,7 @@ const StudentReportsThirdRow = ({expermients}) => {
   return (
     <div className='flex items-center gap-x-2'>
         <StudentResults  expermients={expermients}/>
-        <ExpermientEnteranceCounter />
+        <ExpermientEnteranceCounter expermients={expermients} />
       
     </div>
   )

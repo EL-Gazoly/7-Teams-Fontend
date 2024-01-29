@@ -2,8 +2,26 @@ import { Divider } from '@nextui-org/react'
 import LiquidExpirment from '../../assets/SelectCourse/SelectExpriment/Chemistry/liquid.svg'
 import HeatExpriment from '../../assets/SelectCourse/SelectExpriment/Chemistry/heat.svg'
 import DenistyOfWood from '../../assets/SelectCourse/SelectExpriment/Chemistry/DensityOfWood.svg'
+import { useEffect, useState } from 'react'
 
-const ExpermientEnteranceCounter = () => {
+const ExpermientEnteranceCounter = ({expermients}) => {
+    const [liquid, setLiquid] = useState(0)
+    const [heat, setHeat] = useState(0)
+    const [wood, setWood] = useState(0)
+    useEffect(() => {
+        if(expermients) {
+            expermients = Object.values(expermients)
+            expermients.forEach((expermient)=>{
+                if(expermient.name== "Liquid Viscosity")
+                    setLiquid(liquid + expermient.enterPratical + expermient.enterTheortical + expermient.enterTraining)
+                if(expermient.name== "Effective Use Of Bunsen Burner")
+                    setHeat(heat + expermient.enterPratical + expermient.enterTheortical + expermient.enterTraining)
+                if(expermient.name== "Density Of Wood")
+                    setWood(wood + expermient.enterPratical + expermient.enterTheortical + expermient.enterTraining)
+                
+            })
+        }
+    }, [expermients])
   return (
     <div className=' w-[532px] h-[354px] p-7 bg-white rounded-lg flex flex-col gap-y-5'>
         <span className=' text-text-black text-sm font-bold'>عدد مرات  الدخول الى التجارب </span>
@@ -27,7 +45,7 @@ const ExpermientEnteranceCounter = () => {
                         <span className=' font-bold'>لزوجه السائل</span>
                     </div>
                     <div className=' w-[41px] h-[42px] flex items-center justify-center bg-[#E8E9EB] font-medium'>
-                            40
+                            {liquid}
                     </div> 
                 </div>
                 <div className='w-full flex items-center justify-between'>
@@ -37,7 +55,7 @@ const ExpermientEnteranceCounter = () => {
                         <span className=' font-bold'> كثافه الخشب</span>
                     </div>
                     <div className=' w-[41px] h-[42px] flex items-center justify-center bg-[#E8E9EB] font-medium'>
-                            40
+                            {wood}
                     </div> 
                 </div>
                 <div className='w-full flex items-center justify-between'>
@@ -47,7 +65,7 @@ const ExpermientEnteranceCounter = () => {
                         <span className=' font-bold'> تحديد الحجم</span>
                     </div>
                     <div className=' w-[41px] h-[42px] flex items-center justify-center bg-[#E8E9EB] font-medium'>
-                            40
+                            {heat}
                     </div> 
                 </div>
 
