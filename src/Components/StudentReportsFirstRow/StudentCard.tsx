@@ -4,7 +4,25 @@ import PrinterIcon from '../../assets/Reports/printer.png'
 import { Button, Avatar, Divider } from '@nextui-org/react'
 import PersonIcon from '../../assets/Reports/single.svg'
 
-const StudentCard = () => {
+const StudentCard = ({data}) => {
+    const getStage = (stage) => {
+        switch (stage) {
+            case 'High':
+            return 'الثانوي'
+            case 'Middle':
+            return 'المتوسط'
+        }
+    }
+    const getGrade = (grade) => {
+        switch (grade) {
+            case 'first':
+            return 'الاول'
+            case 'second':
+            return 'الثاني'
+            case 'third':
+            return 'الثالث'
+        }
+    }
   return (
     <div className=' w-[458px] h-[324px] py-[50px] px-[30px] flex flex-col gap-y-[26px] bg-white rounded-lg'>
         <div className=' w-full flex items-center justify-end '>
@@ -20,15 +38,15 @@ const StudentCard = () => {
 
         <div className=' w-full flex items-center justify-center gap-x-[18px]'>
             <div className=' flex flex-col gap-y-3'>
-                <span className=' text-[#111928] text-2xl font-bold'>عرار منصور</span>
-                <span className=' text-primary text-2xl font-medium'>#245682</span>
+                <span className=' text-[#111928] text-2xl font-bold'>{data?.student.name} </span>
+                <span className=' text-primary text-2xl font-medium'>#{data?.student.generatedId}</span>
 
             </div>
             <Divider orientation="vertical" className='bg-[#111928]' />
             <div className=' flex flex-col gap-y-[10px]'>
                 <span className=' text-[#1119288F] text-[15px]'>مدرسة : جده الحديثة</span>
-                <span className=' text-[#1119288F] text-[15px]'>المرحلة : الأولة</span>
-                <span className=' text-[#1119288F] text-[15px]'>الصف : الثانى</span>
+                <span className=' text-[#1119288F] text-[15px]'>المرحلة : {getStage(data?.student.team.name)}</span>
+                <span className=' text-[#1119288F] text-[15px]'>الصف : {getGrade(data?.student.class.number)}</span>
 
             </div>
 

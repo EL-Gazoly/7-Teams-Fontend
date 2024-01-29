@@ -19,8 +19,6 @@ const StudentsReports = () => {
           <Loading />
       </div>
     );
-  
-  if(data) console.log(data)
   if (error) return console.log(error);
 
   return (
