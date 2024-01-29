@@ -20,41 +20,41 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-const labels = [0, 10 , 20 , 30 , 40 , 50 , 60 , 70 , 80 , 90 , 100]
+const labels = ["الفصل الاول", "الفصل الثاني","الفصل الثالث"]
 
 const data = {
     labels: labels,
     datasets: [
       {
         label: 'أ',
-        data: [54, 11, 23, 37, 21, 13, 40, 20, 10, 45, 32],
+        data: [60, 40, 31],
         backgroundColor: '#009017',
         borderColor: '#009017',
         borderWidth: 1,
         borderRadius: 3, 
-        barThickness: -30,
+        barThickness: 40,
         hoverBackgroundColor: '#2DEC4C',
         hoverBorderColor: '#2DEC4C',
       },
       {
         label: 'ب',
-        data: [23,31, 12, 35 , 41, 13, 31, 23, 12, 31, 41],
+        data: [50,45, 67],
         backgroundColor: '#4ADB61',
         borderColor: '#4ADB61',
         borderWidth: 1,
         borderRadius: 3, 
-        barThickness: 30, 
+        barThickness: 40, 
         hoverBackgroundColor: '#2DEC4C',
         hoverBorderColor: '#2DEC4C',
       },
       {
         label: 'ج',
-        data: [32, 12, 3, 41, 13, 31, 23, 12, 40, 41, 13],
+        data: [45, 61, 50],
         backgroundColor: '#8DF49D',
         borderColor: '#8DF49D',
         borderWidth: 1,
         borderRadius: 3, 
-        barThickness: 30, 
+        barThickness: 40, 
         hoverBackgroundColor: '#2DEC4C',
         hoverBorderColor: '#2DEC4C',
       },
@@ -140,7 +140,7 @@ const StageReportsFourthRow = () => {
                 <h3>الصف الثاني الثانوى</h3>
                 <h3>الصف الاول الثانوى</h3>
             </div>
-            <div className=' w-[720px] h-[280px] self-center mx-4 absolute top-[19%] left-[8%]'>
+            <div className=' w-[720px] h-[280px] self-center mx-4 absolute top-[17%] left-[6%]'>
                 <Bar data={data} options={options} />
             </div>
 
