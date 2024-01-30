@@ -2,7 +2,8 @@ import React from 'react'
 import Dots from '../../assets/Reports/dotshorizontal.svg'
 import PrinterIcon from '../../assets/Reports/printer.png'
 import { Button, Avatar, Divider } from '@nextui-org/react'
-import PersonIcon from '../../assets/Reports/single.svg'
+
+import noPic from '../../assets/students/noPic.svg'
 
 const StudentCard = ({data}) => {
     const getStage = (stage) => {
@@ -33,7 +34,9 @@ const StudentCard = ({data}) => {
         </div>
         
         <div className=' w-full flex items-center justify-center'>
-            <Avatar src={PersonIcon} size='lg' className=' w-[74px] h-[74px]' />
+        <div className=' w-[74px] h-[74px] bg-[#F6F6F6] rounded-full flex items-center justify-center'>
+                  {data.student.imageUrl ? <Avatar className=' w-[74px] h-[74px]' src={`${import.meta.env.VITE_API_URL}${data.student.imageUrl}`} fallback={noPic}/> : <img src={noPic} alt="" /> }
+              </div>
         </div>
 
         <div className=' w-full flex items-center justify-center gap-x-[18px]'>

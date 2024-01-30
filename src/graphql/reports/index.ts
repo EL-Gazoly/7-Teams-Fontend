@@ -5,6 +5,7 @@ export const GetStudentReports = gql`
   student(id: $studentId) {
     name
     generatedId
+    imageUrl
     team {
       teamId
       name
