@@ -49,3 +49,25 @@ export const GetStudents = gql`
     }
 }
 `
+
+export const GetStudentTime = gql`
+    query StudentExpermientByPeriod($studentId: String!) {
+  StudentExpermientByPeriod(studentId: $studentId) {
+    expriementsByMonth {
+      totalPraticalTime
+      totalTheorticalTime
+      totalTrainingTime
+    }
+    expriementsByYear {
+      totalPraticalTime
+      totalTheorticalTime
+      totalTrainingTime
+    }
+    expriemntsByDay {
+      totalTheorticalTime
+      totalPraticalTime
+      totalTrainingTime
+    }
+  }
+}
+`;

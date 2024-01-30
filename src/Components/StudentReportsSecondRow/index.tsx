@@ -6,7 +6,7 @@ const StudentReportsSecondRow = ({expermients}) => {
   return (
     <div className=' flex items-center gap-x-2'>
       <StudentExperminetCount expermients={expermients} />
-      <StudentTimeCounter expermients={expermients} />
+      <StudentTimeCounter />
       
       
     </div>

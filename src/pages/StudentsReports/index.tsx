@@ -14,11 +14,7 @@ const StudentsReports = () => {
     const [activeTab, setActiveTab] = useState("grid")
     const { loading, error, data } = useQuery(GetStudents);
 
-    if (loading) return (
-      <div className=' w-full h-full flex items-center justify-center'>
-          <Loading />
-      </div>
-    );
+    if (loading) return <Loading />
   if (error) return console.log(error);
 
   return (

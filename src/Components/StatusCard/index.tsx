@@ -40,7 +40,7 @@ const StatusCard = ({data, expermients}) => {
     <div className=' w-[532px] h-[324px] py-5 px-[18px] bg-white rounded-lg'>
       <div className=' max-w-full grid grid-cols-2 gap-4'>
         <Card title='إجمالي الدورات المكتملة' icon='certificate' description={`${totalFinished}`}/>
-        <Card title='الأداء العام' icon='reports' description={`${grade(totalMarks)}`}/>
+        <Card title='الأداء العام' icon='reports' description={`${grade(totalMarks) ? grade(totalMarks) : 'F'} `}/>
         <Card title='الوقت الكلي' icon='clock' description={convertMillisecondsToHoursAndMinutes(totalTime)}/>
         <Card title='إجمالي مرات تسجيل الدخول' icon='user' description={`${totalEntrance}`}/>
 
