@@ -72,8 +72,8 @@ const ReportsPage = () => {
                         ${index !== 3 ? ' cursor-pointer' : ''}
                         `}
                             onClick={() => index === 0 ? navigate('/reports/students') : 
-                            index === 1 ? navigate('/reports/classes') :
-                            index === 2 ? navigate('/reports/stages') :
+                            index === 1 ? navigate('/reports/stages')   :
+                            index === 2 ? navigate('/reports/classes') :
                         null}
                         >
                             {index !== 0 ?

@@ -6,38 +6,18 @@ import { Link } from 'react-router-dom'
 const list = [
   
     {
-        title : "الصف الأول المتوسط",
+        title : "الصف المتوسط",
         icon : GroupIcon,
-        link: '/reports/stages/first-middle'
+        link: '/reports/stages/20f9b0c6-37fa-4509-987a-6be7b341d98e',
     },
     {
-        title : "الصف الثاني المتوسط",
+        title : "الصف الثانوي",
         icon : GroupIcon,
-        link: '/reports/stages/second-middle'
-    },
-    {
-        title : "الصف الثالث المتوسط",
-        icon : GroupIcon,
-        link: '/reports/stages/third-middle'
-    },
-    {
-        title : "الصف الأول الثانوي",
-        icon : GroupIcon,
-        link: '/reports/stages/first-high'
-    },
-    {
-        title : "الصف الثاني الثانوي",
-        icon : GroupIcon,
-        link: '/reports/stages/second-high'
-    },
-    {
-        title : "الصف الثالث الثانوي",
-        icon : GroupIcon,
-        link: '/reports/stages/third-high'
+        link: '/reports/stages/1781aa8d-369d-4875-8a32-c8aac39ea543'
     },
 ]
 
-const StagesReportsPage = () => {
+const StagesReportsPage  = () => {
     const [search, setSearch] = useState('')
     const searched = list.filter((item) => {
         return item.title.includes(search)

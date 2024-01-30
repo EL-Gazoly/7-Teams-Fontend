@@ -65,7 +65,7 @@ function App() {
                 <Route path="/settings/roles/update/:id" element={<UpdateRolePage />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path='/reports' element={<ReportsPage/>} />
-                <Route path= '/reports/students' element={<StudentsReports/>} />
+                <Route path='/reports/students' element={<StudentsReports/>} />
                 <Route path = '/reports/students/:id' element={<StudentReportsPage/>} />
                 <Route path= '/reports/stages' element={<StagesReportsPage/>} />
                 <Route path="/reports/stages/:stage" element={<StageReportPage />} />

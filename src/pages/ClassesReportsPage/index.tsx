@@ -6,14 +6,34 @@ import { Link } from 'react-router-dom'
 const list = [
   
     {
-        title : "الصف المتوسط",
+        title : "الصف الأول المتوسط",
         icon : GroupIcon,
-        link: '/reports/classes/middle'
+        link: '/reports/classes/fad58648-c419-4701-985a-b8707446074b'
     },
     {
-        title : "الصف الثانوي",
+        title : "الصف الثاني المتوسط",
         icon : GroupIcon,
-        link: '/reports/classes/high'
+        link: '/reports/classes/42e9c8a6-7c33-4ada-8215-65465a495912'
+    },
+    {
+        title : "الصف الثالث المتوسط",
+        icon : GroupIcon,
+        link: '/reports/classes/d401bb95-d5ad-4b34-ae7a-e5db984f2b14'
+    },
+    {
+        title : "الصف الأول الثانوي",
+        icon : GroupIcon,
+        link: '/reports/classes/65d2322b-1d47-42b1-8739-f10a83378355'
+    },
+    {
+        title : "الصف الثاني الثانوي",
+        icon : GroupIcon,
+        link: '/reports/classes/056e7db3-66c1-450d-99b6-50c8206efc78'
+    },
+    {
+        title : "الصف الثالث الثانوي",
+        icon : GroupIcon,
+        link: '/reports/classes/5b9b06d4-2278-476c-a6f2-02dd366b18ef'
     },
 ]
 
