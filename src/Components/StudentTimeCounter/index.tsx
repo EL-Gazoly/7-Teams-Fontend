@@ -18,8 +18,6 @@ const StudentTimeCounter = () => {
     const [ practicalMonth, setPracticalMonth ] = useState<any>(0)
     const [ practicalYear, setPracticalYear ] = useState<any>(0)
     const [ practicalDay, setPracticalDay ] = useState<any>(0)
-    const [ totalMonth, setTotalMonth ] = useState<any>()
-    const [ totalYear, setTotalYear ] = useState<any>()
     const { loading, error, data } = useQuery(GetStudentTime, {
         variables: {
             studentId: id
@@ -47,7 +45,6 @@ const StudentTimeCounter = () => {
             })
             
             data?.StudentExpermientByPeriod?.expriementsByMonth?.map((item: any) => {
-                console.log("+++++++++++++++++++++++++", item)
                 trainingMonth = trainingMonth + item?.totalTrainingTime
                 theoreticalMonth = theoreticalMonth + item?.totalTheorticalTime
                 practicalMonth = practicalMonth + item?.totalPraticalTime
@@ -55,7 +52,6 @@ const StudentTimeCounter = () => {
                 setTheoreticalMonth(theoreticalMonth)
                 setPracticalMonth(practicalMonth)
             })
-            console.log(trainingDay, theoreticalDay, practicalDay)
             
             data?.StudentExpermientByPeriod?.expriementsByYear?.map((item: any) => {
                 trainingYear = trainingYear + item?.totalTrainingTime
@@ -72,7 +68,6 @@ const StudentTimeCounter = () => {
 
     if (loading) return <Loading />
     if (error)  console.log(error);
-    if(data) console.log(data)
 
     const convertMillisecondsToHoursAndMinutes = (ms) => {
         const hours = Math.floor(ms / 3600000)
