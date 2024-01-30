@@ -113,10 +113,12 @@ const StageReportPage = () => {
         >
            <StagesReportFirstRow totatotalTheoreticalTestGrade={theoreticalTestGradePercentage}
             practicalTestGrade={practicalTestGradePercentage} overallGrade={overallGrade} 
-            overallTime={overallTime}
+            totalPracticalTime={totalPracticalTime} totalTheorticalTime={totalTheorticalTime} totalTrainingTime={totalTrainingTime}
             />
-           <StageSecondRow />
-           <StageThirdRow />
+           <StageSecondRow enterTraining={enterTraining} enterTheortical={enterTheortical} enterPratical={enterPratical} 
+            totalPracticalTime={totalPracticalTime} totalTheorticalTime={totalTheorticalTime} totalTrainingTime={totalTrainingTime}
+           />
+           <StageThirdRow data={data} />
            <StageReportsFourthRow />
 
         </div>

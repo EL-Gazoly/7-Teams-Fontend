@@ -43,7 +43,7 @@ const ReportsPage = () => {
   return (
     <React.Fragment>
       <ControlCard icon="Reports" title='التقارير' neasted={false} />
-      <div className='flex flex-col items-center gap-y-5 mt-4'>
+      <div className='flex flex-col items-center gap-y-5 mt-4 pb-5'>
             <div className=' w-full h-[147px] bg-[#F7F9FC] flex items-center justify-center'
                 style={{
                     backdropFilter: "blur(64.4533462524414px)"

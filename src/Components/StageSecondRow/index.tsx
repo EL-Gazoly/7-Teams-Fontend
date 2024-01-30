@@ -1,11 +1,13 @@
 import React from 'react'
 import StageExperminetCount from '../StageExperminetCount'
 import StageTimeCounter from '../StageTimeCounter'
-const StageSecondRow = () => {
+const StageSecondRow = ({enterPratical, enterTheortical, enterTraining, totalPracticalTime, totalTheorticalTime, totalTrainingTime}) => {
   return (
     <div className=' flex items-center gap-x-2'>
-    <StageExperminetCount />
-    <StageTimeCounter />
+    <StageExperminetCount enterPractical={enterPratical} enterTheortical={enterTheortical} enterTraining={enterTraining} />
+    <StageTimeCounter 
+    totalPracticalTime={totalPracticalTime} totalTheorticalTime={totalTheorticalTime} totalTrainingTime={totalTrainingTime}
+    />
   </div>
   )
 }
