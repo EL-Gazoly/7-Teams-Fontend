@@ -71,3 +71,27 @@ export const GetStudentTime = gql`
   }
 }
 `;
+
+export const GetTeamReports = gql`
+query Team($teamId: String!) {
+  team(id: $teamId) {
+    classes {
+       classId
+        number
+      students {
+        studnetExpriment {
+          theoreticalTestGrade
+          totalPraticalTime
+          totalTheorticalTime
+          totalTrainingTime
+          practicalTestGrade
+          enterTraining
+          enterTheortical
+          enterPratical
+        }
+      }
+    }
+  }
+}
+
+`
