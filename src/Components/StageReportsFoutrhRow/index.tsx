@@ -101,7 +101,117 @@ const data = {
   
   
 
-const StageReportsFourthRow = () => {
+const StageReportsFourthRow = ({experminets}) => {
+  const [first, setFirst] = useState({
+    totalTheorticalTime: 0,
+    totalPraticalTime: 0,
+    totalTrainingTime: 0
+  })
+  const [second, setSecond] = useState({
+    totalTheorticalTime: 0,
+    totalPraticalTime: 0,
+    totalTrainingTime: 0
+  })
+  const [third, setThird] = useState({
+    totalTheorticalTime: 0,
+    totalPraticalTime: 0,
+    totalTrainingTime: 0
+  })
+  const calculateTotal = () => {
+    const classTotals = [];
+
+      experminets.classes.forEach((classObj) => {
+        const classTotal = {
+          classId: classObj.classId,
+          className: classObj.number,
+          totalTrainingTime: 0,
+          totalTheorticalTime: 0,
+          totalPraticalTime: 0,
+        };
+
+        classObj.students.forEach((student) => {
+          student.studnetExpriment.forEach((expriment) => {
+            classTotal.totalTrainingTime += expriment.totalTrainingTime;
+            classTotal.totalTheorticalTime += expriment.totalTheorticalTime;
+            classTotal.totalPraticalTime += expriment.totalPraticalTime;
+          });
+        });
+
+        classTotals.push(classTotal);
+      });
+
+      // Calculate overall totals
+      const overallTotal = classTotals.reduce(
+        (acc, classTotal) => {
+          acc.totalTrainingTime += classTotal.totalTrainingTime;
+          acc.totalTheorticalTime += classTotal.totalTheorticalTime;
+          acc.totalPraticalTime += classTotal.totalPraticalTime;
+          return acc;
+        },
+        {
+          totalTrainingTime: 0,
+          totalTheorticalTime: 0,
+          totalPraticalTime: 0,
+        }
+      );
+
+      console.log("Class Totals:", classTotals);
+      setFirst(classTotals[0])
+      setSecond(classTotals[1])
+      setThird(classTotals[2])
+      console.log("this is ", classTotals[0].totalTheorticalTime)
+      
+  }
+  useEffect(()=>{
+    if(experminets)
+    calculateTotal()
+  },[experminets])
+
+  const convertMillisecondsToHoursAndMinutes = (ms) => {
+    const hours = Math.floor(ms / 3600000)
+    return hours
+  }
+
+  const data = {
+    labels: labels,
+    datasets: [
+      {
+        label: 'التدريب العملي',
+        data: [convertMillisecondsToHoursAndMinutes(first.totalTrainingTime), convertMillisecondsToHoursAndMinutes(second.totalTrainingTime), convertMillisecondsToHoursAndMinutes(third.totalTrainingTime)],
+        backgroundColor: '#009017',
+        borderColor: '#009017',
+        borderWidth: 1,
+        borderRadius: 3, 
+        barThickness: 40,
+        hoverBackgroundColor: '#2DEC4C',
+        hoverBorderColor: '#2DEC4C',
+      },
+      {
+        label: 'الاختبار العملي',
+        data: [convertMillisecondsToHoursAndMinutes(first.totalPraticalTime),convertMillisecondsToHoursAndMinutes(second.totalPraticalTime), convertMillisecondsToHoursAndMinutes(third.totalPraticalTime)],
+        backgroundColor: '#4ADB61',
+        borderColor: '#4ADB61',
+        borderWidth: 1,
+        borderRadius: 3, 
+        barThickness: 40, 
+        hoverBackgroundColor: '#2DEC4C',
+        hoverBorderColor: '#2DEC4C',
+      },
+      {
+        label: 'الاختبار النظري',
+        data: [convertMillisecondsToHoursAndMinutes(first.totalTheorticalTime), convertMillisecondsToHoursAndMinutes(second.totalTheorticalTime), convertMillisecondsToHoursAndMinutes(third.totalTheorticalTime)],
+        backgroundColor: '#8DF49D',
+        borderColor: '#8DF49D',
+        borderWidth: 1,
+        borderRadius: 3, 
+        barThickness: 40, 
+        hoverBackgroundColor: '#2DEC4C',
+        hoverBorderColor: '#2DEC4C',
+      },
+    ],
+  
+  }
+
   return (
     <div className=' w-full h-[354px] bg-white py-6 px-9 rounded-lg flex flex-col gap-y-6 relative'>
         <div className=' flex items-center justify-between'>
@@ -110,7 +220,7 @@ const StageReportsFourthRow = () => {
                 <div className=' flex items-center gap-x-1'>
                     <div className=' w-1 h-8  bg-[#009017] rounded' />
                     <div className=' w-[69px] text-[8px] font-semibold text-[#444]'>
-                    التقدير التفصيلى للتدريب العملى 
+                    الوقت  المستغرق للتدريب العملى 
 
                     </div>
 
@@ -118,16 +228,14 @@ const StageReportsFourthRow = () => {
                 <div className=' flex items-center gap-x-1'>
                     <div className=' w-1 h-8  bg-[#4ADB61] rounded' />
                     <div className=' w-[69px] text-[8px] font-semibold text-[#444]'>
-                    التقدير التفصيلى للأختبار العملى 
-
+                    الوقت  المستغرق للاختبار العملى 
                     </div>
 
                 </div>
                 <div className=' flex items-center gap-x-1'>
                     <div className=' w-1 h-8  bg-[#8DF49D] rounded' />
                     <div className=' w-[69px] text-[8px] font-semibold text-[#444]'>
-                    التقدير التفصيلى للأختبار النظرى 
-
+                    الوقت  المستغرق للاختبار النظرى 
                     </div>
 
                 </div>

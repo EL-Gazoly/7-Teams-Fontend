@@ -122,7 +122,7 @@ const StageReportPage = () => {
             setEnterTraining={setEnterTraining} setEnterTheortical={setEnterTheortical} setEnterPratical={setEnterPratical}
             enterTraining={enterTraining} enterTheortical={enterTheortical} enterPratical={enterPratical}
            />
-           <StageReportsFourthRow />
+           <StageReportsFourthRow  experminets={data?.team}/>
 
         </div>
       
