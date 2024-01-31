@@ -1,4 +1,3 @@
-import React from 'react'
 import {useEffect, useState} from 'react'
 import {
   Chart as ChartJS,
@@ -23,7 +22,6 @@ ChartJS.register(
   Filler,
   Legend
 );
-import { Divider } from '@nextui-org/react';
 
 const labels = ['0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%'];
 
@@ -83,7 +81,20 @@ const options = {
 };
 
 
-const TotalGradeForStage = () => {
+const TotalGradeForStage = ({experiments}) => {
+  const getClassStudentCount = (classObj) => {
+    return classObj.students.length;
+  };
+  
+  const getOverallStudentCount = (teamData) => {
+    return teamData.classes.reduce((total, currentClass) => {
+      return total + getClassStudentCount(currentClass);
+    }, 0);
+  };
+
+  
+
+  
   return (
     <div className='w-[457px] h-[354px] py-[31px] px-7 bg-white rounded-lg flex flex-col gap-y-5 relative'>
         <div className="flex w-full items-center justify-between">

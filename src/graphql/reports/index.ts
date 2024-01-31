@@ -81,6 +81,10 @@ query Team($teamId: String!) {
         number
       students {
         studnetExpriment {
+            expriment {
+            exprimentId
+            name
+          }
           theoreticalTestGrade
           totalPraticalTime
           totalTheorticalTime
@@ -89,6 +93,7 @@ query Team($teamId: String!) {
           enterTraining
           enterTheortical
           enterPratical
+        
         }
       }
     }

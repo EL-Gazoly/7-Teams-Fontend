@@ -41,7 +41,11 @@ const Card = ({title, icon, description}: Props) => {
 
             </div>
 
-            <span className=' text-[28px]  font-bold self-center'>{description} </span>
+            <span className=' text-[28px]  font-bold self-center' 
+                style={{
+                    direction: 'ltr'
+                }}
+            >{description} </span>
 
         </div>
 

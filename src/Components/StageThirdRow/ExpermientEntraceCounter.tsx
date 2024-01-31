@@ -1,9 +1,85 @@
+import { useEffect, useState} from 'react'
 import { Divider } from '@nextui-org/react'
 import LiquidExpirment from '../../assets/SelectCourse/SelectExpriment/Chemistry/liquid.svg'
 import HeatExpriment from '../../assets/SelectCourse/SelectExpriment/Chemistry/heat.svg'
 import DenistyOfWood from '../../assets/SelectCourse/SelectExpriment/Chemistry/DensityOfWood.svg'
 
-const ExpermientEnteranceCounter = () => {
+const ExpermientEnteranceCounter = ({data, setEnterTraining, setEnterTheortical, setEnterPratical, enterTraining
+    , enterTheortical, enterPratical
+}) => {
+    const [liquid, setLiquid] = useState(0)
+    const [heat, setHeat] = useState(0)
+    const [wood, setWood] = useState(0)
+    useEffect(() => {
+    
+            calculateTotal()
+        
+    }, [data])
+
+    const calculateTotal = () => {
+        const experimentTotalsMap = new Map();
+        data.classes.forEach((classObj) => {
+          classObj.students.forEach((student) => {
+            const exprimentMap = new Map();
+        
+            // Collect maximum values for each experiment ID
+            student.studnetExpriment.forEach((expriment) => {
+              const exprimentId = expriment.expriment.exprimentId;
+              const exprimentName = expriment.expriment.name;
+        
+              if (!exprimentMap.has(exprimentName)) {
+                exprimentMap.set(exprimentName, {
+                  totalEnterTraining: 0,
+                  totalEnterTheortical: 0,
+                  totalEnterPratical: 0
+                });
+              }
+        
+              exprimentMap.get(exprimentName).totalEnterTraining += expriment.enterTraining;
+              exprimentMap.get(exprimentName).totalEnterTheortical += expriment.enterTheortical;
+              exprimentMap.get(exprimentName).totalEnterPratical += expriment.enterPratical;
+            });
+        
+            // Update the experimentTotalsMap
+            exprimentMap.forEach((totals, exprimentName) => {
+              if (!experimentTotalsMap.has(exprimentName)) {
+                experimentTotalsMap.set(exprimentName, [totals]);
+              } else {
+                experimentTotalsMap.get(exprimentName).push(totals);
+              }
+            });
+          });
+        });
+        const summedExperimentTotals = new Map();
+        experimentTotalsMap.forEach((totalsList, exprimentName) => {
+          const summedTotals = totalsList.reduce((acc, totals) => {
+            acc.totalEnterTraining += totals.totalEnterTraining;
+            acc.totalEnterTheortical += totals.totalEnterTheortical;
+            acc.totalEnterPratical += totals.totalEnterPratical;
+            return acc;
+          }, {
+            totalEnterTraining: 0,
+            totalEnterTheortical: 0,
+            totalEnterPratical: 0
+          });
+        
+          summedExperimentTotals.set(exprimentName, summedTotals);
+        });
+        setLiquid(
+            summedExperimentTotals.get("Liquid Viscosity") ?
+            summedExperimentTotals.get("Liquid Viscosity").totalEnterTraining + summedExperimentTotals.get("Liquid Viscosity").totalEnterTheortical + summedExperimentTotals.get("Liquid Viscosity").totalEnterPratical
+             : 0)
+        setHeat(
+            summedExperimentTotals.get("Effective Use Of Bunsen Burner") ?
+            summedExperimentTotals.get("Effective Use Of Bunsen Burner").totalEnterTraining + summedExperimentTotals.get("Effective Use Of Bunsen Burner").totalEnterTheortical + summedExperimentTotals.get("Effective Use Of Bunsen Burner").totalEnterPratical
+             : 0)
+        setWood(
+            summedExperimentTotals.get("Density Of Wood") ?
+            summedExperimentTotals.get("Density Of Wood").totalEnterTraining + summedExperimentTotals.get("Density Of Wood").totalEnterTheortical + summedExperimentTotals.get("Density Of Wood").totalEnterPratical
+                : 0
+            )
+
+    }
   return (
     <div className=' w-[532px] h-[354px] p-7 bg-white rounded-lg flex flex-col gap-y-5'>
         <span className=' text-text-black text-sm font-bold'>عدد مرات  الدخول الى التجارب </span>
@@ -27,7 +103,7 @@ const ExpermientEnteranceCounter = () => {
                         <span className=' font-bold'>لزوجه السائل</span>
                     </div>
                     <div className=' w-[41px] h-[42px] flex items-center justify-center bg-[#E8E9EB] font-medium'>
-                            40
+                            {liquid}
                     </div> 
                 </div>
                 <div className='w-full flex items-center justify-between'>
@@ -37,17 +113,17 @@ const ExpermientEnteranceCounter = () => {
                         <span className=' font-bold'> كثافه الخشب</span>
                     </div>
                     <div className=' w-[41px] h-[42px] flex items-center justify-center bg-[#E8E9EB] font-medium'>
-                            40
+                            {wood}
                     </div> 
                 </div>
                 <div className='w-full flex items-center justify-between'>
                     <div className='flex items-center gap-x-8 '>
                         <span className=' font-medium'>03</span>
                         <img src={HeatExpriment} alt="" className=' w-5 h-5' />
-                        <span className=' font-bold'> تحديد الحجم</span>
+                        <span className=' font-bold'> استخدام موقد بنسن</span>
                     </div>
                     <div className=' w-[41px] h-[42px] flex items-center justify-center bg-[#E8E9EB] font-medium'>
-                            40
+                            {heat}
                     </div> 
                 </div>
 

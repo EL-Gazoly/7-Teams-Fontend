@@ -118,7 +118,10 @@ const StageReportPage = () => {
            <StageSecondRow enterTraining={enterTraining} enterTheortical={enterTheortical} enterPratical={enterPratical} 
             totalPracticalTime={totalPracticalTime} totalTheorticalTime={totalTheorticalTime} totalTrainingTime={totalTrainingTime}
            />
-           <StageThirdRow data={data} />
+           <StageThirdRow data={data?.team} 
+            setEnterTraining={setEnterTraining} setEnterTheortical={setEnterTheortical} setEnterPratical={setEnterPratical}
+            enterTraining={enterTraining} enterTheortical={enterTheortical} enterPratical={enterPratical}
+           />
            <StageReportsFourthRow />
 
         </div>
