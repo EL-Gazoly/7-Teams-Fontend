@@ -16,7 +16,6 @@ const StatusCard = ({data, expermients}) => {
       
        expermients.forEach((expermient)=>{
           setTotalTime(totalTime + expermient.totalPraticalTime + expermient.totalTheorticalTime + expermient.totalTrainingTime)
-          setTotalEntrance(totalEntrance + expermient.enterPratical + expermient.enterTheortical + expermient.enterTraining)
           if(expermient.theoreticalTestGrade > maxTheortical) maxTheortical = expermient.theoreticalTestGrade
           if(expermient.practicalTestGrade > maxPractical) maxPractical = expermient.practicalTestGrade
           if (expermient.practicalTestGrade  == 100 && expermient.theoreticalTestGrade == 100) setTotalFinished(totalFinished + 1)
@@ -25,6 +24,15 @@ const StatusCard = ({data, expermients}) => {
        })
        const totalMarks = maxTheortical + maxPractical / 200 * 100
        setTotalMarks(totalMarks)
+       let totalPracticalTime = 0;
+       let totalTheoreticalTime = 0;
+       let totalTrainingTime = 0;
+       data.student.studnetExpriment.forEach((expermient)=>{
+         totalPracticalTime += expermient.enterPratical;
+       totalTheoreticalTime += expermient.enterTheortical;
+       totalTrainingTime += expermient.enterTraining;
+       })
+       setTotalEntrance(totalTrainingTime + totalTheoreticalTime + totalPracticalTime)
 
       }
 

@@ -2,10 +2,10 @@ import React from 'react'
 import StudentExperminetCount from '../StudentExperminetCount'
 import StudentTimeCounter from '../StudentTimeCounter'
 
-const StudentReportsSecondRow = ({expermients}) => {
+const StudentReportsSecondRow = ({data, expermients}) => {
   return (
     <div className=' flex items-center gap-x-2'>
-      <StudentExperminetCount expermients={expermients} />
+      <StudentExperminetCount expermients={data} />
       <StudentTimeCounter />
       
       

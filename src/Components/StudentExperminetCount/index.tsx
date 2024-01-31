@@ -7,13 +7,18 @@ const StudentExperminetCount = ({expermients}) => {
   const [praticalEntrance, setPraticalEntrance] = useState(0)
   useEffect(() => {
    if(expermients) {
-    expermients = Object.values(expermients)
-      
-    expermients.forEach((expermient)=>{
-        setTheorticalEntrance(theorticalEntrance + expermient.enterTheortical)
-        setPraticalEntrance(praticalEntrance + expermient.enterPratical)
-        setTraininigEntrance(traininigEntrance + expermient.enterTraining)
+    let totalPracticalTime = 0;
+    let totalTheoreticalTime = 0;
+    let totalTrainingTime = 0;
+    console.log(expermients)
+    expermients.student.studnetExpriment.forEach((expermient)=>{
+      totalPracticalTime += expermient.enterPratical;
+    totalTheoreticalTime += expermient.enterTheortical;
+    totalTrainingTime += expermient.enterTraining;
     })
+    setTraininigEntrance(totalTrainingTime)
+    setTheorticalEntrance(totalTheoreticalTime)
+    setPraticalEntrance(totalPracticalTime)
 
       
    }

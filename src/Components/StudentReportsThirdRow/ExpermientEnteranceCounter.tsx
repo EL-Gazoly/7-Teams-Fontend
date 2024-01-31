@@ -79,7 +79,7 @@ const ExpermientEnteranceCounter = ({expermients}) => {
                             <span className=' font-bold'> تحديد الحجم</span>
                         </div>
                         <div className=' w-[41px] h-[42px] flex items-center justify-center bg-[#E8E9EB] font-medium'>
-                                {wood}
+                                {volume}
                         </div>
                 </div>
 
