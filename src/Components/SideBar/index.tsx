@@ -75,7 +75,7 @@ const SideBar = () => {
                 key={"/headsets"}
                 title={
                     <div className=" w-[159px] flex items-center justify-start mx-2 gap-x-2 mr-4 mt-3 font-medium text-sm  flex-row-reverse">
-                        <Image src={active === "/headsets" ? SelectedHeadset : Headset} width={25} height={25} />
+                        <img src={active === "/headsets" ? SelectedHeadset : Headset} width={25} height={25} />
                         <span className=" text-[13px]">نظارة الواقع الافتراضي </span>
                     </div>
                 } 
@@ -89,7 +89,7 @@ const SideBar = () => {
                     ) && (
                         <Tab key={"/courses"}   title={
                             <div className="w-[159px]  flex items-center  justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
-                                <Image src={active==="/courses" ? SelectedCourses : Courses} width={25} height={25} radius="none" />
+                                <img src={active==="/courses" ? SelectedCourses : Courses} width={25} height={25}  />
                                 <span>المناهج التعليمية</span>
                             </div>
                         } />
@@ -104,7 +104,7 @@ const SideBar = () => {
                 ) && (
                     <Tab key={"/students"}   title={
                         <div className=" w-[159px] flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
-                            <Image src={active==="/students" ? SelectedStudents : Students} width={25} height={25} radius="none" />
+                            <img src={active==="/students" ? SelectedStudents : Students} width={25} height={25}  />
                             <span>الطلاب</span>
                         </div>
                     } />
@@ -119,7 +119,7 @@ const SideBar = () => {
                  ) && (
                       <Tab key={"/library"}   title={
                             <div className=" w-[159px] flex items-center justify-start mr-4 gap-x-3 mt-3 font-medium text-sm  flex-row-reverse">
-                             <Image src={active==="/library" ? SelectedLibrary : library} width={25} height={25} radius="none" />
+                             <img src={active==="/library" ? SelectedLibrary : library} width={25} height={25}  />
                              <span >الوسائط المحفوظة</span>
                             </div>
                       } />
@@ -133,7 +133,7 @@ const SideBar = () => {
                  ) && (
                       <Tab key={"/reports"}   title={
                             <div className=" w-[159px] flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
-                             <Image src={active==="/reports" ? SelectedReports : Reports} width={25} height={25} radius="none" />
+                             <img src={active==="/reports" ? SelectedReports : Reports} width={25} height={25}  />
                              <span>التقارير</span>
                             </div>
                       } />
@@ -147,7 +147,7 @@ const SideBar = () => {
                  ) && (
                       <Tab key={"/certificates"}   title={
                             <div className=" w-[159px] flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
-                             <Image src={active==="/certificates" ? SelectedCertificates : Certificates} width={25} height={25} radius="none" />
+                             <img src={active==="/certificates" ? SelectedCertificates : Certificates} width={25} height={25}  />
                              <span>الشهادات</span>
                             </div>
                       } />
@@ -161,7 +161,7 @@ const SideBar = () => {
                  ) && (
                       <Tab key={"/dashboard"}   title={
                             <div className=" w-[159px] flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
-                             <Image src={active==="/dashboard" ? SelectedDashboard : Dashboard} width={25} height={25} radius="none" />
+                             <img src={active==="/dashboard" ? SelectedDashboard : Dashboard} width={25} height={25}  />
                              <span>لوحة التحكم</span>
                             </div>
                       } />
@@ -175,7 +175,7 @@ const SideBar = () => {
                  ) && (
                       <Tab key={"/logs"}   title={
                             <div className=" w-[159px] flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
-                             <Image src={active==="/logs" ? SelectedLogs : Logs} width={25} height={25} radius="none" />
+                             <img src={active==="/logs" ? SelectedLogs : Logs} width={25} height={25}  />
                              <span>سجل النظام</span>
                             </div>
                         } />
@@ -190,7 +190,7 @@ const SideBar = () => {
                  ) && (
                       <Tab key={"/settings"}   title={
                             <div className=" w-[159px] flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
-                             <Image src={active==="/settings" ? SelectedSettings : Settings} width={25} height={25} radius="none" />
+                             <img src={active==="/settings" ? SelectedSettings : Settings} width={25} height={25}  />
                              <span>الاعدادات العامة</span>
                             </div>
                         } />
