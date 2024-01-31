@@ -4,9 +4,9 @@ import Select from 'react-select';
 import GroupIcon from '../../assets/students/group.png'
 
 const options = [
-  { value: 'High', label: 'الصف الثانوي', image: GroupIcon },
-  { value: 'Middle', label: 'الصف الاعدادي', image: GroupIcon },
-
+  { value: 'first', label: 'الصف الاول', image: GroupIcon },
+  { value: 'second', label: 'الصف الثاني', image: GroupIcon },
+  { value: 'third', label: 'الصف الثالث', image: GroupIcon },
 ]
 
 
@@ -15,14 +15,14 @@ const SelectLevel = (props) => {
 
     const handleChange = (selectedOption) => {
       setSelectedOption(selectedOption);
-      props.setSelectedLevel(selectedOption.value)
+      props.setSelectedClass(selectedOption.value);
       
     };
     useEffect(() => {
-      if(props.selectedLevel === ''){
+      if(props.selectedClass === ''){
         setSelectedOption(null);
       }
-    }, [props.selectedLevel]);
+    }, [props.selectedClass]);
   
     const customStyles = {
       control: (provided) => ({
@@ -146,7 +146,7 @@ const SelectLevel = (props) => {
     <Select
       options={options}
       styles={customStyles}
-      placeholder="اختر المرحله"
+      placeholder="اختر الصف"
       value={selectedOption}
       onChange={handleChange}
       isSearchable={true}

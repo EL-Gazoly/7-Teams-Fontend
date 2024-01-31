@@ -8,6 +8,7 @@ import { toast } from 'sonner';
 import Loading from '../../Components/Loading';
 import { UploadImage } from './UploadImage';
 import { getStudents } from '../../graphql/students';
+import { GetStudents } from '../../graphql/reports';
 import AddWithExcel from '../../Components/AddWithExcelModal';
 
 const CreateStudent = () => {
@@ -15,7 +16,7 @@ const CreateStudent = () => {
   const [selectedFile, setSelectedFile] = useState(null);
 
   const [createStudentMutation, { data, loading, error }] = useMutation(createStudent,{
-    refetchQueries: [{ query: getStudents }],
+    refetchQueries: [{ query: getStudents }, { query: GetStudents}],
   });
 
   const nameRef = useRef<HTMLInputElement>(null);
