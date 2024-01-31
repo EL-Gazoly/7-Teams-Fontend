@@ -1,5 +1,3 @@
-import React from 'react'
-import Dots from '../../assets/Reports/dotshorizontal.svg'
 import { Divider } from '@nextui-org/react'
 import DoughuntChart from './DoughnutChart'
 const StageExperminetCount = ({enterPractical, enterTheortical, enterTraining}) => {
@@ -50,7 +48,9 @@ const StageExperminetCount = ({enterPractical, enterTheortical, enterTraining}) 
             </div>
 
         </div>
-        <DoughuntChart />
+        <DoughuntChart
+        enterPractical={enterPractical} enterTheortical={enterTheortical} enterTraining={enterTraining}
+        />
         
       </div>
     </div>

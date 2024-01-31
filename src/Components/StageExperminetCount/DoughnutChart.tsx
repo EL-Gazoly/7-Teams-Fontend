@@ -5,28 +5,6 @@ import { Doughnut } from 'react-chartjs-2';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export const data = {
-  labels: [' مدير النظام ', ' الإداريين التنفيذيين', ' المعلمين أو المشرفين '],
-  datasets: [
-    {
-      label: '# طلاب',
-      data: [62, 15, 23],
-      backgroundColor: [
-        '#009017',
-        '#21FB45',
-        '#8DF49D',
-      ],
-      borderColor: [
-        '#009017',
-        '#21FB45',
-        '#8DF49D',
-  
-      ],
-      borderRadius: 6, 
-      borderWidth: 1,
-    },
-  ],
-};
 
 const options = {
   plugins: {
@@ -40,14 +18,14 @@ const options = {
   cutoutPercentage: 50,
 };
 
-const DoughuntChart = ({}) => {
+const DoughuntChart = ({enterPractical, enterTheortical, enterTraining}) => {
   
    const data = {
     labels: [' عدد مرات الدخول علي التدريب', ' عدد مرات الدخول علي الاختبار النظري', ' عدد مرات الدخول علي الاختبار العملي'],
     datasets: [
       {
         label: '# مرات الدخول',
-        data: [11, 42, 24],
+        data: [enterTraining, enterTheortical, enterPractical],
         backgroundColor: [
           '#009017',
           '#21FB45',
