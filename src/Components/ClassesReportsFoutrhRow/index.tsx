@@ -9,6 +9,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import { set } from 'firebase/database';
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -58,7 +59,7 @@ const labels = ["الفصل الاول", "الفصل الثاني","الفصل �
   
   
 
-const StageReportsFourthRow = ({experminets}) => {
+const ClassesReportFourthRow = ({experminets}) => {
   const [first, setFirst] = useState({
     totalTheorticalTime: 0,
     totalPraticalTime: 0,
@@ -75,48 +76,51 @@ const StageReportsFourthRow = ({experminets}) => {
     totalTrainingTime: 0
   })
   const calculateTotal = () => {
-    const classTotals = [];
+    const result = {};
 
-      experminets.classes.forEach((classObj) => {
-        const classTotal = {
-          classId: classObj.classId,
-          className: classObj.number,
+    experminets.class.students.forEach(student => {
+      const classalpha = student.classalpha;
+    
+      if (!result[classalpha]) {
+        result[classalpha] = {
           totalTrainingTime: 0,
           totalTheorticalTime: 0,
           totalPraticalTime: 0,
+          totalStudents: 0,
         };
-
-        classObj.students.forEach((student) => {
-          student.studnetExpriment.forEach((expriment) => {
-            classTotal.totalTrainingTime += expriment.totalTrainingTime;
-            classTotal.totalTheorticalTime += expriment.totalTheorticalTime;
-            classTotal.totalPraticalTime += expriment.totalPraticalTime;
-          });
-        });
-
-        classTotals.push(classTotal);
+      }
+    
+      student.studnetExpriment.forEach(expriment => {
+        result[classalpha].totalTrainingTime += expriment.totalTrainingTime;
+        result[classalpha].totalTheorticalTime += expriment.totalTheorticalTime;
+        result[classalpha].totalPraticalTime += expriment.totalPraticalTime;
       });
-
-      // Calculate overall totals
-      const overallTotal = classTotals.reduce(
-        (acc, classTotal) => {
-          acc.totalTrainingTime += classTotal.totalTrainingTime;
-          acc.totalTheorticalTime += classTotal.totalTheorticalTime;
-          acc.totalPraticalTime += classTotal.totalPraticalTime;
-          return acc;
-        },
-        {
-          totalTrainingTime: 0,
-          totalTheorticalTime: 0,
-          totalPraticalTime: 0,
-        }
-      );
-
-      console.log("Class Totals:", classTotals);
-      setFirst(classTotals[0])
-      setSecond(classTotals[1])
-      setThird(classTotals[2])
-      console.log("this is ", classTotals[0].totalTheorticalTime)
+    
+      result[classalpha].totalStudents += 1;
+    });
+    
+    // Calculate averages
+    for (const classalpha in result) {
+      const totalStudents = result[classalpha].totalStudents;
+      result[classalpha].averageTrainingTime = result[classalpha].totalTrainingTime / totalStudents;
+      result[classalpha].averageTheorticalTime = result[classalpha].totalTheorticalTime / totalStudents;
+      result[classalpha].averagePraticalTime = result[classalpha].totalPraticalTime / totalStudents;
+    }
+    setFirst(result["A"]? result["A"] : {
+        totalTheorticalTime: 0,
+        totalPraticalTime: 0,
+        totalTrainingTime: 0
+    })
+    setSecond(result["B"] ? result["B"] : {
+        totalTheorticalTime: 0,
+        totalPraticalTime: 0,
+        totalTrainingTime: 0
+    })
+    setThird(result["C"] ? result["C"] : {
+        totalTheorticalTime: 0,
+        totalPraticalTime: 0,
+        totalTrainingTime: 0
+    })
       
   }
   useEffect(()=>{
@@ -215,4 +219,4 @@ const StageReportsFourthRow = ({experminets}) => {
   )
 }
 
-export default StageReportsFourthRow
+export default ClassesReportFourthRow

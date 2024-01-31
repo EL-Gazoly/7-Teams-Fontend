@@ -11,7 +11,6 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { count } from 'firebase/firestore';
 
 ChartJS.register(
   CategoryScale,
@@ -25,6 +24,26 @@ ChartJS.register(
 );
 
 const labels = ['0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%'];
+
+export const data = {
+  labels,
+  datasets: [
+    {
+      label: 'Area 1',
+      data: [40, 30, 33, 25, 35, 20, 50, 40, 30, 33, 25],
+      fill: true,
+      backgroundColor: 'rgba(7, 224, 152, 0.2)',
+      borderColor: '#05C283',
+    },
+    {
+      label: 'Area 2',
+      data: [14,18, 9, 10, 12, 12, 15, 14,18, 9, 10],
+      fill: true,
+      backgroundColor: 'rgba(0, 149, 255, 0.2)', 
+      borderColor: '#007DD6',
+    }
+  ],
+};
 
 const options = {
   plugins: {
@@ -55,14 +74,14 @@ const options = {
 };
 
 
-const TotalGradeForStage = ({experiments}) => {
+const TotalGradesForClass = ({experiments}) => {
   const [thorticalOccurance, setThorticalOccurance] = useState({})
   const [practicalOccurance, setPracticalOccurance] = useState({})
 
   const calculateTotal = () => {
       let theorticalMax = []
       let practicalMax = []
-   
+ 
         experiments.class.students.forEach((student) => {
           let maxTheoreticalTestGrade = 0;
           let maxPracticalTestGrade = 0;
@@ -184,4 +203,4 @@ const TotalGradeForStage = ({experiments}) => {
   )
 }
 
-export default TotalGradeForStage
+export default TotalGradesForClass

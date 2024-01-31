@@ -70,7 +70,7 @@ function App() {
                 <Route path= '/reports/stages' element={<StagesReportsPage/>} />
                 <Route path="/reports/stages/:stage" element={<StageReportPage />} />
                 <Route path= '/reports/classes' element={<ClassesReportsPage/>} />
-                <Route path="/reports/classes/:class" element={<ClassReportPage />} />
+                <Route path="/reports/classes/:id" element={<ClassReportPage />} />
             </Route>
           </Routes>
           </div>
