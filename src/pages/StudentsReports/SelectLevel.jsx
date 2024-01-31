@@ -23,7 +23,7 @@ const SelectLevel = (props) => {
       control: (provided) => ({
         ...provided,
         direction : 'rtl',
-        backgroundColor: '#444',
+        backgroundColor: selectedOption? '#50D766' : '#444',
         backdropFilter: 'blur(73px)',
         borderRadius: '4px',
         cursor: 'pointer',
@@ -48,6 +48,7 @@ const SelectLevel = (props) => {
         },
         fontWeight: '500',
         fontSize : '16px',
+        zIndex: '1000',
        
     
       }),
@@ -65,6 +66,7 @@ const SelectLevel = (props) => {
       }),
       option: (provided) => ({
         ...provided,
+        zIndex: '1000',
         width: '201px',
         height: '81px',
         backgroundColor: '#444',
@@ -80,6 +82,7 @@ const SelectLevel = (props) => {
         '&:active' : {
           backgroundColor: '#185AEA',
         }
+        
       }),
       menu: (provided) => ({
         ...provided,
@@ -94,6 +97,7 @@ const SelectLevel = (props) => {
       }),
       menuList: (provided) => ({
         ...provided,
+        zIndex: '1000',
         padding: 0,
         cursor: 'pointer',
         width: '100%',
@@ -143,7 +147,6 @@ const SelectLevel = (props) => {
       isSearchable={true}
       getOptionLabel={(option) => (
         <div className='selected flex items-center gap-x-6 text-xs font-medium'>
-          <img src={option.image} alt={option.label} style={customStyles.optionImage} className=' w-10 h-10'/>
           <span className={`${ selectedOption && selectedOption.value === "Ultrasound" ? 'text-[10px]' : ''}`}> {option.label} </span>
         </div>
       )}

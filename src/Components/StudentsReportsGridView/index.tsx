@@ -7,7 +7,7 @@ const GridView = ({data}) => {
         style={{ direction: 'rtl' }}
     >
        {
-        data?.admin.students.map((student, index) => (
+        data.map((student, index) => (
             <StudentCard key={index} student={student} />
         ))
        }

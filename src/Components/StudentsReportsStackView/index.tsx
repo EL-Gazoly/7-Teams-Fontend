@@ -50,11 +50,11 @@ const StackView = ({data}) => {
       </TableHeader>
       <TableBody>
         {
-            data?.admin.students.map((student, index) => (
-                <TableRow key={index}>
+            data.map((student, index) => (
+                <TableRow key={index} className=' z-0'>
                 <TableCell className='flex items-center justify-center cursor-pointer' onClick={()=> navigate(`/reports/students/${student?.studentId}}`)}>
                 <div className=' w-[50px] h-[50px] bg-[#F6F6F6] rounded-full flex items-center justify-center'>
-                  {student.imageUrl ? <Avatar className=' w-full h-full' src={`${import.meta.env.VITE_API_URL}${student.imageUrl}`} fallback={noPic}/> : <img src={noPic} alt="" /> }
+                  {student.imageUrl ? <Avatar className=' w-full h-full z-10' src={`${import.meta.env.VITE_API_URL}${student.imageUrl}`} fallback={noPic}/> : <img src={noPic} alt="" /> }
                 </div>
                 </TableCell>
                 <TableCell className=' cursor-pointer'onClick={()=> navigate(`/reports/students/${student?.studentId}}`)} >
