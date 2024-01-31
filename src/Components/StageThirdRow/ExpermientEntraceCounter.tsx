@@ -3,6 +3,7 @@ import { Divider } from '@nextui-org/react'
 import LiquidExpirment from '../../assets/SelectCourse/SelectExpriment/Chemistry/liquid.svg'
 import HeatExpriment from '../../assets/SelectCourse/SelectExpriment/Chemistry/heat.svg'
 import DenistyOfWood from '../../assets/SelectCourse/SelectExpriment/Chemistry/DensityOfWood.svg'
+import VolumeCalculation from '../../assets/SelectCourse/SelectExpriment/Chemistry/size.svg'
 
 const ExpermientEnteranceCounter = ({data, setEnterTraining, setEnterTheortical, setEnterPratical, enterTraining
     , enterTheortical, enterPratical
@@ -10,6 +11,7 @@ const ExpermientEnteranceCounter = ({data, setEnterTraining, setEnterTheortical,
     const [liquid, setLiquid] = useState(0)
     const [heat, setHeat] = useState(0)
     const [wood, setWood] = useState(0)
+    const [volume, setVolume] = useState(0)
     useEffect(() => {
     
             calculateTotal()
@@ -78,6 +80,11 @@ const ExpermientEnteranceCounter = ({data, setEnterTraining, setEnterTheortical,
             summedExperimentTotals.get("Density Of Wood").totalEnterTraining + summedExperimentTotals.get("Density Of Wood").totalEnterTheortical + summedExperimentTotals.get("Density Of Wood").totalEnterPratical
                 : 0
             )
+        setVolume(
+            summedExperimentTotals.get("Volume Calculation") ?
+            summedExperimentTotals.get("Volume Calculation").totalEnterTraining + summedExperimentTotals.get("Volume Calculation").totalEnterTheortical + summedExperimentTotals.get("Volume Calculation").totalEnterPratical
+                : 0
+            )
 
     }
   return (
@@ -126,6 +133,16 @@ const ExpermientEnteranceCounter = ({data, setEnterTraining, setEnterTheortical,
                             {heat}
                     </div> 
                 </div>
+                <div className='w-full flex items-center justify-between'>
+                        <div className='flex items-center gap-x-8 '>
+                            <span className=' font-medium'>04</span>
+                            <img src={VolumeCalculation} alt="" className=' w-5 h-5' />
+                            <span className=' font-bold'> تحديد الحجم</span>
+                        </div>
+                        <div className=' w-[41px] h-[42px] flex items-center justify-center bg-[#E8E9EB] font-medium'>
+                                {volume}
+                        </div> 
+                    </div>
 
 
             </div>

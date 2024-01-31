@@ -41,7 +41,7 @@ const StudentCard = ({data}) => {
 
         <div className=' w-full flex items-center justify-center gap-x-[18px]'>
             <div className=' flex flex-col gap-y-3'>
-                <span className=' text-[#111928] text-2xl font-bold'>{data?.student.name} </span>
+                <span className=' text-[#111928] text-2xl font-bold'>{data?.student.name.substring(0, 10)} </span>
                 <span className=' text-primary text-2xl font-medium'>#{data?.student.generatedId}</span>
 
             </div>

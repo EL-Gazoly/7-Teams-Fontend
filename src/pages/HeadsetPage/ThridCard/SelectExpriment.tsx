@@ -1,6 +1,7 @@
 import LiquidExpirment from '../../../assets/SelectCourse/SelectExpriment/Chemistry/liquid.svg'
 import HeatExpriment from '../../../assets/SelectCourse/SelectExpriment/Chemistry/heat.svg'
 import DenistyOfWood from '../../../assets/SelectCourse/SelectExpriment/Chemistry/DensityOfWood.svg'
+import VolumeCalculation from '../../../assets/SelectCourse/SelectExpriment/Chemistry/size.svg'
 import ArrowIcon from '../../../assets/headset page/arrow.svg'
 import {  Dropdown,  DropdownTrigger,  DropdownMenu,  DropdownItem, Button, Image , Divider} from "@nextui-org/react";
 
@@ -62,7 +63,19 @@ const SelectExpriment = ({setSelectItem}) => {
                   >
                     كثافة الخشب  
                 </DropdownItem>
-                
+                <DropdownItem className=' p-3 flex flex-row-reverse items-center gap-x-3 text-right border-b border-[#FFFEFE29] rounded-none'
+                  startContent={<Image src={VolumeCalculation} width={18} height={18} radius='none' /> }
+                  onClick={()=> {
+                    setSelectItem({
+                      value : "ca7823aa-2a14-49d5-b509-d218c68bf892",
+                      icon : VolumeCalculation,
+                      title : "  تحديد الحجم ",
+                      label: "VolumeCalculation"
+                    })
+                  }}
+                  >
+                    تحديد الحجم
+                </DropdownItem>
       
         </DropdownMenu>
     </Dropdown>

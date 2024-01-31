@@ -65,11 +65,15 @@ function App() {
                 <Route path="/settings/roles/update/:id" element={<UpdateRolePage />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path='/reports' element={<ReportsPage/>} />
+              {/* @ts-ignore */}
                 <Route path='/reports/students' element={<StudentsReports/>} />
+                {/* @ts-ignore */}
                 <Route path = '/reports/students/:id' element={<StudentReportsPage/>} />
                 <Route path= '/reports/stages' element={<StagesReportsPage/>} />
+                {/* @ts-ignore */}
                 <Route path="/reports/stages/:stage" element={<StageReportPage />} />
                 <Route path= '/reports/classes' element={<ClassesReportsPage/>} />
+                {/* @ts-ignore */}
                 <Route path="/reports/classes/:id" element={<ClassReportPage />} />
             </Route>
           </Routes>

@@ -82,7 +82,7 @@ const HeadsetPage = () => {
 
   useEffect(() => {
     let totalProgress = 0;
-    if (device){
+    if (device && device?.deviceByMac?.student[0]?.studnetExpriment){
         const highestProgressForEachExperiment = getHighestProgress(device.deviceByMac.student[0].studnetExpriment) as any;
         highestProgressForEachExperiment.forEach((expriment) => {
           totalProgress += expriment.progress;

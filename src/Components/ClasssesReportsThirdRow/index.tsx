@@ -1,4 +1,4 @@
-import TotalGradeForStage from '../TotalGradeForStage'
+import TotalGradeForStage from './TotalGradesForClass'
 import ExpermientEnteranceCounter from './ExpermientEnteranceCounter'
 
 

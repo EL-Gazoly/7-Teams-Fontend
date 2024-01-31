@@ -62,21 +62,23 @@ const TotalGradeForStage = ({experiments}) => {
   const calculateTotal = () => {
       let theorticalMax = []
       let practicalMax = []
-   
-        experiments.class.students.forEach((student) => {
+      experiments.classes.forEach((classInfo) => {
+        classInfo.students.forEach((student) => {
           let maxTheoreticalTestGrade = 0;
           let maxPracticalTestGrade = 0;
-    
+
           student.studnetExpriment.forEach((experiment) => {
             // Update maximum theoretical test grade
             maxTheoreticalTestGrade = Math.max(maxTheoreticalTestGrade, experiment.theoreticalTestGrade);
-    
+
             // Update maximum practical test grade
             maxPracticalTestGrade = Math.max(maxPracticalTestGrade, experiment.practicalTestGrade);
           })
             theorticalMax.push(maxTheoreticalTestGrade)
             practicalMax.push(maxPracticalTestGrade)
-        })
+        })})
+        console.log("theorticalMax", theorticalMax)
+        console.log(practicalMax)
         setThorticalOccurance(countOccurrences(theorticalMax))
         setPracticalOccurance(countOccurrences(practicalMax))
 
@@ -85,16 +87,16 @@ const TotalGradeForStage = ({experiments}) => {
   function countOccurrences(list) {
     // Initialize an object to store counts at different intervals
     const counts = {};
-  
+
     // Iterate through the list
     list.forEach(value => {
       // Calculate the interval (rounded to the nearest 10)
       const interval = Math.round(value / 10) * 10;
-  
+
       // Update the count for the interval
       counts[interval] = (counts[interval] || 0) + 1;
     });
-  
+
     return counts;
   }
 
@@ -146,8 +148,6 @@ const TotalGradeForStage = ({experiments}) => {
       }
     ],
   };
-  
-
   
   return (
     <div className='w-[457px] h-[354px] py-[31px] px-7 bg-white rounded-lg flex flex-col gap-y-5 relative'>

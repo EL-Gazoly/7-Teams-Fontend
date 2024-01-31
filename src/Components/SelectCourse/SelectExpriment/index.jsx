@@ -4,6 +4,7 @@ import Select from 'react-select';
 import LiquidExpirment from '../../../assets/SelectCourse/SelectExpriment/Chemistry/liquid.svg'
 import HeatExpriment from '../../../assets/SelectCourse/SelectExpriment/Chemistry/heat.svg'
 import DenistyOfWood from '../../../assets/SelectCourse/SelectExpriment/Chemistry/DensityOfWood.svg'
+import VolumeCalculation from '../../../assets/SelectCourse/SelectExpriment/Chemistry/size.svg'
 
 const SelectExpirment = ( props) => {
   const [selectedOption, setSelectedOption] = useState(props.SelectedExpirment);
@@ -54,6 +55,12 @@ const SelectExpirment = ( props) => {
       value : "ace39607-1086-4ec6-a207-76969e5419c8",
       title: "EffectiveUseOfBunsenBurner"
     },
+    {
+      name : "تحديد الحجم",
+      icon : VolumeCalculation,
+      value : "ca7823aa-2a14-49d5-b509-d218c68bf892",
+      title: "VolumeCalculation"
+    }
   ]
 
   const customStyles = {

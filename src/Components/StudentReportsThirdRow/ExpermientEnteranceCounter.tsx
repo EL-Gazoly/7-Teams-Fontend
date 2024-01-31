@@ -2,12 +2,14 @@ import { Divider } from '@nextui-org/react'
 import LiquidExpirment from '../../assets/SelectCourse/SelectExpriment/Chemistry/liquid.svg'
 import HeatExpriment from '../../assets/SelectCourse/SelectExpriment/Chemistry/heat.svg'
 import DenistyOfWood from '../../assets/SelectCourse/SelectExpriment/Chemistry/DensityOfWood.svg'
+import VolumeCalculation from '../../assets/SelectCourse/SelectExpriment/Chemistry/size.svg'
 import { useEffect, useState } from 'react'
 
 const ExpermientEnteranceCounter = ({expermients}) => {
     const [liquid, setLiquid] = useState(0)
     const [heat, setHeat] = useState(0)
     const [wood, setWood] = useState(0)
+    const [volume, setVolume] = useState(0)
     useEffect(() => {
         if(expermients) {
             expermients = Object.values(expermients)
@@ -18,6 +20,8 @@ const ExpermientEnteranceCounter = ({expermients}) => {
                     setHeat(heat + expermient.enterPratical + expermient.enterTheortical + expermient.enterTraining)
                 if(expermient.name== "Density Of Wood")
                     setWood(wood + expermient.enterPratical + expermient.enterTheortical + expermient.enterTraining)
+                if(expermient.name== "Volume Calculation")
+                    setVolume(volume + expermient.enterPratical + expermient.enterTheortical + expermient.enterTraining)
                 
             })
         }
@@ -67,6 +71,16 @@ const ExpermientEnteranceCounter = ({expermients}) => {
                     <div className=' w-[41px] h-[42px] flex items-center justify-center bg-[#E8E9EB] font-medium'>
                             {heat}
                     </div> 
+                </div>
+                <div className='w-full flex items-center justify-between'>
+                        <div className='flex items-center gap-x-8 '>
+                            <span className=' font-medium'>04</span>
+                            <img src={VolumeCalculation} alt="" className=' w-5 h-5' />
+                            <span className=' font-bold'> تحديد الحجم</span>
+                        </div>
+                        <div className=' w-[41px] h-[42px] flex items-center justify-center bg-[#E8E9EB] font-medium'>
+                                {wood}
+                        </div>
                 </div>
 
 
