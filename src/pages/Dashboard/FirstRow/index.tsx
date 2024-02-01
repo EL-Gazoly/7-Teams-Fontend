@@ -5,10 +5,11 @@ import { set } from 'firebase/database'
 const FirstRow = ({data}) => {
   const [time, setTime] = useState("")
   
-  const msToTime = (duration) => {
-    let seconds = Math.floor((duration / 1000) % 60),
-      minutes = Math.floor((duration / (1000 * 60)) % 60),
-      hours = Math.floor(duration / (1000 * 60 * 60));
+
+  const secondToTime = (duration) => {
+    let seconds = Math.floor(duration % 60),
+      minutes = Math.floor((duration / 60) % 60),
+      hours = Math.floor(duration / 60 / 60);
   
     hours = hours < 10 ? 0 + hours : hours;
     minutes = minutes < 10 ? 0 + minutes : minutes;
@@ -20,7 +21,7 @@ const FirstRow = ({data}) => {
   useEffect(() => {
     if(data){
       console.log(data)
-      setTime(msToTime(data[3]))
+      setTime(secondToTime(data[3]))
       
       
       

@@ -69,8 +69,9 @@ const StudentTimeCounter = () => {
     if (loading) return <Loading />
     if (error)  console.log(error);
 
-    const convertMillisecondsToHoursAndMinutes = (ms) => {
-        const hours = Math.floor(ms / 3600000)
+   
+      const convertMillisecondsToHoursAndMinutes = (seconds) => {
+        const hours = Math.floor(seconds / 3600)
         return hours
       }
 

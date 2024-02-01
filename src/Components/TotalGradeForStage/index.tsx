@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react'
+import { useLocation } from 'react-router-dom';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -58,6 +59,7 @@ const options = {
 const TotalGradeForStage = ({experiments}) => {
   const [thorticalOccurance, setThorticalOccurance] = useState({})
   const [practicalOccurance, setPracticalOccurance] = useState({})
+  const location = useLocation()
 
   const calculateTotal = () => {
       let theorticalMax = []
@@ -153,7 +155,7 @@ const TotalGradeForStage = ({experiments}) => {
     <div className='w-[457px] h-[354px] py-[31px] px-7 bg-white rounded-lg flex flex-col gap-y-5 relative'>
         <div className="flex w-full items-center justify-between">
             <span className=' text-sm text-[#444] font-bold'>
-            التقدير العام للفصل 
+            التقدير العام {location.pathname.includes("class") ? "للصف" : "للمرحله"} 
             </span>
             <div className='flex items-center gap-x-2'>
                 <div className=' flex items-center gap-x-1'>

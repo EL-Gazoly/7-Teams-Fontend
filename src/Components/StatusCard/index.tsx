@@ -43,13 +43,18 @@ const StatusCard = ({data, expermients}) => {
     const minutes = Math.floor((ms % 3600000) / 60000)
     return `${hours}h ${minutes} min`
   }
+  const convertSecondsToHoursAndMinutes = (seconds) => {
+    const hours = Math.floor(seconds / 3600)
+    const minutes = Math.floor((seconds % 3600) / 60)
+    return `${hours}h ${minutes} min`
+  }
 
   return (
     <div className=' w-[532px] h-[324px] py-5 px-[18px] bg-white rounded-lg'>
       <div className=' max-w-full grid grid-cols-2 gap-4'>
         <Card title='إجمالي الدورات المكتملة' icon='certificate' description={`${totalFinished}`}/>
         <Card title='الأداء العام' icon='reports' description={`${grade(totalMarks) ? grade(totalMarks) : 'F'} `}/>
-        <Card title='الوقت الكلي' icon='clock' description={convertMillisecondsToHoursAndMinutes(totalTime)}/>
+        <Card title='الوقت الكلي' icon='clock' description={convertSecondsToHoursAndMinutes(totalTime)}/>
         <Card title='إجمالي مرات تسجيل الدخول' icon='user' description={`${totalEntrance}`}/>
 
       </div>

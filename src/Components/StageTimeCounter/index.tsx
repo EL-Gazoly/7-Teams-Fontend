@@ -1,17 +1,20 @@
 import { StageTimeCounterItem } from './Item';
 import React from 'react'
 import { Divider } from '@nextui-org/react'
+import { useLocation } from 'react-router-dom';
 
 const StageTimeCounter = ({totalPracticalTime, totalTheorticalTime, totalTrainingTime}) => {
-  const convertMStoHoursAndMinutes = (ms) => {
-    const hours = Math.floor(ms / 3600000); // 1 Hour = 36000 Milliseconds
-    const minutes = Math.floor((ms % 3600000) / 60000); // 1 Minutes = 60000 Milliseconds
-    return { hours, minutes };
+  const location = useLocation()
+
+  const convertMStoHoursAndMinutes = (seconds) => {
+    const hours = Math.floor(seconds / 3600)
+    const minutes = Math.floor((seconds % 3600) / 60)
+    return { hours, minutes }
   }
 
   return (
     <div className=' w-[532px] h-[328px] rounded-lg py-7 px-6 bg-white flex flex-col gap-y-5'>
-      <h2 className=' mr-2 text-sm font-bold text-text-black'>الوقت المستغرق للمرحلة </h2>
+      <h2 className=' mr-2 text-sm font-bold text-text-black'>الوقت المستغرق {location.pathname.includes("class") ? "للصف" : "للمرحله"} </h2>
       <div className=' flex flex-col items-center gap-[14px]'>
         <div className="w-full flex items-center justify-between">
           <div className="flex items-center gap-x-4">

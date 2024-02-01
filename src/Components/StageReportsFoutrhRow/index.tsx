@@ -126,8 +126,9 @@ const StageReportsFourthRow = ({experminets}) => {
     calculateTotal()
   },[experminets])
 
-  const convertMillisecondsToHoursAndMinutes = (ms) => {
-    const hours = Math.floor(ms / 3600000)
+
+  const convertMillisecondsToHoursAndMinutes = (seconds) => {
+    const hours = Math.floor(seconds / 3600)
     return hours
   }
 
@@ -174,7 +175,7 @@ const StageReportsFourthRow = ({experminets}) => {
   return (
     <div className=' w-full h-[354px] bg-white py-6 px-9 rounded-lg flex flex-col gap-y-6 relative'>
         <div className=' flex items-center justify-between'>
-            <h3 className=' text-[#444] text-xl font-bold'>التقدير العام للفصل</h3>
+            <h3 className=' text-[#444] text-xl font-bold'>التقدير العام للصفوف</h3>
             <div className='flex items-center gap-x-2'>
                 <div className=' flex items-center gap-x-1'>
                     <div className=' w-1 h-8  bg-[#009017] rounded' />

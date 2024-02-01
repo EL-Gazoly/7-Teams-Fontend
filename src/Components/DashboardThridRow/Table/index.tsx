@@ -10,7 +10,7 @@ const DashboardTable = ({totalCourseTimeLoading}) => {
     if(totalCourseTimeLoading) {
       const {totalPractical, totalTheoretical, totalTraining} = sumTimes(totalCourseTimeLoading)
       console.log(totalPractical, totalTheoretical, totalTraining)
-      setTotalTime(convertmsToHMS(totalPractical + totalTheoretical + totalTraining))
+      setTotalTime(convertSecondsToHMS(totalPractical + totalTheoretical + totalTraining))
     }
 
   }, [totalCourseTimeLoading])
@@ -58,6 +58,12 @@ const convertmsToHMS = (ms: number) => {
     const minutes = (seconds % 3600) / 60;
     return `${Math.floor(hours)}h ${Math.floor(minutes)}mins`;
 };
+const convertSecondsToHMS = (seconds: number) => {
+    const hours = seconds / 3600;
+    const minutes = (seconds % 3600) / 60;
+    return `${Math.floor(hours)}h ${Math.floor(minutes)}mins`;
+    
+}
 
   return (
     <div className=' w-full flex flex-col gap-y-2'>

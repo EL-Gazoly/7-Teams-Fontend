@@ -1,11 +1,13 @@
 import { Divider } from '@nextui-org/react'
 import DoughuntChart from './DoughnutChart'
+import { useLocation } from 'react-router-dom'
 const StageExperminetCount = ({enterPractical, enterTheortical, enterTraining}) => {
+  const location = useLocation()
   return (
     <div className=' w-[457px] h-[324px] p-6  bg-white rounded-lg flex flex-col gap-y-2 '>
       <div className=' w-full flex items-center justify-between'>
         <span className=' text-gray-900 text-[15px] font-bold'> 
-        عدد مرات الدخول للنظام لطلاب المرحلة الواحدة
+        عدد مرات الدخول للنظام لطلاب {location.pathname.includes("class") ? "الصف" : "المرحله"} الواحدة
         </span>
       </div>
       <div className=' w-full flex items-center justify-between'>

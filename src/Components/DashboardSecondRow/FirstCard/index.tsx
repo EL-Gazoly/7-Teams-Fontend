@@ -73,7 +73,7 @@ const FirstCard = ({timeByMonth}) => {
   const [totalSecondMonth, setTotalSecondMonth] = useState(0)
   useEffect(() => {
     if(timeByMonth) {
-    timeByMonth = timeByMonth.map((time) => msToTime(time))
+    timeByMonth = timeByMonth.map((time) => secondToTime(time))
      
     const firstFourValues = timeByMonth.slice(0, 4)
     const lastFourValues = timeByMonth.slice(timeByMonth.length - 4, timeByMonth.length)
@@ -95,6 +95,17 @@ const FirstCard = ({timeByMonth}) => {
     seconds = seconds < 10 ? 0 + seconds : seconds;
   
     return hours ;
+  }
+   const secondToTime = (duration) => {
+    let seconds = Math.floor(duration % 60),
+      minutes = Math.floor((duration / 60) % 60),
+      hours = Math.floor(duration / 60 / 60);
+  
+    hours = hours < 10 ? 0 + hours : hours;
+    minutes = minutes < 10 ? 0 + minutes : minutes;
+    seconds = seconds < 10 ? 0 + seconds : seconds;
+  
+    return hours;
   }
   
   const data = {

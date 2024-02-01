@@ -9,8 +9,8 @@ const DashboardThridRowSecondCol = ({studentExperiments}) => {
     const [totalPraticalTime, setTotalPraticalTime] = useState(0)
     const [totalTheorticalTime, setTotalTheorticalTime] = useState(0)
     const [totalTrainingTime, setTotalTrainingTime] = useState(0)
-    const convertmsToHours = (ms) => {
-        return Math.floor(ms / 1000 / 60 / 60 )
+    const convertSecondsToHours = (seconds) => {
+        return Math.floor(seconds / 60 / 60 )
     }
     useEffect(() => {
         setTotalPraticalTime(0)
@@ -20,10 +20,10 @@ const DashboardThridRowSecondCol = ({studentExperiments}) => {
         if(studentExperiments){
             if(timeValue === 'day'){
                 const {totalPraticalTime, totalTheorticalTime, totalTrainingTime} = studentExperiments?.expriemntsByDay[0] || {totalPraticalTime: 0, totalTheorticalTime: 0, totalTrainingTime: 0}
-                setTotalPraticalTime(convertmsToHours(totalPraticalTime))
-                setTotalTheorticalTime(convertmsToHours(totalTheorticalTime))
-                setTotalTrainingTime(convertmsToHours(totalTrainingTime))
-                setTotalTime(convertmsToHours(totalPraticalTime + totalTheorticalTime + totalTrainingTime))
+                setTotalPraticalTime(convertSecondsToHours(totalPraticalTime))
+                setTotalTheorticalTime(convertSecondsToHours(totalTheorticalTime))
+                setTotalTrainingTime(convertSecondsToHours(totalTrainingTime))
+                setTotalTime(convertSecondsToHours(totalPraticalTime + totalTheorticalTime + totalTrainingTime))
             }else if(timeValue === 'month'){
                 let totalPraticalTimes = 0
                 let totalTheorticalTimes = 0
@@ -33,10 +33,10 @@ const DashboardThridRowSecondCol = ({studentExperiments}) => {
                     totalTheorticalTimes += totalTheorticalTime
                     totalTrainingTimes += totalTrainingTime
                 })
-                setTotalPraticalTime(convertmsToHours(totalPraticalTimes))
-                setTotalTheorticalTime(convertmsToHours(totalTheorticalTimes))
-                setTotalTrainingTime(convertmsToHours(totalTrainingTimes))
-                setTotalTime(convertmsToHours(totalPraticalTimes + totalTheorticalTimes + totalTrainingTimes))
+                setTotalPraticalTime(convertSecondsToHours(totalPraticalTimes))
+                setTotalTheorticalTime(convertSecondsToHours(totalTheorticalTimes))
+                setTotalTrainingTime(convertSecondsToHours(totalTrainingTimes))
+                setTotalTime(convertSecondsToHours(totalPraticalTimes + totalTheorticalTimes + totalTrainingTimes))
             }
             else if(timeValue === 'year'){
                let  totalPraticalTimes = 0
@@ -48,10 +48,10 @@ const DashboardThridRowSecondCol = ({studentExperiments}) => {
                     totalTheorticalTimes += totalTheorticalTime
                     totalTrainingTimes += totalTrainingTime
                 })
-                setTotalPraticalTime(convertmsToHours(totalPraticalTimes))
-                setTotalTheorticalTime(convertmsToHours(totalTheorticalTimes))
-                setTotalTrainingTime(convertmsToHours(totalTrainingTimes))
-                setTotalTime(convertmsToHours(totalPraticalTimes + totalTheorticalTimes + totalTrainingTimes))
+                setTotalPraticalTime(convertSecondsToHours(totalPraticalTimes))
+                setTotalTheorticalTime(convertSecondsToHours(totalTheorticalTimes))
+                setTotalTrainingTime(convertSecondsToHours(totalTrainingTimes))
+                setTotalTime(convertSecondsToHours(totalPraticalTimes + totalTheorticalTimes + totalTrainingTimes))
             }
         }
 
