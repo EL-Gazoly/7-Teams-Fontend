@@ -25,9 +25,11 @@ const HeadsetsSection = ({setSelectedHeadsets, selectedHeadsets, searchQuery, sh
   useEffect(() => {
     if (devices && devices.admin.devices.length > 0) {
       const devicesMap = devices.admin.devices.map((device) => device.macAddress);
-      const devicesWithSelect = devices.admin.devices.map((device) => {
-        return { ...device, selected: false, started: false, showen: true };
+
+      const devicesWithSelect = devices.admin.devices.map((device, index) => {
+        return { ...device, selected: false, started: false, showen: true, index: index };
       });
+      
   
       // Merge devices from different sources into one list
       const mergedDevices = devicesWithSelect.map((device) => {

@@ -15,7 +15,9 @@ const HeadsetsPage = () => {
         <ChooseHeadsetSection selectedHeadsets={selectedHeadsets} setSelectedHeadsets={setSelectedHeadsets } setSearchQuery={setSearchQuery}
         showConnected={showConnected} setShowConnected={setShowConnected}
         />
-        <ChooseCourseSection selectedHeadsets={selectedHeadsets} />
+        <ChooseCourseSection selectedHeadsets={selectedHeadsets} 
+          setSelectedHeadsets={setSelectedHeadsets}
+        />
         <HeadsetsSection  selectedHeadsets={selectedHeadsets} setSelectedHeadsets={setSelectedHeadsets} searchQuery={searchQuery} showConnected={showConnected} />
 
       </div>

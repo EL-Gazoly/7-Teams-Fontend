@@ -185,7 +185,7 @@ const SelectExpirment = ( props) => {
         onChange={handleChange}
         isSearchable={true}
         getOptionLabel={(option) => (
-          <div className='selected flex items-center gap-x-6 text-xs font-medium'
+          <div className='selected flex items-center gap-x-3 text-xs font-medium'
             style={{
               direction: "rtl"
             }}

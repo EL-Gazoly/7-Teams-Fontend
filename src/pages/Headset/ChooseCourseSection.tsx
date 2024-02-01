@@ -3,7 +3,7 @@ import SelectChapter from '../../Components/SelectCourse/SelectChapter'
 import SelectExpirment from '../../Components/SelectCourse/SelectExpriment'
 import SelectHowToStart from '../../Components/SelectCourse/SelectHowToOpen'
 import { Button } from '@nextui-org/react'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 
 import options from '../../Components/SelectCourse/options'
 
@@ -12,9 +12,10 @@ import { ref, set, update} from 'firebase/database'
 
 type ChooseCourseSectionProps = {
   selectedHeadsets: any[]
+  setSelectedHeadsets: React.Dispatch<any>
 }
 
-const ChooseCourseSection = ({selectedHeadsets}: ChooseCourseSectionProps) => {
+const ChooseCourseSection = ({selectedHeadsets, setSelectedHeadsets}: ChooseCourseSectionProps) => {
   const [SelectdSubject, setSelectedSubject] = useState(null)
   const [SelectedChapter, setSelectedChapter] = useState(null)
   const [SelectedExpirment, setSelectedExpriemnt] = useState(null)
@@ -24,12 +25,17 @@ const ChooseCourseSection = ({selectedHeadsets}: ChooseCourseSectionProps) => {
   const handelOpenCourse = () => {
       selectedHeadsets.forEach((headset) => {
         if (headset.selected){
-          headset.started = true
-          handelStartCourse(headset.macAddress)  
-          setSelectedSubject(null)
+          handelStartCourse(headset.macAddress) 
+         setSelectedHeadsets((prev: any) => {
+            const newSelectedHeadsets = [...prev];
+            newSelectedHeadsets[headset.index] = { ...newSelectedHeadsets[headset.index], started: true };
+            return newSelectedHeadsets;
+         })
+
+         setSelectedExpriemnt(null)
           setSelectedChapter(null)
-          setSelectedExpriemnt(null)
-          setSelectedHowToStart(null)   
+          setSelectedSubject(null)
+          setSelectedHowToStart(null)
           setKey(key + 1)
         }
           
