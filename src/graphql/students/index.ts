@@ -11,6 +11,13 @@ query Students {
             device {
                 name
             }
+            team {
+              teamId
+              name
+            }
+            class {
+              number
+            }
         }
     }
 }

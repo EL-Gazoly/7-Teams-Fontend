@@ -5,6 +5,7 @@ import SearchIcon from '../../assets/Landing/ChooseHeadset/search.png'
 import AddIcon from '../../assets/students/add.svg'
 import UserIcon from '../../assets/students/user.svg'
 import ChooseGrade from './ChooseGrade'
+import ChooseClass from './ChooseClass'
 import GridSelected from '../../assets/students/grid-selected.svg'
 import GridUnSelected from '../../assets/students/grid-unselected.svg'
 
@@ -22,6 +23,8 @@ const StudentsPage = () => {
     const { loading, error, data: studentsData } = useQuery(getStudents, {fetchPolicy: 'no-cache'});
     const [activeTab, setActiveTab] = useState("stack")
     const [searchQuery, setSearchQuery] = useState<String>("");
+    const [selectedLevel, setSelectedLevel] = useState('')
+    const [selectedClass, setSelectedClass] = useState('')
 
     const handleSearch = (event) => {
         
@@ -38,6 +41,22 @@ const StudentsPage = () => {
            )
         });
     }
+    if(selectedLevel){
+        students = students.filter((student) => {
+            console.log(student.team.name)
+            return student?.team.name === selectedLevel
+        })
+        console.log(students)
+      }
+      if(selectedClass){
+        students = students.filter((student) => {
+            return student?.class.number === selectedClass
+        })
+    }
+    const clearFilters = () => {
+        setSelectedLevel('')
+        setSelectedClass('')
+      }
 
 
     const navigate = useNavigate()
@@ -75,9 +94,28 @@ const StudentsPage = () => {
                             <span className='text-xs font-medium'>( {studentsData?.admin.students.length} طالب )</span>
                         </div>
                         <div className=' flex gap-x-4 flex-row-reverse items-center'>
-                            <div className='flex items-center gap-x-[10px] '>
-                                <ChooseGrade />
-                                <ChooseGrade />
+                            <div className='flex items-center flex-row-reverse gap-x-[10px] '>
+                          
+                                <ChooseGrade
+                                    selectedLevel={selectedLevel}
+                                    setSelectedLevel={setSelectedLevel}
+                                />
+                                  <ChooseClass 
+                                selectedClass={selectedClass}
+                                setSelectedClass={setSelectedClass}
+                            />
+                                {
+                                  selectedLevel  ?
+                                <Button isIconOnly  color="danger" onPress={()=>clearFilters()} radius="full">
+                                  x
+                                </Button>
+                                :
+                                selectedClass &&
+                                <Button isIconOnly  color="danger" onPress={()=>clearFilters()} radius="full">
+                                  x
+                                </Button>
+                              }
+                               
 
                             </div>
                         <Tabs color='primary'

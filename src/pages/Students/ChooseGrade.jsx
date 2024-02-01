@@ -3,26 +3,30 @@ import Select from 'react-select';
 import GroupIcon from '../../assets/students/group.png'
 
 const options = [
-  { value: 'highschool', label: 'الصف الثانوي', image: GroupIcon },
-  { value: 'middelScholl', label: 'الصف الاعدادي', image: GroupIcon },
-  { value: 'primaryschool', label: 'الصف الابتدائي', image: GroupIcon },
+  { value: 'High', label: 'الصف الثانوي', image: GroupIcon },
+  { value: 'Middle', label: 'الصف الاعدادي', image: GroupIcon },
 ]
 
 
 const ChooseGrade = (props) => {
     const [selectedOption, setSelectedOption] = useState(props.selectedCourse);
-
+    
     const handleChange = (selectedOption) => {
       setSelectedOption(selectedOption);
-      props.setSelectedCourse(selectedOption.value);
+      props.setSelectedLevel(selectedOption.value)
       
     };
+    useEffect(() => {
+      if(props.selectedLevel === ''){
+        setSelectedOption(null);
+      }
+    }, [props.selectedLevel]);
   
     const customStyles = {
       control: (provided) => ({
         ...provided,
         direction : 'rtl',
-        backgroundColor: '#444',
+        backgroundColor:  selectedOption? '#50D766' : '#444',
         backdropFilter: 'blur(73px)',
         borderRadius: '4px',
         cursor: 'pointer',
