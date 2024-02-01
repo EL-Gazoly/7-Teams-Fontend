@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import { useParams } from 'react-router-dom';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -9,7 +10,6 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import { set } from 'firebase/database';
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -60,6 +60,7 @@ const labels = ["الفصل الاول", "الفصل الثاني","الفصل �
   
 
 const ClassesReportFourthRow = ({experminets}) => {
+  const { id } = useParams()
   const [first, setFirst] = useState({
     totalTheorticalTime: 0,
     totalPraticalTime: 0,
@@ -205,9 +206,9 @@ const ClassesReportFourthRow = ({experminets}) => {
         </div>
         <div className=' flex items-center gap-x-3 mt-7'>
             <div className="flex flex-col gap-y-12 text-text-black text-xs font-bold">
-                <h3>الصف الثالث الثانوى</h3>
-                <h3>الصف الثاني الثانوى</h3>
-                <h3>الصف الاول الثانوى</h3>
+                <h3>الفصل الثالث </h3>
+                <h3>الفصل الثاني </h3>
+                <h3>الفصل الاول </h3>
             </div>
             <div className=' w-[720px] h-[280px] self-center mx-4 absolute top-[17%] left-[6%]'>
                 <Bar data={data} options={options} />

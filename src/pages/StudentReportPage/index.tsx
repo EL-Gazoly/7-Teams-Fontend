@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useRef} from 'react'
 import ControlCard from '../../Components/ContraolCard'
 import StudentReportsFirstRow from '../../Components/StudentReportsFirstRow'
 import StudentReportsSecondRow from '../../Components/StudentReportsSecondRow'
@@ -8,6 +8,7 @@ import { useQuery } from '@apollo/client'
 import { GetStudentReports } from '../../graphql/reports'
 import Loading from '../../Components/Loading'
 const StudentReportsPage = () => {
+  const pageRef = useRef(null)
   const [experiments, setExperiments] = useState<any>()
   const { id } = useParams()
   const { loading, error, data } = useQuery(GetStudentReports, {
@@ -59,7 +60,7 @@ const StudentReportsPage = () => {
   if (error) return console.log(error)
 
   return (
-    <div >
+    <div ref={pageRef} className='certificateDiv' >
         <ControlCard icon="Reports" title='التقارير' neasted={true} />
 
         <div className=' mt-[17px] flex flex-col gap-y-4 pb-5'
@@ -67,7 +68,9 @@ const StudentReportsPage = () => {
                 direction: 'rtl'
             }}
         >
-            <StudentReportsFirstRow data={data} expermients={experiments} />
+            <StudentReportsFirstRow data={data} expermients={experiments}
+              ref={pageRef}
+            />
             <StudentReportsSecondRow data={data} expermients={experiments} />
             <StudentReportsThirdRow expermients={experiments} />
 

@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import { useParams } from 'react-router-dom';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -59,6 +60,7 @@ const labels = ["الفصل الاول", "الفصل الثاني","الفصل �
   
 
 const StageReportsFourthRow = ({experminets}) => {
+  const { stage } = useParams()
   const [first, setFirst] = useState({
     totalTheorticalTime: 0,
     totalPraticalTime: 0,
@@ -200,11 +202,26 @@ const StageReportsFourthRow = ({experminets}) => {
 
         </div>
         <div className=' flex items-center gap-x-3 mt-7'>
-            <div className="flex flex-col gap-y-12 text-text-black text-xs font-bold">
-                <h3>الصف الثالث الثانوى</h3>
-                <h3>الصف الثاني الثانوى</h3>
-                <h3>الصف الاول الثانوى</h3>
-            </div>
+        {
+                stage === '20f9b0c6-37fa-4509-987a-6be7b341d98e' ? 
+                <div className="flex flex-col gap-y-12 text-text-black text-xs font-bold">
+            
+                <h3>الصف الثالث المتوسط</h3>
+                <h3>الصف الثاني المتوسط</h3>
+                <h3>الصف الاول المتوسط</h3>
+             </div>
+
+                : 
+
+                <div className="flex flex-col gap-y-12 text-text-black text-xs font-bold">
+            
+                  <h3>الصف الثالث الثانوى</h3>
+                  <h3>الصف الثاني الثانوى</h3>
+                  <h3>الصف الاول الثانوى</h3>
+               </div>
+            
+            }
+           
             <div className=' w-[720px] h-[280px] self-center mx-4 absolute top-[17%] left-[6%]'>
                 <Bar data={data} options={options} />
             </div>
