@@ -145,7 +145,7 @@ const CertificatesPage = () => {
                       <div className=' absolute top-[46%] left-[31%]'>{student.number}</div>
                       <div className=' absolute top-[53%] left-[49%]'>{course.label}</div>
                       <div className=' absolute top-[53%] left-[31%]'>{getGrade(student.class)}</div>
-                      <div className=' absolute top-[53%] left-[24%]'>{getTeam(student.team)}</div>
+                      <div className=' absolute top-[53%] left-[23%]'>{getTeam(student.team)}</div>
                       <div className=' absolute top-[60.5%] left-[30.5%] text-[10px]'>{new Date().toLocaleDateString()}</div>
                       <div className=' absolute top-[61%] left-[46%]'>{grade.label}</div>
                       <div className=' absolute top-[75%] left-[21%]'>{teacher.substring(0,10)}</div>
