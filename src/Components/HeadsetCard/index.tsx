@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Image } from '@nextui-org/react';
+import { Button, Image, Tooltip } from '@nextui-org/react';
 import OnlineIcon from '../../assets/Landing/HeadsetCard/online.svg';
 import OfflineIcon from '../../assets/Landing/HeadsetCard/wifi-square.svg';
 import HeadsetImage from '../../assets/Landing/HeadsetCard/headset.png';
 import SelectCard from '../../assets/Landing/HeadsetCard/select.png';
 import SucessGif from '../../assets/Landing/HeadsetCard/sucesss.gif';
+import PingIcon from '../../assets/Landing/HeadsetCard/ping.svg';
 import { useNavigate } from 'react-router-dom';
+import { set, ref } from 'firebase/database';
+import db from '../../config/firebase';
 
 type HeadsetProps = {
   index?: number;
-  device: { name: string; macAddress: string , student: {name: string, generatedId: string}[];  selected: boolean; 
+  device: { name: string; macAddress: string, StudentPing : false , student: {name: string, generatedId: string}[];  selected: boolean; 
     AppStatus: string; Battery: number; Connected: boolean; started: boolean; showen: boolean;
     generatedId: string;
 }
@@ -75,6 +78,10 @@ const HeadsetCard = ({ device, index, selectedHeadsets, setSelectedHeadsets, sho
     if (!device?.Connected) return "bg-[#E8E2E2]";
     return level >= 66 ? "bg-[#2DEC4C]" : level >= 33 ? "bg-[#2DEC4C]" : "bg-[#E8E2E2]";
   };
+  const updateStudentPing = () => {
+    const deviceQuery = ref(db, `/Devices/${device.macAddress}`);
+    set(deviceQuery, { ...device, StudentPing: false });
+  };
   return (
 
   
@@ -86,7 +93,16 @@ const HeadsetCard = ({ device, index, selectedHeadsets, setSelectedHeadsets, sho
             disabled={!device?.Connected}
           >
             <div className='relative w-full h-[37px] pt-3' >
-              <img src={connectedIcon} className=' mr-4' />
+              <div className='flex items-center gap-x-1'>
+                <img src={connectedIcon} className=' mr-4' />
+                { device?.StudentPing &&
+                <Tooltip content=' مساعده ' placement='top' className=' bg-[#EDB200] text-white'  offset={4} >
+                    <div className=' w-[26px] h-6 bg-[#EDB200] rounded-lg flex items-center justify-center' onClick={updateStudentPing}>
+                      <img src={PingIcon} alt="" />
+                    </div>
+                </Tooltip>
+                } 
+              </div>
               <div className={`absolute top-0 left-2 flex w-[79.345px] h-[28.612px] px-[5.583px] py-[2.791px] items-center justify-center gap-x-[5.583px] rounded-b-[2.791px]
                ${device.student.length === 0 ? " bg-disabled opacity-40  " : " bg-primary "}`} style={{ boxShadow: '0px 2.791px 2.791px 0px rgba(0, 0, 0, 0.25)' }}>
                 <span className='text-[9.7px] font-semibold text-white'>{device.student.length === 0 ? "غير متصل" : "متصل"}</span>
