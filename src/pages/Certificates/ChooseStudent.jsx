@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import Select from 'react-select';
 import { getStudents } from '../../graphql/students';
+import { GetStudents} from '../../graphql/reports'
 import { useQuery } from '@apollo/client';
 import GroupIcon from '../../assets/students/group.png'
 
 const ChooseStudent = (props) => {
     const [selectedOption, setSelectedOption] = useState(props.selectedCourse);
-    const { loading, error, data } = useQuery(getStudents);
+    const { loading, error, data } = useQuery(GetStudents);
 
     const handleChange = (selectedOption) => {
         props.setStudent(selectedOption)
@@ -21,7 +22,7 @@ const ChooseStudent = (props) => {
         backdropFilter: 'blur(73px)',
         borderRadius: '7.142px',
         cursor: 'pointer',
-        width: '404.407px',
+        width: '400.407px',
         border: 'none',
         height: '61.598px',
         boxShadow: 'none',
@@ -124,6 +125,9 @@ const ChooseStudent = (props) => {
             value: student.name,
             label: student.name,
             image: GroupIcon,
+            number: student.generatedId,
+            class: student.class.number,
+            team: student.team.name,
         };
         });
  

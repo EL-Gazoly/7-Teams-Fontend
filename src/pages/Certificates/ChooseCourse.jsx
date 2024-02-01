@@ -7,9 +7,9 @@ import Geology from '../../assets/SelectCourse/SelectSubject/geology.svg'
 
 const options = [
   { value: 'chemistry', label: ' الكيمياء ', image: Chemistry },
-  { value: 'physics', label: ' الفيزياء ', image: Physics },
-  { value: 'biology', label: ' الاحياء ', image: Biology },
-  { value: 'geology', label: ' الجيولوجيا ', image: Geology },
+  // { value: 'physics', label: ' الفيزياء ', image: Physics },
+  // { value: 'biology', label: ' الاحياء ', image: Biology },
+  // { value: 'geology', label: ' الجيولوجيا ', image: Geology },
 ]
 
 
@@ -30,7 +30,7 @@ const ChooseCourse = (props) => {
       backdropFilter: 'blur(73px)',
       borderRadius: '7.142px',
       cursor: 'pointer',
-      width: '404.407px',
+      width: '400.407px',
       border: 'none',
       height: '61.598px',
       boxShadow: 'none',
@@ -141,7 +141,7 @@ const ChooseCourse = (props) => {
       <Select
         options={options}
         styles={customStyles}
-        placeholder=" اختر المنهح التعليمي "
+        placeholder=" اختر المادة "
         value={selectedOption}
         onChange={handleChange}
         isSearchable={true}

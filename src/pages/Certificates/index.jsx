@@ -1,7 +1,7 @@
 import { FirstSection } from './firstSection';
 import React, {useState} from 'react'
 import ControlCard from '../../Components/ContraolCard'
-import CertificateTempelate from '../../assets/certificates/tempelate.webp'
+import Tempelete from '../../assets/certificates/tempelate.png'
 import PrintIcon from '../../assets/certificates/print.png'
 import MailIcon from '../../assets/certificates/mail.png'
 import { Image, Button , useDisclosure} from '@nextui-org/react';
@@ -14,6 +14,10 @@ const CertificatesPage = () => {
   const [grade, setGrade] = useState({value: '', label: ''})
   const [course, setCourse] = useState({value: '', label: ''})
   const [student, setStudent] = useState({value: '', label: ''})
+  const [head, setHead] = useState('')
+  const [teacher, setTeacher] = useState('')
+  const [school, setSchool] = useState('')
+
   const [isLoading, setIsLoading] = useState(false)
 
   if(isLoading) return <Loading />
@@ -83,17 +87,44 @@ const CertificatesPage = () => {
     console.log('open')
   }
 
+  const getTeam = (team) => {
+    switch (team) {
+      case 'High':
+        return 'الثانوي'
+      case 'Middle':
+        return 'المتوسط'
+        default:
+          return ''
+    }
+  }
+  const getGrade = (grade) => {
+    switch (grade){
+      case 'first':
+        return 'الاول'
+      case 'second':
+        return 'الثاني'
+      case 'third':
+        return 'الثالث'
+      default:
+        return ''
+    }
+  }
+
   return (
     <React.Fragment>
        <ControlCard icon="Certificates" title=' الشهادات  ' neasted={false}/>
-        <div className=' mt-5 flex flex-col gap-y-4 pb-5'>
+        <div className=' mt-7 flex flex-col gap-y-6 pb-5'>
         <FirstSection 
-            grade={grade}
-            setGrade={setGrade}
             course={course}
             setCourse={setCourse}
             student={student}
             setStudent={setStudent}
+            head={head}
+            setHead={setHead}
+            teacher={teacher}
+            setTeacher={setTeacher}
+            school={school}
+            setSchool={setSchool} 
           />
           <div className='w-full h-[667.78px] rounded-lg bg-light-bg py-6 px-20 text-text-black
             flex flex-col items-end gap-y-[38px]
@@ -107,12 +138,20 @@ const CertificatesPage = () => {
             
             <div className=' flex w-full items-center justify-center'>
                 <div className=' flex flex-col items-center gap-y-14'>
-                  <div className=' relative w-[612px] h-[411px] certificateDiv'>
-                    <Image src={CertificateTempelate} width={612} height={411} className='z-0'  />
+                  <div className=' relative w-[612px] h-[411px] certificateDiv text-xs'>
+                    <Image src={Tempelete}  className='z-0'  />
                       
-                      <div className=' absolute top-[51%] left-[46%]'>{student.label}</div>
-                      <div className=' absolute top-[62%] left-[72%]'>{course.label}</div>
-                      <div className=' absolute top-[67%] left-[25%] text-sm'>{grade.label}</div>
+                      <div className=' absolute top-[45%] left-[50%]'>{student.label.substring(0,10)}</div>
+                      <div className=' absolute top-[46%] left-[31%]'>{student.number}</div>
+                      <div className=' absolute top-[53%] left-[49%]'>{course.label}</div>
+                      <div className=' absolute top-[53%] left-[31%]'>{getGrade(student.class)}</div>
+                      <div className=' absolute top-[53%] left-[24%]'>{getTeam(student.team)}</div>
+                      <div className=' absolute top-[60.5%] left-[30.5%] text-[10px]'>{new Date().toLocaleDateString()}</div>
+                      <div className=' absolute top-[61%] left-[46%]'>{grade.label}</div>
+                      <div className=' absolute top-[75%] left-[21%]'>{teacher.substring(0,10)}</div>
+                      <div className=' absolute top-[79%] left-[21%]'>{head.substring(0,11)}</div>
+                    
+                      
                   </div>
                    
                     <div className=' flex items-center gap-x-4'>

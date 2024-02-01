@@ -4,44 +4,43 @@ import ChooseCourse from './ChooseCourse.jsx'
 import ChooseStudent from './ChooseStudent.jsx'
 
 type Props = {
-    grade: {value: string, label: string};
-    setGrade: React.Dispatch<React.SetStateAction<{
-        value: string;
-        label: string;
-    }>>
+   
     course: {value: string, label: string};
     setCourse: React.Dispatch<React.SetStateAction<{
         value: string;
         label: string;
     }>>;
-    student: {value: string, label: string};
+    student: {value: string, label: string, number: string, class: string, team: string};
     setStudent:  React.Dispatch<React.SetStateAction<{
         value: string;
         label: string;
+        number: string;
+        class: string;
+        team: string;
     }>>;
+    head: string;
+    setHead: React.Dispatch<React.SetStateAction<string>>;
+    teacher: string;
+    setTeacher: React.Dispatch<React.SetStateAction<string>>;
+    school: string;
+    setSchool: React.Dispatch<React.SetStateAction<string>>;
+
 
 }
 
-export function FirstSection({grade, setGrade, course, setCourse, student, setStudent}: Props) {
-  return <div className=' w-full h-96 rounded-lg bg-light-bg px-[75px] py-5 
-                flex flex-col gap-y-5 
+export function FirstSection({ course, setCourse, student, setStudent,
+    head, setHead, teacher, setTeacher, school, setSchool
+}: Props) {
+  return <div className=' w-full h-[512px] rounded-lg bg-light-bg px-[75px] py-5  pt-[50px]
+                flex flex-col gap-y-7
                 text-text-black items-end
             '>
                 <h3 className=' text-[21px] font-bold'> معلومات الشهادة</h3>
-                <div className=' max-w-[821px] grid grid-cols-2 gap-x-4 gap-y-10  ' style={{
+                <div className='max-w-full grid grid-cols-2 gap-x-[50px] gap-y-[22px]' style={{
                 direction: "rtl"
                 }}>
-                    <div className=' flex flex-col gap-y-1 text-right'>
-                    <label htmlFor="grade" className=' text-sm font-semibold mr-1'>المرحله التعليميه</label>
-                    <ChooseGrade grade={grade} setGrade={setGrade} />
-                    </div>
-                    <div className=' flex flex-col gap-y-1 text-right'>
-                    <label htmlFor="grade" className=' text-sm font-semibold mr-1'>المنهج التعليمي</label>
-                    <ChooseCourse 
-                    course={course}
-                    setCourse={setCourse}
-                    />
-                    </div>
+                 
+                  
                     <div className=' flex flex-col gap-y-1 text-right'>
                     <label htmlFor="grade" className=' text-sm font-semibold mr-1'>اسم الطالب</label>
                     <ChooseStudent 
@@ -49,10 +48,50 @@ export function FirstSection({grade, setGrade, course, setCourse, student, setSt
                     setStudent={setStudent}
                     />
                     </div>
-                    <div className=' flex flex-col gap-y-1 text-right'>
-                    <label htmlFor="grade" className=' text-sm font-semibold mr-1'>الوصف</label>
-                        <input type="text" className=" h-16 bg-[#F0F2F4] rounded-lg px-4 placeholder:text-[#8C8F93] text-sm placeholder:font-medium" placeholder="أكتب  وصف الشهادة هنا" />
+                    <div className=" flex flex-col gap-1 text-right">
+                        <span className=" text-sm font-semibold mr-1"> رقم الطالب </span>
+                        <span className=" text-[##12233366] text-[32px] font-bold opacity-40 h-14 mt-1">
+                            {student.number? student.number : '0000'}
+                        </span>
+
                     </div>
+                      <div className=' flex flex-col gap-y-1 text-right'>
+                    <label htmlFor="grade" className=' text-sm font-semibold mr-1'> الماده</label>
+                    <ChooseCourse 
+                    course={course}
+                    setCourse={setCourse}
+                    />
+                    </div>
+                   
+                    <div className=' flex flex-col gap-y-1 text-right'>
+                    <label htmlFor="grade" className=' text-sm font-semibold mr-1'> المدرسه </label>
+                        <input type="text" className=" h-16 bg-[#F0F2F4] rounded-lg px-4 placeholder:text-[#8C8F93] text-sm placeholder:font-medium focus:border focus:border-primary focus:outline-none"
+                        placeholder="ادخل اسم المدرسه"
+                        value={school}
+                        onChange={(e)=> setSchool(e.target.value)}
+                        />
+                    </div>
+                    <div className=' flex flex-col gap-y-1 text-right'>
+                    <label htmlFor="grade" className=' text-sm font-semibold mr-1'> المدير </label>
+                        <input type="text" className=" h-16 bg-[#F0F2F4] rounded-lg px-4 placeholder:text-[#8C8F93] text-sm placeholder:font-medium focus:border focus:border-primary focus:outline-none"
+                        placeholder="ادخل اسم المدير"
+                        value={head}
+                        onChange={(e)=> setHead(e.target.value)}
+                        />
+                    </div>
+                    <div className=' flex flex-col gap-y-1 text-right'>
+                    <label htmlFor="grade" className=' text-sm font-semibold mr-1'> المعلم </label>
+                        <input type="text" className=" h-16 bg-[#F0F2F4] rounded-lg px-4 placeholder:text-[#8C8F93] text-sm placeholder:font-medium focus:border focus:border-primary focus:outline-none"
+                        placeholder="ادخل اسم المعلم"
+                        value={teacher}
+                        onChange={(e)=> setTeacher(e.target.value)}
+                        />
+                    </div>
+                    
+                 
+                
+
+                 
                  
                 </div>
 
