@@ -52,12 +52,7 @@ const DashboardTable = ({totalCourseTimeLoading}) => {
         totalTraining,
     };
 }
-const convertmsToHMS = (ms: number) => {
-    const seconds = ms / 1000;
-    const hours = seconds / 3600;
-    const minutes = (seconds % 3600) / 60;
-    return `${Math.floor(hours)}h ${Math.floor(minutes)}mins`;
-};
+
 const convertSecondsToHMS = (seconds: number) => {
     const hours = seconds / 3600;
     const minutes = (seconds % 3600) / 60;
