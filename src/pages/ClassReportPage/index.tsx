@@ -101,9 +101,9 @@ const ClassReportPage = () => {
   }
 
   return (
-    <div className='certificateDiv'>
+    <div className=''>
         <ControlCard icon="Reports" title='التقارير' neasted={true} />
-        <div className=' mt-[17px] flex flex-col gap-y-4 pb-5'
+        <div className=' mt-[17px] flex flex-col gap-y-4 pb-5 certificateDiv'
             style={{
                 direction: 'rtl'
             }}

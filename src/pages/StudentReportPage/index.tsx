@@ -60,10 +60,10 @@ const StudentReportsPage = () => {
   if (error) return console.log(error)
 
   return (
-    <div ref={pageRef} className='certificateDiv' >
+    <div ref={pageRef} className='' >
         <ControlCard icon="Reports" title='التقارير' neasted={true} />
 
-        <div className=' mt-[17px] flex flex-col gap-y-4 pb-5'
+        <div className=' mt-[17px] flex flex-col gap-y-4 pb-5 certificateDiv'
             style={{
                 direction: 'rtl'
             }}
