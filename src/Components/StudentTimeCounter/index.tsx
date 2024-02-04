@@ -74,6 +74,10 @@ const StudentTimeCounter = () => {
         const hours = Math.floor(seconds / 3600)
         return hours
       }
+     const convertSecondsToMinutes = (seconds) =>{ 
+        const minutes = Math.floor(seconds / 60)
+        return minutes
+     }
 
 
     
@@ -98,24 +102,24 @@ const StudentTimeCounter = () => {
         <Divider/>
         <div className=' flex flex-col gap-y-2'>
                 <Progress value={
-                    timeValue === 'day' ? convertMillisecondsToHoursAndMinutes(trainingDay) :
-                    timeValue === 'month' ? convertMillisecondsToHoursAndMinutes(trainingMonth) :
-                    convertMillisecondsToHoursAndMinutes(trainingYear)
+                    timeValue === 'day' ? convertSecondsToMinutes(trainingDay) :
+                    timeValue === 'month' ? convertSecondsToMinutes(trainingMonth) :
+                    convertSecondsToMinutes(trainingYear)
                 } title={" التدريبات العمليه "}  timeValue={timeValue}/>
                 <Progress value={
-                    timeValue === 'day' ? convertMillisecondsToHoursAndMinutes(theoreticalDay) :
-                    timeValue === 'month' ? convertMillisecondsToHoursAndMinutes(theoreticalMonth) :
-                    convertMillisecondsToHoursAndMinutes(theoreticalYear)
+                    timeValue === 'day' ? convertSecondsToMinutes(theoreticalDay) :
+                    timeValue === 'month' ? convertSecondsToMinutes(theoreticalMonth) :
+                    convertSecondsToMinutes(theoreticalYear)
                 } title={" التدريبات النظرية "}  timeValue={timeValue}/>
                 <Progress value={
-                    timeValue === 'day' ? convertMillisecondsToHoursAndMinutes(practicalDay) :
-                    timeValue === 'month' ? convertMillisecondsToHoursAndMinutes(practicalMonth) :
-                    convertMillisecondsToHoursAndMinutes(practicalYear)
+                    timeValue === 'day' ? convertSecondsToMinutes(practicalDay) :
+                    timeValue === 'month' ? convertSecondsToMinutes(practicalMonth) :
+                    convertSecondsToMinutes(practicalYear)
                 } title={" الأختبارات العملية"}   timeValue={timeValue}/>
                 <Progress value={
-                    timeValue === 'day' ? convertMillisecondsToHoursAndMinutes(practicalDay + theoreticalDay + trainingDay) :
-                    timeValue === 'month' ? convertMillisecondsToHoursAndMinutes(practicalMonth + theoreticalMonth + trainingMonth) :
-                    convertMillisecondsToHoursAndMinutes(practicalYear + theoreticalYear + trainingYear)
+                    timeValue === 'day' ? convertSecondsToMinutes(practicalDay + theoreticalDay + trainingDay) :
+                    timeValue === 'month' ? convertSecondsToMinutes(practicalMonth + theoreticalMonth + trainingMonth) :
+                    convertSecondsToMinutes(practicalYear + theoreticalYear + trainingYear)
                 } title={" الاجمالي "}   timeValue={timeValue}/>
         </div>
 

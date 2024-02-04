@@ -5,6 +5,11 @@ type Props = {
     title: string
     timeValue: string
 }
+const convertMinutesToHoursAndMinutes = (minutes: number) => {
+    let hours = Math.floor(minutes / 60);
+    let mins = minutes % 60;
+    return `${hours}h ${mins}m`;
+}
 
 const Progress = ({ value, title}: Props) => {
   return (
@@ -15,13 +20,13 @@ const Progress = ({ value, title}: Props) => {
                 style={{
                     direction: 'ltr'
                 }}
-            > {value}h </span>
+            > {convertMinutesToHoursAndMinutes(value)} </span>
 
         </div>
         <div className=' relative w-full h-3 rounded bg-[#E6FDEA]'>
                 <div className={`absolute inset-0  ${title===" الاجمالي " ? "bg-[#2DEC4C] " : "bg-[#CFCFD7] "} rounded`}
                     style={{
-                        width: `${value/150*100}%`
+                        width: `${value/60/150*100}%`
                     }}
                 />
         </div>

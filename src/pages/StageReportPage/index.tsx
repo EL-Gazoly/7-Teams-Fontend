@@ -56,7 +56,6 @@ const StageReportPage = () => {
         let maxPracticalTestGrade = 0;
   
         student.studnetExpriment.forEach((experiment) => {
-          totalTheoreticalTestGrade += experiment.theoreticalTestGrade;
           totalPracticalTime += experiment.totalPraticalTime;
           totalTheorticalTime += experiment.totalTheorticalTime;
           totalTrainingTime += experiment.totalTrainingTime;
@@ -71,17 +70,19 @@ const StageReportPage = () => {
           enterTheortical += experiment.enterTheortical;
           enterPratical += experiment.enterPratical;
         });
-  
+        totalTheoreticalTestGrade += maxTheoreticalTestGrade;
         // Update total practical and theoretical test grades with the maximum values
         practicalTestGrade += maxPracticalTestGrade;
   
         totalStudents++;
       });
     });
+    console.log("Total Theoretical Test Grade:", totalTheoreticalTestGrade);
 
     const practicalTestGradePercentage = (practicalTestGrade / (totalStudents * 100)) * 100;
     const theoreticalTestGradePercentage = (totalTheoreticalTestGrade / (totalStudents * 100)) * 100;
     const overallGrade = ((totalTheoreticalTestGrade + practicalTestGrade ) / (totalStudents * 100) * 100)
+    console.log("this is total", (totalTheoreticalTestGrade+practicalTestGrade) / (totalStudents * 100))
   
     setTotalTheoreticalTestGrade(totalTheoreticalTestGrade)
     setTotalPracticalTime(totalPracticalTime)

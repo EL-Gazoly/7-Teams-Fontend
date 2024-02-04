@@ -106,7 +106,6 @@ const SelectLevel = (props) => {
         padding: 0,
         cursor: 'pointer',
         width: '100%',
-        zIndex: '1000',
         overflowX: 'hidden',
       }),
       indicatorSeparator: (provided) => ({

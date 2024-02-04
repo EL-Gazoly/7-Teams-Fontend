@@ -9,13 +9,20 @@ const StudentResults = ({expermients}) => {
   const [totalPractical, setPartical] = useState(0)
   const [totalTheortical, setTheortical] = useState(0)
   useEffect(() => {
+    let totalPractical = 0
+    let practicalTestGrade = 0
+    
     if(expermients) {
       expermients = Object.values(expermients)
       expermients.forEach((expermient)=>{
-        setPartical(totalPractical + expermient.practicalTestGrade)
-        setTheortical(totalTheortical + expermient.theoreticalTestGrade)
+        totalPractical += expermient.theoreticalTestGrade
+        practicalTestGrade += expermient.practicalTestGrade
+        console.log(expermient.theoreticalTestGrade)
       })
+      setPartical(totalPractical / expermients.length * 100 / 100)
+      setTheortical(practicalTestGrade / expermients.length * 100 / 100)
     }
+   
   }, [expermients])
   
   return (
