@@ -55,6 +55,11 @@
 
       const handleSearch = (event) => setSearchQuery(event.target.value.toString().toLowerCase());
 
+      const showConnectedDevices = () => {
+      localStorage.setItem('showConnected', JSON.stringify(!showConnected));
+        setShowConnected(!showConnected);
+      };
+
       
       
       return (
@@ -90,7 +95,7 @@
         </div>
         <Tooltip content='إظهار النظارات المتصلة' placement='top-end' color='primary' offset={4} >
         <div>
-        <Checkbox color='primary' isSelected={showConnected} onValueChange={setShowConnected} />
+        <Checkbox color='primary' isSelected={showConnected} onValueChange={showConnectedDevices} />
         </div>
         </Tooltip>
       </div>

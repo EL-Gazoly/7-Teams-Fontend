@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import ControlCard from '../../Components/ContraolCard'
 import ChooseHeadsetSection from './ChooseHeadsetSection'
 import ChooseCourseSection from './ChooseCourseSection'
@@ -8,6 +8,11 @@ const HeadsetsPage = () => {
   const [selectedHeadsets, setSelectedHeadsets] = useState<any>([])
   const [searchQuery, setSearchQuery] = useState('' as string)
   const [showConnected, setShowConnected] = useState(false)
+
+  useEffect(() => {
+    const showConnected = JSON.parse(localStorage.getItem('showConnected') || 'false');
+    setShowConnected(showConnected);
+  }, [])
   return (
     <div className='flex flex-col gap-y-[17px] pb-5'>
       <ControlCard icon="Headset" title=' نظارة الواقع الافتراضي ' neasted={false}/>
