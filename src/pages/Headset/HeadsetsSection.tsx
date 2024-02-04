@@ -19,7 +19,6 @@ const HeadsetsSection = ({setSelectedHeadsets, selectedHeadsets, searchQuery, sh
   const { loading, error, data: devices } = useQuery(GetDevices, { fetchPolicy: 'no-cache'});
   const [devicesList, setDevicesList] = useState<any>([]);
   const [devicesCount, setDevicesCount] = useState<any>(0);
-  if(devices) console.log(devices)
   
 
   useEffect(() => {
