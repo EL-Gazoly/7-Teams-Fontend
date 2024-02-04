@@ -23,11 +23,11 @@ class IpcFunctions{
           console.log('Connecting to:', arg);
           store.delete('ip');
           await excuteCommand('adb disconnect');
-          await adb.connectToDevice(arg, 5555)
+          await adb.connectToDevice(arg, 5555, event)
           .catch(async() =>{
             await excuteCommand(`adb tcpip 5555`)
             .then(async()=>{
-              await adb.connectToDevice(arg, 5555)
+              await adb.connectToDevice(arg, 5555, event)
             })
             .catch(()=>{
               console.log('Make sure you are on the same WIFI, if the problem persist Try connecting with USB')
@@ -37,7 +37,6 @@ class IpcFunctions{
           })
           
           store.set('ip', arg);
-          event.sender.send('connect-reply', 'Connected');
         } catch (err) {
             console.log('Try connecting the USB first')
             console.error('Something went wrong:', err.stack);
@@ -146,7 +145,7 @@ async function connectToDeviceAndExecuteCommands(event) {
       await excuteCommand('adb disconnect');
       const currentIP = store.get('ip') as string;
       console.log('this is my current ip', currentIP)
-      await adb.connectToDevice(currentIP, 5555);
+      await adb.connectToDevice(currentIP, 5555, event);
   } catch (err) {
       console.error('Something went wrong while connecting:', err.stack);
       event.reply('error-reply', err);
