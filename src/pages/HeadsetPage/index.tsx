@@ -54,7 +54,7 @@ const HeadsetPage = () => {
         toast.error(' اذا استمرت المشكله جرب توصيل الجهاز بالكمبيوتر مباشره ')
         toast.error(' فشل الاتصال تاكد ان الجهاز متصل بنفس الشبكه ') 
               }
-    }, 60000); // 1 minute
+    }, 20000);// 20 seconds
 
     return () => {
       clearTimeout(timeout);
