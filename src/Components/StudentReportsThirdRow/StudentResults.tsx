@@ -1,26 +1,26 @@
 import {useState, useEffect} from 'react'
 import { Divider } from '@nextui-org/react'
 import Chemistry from '../../assets/SelectCourse/SelectSubject/chemistry.svg'
-import Physics from '../../assets/SelectCourse/SelectSubject/physics.svg'
-import Biology from '../../assets/SelectCourse/SelectSubject/biology.svg'
-import Geology from '../../assets/SelectCourse/SelectSubject/geology.svg'
+
 import grade from 'letter-grade'
-const StudentResults = ({expermients}) => {
+const StudentResults = ({expermients, maxGrades}) => {
   const [totalPractical, setPartical] = useState(0)
   const [totalTheortical, setTheortical] = useState(0)
   useEffect(() => {
-    let totalPractical = 0
+    let totalTheortical = 0
     let practicalTestGrade = 0
     
     if(expermients) {
-      expermients = Object.values(expermients)
+      expermients = Object.values(maxGrades)
       expermients.forEach((expermient)=>{
-        totalPractical += expermient.theoreticalTestGrade
-        practicalTestGrade += expermient.practicalTestGrade
-        console.log(expermient.theoreticalTestGrade)
+        totalTheortical += expermient.maxTheoreticalTestGrade
+        practicalTestGrade += expermient.maxPracticalTestGrade
       })
-      setPartical(totalPractical / expermients.length * 100 / 100)
-      setTheortical(practicalTestGrade / expermients.length * 100 / 100)
+      console.log("this is total theortical", totalTheortical)
+      console.log("this is total practical", practicalTestGrade)
+      console.log(practicalTestGrade)
+      setPartical(practicalTestGrade / 4 * 100 / 100)
+      setTheortical(totalTheortical / 4 * 100 / 100)
     }
    
   }, [expermients])

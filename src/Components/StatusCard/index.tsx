@@ -1,9 +1,8 @@
 import {useEffect, useState} from 'react'
 import Card from './Card'
 import grade from 'letter-grade'
-import { m } from 'framer-motion'
 
-const StatusCard = ({data, expermients}) => {
+const StatusCard = ({data, expermients, maxGrades}) => {
   const [totalTime, setTotalTime] = useState(0)
   const [totalEntrance, setTotalEntrance] = useState(0)
   const [totalMarks, setTotalMarks] = useState(0)
@@ -15,26 +14,26 @@ const StatusCard = ({data, expermients}) => {
         let maxPractical = 0
         let totalTime = 0
         expermients = Object.values(expermients)
+        maxGrades = Object.values(maxGrades)
+        console.log(
+          "this is maxGrades", maxGrades
+        )
       
        expermients.forEach((expermient)=>{
           totalTime += expermient.totalPraticalTime + expermient.totalTheorticalTime + expermient.totalTrainingTime
-    
-          maxTheortical += expermient.theoreticalTestGrade
-          maxPractical += expermient.practicalTestGrade
-            
-           
-        
+
           if (expermient.practicalTestGrade  == 100 && expermient.theoreticalTestGrade == 100) setTotalFinished(totalFinished + 1)
        })
-      console.log(totalTime)
+       maxGrades.forEach((maxGrade)=>{
+        console.log(maxGrade)
+          maxTheortical += maxGrade.maxTheoreticalTestGrade
+          maxPractical += maxGrade.maxPracticalTestGrade
+       })
+       
+      
         setTotalTime(totalTime)
-        maxTheortical = maxTheortical / expermients.length * 100
-        maxPractical = maxPractical / expermients.length * 100
-       const totalMarks = (maxTheortical + maxPractical) /  (expermients.length * 100)
-       console.log("this is total marks", totalMarks)
-       setTotalMarks(totalMarks)
-       console.log("this is total theortical", maxTheortical)
-       console.log("this is total practical", maxPractical)
+       const totalMarks = (maxTheortical + maxPractical) /( 4 * 200) 
+       setTotalMarks(totalMarks * 100)
        let totalPracticalTime = 0;
        let totalTheoreticalTime = 0;
        let totalTrainingTime = 0;
