@@ -57,10 +57,11 @@ class ADB {
      * @returns {Promise<void>} Resolves when the connection is successful.
      * @throws {Error} If the connection encounters an error.
      */
-    async connectToDevice(ipAddress: string, port: number): Promise<void> {
+    async connectToDevice(ipAddress: string, port: number, event): Promise<void> {
       try {
         const id = await this.client.connect(ipAddress, port);
         console.log('Connected to device with id', id);
+        event.sender.send('connect-reply', 'Connected');
       } catch (err: any) {
         throw new Error('Failed to connect to the device: ' + err);
       }

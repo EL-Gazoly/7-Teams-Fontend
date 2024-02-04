@@ -45,27 +45,21 @@ const HeadsetPage = () => {
 
     const connectReplyHandler = (event, arg) => {
       if (arg === "Connected") setIsLoading(false);
-      if (arg === "Make sure you are on the same WIFI, if the problem persist Try connecting with USB"){
-        navigate(-1)
-        toast.error(' فشل الاتصال تاكد ان الجهاز متصل بنفس الشبكه ') 
-        toast.error(' اذا استمرت المشكله جرب توصيل الجهاز بالكمبيوتر مباشره ')
-        setIsLoading(false)
-      }
     };
     ipcRenderer.on('connect-reply', connectReplyHandler);
 
     const timeout = setTimeout(() => {
       if (isLoading) {
-        navigate(-1)
+        navigate('/headsets');
         toast.error(' اذا استمرت المشكله جرب توصيل الجهاز بالكمبيوتر مباشره ')
         toast.error(' فشل الاتصال تاكد ان الجهاز متصل بنفس الشبكه ') 
               }
-    }, 60000);
+    }, 60000); // 1 minute
 
     return () => {
       clearTimeout(timeout);
     };
-  }, [mac, isLoading]);  
+  }, [mac, isLoading]); 
 
   const getHighestProgress = (data) => {
     const result = {};
