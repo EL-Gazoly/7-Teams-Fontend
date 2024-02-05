@@ -3,6 +3,7 @@ import Jimp from "jimp";
 import Store from 'electron-store';
 import ADB from './adb';
 import {exec} from 'child_process';
+import path from 'path'
 const store = new Store();
 const adb = new ADB();
 
@@ -43,18 +44,31 @@ class IpcFunctions{
             event.sender.send('connect-reply', 'Try connecting the USB first')
         }
       }
-      
+
       async  handleScreenshot(event) {
         try {
-          const currentIP = store.get('ip')
-          await excuteCommand(`adb -s ${currentIP}:5555 shell screencap  -p /sdcard/screencap.png  && adb -s ${currentIP}:5555 exec-out screencap -p > ../../assets/screen.png `);
-          await processScreenshot();
+          const currentIP = store.get('ip');
+          const screenshotPath = '../../assets/screen.png';
+          const outputPath = path.join(__dirname, '..', 'assets', 'screen.png')
+      
+          await excuteCommand(`adb -s ${currentIP}:5555 exec-out screencap -p > ${outputPath}`);
+          
+          // Load the image using Jimp
+          const image = await Jimp.read(outputPath);
+      
+          // Crop the image
+          image.crop(2017, 510, 1600, 900);
+      
+          // Save the cropped image
+          await image.writeAsync(outputPath);
+      
           event.sender.send('screenshot-reply');
         } catch (err) {
-            console.error('Something went wrong:', err.stack);
-        event.reply('error-reply', err);
+          console.error('Something went wrong:', err.stack);
+          event.reply('error-reply', err);
         }
       }
+      
       
       async  handleStartStream(event) {
         try {
