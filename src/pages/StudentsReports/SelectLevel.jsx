@@ -98,15 +98,12 @@ const SelectLevel = (props) => {
         cursor: 'pointer',
         gap: '8px',
         overflow: 'hidden', 
-        zIndex: '1000',
       }),
       menuList: (provided) => ({
         ...provided,
-        zIndex: '1000',
         padding: 0,
         cursor: 'pointer',
         width: '100%',
-        zIndex: '1000',
         overflowX: 'hidden',
       }),
       indicatorSeparator: (provided) => ({
