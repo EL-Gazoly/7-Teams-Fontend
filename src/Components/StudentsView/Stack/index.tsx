@@ -25,9 +25,9 @@ const StudentsStackViews = ({ students }: StudentStackProps) => {
         base: 'rounded-none',
         wrapper: 'rounded-none bg-transparent shadow-none',
         table: 'rounded-none',
-        tr: 'rounded-none bg-white text-center border-b border-[#292d32]/50',
-        thead: 'rounded-none w-full border-b border-white',
-        th: 'text-[#292D32] bg-[#52d969]/[0.12] border-b border-black/25 rounded-none py-5 h-[41px] text-center',
+        tr: 'rounded-none bg-white dark:bg-[#252A33] text-center border-b border-[#292d32]/50',
+        thead: 'rounded-none w-full border-b border-white dark:border-[#77777782]',
+        th: 'text-[#292D32] bg-[#52d969]/[0.12] dark:bg-[#1F2329] dark:text-white border-b border-black/25 rounded-none py-5 h-[41px] text-center',
         sortIcon: 'rounded-none',
       }}
       style={{
@@ -50,7 +50,7 @@ const StudentsStackViews = ({ students }: StudentStackProps) => {
               </div>
             </TableCell>
             <TableCell>
-              <span className='text-text-black text-sm font-b old'>{student.name}</span>
+              <span className='text-text-black dark:text-white text-sm font-b old'>{student.name}</span>
             </TableCell>
             <TableCell>
               <span className='text-xs font-semibold text-primary'>#{student.generatedId}</span>

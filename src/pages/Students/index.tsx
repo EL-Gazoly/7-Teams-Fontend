@@ -18,6 +18,7 @@ import { useNavigate } from 'react-router-dom'
 import { getStudents } from '../../graphql/students'
 import { useQuery } from '@apollo/client'
 import Loading from '../../Components/Loading'
+import { useThemeStore } from '../../stores/ThemeStore'
 
 const StudentsPage = () => {
     const { loading, error, data: studentsData } = useQuery(getStudents, {fetchPolicy: 'no-cache'});
@@ -25,6 +26,8 @@ const StudentsPage = () => {
     const [searchQuery, setSearchQuery] = useState<String>("");
     const [selectedLevel, setSelectedLevel] = useState('')
     const [selectedClass, setSelectedClass] = useState('')
+
+    const {dark} = useThemeStore()
 
     const handleSearch = (event) => {
         
@@ -68,7 +71,7 @@ const StudentsPage = () => {
                
                
                 <div className=' mt-4 flex flex-col gap-y-5'>
-                    <div className=' h-36 w-full bg-[#F7F9FC] flex justify-between items-center px-7'>
+                    <div className=' h-36 w-full bg-[#F7F9FC] dark:bg-[#252A33] flex justify-between items-center px-7'>
                         <Button className=' px-4  h-12 gap-x-4 flex items-center justify-center bg-primary rounded-lg'
                             onPress={() => navigate('/students/create')}
                         >
@@ -77,7 +80,7 @@ const StudentsPage = () => {
                             <Image src={UserIcon} />
                         </Button>
                         
-                        <div className='w-[346px] h-12 bg-[#F0F2F4] rounded-lg px-[18px] gap-x-[10px] flex items-center justify-center'>
+                        <div className='w-[346px] h-12 bg-[#F0F2F4] dark:bg-[#F0F2F421] rounded-lg px-[18px] gap-x-[10px] flex items-center justify-center'>
                             
                             <input type="text" className='flex-1 bg-transparent text-right text-xs placeholder:text-[#929496] font-medium' 
                             placeholder='البحث' onChange={handleSearch} />
@@ -89,7 +92,7 @@ const StudentsPage = () => {
 
 
                     <div className='flex w-fulll items-center justify-between flex-row-reverse '>
-                        <div className='flex flex-row-reverse items-center gap-x-2 text-text-black'>
+                        <div className='flex flex-row-reverse items-center gap-x-2 text-text-black dark:text-white'>
                             <h3 className=' text-lg font-bold'>الطلاب المسجلين في النظام</h3>
                             <span className='text-xs font-medium'>( {studentsData?.admin.students.length} طالب )</span>
                         </div>
@@ -134,7 +137,7 @@ const StudentsPage = () => {
                             <Tab
                             key={"stack"}
                                 title={
-                                    <Image src={activeTab === "stack" ? StackSelected : StackUnSelected}  radius='none' />
+                                    <Image src={activeTab === "stack" || dark ? StackSelected : StackUnSelected}  radius='none' />
                                 }
                             />
 
@@ -142,7 +145,7 @@ const StudentsPage = () => {
                             <Tab
                             key={"grid"}
                                 title={
-                                    <Image src={activeTab === "grid" ? GridSelected : GridUnSelected}  radius='none'/>
+                                    <Image src={activeTab === "grid" || dark ? GridSelected : GridUnSelected}  radius='none'/>
                                 }
                             />
                             
