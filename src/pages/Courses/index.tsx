@@ -46,26 +46,6 @@ const CoursesPage = () => {
                     </div>
                     
                 </div>
-                {/* <Card className=" h-[300px] rounded-[7px] fire-fighthing light ">
-                    
-                
-                    <CardBody className=' ml-28 flex flex-row items-center justify-center gap-x-[150px] z-10 overflow-y-hidden'>
-                            <div className='flex fle-col items-center gap-y-[26px] '>
-                                <div className="flex flex-col text-center gap-y-2 text-[#122333] font-bold ">
-                                    <span className=' text-4xl '>منهج الكمياء</span>
-                                    <span className=' text-sm '>متوفره الأن</span>
-                                    <Button className=' text-white text-sm font-bold bg-primary-gradient'
-                                        onPress={()=> navigate('/courses/chemistry')}
-                                    >
-                                        عرض التفاصيل
-                                    </Button>
-                                </div>
-
-                            </div>
-                        <Image src={ChemistryImage} />
-
-                    </CardBody>
-                </Card> */}
 
 
                 <div className=' max-w-full grid grid-cols-3 gap-x-6 mt-8'>

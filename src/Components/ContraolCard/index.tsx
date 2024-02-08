@@ -9,6 +9,7 @@ import SettingLight from '../../assets/ControlCard/Light/Settings.png'
 import DashboardLight from '../../assets/ControlCard/Light/Dashboard.png'
 
 import BackIconLight from '../../assets/ControlCard/Light/Iconsax/Outline/arrowleft.svg'
+import DarkArrow from '../../assets/ControlCard/dark/Iconsax/Outline/arrowleft.png'
 
 
 import { Image, Switch, cn, Button, Avatar } from '@nextui-org/react'
@@ -77,10 +78,10 @@ const ControlCard = ({icon, title, neasted}:Props) => {
     >
         <div className='flex items-center gap-x-[14px] text-[#292D32] dark:text-white text-2xl font-bold flex-row-reverse'>
           {neasted && 
-          <div className=' w-11 h-11 rounded-full bg-[red] dark:bg-[#252A33] flex items-center justify-center cursor-pointer'
+          <div className=' w-11 h-11 rounded-full bg-[#E8E8EA] dark:bg-[#BDBEC0]/25 flex items-center justify-center cursor-pointer'
             onClick={() => navigate(-1)}
           >
-             <img src={BackIconLight} alt="" className=' rotate-180' />
+             <img src={dark ? DarkArrow : BackIconLight} alt="" className=' rotate-180 dark:rotate-0' />
           </div>
          
           
