@@ -32,11 +32,11 @@ interface CourseStoreCardProps {
 const CourseStoreCard:FC<CourseStoreCardProps> = ({name}) => {
     const course = Courses.find(course => course.name === name)
   return (
-    <div className="course-store-card bg-white dark:bg-white/5 flex flex-col items-center justify-center gap-y-[19px] relative">
+    <div className="course-store-card bg-white dark:bg-[#252A33] flex flex-col items-center justify-center gap-y-[19px] relative">
         <div>
         <img src={course.icon} alt="" className=' rounded-full mb-5 ' />
         </div>
-        <div className=' flex flex-col text-center gap-y-[19px] text-[#122333]'>
+        <div className=' flex flex-col text-center gap-y-[19px] text-[#122333] dark:text-white'>
             <span className=' text-2xl font-semibold'>{course.name}</span>
             <span className=' w-[275px] text-sm'>{course.description}</span>
         </div>

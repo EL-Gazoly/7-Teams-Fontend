@@ -12,8 +12,10 @@ border-radius: 8px;
 
 background-size: cover;
 }
-.fire-fighthing.dark{
-    background-image: url("../../assets/courses/fireFighting-bg.png");
+.fire-fighthing-dark{
+    background-image: url("../../assets/courses/bg.png");
+    width: 1000px;
+    
 }
 .fire-fighthing.light{
     background-image: url("../../assets/courses/fireFighting-light-bg.png");
