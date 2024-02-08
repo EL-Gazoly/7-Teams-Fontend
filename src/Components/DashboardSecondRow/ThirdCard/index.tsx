@@ -18,8 +18,9 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+import './index.css'
 
-
+import { useThemeStore } from '../../../stores/ThemeStore';
 
 const labels = [' ثالث ثانوي ' , ' ثاني ثاوي' , ' اول ثانوي' , ' ثالث متوسط ', ' ثاني متوسط ', ' اول متوسط ' ]
 
@@ -44,6 +45,8 @@ const ThridCard = ({studentByGrade}) => {
   const [middleFirstC, setMiddleFirstC] = useState(0)
   const [middleSecondC, setMiddleSecondC] = useState(0)
   const [middleThirdC, setMiddleThirdC] = useState(0)
+
+  const {dark} = useThemeStore()
   
   useEffect(() => {
    
@@ -196,45 +199,46 @@ const ThridCard = ({studentByGrade}) => {
   
   }
  
-   const options = {
-     responsive: true,
-     plugins: {
-       legend: {
-         display: false,
-       },
-     },
-     scales: {
-       x: {
-         display: true,
-         stacked: true,
-         grid: {
-           display: false,
-         },
-         ticks: {
-           color: '#122333',
-           font: {
-             size: 6.32,
-             weight: 700,
-             family: 'Cairo',
-           },
-         },
-       },
-       y: {
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+    scales: {
+      x: {
+        display: true,
         stacked: true,
-         display: true,
-         ticks: {
-           display: false,
-         },
-       },
-     },
-   };
+        grid: {
+          display: false,
+        },
+        ticks: {
+          color: dark ? 'white' : '#122333',
+          font: {
+            size: 6.32,
+            weight: 700,
+            family: 'Cairo',
+          },
+        },
+      },
+      y: {
+        stacked: true,
+        display: true,
+        ticks: {
+          display: false,
+        },
+      },
+    },
+  };
+  
   return (
     <div className=' w-[408px]  h-[254px] '>
-        <div className=' w-full h-full bg-white rounded-2xl p-[10px] flex flex-col  gap-y-5'>
-          <span className=' text-[#444] font-bold tracking-[-0.01119rem]'> عدد الطلاب في كل مرحله </span>
+        <div className=' w-full h-full bg-white  dark:bg-[#252A33] rounded-2xl p-[10px] flex flex-col  gap-y-5'>
+          <span className=' text-[#444] dark:text-white font-bold tracking-[-0.01119rem]'> عدد الطلاب في كل مرحله </span>
 
-        <div className=' w-full  flex items-center justify-center'>
-           <div className=' w-full h-[175px] self-center mx-4'>
+        <div className=' w-full  flex items-center justify-center dark:bg-[#252A33]'>
+           <div className=' w-full h-[175px] self-center mx-4 '>
             <Bar data={data} options={options} />
 
           </div>

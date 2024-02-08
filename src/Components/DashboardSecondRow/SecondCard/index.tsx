@@ -89,25 +89,25 @@ const SecondCard = ({rolesCount}) => {
   };
 
   return (
-    <div className=' w-[289px] h-[254px] rounded-2xl bg-white py-[10px] flex flex-col gap-y-5 relative'>
+    <div className=' w-[289px] h-[254px] rounded-2xl bg-white  dark:bg-[#252A33] dark:text-white  py-[10px] flex flex-col gap-y-5 relative'>
       <span className=' text-base font-bold mx-4'>  عدد المسؤولين المسجلين   </span>
       <Divider className=' w-full bg-[#E4E5E7]' />
       <div className=' mt-[10px] self-end flex items-center gap-x-6'>
         <div className='flex flex-col gap-y-4 '>
-          <span className=' text-[27px] font-bold text-[#444]'> {totalCount} </span>
+          <span className=' text-[27px] font-bold text-[#444] dark:text-white'> {totalCount} </span>
           <div className=' flex flex-col gap-y-[14px] text-xs text-[#444] font-semibold text-right'>
             <div className='flex flex-col items-center gap-y-2 text-[10px]'>
               <div className=' flex items-center gap-x-1 w-[118px]'>
                   <div className=' w-3 h-2 rounded bg-[#009017]'  />
-                  <span className=' '>{Math.floor(adminCount/totalCount* 100)}% مدير النظام</span>
+                  <span className='dark:text-white '>{Math.floor(adminCount/totalCount* 100)}% مدير النظام</span>
               </div>
               <div className=' flex items-center gap-x-1 w-[118px] '>
                   <div className=' w-3 h-2 rounded bg-[#21FB45]'  />
-                  <span className=''>{Math.floor(supervisorCount/totalCount*100)}%  الإداريين التنفيذيين</span>
+                  <span className='dark:text-white'>{Math.floor(supervisorCount/totalCount*100)}%  الإداريين التنفيذيين</span>
               </div>
               <div className=' flex items-center gap-x-1 w-[118px] '>
                   <div className=' w-3 h-2 rounded bg-[#8DF49D] mb-4'  />
-                  <span className=' '> {Math.floor(teacherCount/totalCount*100)}% المعلمين أو المشرفين </span>
+                  <span className='dark:text-white '> {Math.floor(teacherCount/totalCount*100)}% المعلمين أو المشرفين </span>
               </div>
 
             </div>

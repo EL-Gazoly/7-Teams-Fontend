@@ -130,7 +130,7 @@ const ControlCard = ({icon, title, neasted}:Props) => {
                   <div className='w-[57px] h-[57px] rounded-full' >
                       <img src={Placeholder} alt="" className='w-[57px] h-[57px] rounded-full' />
                   </div>
-                  <div className=' flex flex-col gap-y-[7px] text-[#292D32] text-right'>
+                  <div className=' flex flex-col gap-y-[7px] text-[#292D32] dark:text-white text-right'>
                     <span className=' text-xs font-bold'>Sameh Ahmed</span>
                     <span className='text-[10px] font-medium'>الملف الشخصي</span>
                   </div> 

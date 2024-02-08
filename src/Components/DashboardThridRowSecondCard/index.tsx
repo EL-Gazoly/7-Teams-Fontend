@@ -58,15 +58,15 @@ const DashboardThridRowSecondCol = ({studentExperiments}) => {
     }, [timeValue, studentExperiments])
     
   return (
-    <div className=' w-[408px] flex-1 h-[332px] rounded-2xl bg-white p-[30px] flex flex-col gap-y-[30px]'>
+    <div className=' w-[408px] flex-1 h-[332px] rounded-2xl bg-white  dark:bg-[#252A33] p-[30px] flex flex-col gap-y-[30px]'>
 
         <div className=' w-[352px] flex items-center  justify-between'>
-            <span className=' text-[#444] text-[17px] font-bold '
+            <span className=' text-[#444] dark:text-white text-[17px] font-bold '
             >الوقت المستغرق</span>
             <Tabs aria-label='time' color='primary' 
                 classNames={{
                     cursor : "text-white bg-black",
-                    tabList: "bg-[#F8F8FF] px-2 py-1 rounded-[10px] flex items-center gap-x-2",
+                    tabList: "bg-[#F8F8FF] dark:bg-[#374151] px-2 py-1 rounded-[10px] flex items-center gap-x-2",
                     tabContent: "text-[#9291A5] text-[11px] font-semibold",
                 }}
                 selectedKey={timeValue}

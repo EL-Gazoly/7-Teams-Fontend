@@ -128,8 +128,8 @@ const FirstCard = ({timeByMonth}) => {
     ],
   };
   return (
-    <div className=' w-[290px] h-[254px] rounded-2xl bg-white py-[15px] px-2 flex flex-col gap-y-[10px] relative'>
-      <span className=' text-[#444]  font-bold mx-1'> اجمالي ساعات التدريب. </span>
+    <div className=' w-[290px] h-[254px] rounded-2xl bg-white dark:bg-[#252A33] py-[15px] px-2 flex flex-col gap-y-[10px] relative'>
+      <span className=' text-[#444]  dark:text-white font-bold mx-1'> اجمالي ساعات التدريب. </span>
       <div className=' w-full h-[140px] mt-2 '>
         <Line data={data} options={options} />
       </div>
@@ -137,8 +137,8 @@ const FirstCard = ({timeByMonth}) => {
       <div className=' self-center w-[220px] flex items-center justify-between'>
         <div className=' flex items-center gap-x-5 '>
           <div className=' flex flex-col gap-y-[2px] items-center text-[10px] text-center'>
-              <span className='text-[#444]  font-semibold'> هذ ا الشهر </span>
-              <span className=' text-[#787878] font-medium'> {totalfirstMonth} </span>
+              <span className='text-[#444] dark:text-[#DCDCDC]  font-semibold'> هذ ا الشهر </span>
+              <span className=' text-[#787878] dark:text-[#DCDCDC] font-medium'> {totalfirstMonth} </span>
           </div>
           <div className=' flex items-center'>
             <div className=' w-2 h-1 rounded-r-sm bg-[#05C283]' />
@@ -147,11 +147,11 @@ const FirstCard = ({timeByMonth}) => {
 
           </div>
         </div>
-        <Divider className=' h-4 bg-[#BDC9D3]' orientation="vertical" />
+        <Divider className=' h-4 bg-[#BDC9D3] dark:bg-[#DCDCDC]' orientation="vertical" />
         <div className=' flex items-center gap-x-4 '>
           <div className=' flex flex-col gap-y-[2px] items-center text-[10px] text-center'>
-              <span className='text-[#444]  font-semibold'>  الشهر الماضي </span>
-              <span className=' text-[#787878] font-medium'> {totalSecondMonth} </span>
+              <span className='text-[#444] dark:text-[#DCDCDC]  font-semibold'>  الشهر الماضي </span>
+              <span className=' text-[#787878] dark:text-[#DCDCDC] font-medium'> {totalSecondMonth} </span>
           </div>
           <div className=' flex items-center'>
             <div className=' w-2 h-1 rounded-r-sm bg-[#0080DA]' />

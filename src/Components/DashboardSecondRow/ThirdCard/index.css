@@ -1,0 +1,10 @@
+/* Customize x-axis */
+.chartjs-chart-x-axis {
+    color: red;
+  }
+  
+  /* Customize y-axis */
+  .chartjs-chart-y-axis {
+    color: red;
+  }
+  
