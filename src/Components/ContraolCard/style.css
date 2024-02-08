@@ -1,11 +1,10 @@
-.Control-card-bg .dark {
-    background-image: url("../../assets/ControlCard/bg.png");
+.Control-card-bg-dark {
+    background-image: url("../../assets/ControlCard/dark/bg-dark.png");
 }
 
 .Control-card-bg {
     background-image: url("../../assets//ControlCard/bg-light.png");
 }
-
 .card{
     background-color: red;
 }

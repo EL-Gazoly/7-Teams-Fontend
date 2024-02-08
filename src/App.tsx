@@ -39,7 +39,7 @@ function App() {
       fontFamily: 'Cairo'
     }}>
      <Toaster position="top-right" richColors   />
-      <div className="  w-screen h-screen bg-[#E9EBEE] overflow-hidden flex flex-row-reverse">
+      <div className="  w-screen h-screen bg-[#E9EBEE] dark:bg-[#2E3643] overflow-hidden flex flex-row-reverse">
         {!isLoginPage &&  <SideBar />}
         <div className=" w-full h-full flex items-center justify-center">
           <div className=" w-[1000px] h-full overflow-y-auto overflow-x-hidden scroll">

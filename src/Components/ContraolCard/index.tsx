@@ -17,6 +17,8 @@ import logoutIcon from '../../assets/ControlCard/logout.svg'
 import Placeholder from '../../assets/ControlCard/placeholder.jpeg'
 import "./style.css"
 import { useNavigate } from 'react-router-dom'
+import { useThemeStore } from '../../stores/ThemeStore'
+import { useEffect } from 'react'
 
 type Props ={
   icon : string
@@ -25,6 +27,11 @@ type Props ={
 }
 
 const ControlCard = ({icon, title, neasted}:Props) => {
+  const {dark, setTheme} = useThemeStore()
+
+  useEffect(() => {
+    setTheme(localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : false)
+  }, [])
 
 
   const navigate = useNavigate()
@@ -57,15 +64,20 @@ const ControlCard = ({icon, title, neasted}:Props) => {
     }
   }
 
+  const setThemeHandler = (dark) => {
+    setTheme(dark)
+    localStorage.setItem('theme', dark ? 'dark' : 'light')
+  }
+
   return (  
-    <div className='w-full h-[103px] rounded-b-[14px] Control-card-bg light flex items-center px-[26px] justify-between flex-row-reverse'
+    <div className={`w-full h-[103px] rounded-b-[14px] ${dark? "Control-card-bg-dark" : "Control-card-bg"} light flex items-center px-[26px] justify-between flex-row-reverse`}
     style={{
       backdropFilter: "blur(4.406332015991211px)"
     }}
     >
-        <div className='flex items-center gap-x-[14px] text-[#292D32] text-2xl font-bold flex-row-reverse'>
+        <div className='flex items-center gap-x-[14px] text-[#292D32] dark:text-white text-2xl font-bold flex-row-reverse'>
           {neasted && 
-          <div className=' w-11 h-11 rounded-full bg-[#F0F2F4] flex items-center justify-center cursor-pointer'
+          <div className=' w-11 h-11 rounded-full bg-[red] dark:bg-[#252A33] flex items-center justify-center cursor-pointer'
             onClick={() => navigate(-1)}
           >
              <img src={BackIconLight} alt="" className=' rotate-180' />
@@ -80,6 +92,8 @@ const ControlCard = ({icon, title, neasted}:Props) => {
             <Switch
                 color='primary'
                 size='lg'
+                isSelected={dark}
+                onChange={() => setThemeHandler(!dark)}
                 classNames={{
                          wrapper: cn(
                             "bg-black",

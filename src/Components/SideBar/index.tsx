@@ -5,6 +5,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 import {useState, useEffect} from 'react'
 import LogoImage from '../../assets/SideBar/Open/logo.png'
+import DarkLogo from '../../assets/SideBar/Open/dark-logo.png'
 import SelectedHeadset from '../../assets/SideBar/Open/Selected/headset.svg'
 import Headset from '../../assets/SideBar/Open/default/headset.svg'
 import SelectedCourses from '../../assets/SideBar/Open/Selected/courses.png'
@@ -25,7 +26,10 @@ import SelectedSettings from '../../assets/SideBar/Open/Selected/settings.png'
 import Settings from '../../assets/SideBar/Open/default/settings.svg'
 import ArrowIcon from '../../assets/SideBar/Open/arrow.png'
 
+import { useThemeStore } from "../../stores/ThemeStore";
+
 const SideBar = () => {
+    const { dark } = useThemeStore()
     const [active, setActive] = useState("/headsets")
     const navigate = useNavigate()
     const location = useLocation()
@@ -47,14 +51,14 @@ const SideBar = () => {
 
   return (
     <div className=" relative">
-        <div className=' w-[213px] h-screen flex flex-col px-5 py-[53px] gap-y-10 bg-[#F7F9FC] overflow-hidden'
+        <div className=' w-[213px] h-screen flex flex-col px-5 py-[53px] gap-y-10 bg-[#F7F9FC] dark:bg-[#252A33] overflow-hidden'
         style={{
             filter : "drop-shadow(0px 3.25px 21.125px rgba(0, 0, 0, 0.25))"
         }}
         >
 
             <div className="flex items-center justify-center font-medium text-[#42464B]">
-                <Image src={LogoImage} width={153} height={49} />
+                <Image src={dark ? DarkLogo : LogoImage} width={153} height={49} />
 
             </div>
 
@@ -75,7 +79,7 @@ const SideBar = () => {
                 key={"/headsets"}
                 title={
                     <div className=" w-[159px] flex items-center justify-start mx-2 gap-x-2 mr-4 mt-3 font-medium text-sm  flex-row-reverse">
-                        <img src={active === "/headsets" ? SelectedHeadset : Headset} width={25} height={25} />
+                        <img src={active === "/headsets" || dark ? SelectedHeadset : Headset} width={25} height={25} />
                         <span className=" text-[13px]">نظارة الواقع الافتراضي </span>
                     </div>
                 } 
@@ -89,7 +93,7 @@ const SideBar = () => {
                     ) && (
                         <Tab key={"/courses"}   title={
                             <div className="w-[159px]  flex items-center  justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
-                                <img src={active==="/courses" ? SelectedCourses : Courses} width={25} height={25}  />
+                                <img src={active==="/courses" || dark ? SelectedCourses : Courses} width={25} height={25}  />
                                 <span>المناهج التعليمية</span>
                             </div>
                         } />
@@ -104,7 +108,7 @@ const SideBar = () => {
                 ) && (
                     <Tab key={"/students"}   title={
                         <div className=" w-[159px] flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
-                            <img src={active==="/students" ? SelectedStudents : Students} width={25} height={25}  />
+                            <img src={active==="/students" || dark ? SelectedStudents : Students} width={25} height={25}  />
                             <span>الطلاب</span>
                         </div>
                     } />
@@ -119,7 +123,7 @@ const SideBar = () => {
                  ) && (
                       <Tab key={"/library"}   title={
                             <div className=" w-[159px] flex items-center justify-start mr-4 gap-x-3 mt-3 font-medium text-sm  flex-row-reverse">
-                             <img src={active==="/library" ? SelectedLibrary : library} width={25} height={25}  />
+                             <img src={active==="/library" || dark ? SelectedLibrary : library} width={25} height={25}  />
                              <span >الوسائط المحفوظة</span>
                             </div>
                       } />
@@ -133,7 +137,7 @@ const SideBar = () => {
                  ) && (
                       <Tab key={"/reports"}   title={
                             <div className=" w-[159px] flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
-                             <img src={active==="/reports" ? SelectedReports : Reports} width={25} height={25}  />
+                             <img src={active==="/reports" || dark ? SelectedReports : Reports} width={25} height={25}  />
                              <span>التقارير</span>
                             </div>
                       } />
@@ -147,7 +151,7 @@ const SideBar = () => {
                  ) && (
                       <Tab key={"/certificates"}   title={
                             <div className=" w-[159px] flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
-                             <img src={active==="/certificates" ? SelectedCertificates : Certificates} width={25} height={25}  />
+                             <img src={active==="/certificates" || dark ? SelectedCertificates : Certificates} width={25} height={25}  />
                              <span>الشهادات</span>
                             </div>
                       } />
@@ -161,7 +165,7 @@ const SideBar = () => {
                  ) && (
                       <Tab key={"/dashboard"}   title={
                             <div className=" w-[159px] flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
-                             <img src={active==="/dashboard" ? SelectedDashboard : Dashboard} width={25} height={25}  />
+                             <img src={active==="/dashboard" || dark ? SelectedDashboard : Dashboard} width={25} height={25}  />
                              <span>لوحة التحكم</span>
                             </div>
                       } />
@@ -175,7 +179,7 @@ const SideBar = () => {
                  ) && (
                       <Tab key={"/logs"}   title={
                             <div className=" w-[159px] flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
-                             <img src={active==="/logs" ? SelectedLogs : Logs} width={25} height={25}  />
+                             <img src={active==="/logs" || dark ? SelectedLogs : Logs} width={25} height={25}  />
                              <span>سجل النظام</span>
                             </div>
                         } />
@@ -190,7 +194,7 @@ const SideBar = () => {
                  ) && (
                       <Tab key={"/settings"}   title={
                             <div className=" w-[159px] flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
-                             <img src={active==="/settings" ? SelectedSettings : Settings} width={25} height={25}  />
+                             <img src={active==="/settings" || dark ? SelectedSettings : Settings} width={25} height={25}  />
                              <span>الاعدادات العامة</span>
                             </div>
                         } />
