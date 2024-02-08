@@ -70,7 +70,7 @@ const ControlCard = ({icon, title, neasted}:Props) => {
   }
 
   return (  
-    <div className={`w-full h-[103px] rounded-b-[14px] ${dark? "Control-card-bg-dark" : "Control-card-bg"} light flex items-center px-[26px] justify-between flex-row-reverse`}
+    <div className={`w-full h-[103px] rounded-b-[14px] ${dark? "dark:bg-[#252A33]" : "Control-card-bg"} light flex items-center px-[26px] justify-between flex-row-reverse`}
     style={{
       backdropFilter: "blur(4.406332015991211px)"
     }}
