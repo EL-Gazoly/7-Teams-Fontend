@@ -13,21 +13,21 @@ const StageTimeCounter = ({totalPracticalTime, totalTheorticalTime, totalTrainin
   }
 
   return (
-    <div className=' w-[532px] h-[328px] rounded-lg py-7 px-6 bg-white flex flex-col gap-y-5'>
-      <h2 className=' mr-2 text-sm font-bold text-text-black'>الوقت المستغرق {location.pathname.includes("class") ? "للصف" : "للمرحله"} </h2>
+    <div className=' w-[532px] h-[328px] rounded-lg py-7 px-6 bg-white dark:bg-primary-dark flex flex-col gap-y-5'>
+      <h2 className=' mr-2 text-sm font-bold text-text-black dark:text-white'>الوقت المستغرق {location.pathname.includes("class") ? "للصف" : "للمرحله"} </h2>
       <div className=' flex flex-col items-center gap-[14px]'>
         <div className="w-full flex items-center justify-between">
-          <div className="flex items-center gap-x-4">
-            <span className=' text-xs text-[#96A5B8]'>#</span>
-            <span className=' text-xs text-[#96A5B8]'>
+          <div className="flex items-center gap-x-4 text-xs text-[#96A5B8] dark:text-white">
+            <span>#</span>
+            <span >
               الاسم
             </span>
 
           </div>
-          <div className='flex items-center gap-x-4 text-xs'>
-              <span className=''>الوقت</span>
-              <span className=' text-[#96A5B8]'>دقيقه</span>
-              <span className=' text-[#96A5B8]'>ساعه</span>
+          <div className='flex items-center gap-x-4 text-xs text-[#96A5B8] dark:text-white'>
+              <span >الوقت</span>
+              <span>دقيقه</span>
+              <span >ساعه</span>
           </div>
         </div>
         <Divider className=' bg-[#2DEC4C]' />

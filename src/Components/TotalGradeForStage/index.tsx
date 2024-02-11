@@ -27,36 +27,11 @@ ChartJS.register(
 
 const labels = ['0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%'];
 
-const options = {
-  plugins: {
-    legend: {
-      display: false,
-    },
-    tooltip: {
-      enabled: true,
-    },
-  },
-  scales: {
-    y: {
-      beginAtZero: true,
-      display: false
-    },
-    x: {
-      display: true,
-      ticks: {
-        color: '#615E83',
-        font: {
-          size: 10,
-          weight: 400,
-          family: 'Cairo',
-        },
-      },
-    }
-  },
-};
+import { useThemeStore } from '../../stores/ThemeStore';
 
 
 const TotalGradeForStage = ({experiments}) => {
+  const {dark} = useThemeStore()
   const [thorticalOccurance, setThorticalOccurance] = useState({})
   const [practicalOccurance, setPracticalOccurance] = useState({})
   const location = useLocation()
@@ -150,17 +125,46 @@ const TotalGradeForStage = ({experiments}) => {
       }
     ],
   };
+
+  const options = {
+    plugins: {
+      legend: {
+        display: false,
+      },
+      tooltip: {
+        enabled: true,
+      },
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        display: false
+      },
+      x: {
+        display: true,
+        ticks: {
+          color:  dark ? 'white' : '#615E83',
+          font: {
+            size: 10,
+            weight: 400,
+            family: 'Cairo',
+          },
+        },
+      }
+    },
+  };
+  
   
   return (
-    <div className='w-[457px] h-[354px] py-[31px] px-7 bg-white rounded-lg flex flex-col gap-y-5 relative'>
+    <div className='w-[457px] h-[354px] py-[31px] px-7 bg-white dark:bg-primary-dark text-[#444] dark:text-white rounded-lg flex flex-col gap-y-5 relative'>
         <div className="flex w-full items-center justify-between">
-            <span className=' text-sm text-[#444] font-bold'>
+            <span className=' text-sm  font-bold'>
             التقدير العام {location.pathname.includes("class") ? "للصف" : "للمرحله"} 
             </span>
             <div className='flex items-center gap-x-2'>
                 <div className=' flex items-center gap-x-1'>
                     <div className=' w-1 h-8  bg-[#007DD6] rounded' />
-                    <div className=' w-[69px] text-[8px] font-semibold text-[#444]'>
+                    <div className=' w-[69px] text-[8px] font-semibold '>
                     التقدير التفصيلى للأختبار العملى 
 
                     </div>
@@ -168,7 +172,7 @@ const TotalGradeForStage = ({experiments}) => {
                 </div>
                 <div className=' flex items-center gap-x-1'>
                     <div className=' w-1 h-8  bg-[#05C283] rounded' />
-                    <div className=' w-[69px] text-[8px] font-semibold text-[#444]'>
+                    <div className=' w-[69px] text-[8px] font-semibold ]'>
                     التقدير التفصيلى للأختبار النظرى 
 
                     </div>

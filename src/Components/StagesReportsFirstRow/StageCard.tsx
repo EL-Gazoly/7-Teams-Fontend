@@ -1,9 +1,12 @@
 import PrinterIcon from '../../assets/Reports/printer.png'
 import { Button } from '@nextui-org/react'
 import GroupIcon from '../../assets/Reports/StageReports/group.svg'
+import GroupDarkIcon from '../../assets/Reports/StageReports/dark-group.png'
+import { useThemeStore } from '../../stores/ThemeStore'
 import { useParams } from 'react-router-dom'
 import html2canvas from 'html2canvas';
 const StageCard = () => {
+    const {dark} = useThemeStore()
     const convertAndPrint = () => {
         const divToPrint = document.querySelector('.certificateDiv');
         if (divToPrint) {
@@ -32,7 +35,7 @@ const StageCard = () => {
       };
     const { stage } = useParams()
   return (
-    <div className=' w-[458px] h-[324px] py-[50px] px-[30px] flex flex-col gap-y-[26px] bg-white rounded-lg'>
+    <div className=' w-[458px] h-[324px] py-[50px] px-[30px] flex flex-col gap-y-[26px] bg-white dark:bg-primary-dark rounded-lg'>
         <div className=' w-full flex items-center justify-end '>
             <Button className=' bg-primary-gradient text-white w-[90px] h-[35px]' onPress={convertAndPrint}>
                 <img src={PrinterIcon} alt="" />
@@ -41,8 +44,8 @@ const StageCard = () => {
         </div>
         
         <div className=' w-full flex items-center justify-center'>
-            <div className=' w-[74px] h-[74px] bg-[#CFCFD7] rounded-full flex items-center justify-center border border-[#2DEC4C]'>
-                <img src={GroupIcon} alt="" />
+            <div className=' w-[74px] h-[74px] bg-[#CFCFD7] dark:bg-[#3B4048] rounded-full flex items-center justify-center border border-[#2DEC4C]'>
+                <img src={dark? GroupDarkIcon : GroupIcon} alt="" />
 
             </div>
         </div>

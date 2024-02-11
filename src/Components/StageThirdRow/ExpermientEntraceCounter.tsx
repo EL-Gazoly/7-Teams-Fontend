@@ -88,8 +88,8 @@ const ExpermientEnteranceCounter = ({data, setEnterTraining, setEnterTheortical,
 
     }
   return (
-    <div className=' w-[532px] h-[354px] p-7 bg-white rounded-lg flex flex-col gap-y-5'>
-        <span className=' text-text-black text-sm font-bold'>عدد مرات  الدخول الى التجارب </span>
+    <div className=' w-[532px] h-[354px] p-7 bg-white dark:bg-primary-dark rounded-lg flex flex-col gap-y-5'>
+        <span className=' text-text-black dark:text-white text-sm font-bold'>عدد مرات  الدخول الى التجارب </span>
         <div className=' flex flex-col items-center gap-4'>
             <div className=' w-full flex items-center justify-between text-[10px] text-[#96A5B8]'>
                 <div className=' flex items-center gap-x-8 t'>
@@ -102,14 +102,14 @@ const ExpermientEnteranceCounter = ({data, setEnterTraining, setEnterTheortical,
 
             </div>
             <Divider className=' bg-[#2DEC4C]' />
-            <div className='w-full flex flex-col gap-y-5 text-text-black text-xs'>
+            <div className='w-full flex flex-col gap-y-5 text-text-black dark:text-white text-xs'>
                 <div className='w-full flex items-center justify-between'>
                     <div className='flex items-center gap-x-8 '>
                         <span className=' font-medium'>01</span>
                         <img src={LiquidExpirment} alt="" className=' w-5 h-5' />
                         <span className=' font-bold'>لزوجه السائل</span>
                     </div>
-                    <div className=' w-[41px] h-[42px] flex items-center justify-center bg-[#E8E9EB] font-medium'>
+                    <div className=' w-[41px] h-[42px] flex items-center justify-center bg-[#E8E9EB] dark:bg-[#2E333B] font-medium'>
                             {liquid}
                     </div> 
                 </div>
@@ -119,7 +119,7 @@ const ExpermientEnteranceCounter = ({data, setEnterTraining, setEnterTheortical,
                         <img src={DenistyOfWood} alt="" className=' w-5 h-5' />
                         <span className=' font-bold'> كثافه الخشب</span>
                     </div>
-                    <div className=' w-[41px] h-[42px] flex items-center justify-center bg-[#E8E9EB] font-medium'>
+                    <div className=' w-[41px] h-[42px] flex items-center justify-center bg-[#E8E9EB] dark:bg-[#2E333B] font-medium'>
                             {wood}
                     </div> 
                 </div>
@@ -129,7 +129,7 @@ const ExpermientEnteranceCounter = ({data, setEnterTraining, setEnterTheortical,
                         <img src={HeatExpriment} alt="" className=' w-5 h-5' />
                         <span className=' font-bold'> استخدام موقد بنسن</span>
                     </div>
-                    <div className=' w-[41px] h-[42px] flex items-center justify-center bg-[#E8E9EB] font-medium'>
+                    <div className=' w-[41px] h-[42px] flex items-center justify-center bg-[#E8E9EB] dark:bg-[#2E333B] font-medium'>
                             {heat}
                     </div> 
                 </div>
@@ -139,7 +139,7 @@ const ExpermientEnteranceCounter = ({data, setEnterTraining, setEnterTheortical,
                             <img src={VolumeCalculation} alt="" className=' w-5 h-5' />
                             <span className=' font-bold'> تحديد الحجم</span>
                         </div>
-                        <div className=' w-[41px] h-[42px] flex items-center justify-center bg-[#E8E9EB] font-medium'>
+                        <div className=' w-[41px] h-[42px] flex items-center justify-center bg-[#E8E9EB] dark:bg-[#2E333B] font-medium'>
                                 {volume}
                         </div> 
                     </div>
