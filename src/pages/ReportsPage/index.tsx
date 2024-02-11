@@ -5,29 +5,39 @@ import PersonIcon from '../../assets/Reports/single.svg'
 import GroupIcon from '../../assets/Reports/group.png'
 import SchoolIcon from '../../assets/Reports/school.png'
 import ClasseIcon from '../../assets/Reports/classes.svg'
+import PersonDarkIcon from '../../assets/Reports/single-dark.png'
+import GroupDarkIcon from '../../assets/Reports/group-dark.png'
+import SchoolDarkIcon from '../../assets/Reports/schools.png'
+import ClasseDarkIcon from '../../assets/Reports/classes.png'
+import { useThemeStore } from '../../stores/ThemeStore'
 import { useNavigate } from 'react-router-dom'
 
 const list = [
     {
         title : "الطلاب",
         icon : PersonIcon,
+        dark : PersonDarkIcon
     }
     ,{
         title : "المراحل التعليمية",
         icon : GroupIcon,
+        dark : GroupDarkIcon
     },
     {
         title : "الفصول الدراسية",
         icon : ClasseIcon,
+        dark : ClasseDarkIcon
     },
 
     ,{
         title : "المدارس",
         icon : SchoolIcon,
+        dark : SchoolDarkIcon
     }
 ]
 
 const ReportsPage = () => {
+    const {dark} = useThemeStore()
     const [search, setSearch] = useState('')
     const navigate = useNavigate()
 
@@ -44,12 +54,12 @@ const ReportsPage = () => {
     <React.Fragment>
       <ControlCard icon="Reports" title='التقارير' neasted={false} />
       <div className='flex flex-col items-center gap-y-5 mt-4 pb-5'>
-            <div className=' w-full h-[147px] bg-[#F7F9FC] flex items-center justify-center'
+            <div className=' w-full h-[147px] bg-[#F7F9FC] dark:bg-primary-dark flex items-center justify-center'
                 style={{
                     backdropFilter: "blur(64.4533462524414px)"
                 }}
             >
-                <div className=' w-[494px] h-12 rounded-lg bg-[#DDE0E3] flex items-center justify-start flex-row-reverse px-6 gap-x-[10px]'
+                <div className=' w-[494px] h-12 rounded-lg bg-[#DDE0E3] dark:bg-[#40454D] flex items-center justify-start flex-row-reverse px-6 gap-x-[10px]'
                     style={{
                         backdropFilter: "blur(109.92385864257812px)"
                     }}
@@ -68,7 +78,7 @@ const ReportsPage = () => {
             >
                 {
                     searched.map((item,index) => (
-                        <div key={index} className={` w-[492px] h-64 rounded-lg bg-white flex flex-col items-center justify-center gap-y-5
+                        <div key={index} className={` w-[492px] h-64 rounded-lg bg-white dark:bg-primary-dark flex flex-col items-center justify-center gap-y-5
                         ${index !== 3 ? ' cursor-pointer' : ''}
                         `}
                             onClick={() => index === 0 ? navigate('/reports/students') : 
@@ -77,18 +87,18 @@ const ReportsPage = () => {
                         null}
                         >
                             {index !== 0 ?
-                                    <div className=' w-32 h-32 bg-[#EEEFF2] rounded-full flex items-center justify-center'
+                                    <div className=' w-32 h-32 bg-[#EEEFF2] dark:bg-[#5C6067] rounded-full flex items-center justify-center'
                                         style={{
                                             backdropFilter: "blur(24.598785400390625px)"
                                         }}
                                     >
-                                        <img src={item.icon} alt="" />
+                                        <img src={dark? item.dark : item.icon} alt="" />
                                     </div>
                                 :
-                                <img src={item.icon} alt="" />    
+                                <img src={dark? item.dark : item.icon} alt="" />    
                         }
                            
-                            <span className=' text-black text-[21px] font-bold'>تقارير {item.title} </span>
+                            <span className=' text-black dark:text-white text-[21px] font-bold'>تقارير {item.title} </span>
                                 
                         </div>
                     ))
