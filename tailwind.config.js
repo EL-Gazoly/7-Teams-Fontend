@@ -28,7 +28,10 @@ export default {
         "disconnected" : "#DFEBE1",
         "subtext" : "#A5A5A5",
         "text-black" : "#122333",
-        "light-bg" : "#FDFDFE"
+        "light-bg" : "#FDFDFE",
+        "primary-dark" : "#252A33",
+        "dark-bg" : "#2E3643",
+        "dark-item" : "#1F242D",
       }
     },
   },

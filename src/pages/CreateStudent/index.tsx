@@ -10,7 +10,6 @@ import { UploadImage } from './UploadImage';
 import { getStudents } from '../../graphql/students';
 import { GetStudents } from '../../graphql/reports';
 import AddWithExcel from '../../Components/AddWithExcelModal';
-
 const CreateStudent = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
@@ -50,7 +49,7 @@ const CreateStudent = () => {
     <>
       <ControlCard icon="Students" title=' الطلاب ' neasted={true}/>
       <div
-        className='mt-6 w-full h-[628px] bg-[#FDFDFE] rounded-lg pt-[75px] px-[113px] flex flex-col gap-y-12'
+        className='mt-6 w-full h-[628px] bg-[#FDFDFE] dark:bg-primary-dark rounded-lg pt-[75px] px-[113px] flex flex-col gap-y-12'
         style={{
           boxShadow: '0px 3.812px 99.108px 0px rgba(0, 0, 0, 0.08)',
           backdropFilter: 'blur(24.30045509338379px)',
@@ -63,30 +62,30 @@ const CreateStudent = () => {
         />
 
         <div className='flex flex-row-reverse items-center gap-x-[22px]'>
-          <div className='flex flex-col gap-y-[5px] text-right text-text-black'>
+          <div className='flex flex-col gap-y-[5px] text-right text-text-black dark:text-white'>
             <label htmlFor='name' className='mr-1'>
               الاسم
             </label>
             <input
               type='text'
-              className='text-right w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] px-4'
+              className='text-right w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] dark:bg-dark-item/70 px-4'
               placeholder='اسم الطالب هنا'
               ref={nameRef}
             />
           </div>
-          <div className='flex flex-col gap-y-[5px] text-right text-text-black'>
+          <div className='flex flex-col gap-y-[5px] text-right text-text-black dark:text-white'>
             <label htmlFor='id' className='mr-1'>
               رقم الطالب
             </label>
             <input
               type='text'
-              className='text-right w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] px-4'
+              className='text-right w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] dark:bg-dark-item/70 px-4'
               placeholder='رقم الطالب هنا'
               ref={idRef}
             />
           </div>
         </div>
-        <div className='w-full items-center justify-center flex flex-col gap-y-7 mt-20'>
+        <div className='w-full items-center justify-center flex flex-row-reverse gap-x-7 mt-20'>
           <Button
             className='w-[177px] h-[51px] py-2 px-4 rounded-lg flex items-center justify-center gap-x-2 bg-[#4E5464]'
             onPress={handleCreateStudent}
