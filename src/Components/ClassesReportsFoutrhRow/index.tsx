@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
 import { useParams } from 'react-router-dom';
+import { useThemeStore } from '../../stores/ThemeStore';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -20,38 +21,7 @@ ChartJS.register(
 );
 const labels = ["الفصل الاول", "الفصل الثاني","الفصل الثالث"]
  
-  const options = {
-    responsive: true,
-    indexAxis: 'y' as const,
-    plugins: {
-      legend: {
-        display: false,
-      },
-    },
-    scales: {
-      x: {
-        reverse: true,
-        stacked: true,
-        display: true,
-        grid: {
-          display: false,
-        },
-        ticks: {
-          color: '#122333',
-          font: {
-            size: 6.32,
-            weight: 700,
-            family: 'Cairo',
-          },
-        },
-      },
-      y: {
-        stacked: true,
-        display: false,
-        reverse: true,
-      },
-    },
-  };
+ 
   
   
   
@@ -60,6 +30,7 @@ const labels = ["الفصل الاول", "الفصل الثاني","الفصل �
   
 
 const ClassesReportFourthRow = ({experminets}) => {
+  const {dark} = useThemeStore()
   const { id } = useParams()
   const [first, setFirst] = useState({
     totalTheorticalTime: 0,
@@ -174,14 +145,47 @@ const ClassesReportFourthRow = ({experminets}) => {
   
   }
 
+  const options = {
+    responsive: true,
+    indexAxis: 'y' as const,
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+    scales: {
+      x: {
+        reverse: true,
+        stacked: true,
+        display: true,
+        grid: {
+          display: false,
+        },
+        ticks: {
+          color:  dark ? 'white' : '#122333',
+          font: {
+            size: 6.32,
+            weight: 700,
+            family: 'Cairo',
+          },
+        },
+      },
+      y: {
+        stacked: true,
+        display: false,
+        reverse: true,
+      },
+    },
+  };
+
   return (
-    <div className=' w-full h-[354px] bg-white py-6 px-9 rounded-lg flex flex-col gap-y-6 relative'>
+    <div className=' w-full h-[354px] bg-white text-[#444] dark:bg-primary-dark dark:text-white py-6 px-9 rounded-lg flex flex-col gap-y-6 relative'>
         <div className=' flex items-center justify-between'>
-            <h3 className=' text-[#444] text-xl font-bold'>التقدير العام للفصول</h3>
+            <h3 className='  text-xl font-bold'>التقدير العام للفصول</h3>
             <div className='flex items-center gap-x-2'>
                 <div className=' flex items-center gap-x-1'>
                     <div className=' w-1 h-8  bg-[#009017] rounded' />
-                    <div className=' w-[69px] text-[8px] font-semibold text-[#444]'>
+                    <div className=' w-[69px] text-[8px] font-semibold '>
                     الوقت  المستغرق للتدريب العملى 
 
                     </div>
@@ -189,14 +193,14 @@ const ClassesReportFourthRow = ({experminets}) => {
                 </div>
                 <div className=' flex items-center gap-x-1'>
                     <div className=' w-1 h-8  bg-[#4ADB61] rounded' />
-                    <div className=' w-[69px] text-[8px] font-semibold text-[#444]'>
+                    <div className=' w-[69px] text-[8px] font-semibold '>
                     الوقت  المستغرق للاختبار العملى 
                     </div>
 
                 </div>
                 <div className=' flex items-center gap-x-1'>
                     <div className=' w-1 h-8  bg-[#8DF49D] rounded' />
-                    <div className=' w-[69px] text-[8px] font-semibold text-[#444]'>
+                    <div className=' w-[69px] text-[8px] font-semibold '>
                     الوقت  المستغرق للاختبار النظرى 
                     </div>
 
@@ -205,7 +209,7 @@ const ClassesReportFourthRow = ({experminets}) => {
 
         </div>
         <div className=' flex items-center gap-x-3 mt-7'>
-            <div className="flex flex-col gap-y-12 text-text-black text-xs font-bold">
+            <div className="flex flex-col gap-y-12 text-text-black dark:text-white text-xs font-bold">
                 <h3>الفصل الثالث </h3>
                 <h3>الفصل الثاني </h3>
                 <h3>الفصل الاول </h3>
