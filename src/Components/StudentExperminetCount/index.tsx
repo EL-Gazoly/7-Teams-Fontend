@@ -24,19 +24,19 @@ const StudentExperminetCount = ({expermients}) => {
    }
   }, [expermients])
   return (
-    <div className=' w-[457px] h-[324px] p-6  bg-white rounded-lg flex flex-col gap-y-2 '>
+    <div className=' w-[457px] h-[324px] p-6  bg-white dark:bg-primary-dark rounded-lg flex flex-col gap-y-2 '>
       <div className=' w-full flex items-center justify-between'>
-        <span className=' text-gray-900 text-xl font-bold'>عدد مرات  الدخول الى كل التجارب </span>
+        <span className=' text-gray-900 dark:text-white text-xl font-bold'>عدد مرات  الدخول الى كل التجارب </span>
       </div>
       <div className=' w-full flex items-center justify-between'>
         <div className=' flex flex-col gap-y-[6px]'>
-            <span className=' text-[#444] text-[40px] font-bold'>{theorticalEntrance + traininigEntrance + praticalEntrance}</span>
+            <span className=' text-[#444] text-[40px] font-bold dark:text-white'>{theorticalEntrance + traininigEntrance + praticalEntrance}</span>
             <div className=' flex flex-col gap-y-3'>
                 <div className=' flex items-center gap-x-3'>
                     <div className=' w-[14px] h-7 rounded bg-[#009017]' />
                     <div className=' flex items-center justify-center gap-x-2'>
-                        <span className='w-28 text-[#444] text-xs font-bold'>عدد مرات الدخول على التدريب</span>
-                        <span className=' text-gray-500 text-2xl font-semibold mb-2'>{traininigEntrance}</span>
+                        <span className='w-28 text-[#444] dark:text-white text-xs font-bold'>عدد مرات الدخول على التدريب</span>
+                        <span className=' text-gray-500 dark:text-white  text-2xl font-semibold mb-2'>{traininigEntrance}</span>
 
                     </div>
 
@@ -46,8 +46,8 @@ const StudentExperminetCount = ({expermients}) => {
                 <div className=' flex items-center gap-x-3'>
                     <div className=' w-[14px] h-7 rounded bg-[#4EFC6A]' />
                     <div className=' flex items-center justify-center gap-x-2'>
-                        <span className='w-28 text-[#444] text-xs font-bold'> عدد مرات الدخول على الاختبارات النظرى </span>
-                        <span className=' text-gray-500 text-2xl font-semibold mb-2'>{theorticalEntrance}</span>
+                        <span className='w-28 text-[#444] dark:text-white  text-xs font-bold'> عدد مرات الدخول على الاختبارات النظرى </span>
+                        <span className=' text-gray-500 dark:text-white  text-2xl font-semibold mb-2'>{theorticalEntrance}</span>
 
                     </div>
 
@@ -57,8 +57,8 @@ const StudentExperminetCount = ({expermients}) => {
                 <div className=' flex items-center gap-x-3'>
                     <div className=' w-[14px] h-7 rounded bg-[#8DF49D]' />
                     <div className=' flex items-center justify-center gap-x-2'>
-                        <span className='w-28 text-[#444] text-xs font-bold'> عدد مرات الدخول على الاختبارات العملى  </span>
-                        <span className=' text-gray-500 text-2xl font-semibold mb-2'>{praticalEntrance}</span>
+                        <span className='w-28 text-[#444] dark:text-white  text-xs font-bold'> عدد مرات الدخول على الاختبارات العملى  </span>
+                        <span className=' text-gray-500 dark:text-white  text-2xl font-semibold mb-2'>{praticalEntrance}</span>
 
                     </div>
 

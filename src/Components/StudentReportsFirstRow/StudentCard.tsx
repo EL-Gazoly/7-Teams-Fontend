@@ -4,8 +4,11 @@ import PrinterIcon from '../../assets/Reports/printer.png'
 import { Button, Avatar, Divider } from '@nextui-org/react'
 import html2canvas from 'html2canvas';
 import noPic from '../../assets/students/noPic.svg'
+import noPicDark from '../../assets/students/no-pic.svg'
+import { useThemeStore } from '../../stores/ThemeStore';
 
 const StudentCard = ({data, ref}) => {
+    const {dark} = useThemeStore();
     const getStage = (stage) => {
         switch (stage) {
             case 'High':
@@ -51,7 +54,7 @@ const StudentCard = ({data, ref}) => {
         }
       };
   return (
-    <div className=' w-[458px] h-[324px] py-[50px] px-[30px] flex flex-col gap-y-[26px] bg-white rounded-lg'>
+    <div className=' w-[458px] h-[324px] py-[50px] px-[30px] flex flex-col gap-y-[26px] bg-white dark:bg-primary-dark rounded-lg'>
         <div className=' w-full flex items-center justify-end '>
             <Button className=' bg-primary-gradient text-white w-[90px] h-[35px]' onPress={convertAndPrint}>
                 <img src={PrinterIcon} alt="" />
@@ -60,22 +63,22 @@ const StudentCard = ({data, ref}) => {
         </div>
         
         <div className=' w-full flex items-center justify-center'>
-        <div className=' w-[74px] h-[74px] bg-[#F6F6F6] rounded-full flex items-center justify-center'>
-                  {data.student.imageUrl ? <Avatar className=' w-[74px] h-[74px]' src={`${import.meta.env.VITE_API_URL}${data.student.imageUrl}`} fallback={noPic}/> : <img src={noPic} alt="" /> }
+        <div className=' w-[74px] h-[74px] bg-[#F6F6F6] dark:bg-[#3D414A] rounded-full flex items-center justify-center'>
+                  {data.student.imageUrl ? <Avatar className=' w-[74px] h-[74px]' src={`${import.meta.env.VITE_API_URL}${data.student.imageUrl}`} fallback={noPic}/> : <img src={dark? noPicDark : noPic} alt="" /> }
               </div>
         </div>
 
         <div className=' w-full flex items-center justify-center gap-x-[18px]'>
             <div className=' flex flex-col gap-y-3'>
-                <span className=' text-[#111928] text-2xl font-bold'>{data?.student.name.substring(0, 10)} </span>
+                <span className=' text-[#111928] dark:text-white text-2xl font-bold'>{data?.student.name.substring(0, 10)} </span>
                 <span className=' text-primary text-2xl font-medium'>#{data?.student.generatedId}</span>
 
             </div>
             <Divider orientation="vertical" className='bg-[#111928]' />
-            <div className=' flex flex-col gap-y-[10px]'>
-                <span className=' text-[#1119288F] text-[15px]'>مدرسة : جده الحديثة</span>
-                <span className=' text-[#1119288F] text-[15px]'>المرحلة : {getStage(data?.student.team.name)}</span>
-                <span className=' text-[#1119288F] text-[15px]'>الصف : {getGrade(data?.student.class.number)}</span>
+            <div className=' flex flex-col gap-y-[10px] text-[15px] text-[#1119288F] dark:text-white/80'>
+                <span >مدرسة : جده الحديثة</span>
+                <span >المرحلة : {getStage(data?.student.team.name)}</span>
+                <span >الصف : {getGrade(data?.student.class.number)}</span>
 
             </div>
 

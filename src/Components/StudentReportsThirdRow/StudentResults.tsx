@@ -26,32 +26,32 @@ const StudentResults = ({expermients, maxGrades}) => {
   }, [expermients])
   
   return (
-    <div className=' w-[458px] h-[354px] px-9 py-7 bg-white rounded-lg flex flex-col gap-y-5'>
+    <div className=' w-[458px] h-[354px] px-9 py-7 bg-white dark:bg-primary-dark rounded-lg flex flex-col gap-y-5'>
       
-      <span className=' text-text-black text-sm font-bold'>نتائج الاختبار العملي و النظري </span>
+      <span className=' text-text-black dark:text-white text-sm font-bold'>نتائج الاختبار العملي و النظري </span>
       <div className=' flex flex-col gap-y-4'>
           <div className="flex items-center justify-between">
-            <div className=' flex items-center gap-x-[33px]'>
-              <span className=' text-[#96A5B8] text-[10px]'>#</span>
-              <span className=' text-[#96A5B8] text-[10px]'>شعار الدوره</span>
-              <span className=' text-[#96A5B8] text-[10px]'>اسم الدوره</span>
+            <div className=' flex items-center gap-x-[33px] text-[#96A5B8] dark:text-[#EAEBEC] text-[10px]'>
+              <span>#</span>
+              <span>شعار الدوره</span>
+              <span >اسم الدوره</span>
 
 
             </div>
-            <span className=' text-[#96A5B8] text-[10px] ml-6'>التقدير</span>
+            <span className=' text-[#96A5B8] dark:text-[#EAEBEC] text-[10px] ml-6'>التقدير</span>
           </div>
           <Divider className=' bg-[#2DEC4C]' />
           <div className=' flex flex-col gap-y-[11px]'>
-              <div className=' w-full flex items-center justify-end gap-4'>
-                <span className=' text-[#96A5B8] text-[10px]'>العملي</span>
-                <span className=' text-[#96A5B8] text-[10px]'>النظري</span>
+              <div className=' w-full flex items-center justify-end gap-4 text-[#96A5B8] dark:text-[#EAEBEC] text-[10px]'>
+                <span >العملي</span>
+                <span>النظري</span>
 
               </div>
               <div className=' w-full flex items-center justify-between'>
-                <div className=' flex items-center gap-x-[33px]'>
-                  <span className=' text-text-black text-xs font-medium'>01</span>
+                <div className=' flex items-center gap-x-[33px] text-text-black dark:text-white text-xs font-medium'>
+                  <span >01</span>
                   <img src={Chemistry} alt="" />
-                  <span className=' text-text-black text-xs font-medium'>الكيمياء</span>
+                  <span >الكيمياء</span>
 
 
                       
@@ -62,8 +62,8 @@ const StudentResults = ({expermients, maxGrades}) => {
                     direction: 'ltr'
                   }}
                 >
-                  <span className=' text-text-black text-xs font-medium'>{grade(totalPractical)}</span>
-                  <span className=' text-text-black text-xs font-medium'>{grade(totalTheortical)}</span>
+                  <span >{grade(totalPractical)}</span>
+                  <span >{grade(totalTheortical)}</span>
                 </div>
 
               </div>

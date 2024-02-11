@@ -60,7 +60,7 @@ const StatusCard = ({data, expermients, maxGrades}) => {
   }
 
   return (
-    <div className=' w-[532px] h-[324px] py-5 px-[18px] bg-white rounded-lg'>
+    <div className=' w-[532px] h-[324px] py-5 px-[18px] bg-white dark:bg-primary-dark rounded-lg'>
       <div className=' max-w-full grid grid-cols-2 gap-4'>
         <Card title='إجمالي الدورات المكتملة' icon='certificate' description={`${totalFinished}`}/>
         <Card title='الأداء العام' icon='reports' description={`${grade(totalMarks) ? grade(totalMarks) : 'F'} `}/>

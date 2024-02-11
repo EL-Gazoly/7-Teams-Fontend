@@ -82,14 +82,14 @@ const StudentTimeCounter = () => {
 
     
   return (
-    <div className=' w-[532px] h-[325px] bg-white rounded-lg px-11 py-8 flex flex-col gap-y-4'>
+    <div className=' w-[532px] h-[325px] bg-white dark:bg-primary-dark rounded-lg px-11 py-8 flex flex-col gap-y-4'>
         <div className=" w-full flex items-center justify-between">
-            <span className=' text-[#444] text-[17px] font-bold'>الوقت المستغرق</span>
+            <span className=' text-[#444] dark:text-white text-[17px] font-bold'>الوقت المستغرق</span>
             <Tabs aria-label='time' color='primary' 
                 classNames={{
                     cursor : "text-white bg-black",
-                    tabList: "bg-[#F8F8FF] px-2 py-1 rounded-[10px] flex items-center gap-x-2",
-                    tabContent: "text-[#9291A5] text-[11px] font-semibold",
+                    tabList: "bg-[#F8F8FF] dark:bg-[#3D424A] px-2 py-1 rounded-[10px] flex items-center gap-x-2",
+                    tabContent: "text-[#9291A5] dark:text-white text-[11px] font-semibold",
                 }}
                 selectedKey={timeValue}
                 onSelectionChange={(key) => setTimeValue(key as 'day' | 'month' | 'year')}
