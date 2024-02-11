@@ -2,7 +2,7 @@
 import { FC, useEffect, useState } from 'react';
 import Select from 'react-select';
 import GroupIcon from '../../assets/students/group.png'
-
+import { useThemeStore} from '../../stores/ThemeStore.ts'
 const options = [
   { value: 'first', label: 'الصف الاول', image: GroupIcon },
   { value: 'second', label: 'الصف الثاني', image: GroupIcon },
@@ -12,7 +12,7 @@ const options = [
 
 const SelectLevel = (props) => {
     const [selectedOption, setSelectedOption] = useState(props.selectedCourse);
-
+    const {dark} = useThemeStore()
     const handleChange = (selectedOption) => {
       setSelectedOption(selectedOption);
       props.setSelectedClass(selectedOption.value);
@@ -28,7 +28,7 @@ const SelectLevel = (props) => {
       control: (provided) => ({
         ...provided,
         direction : 'rtl',
-        backgroundColor: selectedOption? '#50D766' : '#444',
+        backgroundColor: selectedOption? '#50D766' :  dark?  '#3A3F47' :  '#444',
         backdropFilter: 'blur(73px)',
         borderRadius: '4px',
         cursor: 'pointer',

@@ -8,7 +8,8 @@ import GridUnSelected from '../../assets/students/grid-unselected.svg'
 import StackSelected from '../../assets/students/stack-selected.svg'
 import StackUnSelected from '../../assets/students/stack-unselected.svg'
 import { Image, Button,Tabs, Tab } from '@nextui-org/react'
-export function SearchStudent({
+import { useThemeStore } from "../../stores/ThemeStore.js";
+export const SearchStudent = ({
   activeTab,
   setActiveTab,
   data,
@@ -18,11 +19,11 @@ export function SearchStudent({
   selectedClass,
   setSelectedClass,
   clearFilters
-}) 
-
+}) =>{
+const {dark} = useThemeStore()
 
 {
-  return <div className=' w-full h-[104px] bg-[#F7F9FC] flex items-center pr-12 pl-[22px]
+  return <div className=' w-full h-[104px] bg-[#F7F9FC] dark:bg-primary-dark flex items-center pr-12 pl-[22px]
                  gap-x-[54px] z-30
                 ' style={{
     backdropFilter: "blur(64.4533462524414px)",
@@ -30,8 +31,8 @@ export function SearchStudent({
   }}>
 
                         <div className={`flex  items-center ${selectedLevel || selectedClass ? "gap-x-2" : "gap-x-12"}`}>
-                            <span className=' text-xs text-text-black font-medium w-[61px]'> ( {data.length} طالب ) </span>
-                            <div className=' w-[300px] h-12 rounded-lg bg-[#DDE0E3] flex items-center px-6 gap-x-[10px]'>
+                            <span className=' text-xs text-text-black dark:text-white font-medium w-[61px]'> ( {data.length} طالب ) </span>
+                            <div className=' w-[300px] h-12 rounded-lg bg-[#DDE0E3] dark:bg-[#929496]/30 flex items-center px-6 gap-x-[10px]'>
                                 <img src={SearchIcon} alt="" />
                                 <input type="text" placeholder='البحث' className=' flex-1 text-right bg-transparent placeholder:text-[#929496] text-xs font-medium'
                                   onChange={e => setSearchQuery(e.target.value.toString().toLowerCase())}
@@ -69,10 +70,10 @@ export function SearchStudent({
                       cursor: "rounded    px-4 ",
                       tab: "h-full "
                     }} selectedKey={activeTab} onSelectionChange={(key: string) => setActiveTab(key)} aria-label="sidebar tabs">
-                                <Tab key={"stack"} title={<Image src={activeTab === "stack" ? StackSelected : StackUnSelected} radius='none' />} />
+                                <Tab key={"stack"} title={<Image src={activeTab === "stack" || dark ? StackSelected : StackUnSelected} radius='none' />} />
 
                                 
-                                <Tab key={"grid"} title={<Image src={activeTab === "grid" ? GridSelected : GridUnSelected} radius='none' />} />
+                                <Tab key={"grid"} title={<Image src={activeTab === "grid" || dark ? GridSelected : GridUnSelected} radius='none' />} />
                                 
                             </Tabs>
 
@@ -83,4 +84,4 @@ export function SearchStudent({
 
                 </div>;
 }
-  
+}
