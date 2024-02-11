@@ -126,7 +126,7 @@ const CertificatesPage = () => {
             school={school}
             setSchool={setSchool} 
           />
-          <div className='w-full h-[667.78px] rounded-lg bg-light-bg py-6 px-20 text-text-black
+          <div className='w-full h-[667.78px] rounded-lg bg-light-bg dark:bg-primary-dark py-6 px-20 text-text-black dark:text-white
             flex flex-col items-end gap-y-[38px]
           '
             style={{
@@ -138,7 +138,7 @@ const CertificatesPage = () => {
             
             <div className=' flex w-full items-center justify-center'>
                 <div className=' flex flex-col items-center gap-y-14'>
-                  <div className=' relative w-[612px] h-[411px] certificateDiv text-xs'>
+                  <div className=' relative w-[612px] h-[411px] certificateDiv text-text-black text-xs'>
                     <Image src={Tempelete}  className='z-0'  />
                     <div className=' absolute top-[39%] left-[30%]'>{school}</div>
                       <div className=' absolute top-[45%] left-[50%]'>{student.label.substring(0,10)}</div>
@@ -155,7 +155,7 @@ const CertificatesPage = () => {
                   </div>
                    
                     <div className=' flex items-center gap-x-4'>
-                        <Button className=' w-[192px]  h-12 py-2 px-4 flex items-center justify-center gap-x-2 rounded-lg bg-text-black text-white'
+                        <Button className=' w-[192px]  h-12 py-2 px-4 flex items-center justify-center gap-x-2 rounded-lg bg-text-black dark:bg-[#40444C] text-white'
                           onPress={handelOpen}
                         >
                             <span className=' text-xs'>ارسال عبر البريد الالكتروني </span>

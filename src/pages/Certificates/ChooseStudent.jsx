@@ -4,8 +4,10 @@ import { getStudents } from '../../graphql/students';
 import { GetStudents} from '../../graphql/reports'
 import { useQuery } from '@apollo/client';
 import GroupIcon from '../../assets/students/group.png'
-
+import GroupIconDark from '../../assets/reports/group-dark.png'
+import {useThemeStore} from '../../stores/ThemeStore.ts'
 const ChooseStudent = (props) => {
+  const {dark} = useThemeStore();
     const [selectedOption, setSelectedOption] = useState(props.selectedCourse);
     const { loading, error, data } = useQuery(GetStudents);
 
@@ -18,7 +20,7 @@ const ChooseStudent = (props) => {
       control: (provided) => ({
         ...provided,
         direction : 'rtl',
-        backgroundColor: '#F0F2F4',
+        backgroundColor: dark? '#444850' : '#F0F2F4',
         backdropFilter: 'blur(73px)',
         borderRadius: '7.142px',
         cursor: 'pointer',
@@ -49,7 +51,7 @@ const ChooseStudent = (props) => {
       singleValue: (provided) => ({
         ...provided,
         width: '100%',
-        color: '#122333',
+        color:  dark? 'white' : '#122333',
         cursor: 'pointer',
         display: 'flex',
         flexDirection: 'row',
@@ -62,8 +64,8 @@ const ChooseStudent = (props) => {
         ...provided,
         width: '404.407px',
         height: '61.598px',
-        backgroundColor: '#F0F2F4',
-        color: '#122333' ,
+        backgroundColor: dark? '#444850' : '#F0F2F4',
+        color: dark? 'white' : '#122333' ,
         display: 'flex',
         alignItems: 'center',
         padding: '10px', 
@@ -81,7 +83,7 @@ const ChooseStudent = (props) => {
         width: '404.407px',
         direction : 'rtl',
         maxHeight: '320px',
-        backgroundColor: '#F0F2F4',
+        backgroundColor: dark? '#444850' : '#F0F2F4',
         cursor: 'pointer',
         gap: '8px',
         overflow: 'hidden', 
@@ -156,7 +158,7 @@ const ChooseStudent = (props) => {
               direction: "rtl"
             }}
           >
-            <img src={option.image} alt={option.label} style={customStyles.optionImage} className=' w-10 h-10'/>
+            <img src={dark? GroupIconDark : option.image} alt={option.label} style={customStyles.optionImage} className=' w-10 h-10'/>
             <span className={`${ selectedOption && selectedOption.value === "Ultrasound" ? 'text-[10px]' : ''}`}> {option.label} </span>
           </div>
         )}
