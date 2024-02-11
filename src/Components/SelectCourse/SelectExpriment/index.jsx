@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
+import { useThemeStore } from '../../../stores/ThemeStore.ts';
 
 import LiquidExpirment from '../../../assets/SelectCourse/SelectExpriment/Chemistry/liquid.svg'
 import HeatExpriment from '../../../assets/SelectCourse/SelectExpriment/Chemistry/heat.svg'
@@ -8,6 +9,7 @@ import VolumeCalculation from '../../../assets/SelectCourse/SelectExpriment/Chem
 
 const SelectExpirment = ( props) => {
   const [selectedOption, setSelectedOption] = useState(props.SelectedExpirment);
+  const {dark} = useThemeStore();
 
   const handleChange = (selectedOption) => {
     setSelectedOption(selectedOption);
@@ -66,7 +68,7 @@ const SelectExpirment = ( props) => {
   const customStyles = {
     control: (provided) => ({
       ...provided,
-      backgroundColor: selectedOption? '#50D766' : '#444',
+      backgroundColor: selectedOption? '#50D766' :  dark ? '#464B52' : '#444',
       backdropFilter: 'blur(73px)',
       borderRadius: '4px',
       cursor: 'pointer',
@@ -110,7 +112,7 @@ const SelectExpirment = ( props) => {
       ...provided,
       width: '199px',
       height: '81px',
-      backgroundColor: '#444',
+      backgroundColor: selectedOption? '#50D766' :  dark ? '#464B52' : '#444',
       color: 'white' ,
       display: 'flex',
       alignItems: 'center',
@@ -128,7 +130,7 @@ const SelectExpirment = ( props) => {
       ...provided,
       width: '199px',
       maxHeight: '320px',
-      backgroundColor: '#292D32',
+      backgroundColor: selectedOption? '#50D766' :  dark ? '#464B52' : '#444',
       cursor: 'pointer',
       gap: '8px',
       overflow: 'hidden', 
@@ -136,6 +138,7 @@ const SelectExpirment = ( props) => {
     }),
     menuList: (provided) => ({
       ...provided,
+      backgroundColor: selectedOption? '#50D766' :  dark ? '#464B52' : '#444',
       padding: 0,
       cursor: 'pointer',
       width: '100%',

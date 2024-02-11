@@ -75,8 +75,8 @@ const HeadsetCard = ({ device, index, selectedHeadsets, setSelectedHeadsets, sho
   const connectedIcon = device?.Connected ? OnlineIcon : OfflineIcon;
 
   const batteryLevelClass = (level: number) => {
-    if (!device?.Connected) return "bg-[#E8E2E2]";
-    return level >= 66 ? "bg-[#2DEC4C]" : level >= 33 ? "bg-[#2DEC4C]" : "bg-[#E8E2E2]";
+    if (!device?.Connected) return "bg-[#E8E2E2] dark:bg-[#707176]";
+    return level >= 66 ? "bg-[#2DEC4C]" : level >= 33 ? "bg-[#2DEC4C]" : "bg-[#E8E2E2] dark:bg-[#707176]";
   };
   const updateStudentPing = () => {
     const deviceQuery = ref(db, `/Devices/${device.macAddress}`);
@@ -85,11 +85,11 @@ const HeadsetCard = ({ device, index, selectedHeadsets, setSelectedHeadsets, sho
   return (
 
   
-      <div className={`w-[235.818px] h-[265.851px] bg-white flex flex-col  rounded-[5.583px] overflow-hidden ${device.selected && 'border-3 border-primary'} relative
+      <div className={`w-[230.818px] h-[265.851px] bg-white dark:bg-primary-dark flex flex-col  rounded-[5.583px] overflow-hidden ${device.selected && 'border-3 border-primary'} relative
       ${!device?.Connected && 'opacity-40'}
       ${!device?.showen && 'hidden'}
       `} style={{ boxShadow: '0px 2.225px 31.146px 0px rgba(0, 0, 0, 0.10)' }}>
-          <button className=' bg-white w-full' onClick={()=> navigate(`/headsets/${device.macAddress}`)}
+          <button className=' bg-white dark:bg-primary-dark w-full' onClick={()=> navigate(`/headsets/${device.macAddress}`)}
             disabled={!device?.Connected}
           >
             <div className='relative w-full h-[37px] pt-3' >
@@ -118,13 +118,13 @@ const HeadsetCard = ({ device, index, selectedHeadsets, setSelectedHeadsets, sho
                   ))}
                 </div>
                 <div className='flex flex-col gap-y-2'>
-                  <span className='text-[#122333] text-sm font-semibold'> {device.student.length >0 ? device.student[0].name : 'لا يوجد'} </span>
+                  <span className='text-[#122333] dark:text-white text-sm font-semibold'> {device.student.length >0 ? device.student[0].name : 'لا يوجد'} </span>
                   <span className='text-[#A5A5A5] text-[11px]'>#{device.student.length > 0? device.student[0]?.generatedId : '0000'}</span>
                 </div>
             </div>
             </button>
-            <div className=' absolute  bottom-0 h-[47px] w-full bg-[#FDFAFA] flex items-center justify-center'>
-            <Button className={`w-[61px] h-[20.24px] text-white flex text-[11px] items-center justify-center rounded-md ${device.selected ? 'bg-[#E94848] pt-1' : 'bg-[#292D32]'}`} onPress={toggleSelected}
+            <div className=' absolute  bottom-0 h-[47px] w-full bg-[#FDFAFA]  dark:bg-primary-dark flex items-center justify-center'>
+            <Button className={`w-[61px] h-[20.24px] text-white flex text-[11px] items-center justify-center rounded-md ${device.selected ? 'bg-[#E94848] pt-1' : 'bg-[#292D32] dark:bg-[#474B52]'}`} onPress={toggleSelected}
               isDisabled={!device?.Connected}
             >
               {device.selected ? ' الغاء التحديد' : 'تحديد'}

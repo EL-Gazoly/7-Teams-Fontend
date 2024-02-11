@@ -48,7 +48,10 @@ export default {
       },
       dark:{
         colors: {
-          "primary" : "#3ABD4C"
+          "primary" : {
+            foreground: "#FFFFFF",
+            background: "#50D766",
+          }
         }
       }
     }

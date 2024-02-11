@@ -62,7 +62,7 @@ const ChooseCourseSection = ({selectedHeadsets, setSelectedHeadsets}: ChooseCour
 
 
   return (
-    <div className='w-full bg-white/50 h-[85px] inline-flex items-center px-[30px] gap-x-4'
+    <div className='w-full bg-white/50 dark:bg-[#262B34]/50 h-[85px] inline-flex items-center px-[30px] gap-x-4'
     style={{
       direction : "rtl"
     }}

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
 import unSelectedStart from '../../../assets/SelectCourse/SelectHowtoStart/unselected.svg'
 import SelectedStart from '../../../assets/SelectCourse/SelectHowtoStart/selected.svg'
+import {useThemeStore} from '../../../stores/ThemeStore';
 const options = [
   { value: 'FullCourse', label: "أبدأ الشرح ", image : unSelectedStart, selected : SelectedStart},
   { value: 'StartTraining', label: "أبدأ التجربة " , image : unSelectedStart, selected : SelectedStart},
@@ -12,6 +13,7 @@ const options = [
 
 
 const SelectHowToStart = ( props) => {
+  const {dark} = useThemeStore();
   const [selectedOption, setSelectedOption] = useState(props.SelectedHowToStart);
 
   const handleChange = (selectedOption) => {
@@ -28,7 +30,7 @@ const SelectHowToStart = ( props) => {
   const customStyles = {
     control: (provided) => ({
       ...provided,
-      backgroundColor: selectedOption? '#50D766' : '#444',
+      backgroundColor: selectedOption? '#50D766' :  dark ? '#464B52' : '#444',
       backdropFilter: 'blur(73px)',
       borderRadius: '4px',
       cursor: 'pointer',
@@ -72,7 +74,7 @@ const SelectHowToStart = ( props) => {
       ...provided,
       width: '199px',
       height: '81px',
-      backgroundColor: '#444',
+      backgroundColor: selectedOption? '#50D766' :  dark ? '#464B52' : '#444',
       color: 'white' ,
       display: 'flex',
       alignItems: 'center',
@@ -90,7 +92,7 @@ const SelectHowToStart = ( props) => {
       ...provided,
       width: '199px',
       maxHeight: '320px',
-      backgroundColor: '#292D32',
+      backgroundColor: selectedOption? '#50D766' :  dark ? '#464B52' : '#444',
       cursor: 'pointer',
       gap: '8px',
       overflow: 'hidden', 
@@ -98,6 +100,7 @@ const SelectHowToStart = ( props) => {
     }),
     menuList: (provided) => ({
       ...provided,
+      backgroundColor: selectedOption? '#50D766' :  dark ? '#464B52' : '#444',
       padding: 0,
       cursor: 'pointer',
       width: '100%',
@@ -128,7 +131,6 @@ const SelectHowToStart = ( props) => {
   
     
   };
-
   useEffect(() => {
     if(props.emptyCourse){
       setSelectedOption(null);

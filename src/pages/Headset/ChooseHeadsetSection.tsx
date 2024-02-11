@@ -64,14 +64,14 @@
       
       return (
 
-      <div className='w-full bg-white h-[106px] pl-[30px] pr-10 flex items-center gap-x-8 rounded-t-md' style={{ direction: "rtl" }}>
+      <div className='w-full bg-white dark:bg-primary-dark h-[106px] pl-[30px] pr-10 flex items-center gap-x-8 rounded-t-md' style={{ direction: "rtl" }}>
         {/* Checkbox Section */}
         <Checkbox classNames={{ base: cn(
           "w-[300px]", "h-[35px]", "py-[6px]", "px-8", "flex", "items-center",
-          "gap-x-3", "bg-[#444]", "text-white", "font-medium", "rounded",
+          "gap-x-3", "bg-[#444]", "dark:bg-[#464B52]" , "text-white", "font-medium", "rounded",
           "cursor-pointer", "data-[selected=true]:bg-primary-gradient",
-          "data-[hover=true]:bg-[#444]",
-        )}} radius='sm' onValueChange={toggleSelected}  isSelected={isTrue}  >
+          "data-[hover=true]:bg-[#444]", 
+        )}} radius='sm' onValueChange={toggleSelected}  isSelected={isTrue}  color='primary' >
           <span className='w-full text-sm font-medium text-white' style={{ wordBreak: "break-all" }}>حدد كل النظارات المتصلة</span>
         </Checkbox>
 
@@ -87,7 +87,7 @@
         <Divider orientation="vertical" className='h-[80%] bg-[#1223331A]/10' />
 
         {/* Search Input */}
-        <div className='w-[262px] h-9 rounded-[7px] bg-[#6563630D]/5 flex items-center gap-x-[6.8px] px-3 py-2'>
+        <div className='w-[262px] h-9 rounded-[7px] bg-[#6563630D]/5 dark:bg-[#464B52] flex items-center gap-x-[6.8px] px-3 py-2'>
           <Image src={SearchIcon} />
           <input className='w-full h-full bg-transparent placeholder:text-[#929496] text-sm font-medium focus:' placeholder='البحث'
             onChange={handleSearch}

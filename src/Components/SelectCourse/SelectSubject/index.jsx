@@ -1,9 +1,11 @@
 import React, {  useEffect, useState } from 'react';
+import { useThemeStore } from '../../../stores/ThemeStore.ts'
 import Select from 'react-select';
 
 
 
 const SelectSubject = ( props) => {
+  const {dark} = useThemeStore();
   const [selectedOption, setSelectedOption] = useState(props.SelectdSubject);
 
   const handleChange = (selectedOption) => {
@@ -26,7 +28,7 @@ const SelectSubject = ( props) => {
   const customStyles = {
     control: (provided) => ({
       ...provided,
-      backgroundColor: selectedOption? '#50D766' : '#444',
+      backgroundColor: selectedOption? '#50D766' :  dark ? '#464B52' : '#444',
       backdropFilter: 'blur(73px)',
       borderRadius: '4px',
       cursor: 'pointer',
@@ -70,7 +72,7 @@ const SelectSubject = ( props) => {
       ...provided,
       width: '199px',
       height: '81px',
-      backgroundColor: '#444',
+      backgroundColor: selectedOption? '#50D766' :  dark ? '#464B52' : '#444',
       color: 'white' ,
       display: 'flex',
       alignItems: 'center',
@@ -88,7 +90,7 @@ const SelectSubject = ( props) => {
       ...provided,
       width: '199px',
       maxHeight: '320px',
-      backgroundColor: '#292D32',
+      backgroundColor: selectedOption? '#50D766' :  dark ? '#464B52' : '#444',
       cursor: 'pointer',
       gap: '8px',
       overflow: 'hidden', 
@@ -96,6 +98,7 @@ const SelectSubject = ( props) => {
     }),
     menuList: (provided) => ({
       ...provided,
+      backgroundColor: selectedOption? '#50D766' :  dark ? '#464B52' : '#444',
       padding: 0,
       cursor: 'pointer',
       width: '100%',
