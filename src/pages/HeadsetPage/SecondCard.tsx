@@ -35,8 +35,8 @@ const [isRecording, setIsRecording] = useState(false)
 
 
   return (
-    <div className='w-[432px] h-[374px] rounded-[21px] bg-white py-9 px-[30px] flex flex-col items-end'>
-      <h3 className='text-[#635D5E] text-base font-bold'>اجراءات الجهاز</h3>
+    <div className='w-[432px] h-[374px] rounded-[21px] bg-white dark:bg-primary-dark py-9 px-[30px] flex flex-col items-end'>
+      <h3 className='text-[#635D5E] dark:text-white text-base font-bold'>اجراءات الجهاز</h3>
       <div className='mt-[30px] w-full grid grid-cols-2 span-2 gap-2'>
 
         <Button className='col-span-2 h-28 bg-primary-gradient rounded-2xl flex flex-col gap-y-2 items-center justify-center text-white font-bold'

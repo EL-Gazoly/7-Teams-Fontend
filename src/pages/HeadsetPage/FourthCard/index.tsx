@@ -7,14 +7,14 @@ import Item from './item'
 
 const FourthCard = ({progress}) => {
   return (
-    <div className=' w-[444px] h-[485px] rounded-[21px] bg-white
-     py-7 flex flex-col gap-y-[6px] items-end
+    <div className=' w-[444px] h-[485px] rounded-[21px] bg-white dark:bg-primary-dark
+     py-7 flex flex-col gap-y-3 items-end
     '
       style={{
         boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.25)'
       }}
     >
-      <span className=' text-text-black text-lg font-bold mr-9'> سجل الانجاز </span>
+      <span className=' text-text-black dark:text-white text-lg font-bold mr-9'> سجل الانجاز </span>
       <div className=' h-[53px] bg-[#dcdee033] w-full flex items-center justify-between px-8 text-xs font-bold flex-row-reverse'>
           <span> اسم التجربه </span>
           <div className=' flex flex-row-reverse items-center gap-x-8'>

@@ -5,6 +5,7 @@ import { Image, Button } from '@nextui-org/react';
 import db from '../../../config/firebase';
 import { ref, update} from 'firebase/database'
 import { useParams } from 'react-router-dom';
+import { useThemeStore } from '../../../stores/ThemeStore';
 
 type SelectedCourseProps = {
     selectedItem: {
@@ -18,6 +19,7 @@ type SelectedCourseProps = {
 
 
 const SelectedCourse = ({selectedItem , setSelectedItem} : SelectedCourseProps) => {
+    const { dark } = useThemeStore()
     const { mac } = useParams<{ mac: string }>()
 
     const handelStartFullCourse = () => {
@@ -51,15 +53,17 @@ const SelectedCourse = ({selectedItem , setSelectedItem} : SelectedCourseProps) 
     }
     
   return (
-    <div className=' selected-course absolute inset-0 z-20'>
+    <div className={`selected-course absolute inset-0 z-20`}>
+        {!dark &&
         <img src={CourseBg} alt="" className=' w-full h-full' />
-        <div className=' absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center gap-y-[26px]'>
+        }
+        <div className=' absolute dark:bg-primary-dark rounded-2xl  top-0 left-0 w-full h-full flex flex-col items-center justify-center gap-y-[26px]'>
             <div className=' flex flex-col gap-y-[18px]'>
                 <div className=' w-full flex items-center justify-center mr-1'>
                      <Image src={selectedItem.icon} width={54} height={59} radius='none' />
                 </div>
                
-                <span className=' text-text-black text-[21px] font-bold'> {selectedItem.title} </span>
+                <span className=' text-text-black dark:text-white text-[21px] font-bold'> {selectedItem.title} </span>
             </div>
 
             <div className=' grid grid-cols-2 max-w-[335px] gap-x-[10px] gap-y-[14px] '>

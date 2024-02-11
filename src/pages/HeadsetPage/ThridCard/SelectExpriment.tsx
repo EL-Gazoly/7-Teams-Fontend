@@ -3,20 +3,22 @@ import HeatExpriment from '../../../assets/SelectCourse/SelectExpriment/Chemistr
 import DenistyOfWood from '../../../assets/SelectCourse/SelectExpriment/Chemistry/DensityOfWood.svg'
 import VolumeCalculation from '../../../assets/SelectCourse/SelectExpriment/Chemistry/size.svg'
 import ArrowIcon from '../../../assets/headset page/arrow.svg'
-import {  Dropdown,  DropdownTrigger,  DropdownMenu,  DropdownItem, Button, Image , Divider} from "@nextui-org/react";
+import {  Dropdown,  DropdownTrigger,  DropdownMenu,  DropdownItem, Button, Image } from "@nextui-org/react";
+import { useThemeStore } from '../../../stores/ThemeStore'
 
 
 const SelectExpriment = ({setSelectItem}) => {
+  const { dark } = useThemeStore()
   return (
     <Dropdown
       classNames={{
-        content: "bg-[#444444] text-white font-bold text-xs rounded",
+        content: "bg-[#444444] dark:bg-[#444850] text-white font-bold text-xs rounded",
       }}
       className=' z-10'
       
     >
         <DropdownTrigger>
-            <Button className=' w-[154px] p-2 gap-x-3 bg-[#444444] text-white font-bold text-xs rounded-md'>
+            <Button className=' w-[154px] p-2 gap-x-3 bg-[#444444] dark:bg-[#444850] text-white font-bold text-xs rounded-md'>
                 <Image src={ArrowIcon} width={18} height={18}  radius='none' />
                 <span> اختر التجربه </span>
             </Button>
@@ -37,6 +39,7 @@ const SelectExpriment = ({setSelectItem}) => {
                   >
                    تجربة السوائل 
                 </DropdownItem>
+                
                 <DropdownItem className='p-2 flex flex-row-reverse items-center gap-x-3 text-right border-b border-[#FFFEFE29] rounded-none'
                   startContent={<Image src={HeatExpriment} width={18} height={18} radius='none' /> } 
                   onClick={()=> {
@@ -50,6 +53,7 @@ const SelectExpriment = ({setSelectItem}) => {
                   >
                        استخدام موقد بنسن         
                 </DropdownItem>
+
                 <DropdownItem className=' p-3 flex flex-row-reverse items-center gap-x-3 text-right border-b border-[#FFFEFE29] rounded-none'
                   startContent={<Image src={DenistyOfWood} width={18} height={18} radius='none' /> }
                   onClick={()=> {
@@ -63,6 +67,7 @@ const SelectExpriment = ({setSelectItem}) => {
                   >
                     كثافة الخشب  
                 </DropdownItem>
+
                 <DropdownItem className=' p-3 flex flex-row-reverse items-center gap-x-3 text-right border-b border-[#FFFEFE29] rounded-none'
                   startContent={<Image src={VolumeCalculation} width={18} height={18} radius='none' /> }
                   onClick={()=> {

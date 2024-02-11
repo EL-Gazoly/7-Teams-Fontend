@@ -42,7 +42,7 @@ export function FirstCard({ device, deviceState }) {
     }
   }, [deviceState]);
   return (
-    <div className={`w-[565px] h-[375px] rounded-[21px] bg-light-bg py-5 px-12 relative flex flex-col items-end
+    <div className={`w-[565px] h-[375px] rounded-[21px] bg-light-bg dark:bg-primary-dark py-5 px-12 relative flex flex-col items-end
     
       ${
         isClicked  ? "border border-[#171717]" :
@@ -87,7 +87,7 @@ export function FirstCard({ device, deviceState }) {
 
       <div className='flex flex-col items-center justify-center w-full gap-y-2'>
         <Image src={HeadsetImage} width={170} height={104} />
-        <div className="flex flex-col gap-y-1 items-center text-text-black text-center">
+        <div className="flex flex-col gap-y-1 items-center text-text-black dark:text-white text-center">
           <span className='text-[22px] font-bold'>{device.student.length !== 0 ? device.student[0].name : "لا يوجد"}</span>
           <span className='text-xs font-poppins'>{device.name}</span>
         </div>
@@ -97,7 +97,7 @@ export function FirstCard({ device, deviceState }) {
               <div key={level} className={`w-[34px] h-3 rounded ${batteryLevelClass(battery)}`} />
             ))}
           </div>
-          <span className='text-text-black text-lg font-semibold ml-4'>{battery} %</span>
+          <span className='text-text-black dark:text-white text-lg font-semibold ml-4'>{battery} %</span>
         </div>
       </div>
     </div>

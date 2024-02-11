@@ -10,8 +10,8 @@ const ThridCard = () => {
     const [selectedItem, setSelectedItem] = useState(null)
   return (
     <div className=' relative'>
-        <div className=' w-[558px] h-[483px] bg-white rounded-[18px]
-        py-5 flex flex-col items-end gap-y-[18px] text-text-black
+        <div className=' w-[558px] h-[483px] bg-white dark:bg-primary-dark rounded-[18px]
+        py-5 flex flex-col items-end gap-y-[18px] text-text-black dark:text-white
         '
             style={{
                 boxShadow: '0px 3.588px 13.454px 0px rgba(91, 89, 89, 0.25)'
