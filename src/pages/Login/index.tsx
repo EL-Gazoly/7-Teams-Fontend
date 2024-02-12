@@ -3,13 +3,18 @@ import { useMutation } from '@apollo/client';
 import { useRef, useState, useEffect } from 'react';
 import './style.css';
 import LoginIcon from '../../assets/login/logo.png';
+import LightLoginIcon from '../../assets/login/dark-logo.svg'
 import { Image, Button } from '@nextui-org/react';
 import { toast } from 'sonner';
 import { useNavigate } from 'react-router-dom';
 import LanguageIcon from '../../assets/ControlCard/language.svg'
 import EyeSlashIcon from '../../assets/login/EyeSlashIcon.svg'
 import EyeIcon from '../../assets/login/EyeIcon.svg'
+import EyeDarkIcon from '../../assets/login/dark-eye.svg'
+import EyeSlashDarkIcno from '../../assets/login/dark-eye-slash.svg'
+import { useThemeStore } from '../../stores/ThemeStore';
 const LoginPage = () => {
+    const { dark } = useThemeStore();
     const emailRef = useRef<HTMLInputElement>();
     const passwordRef = useRef<HTMLInputElement>(); 
     const [showPassword, setShowPassword] = useState(false);
@@ -97,35 +102,37 @@ const LoginPage = () => {
 
     return (
         <div className='login-bg fixed inset-0 w-screen h-screen flex items-center justify-center'>
-            <div className="w-[443px] h-[530px] relative rounded-xl bg-light-bg py-20 px-[84px]">
+            <div className="w-[443px] h-[530px] relative rounded-xl bg-light-bg dark:bg-primary-dark py-20 px-[84px]">
             <Button  isIconOnly className=' absolute top-5 right-6  w-11 h-10 rounded-[14px] flex items-center justify-center cursor-pointer   bg-secondary '>
                   <img src={LanguageIcon} width={21} height={21} />
                 </Button>
                 <div className='flex flex-col w-[276.146px]'>
                     <div className='flex items-center justify-center'>
-                        <Image src={LoginIcon} />
+                        <Image src={dark? LightLoginIcon : LoginIcon } />
                     </div>
                     <div className='flex flex-col items-center mt-[55px]'>
                         <div className="email flex flex-col text-right gap-y-[5px]">
-                            <label htmlFor="email" className='text-[#3D3C3C] text-xs'>البريد الاليكتروني</label>
+                            <label htmlFor="email" className='text-[#3D3C3C] dark:text-white text-xs'>البريد الاليكتروني</label>
                             <input type="email" placeholder='ادخل البريد الالكتروني' ref={emailRef}
-                                className='text-right w-[276px] h-12 bg-[#E6E8EB66] placeholder:text-[#2929295C] text-xs rounded-md px-4' />
+                                className='text-right w-[276px] h-12 bg-[#E6E8EB66] placeholder:text-[#2929295C] dark:text-white dark:placeholder:text-white/80 text-xs rounded-md px-4' />
                         </div>
                         <div className="password mt-5 flex flex-col text-right gap-y-[5px]">
-                            <label htmlFor="password" className='text-[#3D3C3C] text-xs'>كلمة المرور</label>
+                            <label htmlFor="password" className='text-[#3D3C3C] dark:text-white text-xs'>كلمة المرور</label>
                             <div className='w-[276px] h-12 bg-[#E6E8EB66] text-right flex items-center justify-between px-4 rounded-md'>
-                            <img src={showPassword ? EyeSlashIcon : EyeIcon} alt="" onClick={()=> setShowPassword(!showPassword)}
-                                className={` cursor-pointer ${isIconshowed? 'block' : 'hidden'}`}
-                            />
+                            {dark? 
+                            <img src={showPassword ? EyeDarkIcon :  EyeSlashDarkIcno} alt="" onClick={()=> setShowPassword(!showPassword)}   className={` cursor-pointer w-6 h-6 ${isIconshowed? 'block' : 'hidden'}`} />
+                            :
+                            <img src={showPassword ? EyeIcon :  EyeSlashIcon} alt="" onClick={()=> setShowPassword(!showPassword)}    className={` cursor-pointer ${isIconshowed? 'block' : 'hidden'}`}/>
+                            }
                             <input type={showPassword? "text" : "password"} placeholder='ادخل كلمة المرور' ref={passwordRef}
-                                className=' flex-1 h-full bg-transparent  text-right placeholder:text-[#2929295C] text-xs  ' 
+                                className=' flex-1 h-full bg-transparent  text-right placeholder:text-[#2929295C] text-white dark:placeholder:text-white/80 text-xs  ' 
                                     onChange={(e) => setIsIconshowed(e.target.value)}
                                 />
                             </div>
                         </div>
                     </div>
                     <div className='flex items-center justify-start mt-2'>
-                        <span className='text-[#0404045C] text-[11px] font-medium underline'>هل نسيت كلمة المرور؟</span>
+                        <span className='text-[#0404045C] dark:text-white text-[11px] font-medium underline'>هل نسيت كلمة المرور؟</span>
                     </div>
                     <Button className='mt-6 w-full h-[47.875px] rounded-md bg-primary-gradient text-white text-xs font-bold'
                         onPress={handleLogin}
@@ -133,8 +140,8 @@ const LoginPage = () => {
                         تسجيل الدخول
                     </Button>
                     <div className='mt-2 w-full flex items-center justify-between'>
-                        <span className='text-[#3D3C3C] text-xs font-medium underline'>هل تحتاج مساعدة؟</span>
-                        <span className='text-[#3D3C3C] text-xs font-medium underline'>www.7-teams.com</span>
+                        <span className='text-[#3D3C3C] dark:text-white text-xs font-medium underline'>هل تحتاج مساعدة؟</span>
+                        <span className='text-[#3D3C3C] dark:text-white text-xs font-medium underline'>www.7-teams.com</span>
                     </div>
                 </div>
             </div>

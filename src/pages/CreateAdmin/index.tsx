@@ -11,9 +11,13 @@ import Loading from '../../Components/Loading';
 import { toast } from 'sonner';
 import EyeSlashIcon from '../../assets/login/EyeSlashIcon.svg'
 import EyeIcon from '../../assets/login/EyeIcon.svg'
+import EyeDarkIcon from '../../assets/login/dark-eye.svg'
+import EyeSlashDarkIcno from '../../assets/login/dark-eye-slash.svg'
+import { useThemeStore } from '../../stores/ThemeStore';
 
 
 const CreateAdmin = () => {
+    const {dark} =useThemeStore()
     const [selectedImage, setSelectedImage] = useState(null);
     const [sleectedFile, setSelectedFile] = useState(null);
     const [selectRole, setSelectRole] = useState({value : '' , label : ""});
@@ -126,8 +130,11 @@ const CreateAdmin = () => {
                     <div className=' flex flex-col gap-y-[5px] text-right text-text-black dark:text-white'>
                         <label htmlFor="name" className=' mr-1' >كلمة المرور</label>
                         <div className='w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] dark:bg-[#F0F2F4]/[0.13] px-4 flex items-center '>
-                            <img src={showPassword ? EyeSlashIcon : EyeIcon} alt="" onClick={()=> setShowPassword(!showPassword)} 
-                            className={` cursor-pointer ${isIconshowed? 'block' : 'hidden'}`} />
+                            {dark? 
+                            <img src={showPassword ? EyeDarkIcon :  EyeSlashDarkIcno} alt="" onClick={()=> setShowPassword(!showPassword)}   className={` cursor-pointer w-6 h-6 ${isIconshowed? 'block' : 'hidden'}`} />
+                            :
+                            <img src={showPassword ? EyeIcon :  EyeSlashIcon} alt="" onClick={()=> setShowPassword(!showPassword)}    className={` cursor-pointer ${isIconshowed? 'block' : 'hidden'}`}/>
+                            }
                             <input type={showPassword? "text" : "password"} className=' text-right flex-1  h-full bg-transparent 
                             ' placeholder=' كلمه المرور هنا' ref={passwordRef} 
                                 onChange={(e) => setIsIconshowed(e.target.value)}
@@ -138,8 +145,11 @@ const CreateAdmin = () => {
                     <div className=' flex flex-col gap-y-[5px] text-right text-text-black dark:text-white'>
                         <label htmlFor="id"  className=' mr-1' >  تأكيد كلمة المرور</label>
                         <div className='w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] dark:bg-[#F0F2F4]/[0.13] px-4 flex items-center '>
-                            <img src={showPassword ? EyeSlashIcon : EyeIcon} alt="" onClick={()=> setShowPassword(!showPassword)} 
-                            className={` cursor-pointer ${isIconshowed? 'block' : 'hidden'}`} />
+                            {dark? 
+                            <img src={showPassword ? EyeDarkIcon :  EyeSlashDarkIcno} alt="" onClick={()=> setShowPassword(!showPassword)}   className={` cursor-pointer w-6 h-6 ${isIconshowed? 'block' : 'hidden'}`} />
+                            :
+                            <img src={showPassword ? EyeIcon :  EyeSlashIcon} alt="" onClick={()=> setShowPassword(!showPassword)}    className={` cursor-pointer ${isIconshowed? 'block' : 'hidden'}`}/>
+                            }
                             <input type={showPassword? "text" : "password"} className=' text-right flex-1  h-full bg-transparent
                             ' placeholder=' كلمه المرور هنا' ref={confirmPasswordRef} 
                                 onChange={(e) => setIsIconshowed(e.target.value)}
