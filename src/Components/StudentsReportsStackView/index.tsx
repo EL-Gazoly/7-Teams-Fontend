@@ -63,7 +63,7 @@ const StackView = ({data}) => {
                     <span className='text-xs font-semibold text-primary '>#{student?.generatedId}</span>
                 </TableCell>
                 <TableCell className=' cursor-pointer'onClick={()=> navigate(`/reports/students/${student?.studentId}}`)}>
-                    <span className='text-sm font-bold text-[#292D32] dark:text-white'>مدرسه النور</span>
+                    <span className='text-sm font-bold text-[#292D32] dark:text-white'>{student?.schoolName}</span>
                 </TableCell>
                 <TableCell className=' cursor-pointer'onClick={()=> navigate(`/reports/students/${student?.studentId}}`)}>
                     <span className='text-sm font-bold text-[#292D32] dark:text-white'> {getGrade(student?.class.number)} </span>

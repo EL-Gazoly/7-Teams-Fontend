@@ -36,6 +36,7 @@ export const GetStudents = gql`
     admin {
         students {
         studentId
+        schoolName
         name
         imageUrl
         generatedId
