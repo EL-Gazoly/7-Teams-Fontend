@@ -103,9 +103,9 @@ const RolesSection = ({disabled, nameRef, permssions} : RolesSectionProps) => {
     <div className={`flex flex-col items-center gap-y-[18px]
     ${disabled ? 'opacity-50' : ''}
     `}>
-        <div className=' flex flex-col gap-y-2 items-end  text-right text-text-black '>
+        <div className=' flex flex-col gap-y-2 items-end  text-right text-text-black dark:text-white'>
             <label htmlFor="name" className=' text-xs font-bold text-right'>أسم الدور</label>
-            <input type="text" className=' w-[781.531px] h-[58.361px] rounded-md bg-[#E1E4E8] px-5 text-right' 
+            <input type="text" className=' w-[781.531px] h-[58.361px] rounded-md bg-[#E1E4E8] dark:bg-[#E1E4E8]/[0.16]  px-5 text-right' 
             disabled={disabled}
             ref={nameRef}
                 style={{

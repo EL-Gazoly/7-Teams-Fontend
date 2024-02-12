@@ -11,9 +11,9 @@ const Permession = ({permessions, permesssionKey, disabled} : permessionprops) =
   return (
     <>
         <div  className=' w-full flex flex-row-reverse justify-between items-end text-right'>
-            <div className='flex flex-col gap-y-[18px] text-text-black text-right '>
+            <div className='flex flex-col gap-y-[18px] text-text-black dark:text-white text-right '>
                 <span className=' text-xl font-bold'>{permessions[permesssionKey].name}</span>
-                <p className=' text-[#46434382] w-[493px]'>{permessions[permesssionKey].description}</p>
+                <p className=' text-[#46434382] dark:text-white/50 w-[493px]'>{permessions[permesssionKey].description}</p>
             </div>
             <Switch
                 isSelected={permessions[permesssionKey].selected}

@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import Select from 'react-select';
-
+import { useThemeStore } from "../../stores/ThemeStore";
 const ChooseRole = (props) => {
+  const {dark} = useThemeStore()
  
 
     const handleChange = (selectedOption) => {
@@ -13,7 +14,7 @@ const ChooseRole = (props) => {
       control: (provided) => ({
         ...provided,
         direction : 'rtl',
-        backgroundColor: '#F0F2F4',
+        backgroundColor: dark? '#41464E' : '#F0F2F4',
         backdropFilter: 'blur(73px)',
         borderRadius: '7.142px',
         cursor: 'pointer',
@@ -44,7 +45,7 @@ const ChooseRole = (props) => {
       singleValue: (provided) => ({
         ...provided,
         width: '100%',
-        color: '#122333',
+        color: dark? 'white' : '#122333' ,
         cursor: 'pointer',
         display: 'flex',
         flexDirection: 'row',
@@ -57,8 +58,8 @@ const ChooseRole = (props) => {
         ...provided,
         width: '466.407px',
         height: '61.598px',
-        backgroundColor: '#F0F2F4',
-        color: '#122333' ,
+        backgroundColor: dark? '#41464E' : '#F0F2F4',
+        color: dark? 'white' : '#122333' ,
         display: 'flex',
         alignItems: 'center',
         padding: '10px', 
@@ -76,7 +77,7 @@ const ChooseRole = (props) => {
         width: '466.407px',
         direction : 'rtl',
         maxHeight: '320px',
-        backgroundColor: '#F0F2F4',
+        backgroundColor: dark? '#41464E' : '#F0F2F4',
         cursor: 'pointer',
         gap: '8px',
         overflow: 'hidden', 
@@ -114,6 +115,7 @@ const ChooseRole = (props) => {
     
       
     };
+  
   
     useEffect(() => {
      props.setSelectRole(null);

@@ -96,7 +96,7 @@ const CreateAdmin = () => {
     <div className=' pb-5'>
     <ControlCard icon="Settings" title='  أضافة مسؤل جديد  ' neasted={true}/>
 
-    <div className=' mt-6 w-full h-[803px] bg-[#FDFDFE] rounded-lg  pt-[75px] px-[113px]
+    <div className=' mt-6 w-full h-[803px] bg-[#FDFDFE] dark:bg-primary-dark rounded-lg  pt-[75px] px-[113px]
         flex flex-col gap-y-12
     '
         style={{
@@ -107,15 +107,15 @@ const CreateAdmin = () => {
             <UploadImage   selectedImage={selectedImage} setSelectedImage={setSelectedImage} setSelectedFile={setSelectedFile}  key={key}  />
             <div className=' flex flex-col items-center gap-y-3'>
                 <div className='flex flex-row-reverse items-center gap-x-[22px]'>
-                    <div className=' flex flex-col gap-y-[5px] text-right text-text-black'>
+                    <div className=' flex flex-col gap-y-[5px] text-right text-text-black dark:text-white'>
                         <label htmlFor="name" className=' mr-1' >الاسم</label>
-                        <input type="text" className=' text-right w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] px-4  
+                        <input type="text" className=' text-right w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] dark:bg-[#F0F2F4]/[0.13] px-4  
                         ' placeholder='اسم المسؤول هنا' ref={nameRef} />
 
                     </div>
-                    <div className=' flex flex-col gap-y-[5px] text-right text-text-black'>
+                    <div className=' flex flex-col gap-y-[5px] text-right text-text-black dark:text-white'>
                         <label htmlFor="id"  className=' mr-1' > الايميل</label>
-                        <input type="text" className=' text-right w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] px-4
+                        <input type="text" className=' text-right w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] dark:bg-[#F0F2F4]/[0.13] px-4
                             
                         ' placeholder=' ايميل المسؤول هنا' ref={emailRef} />
 
@@ -123,21 +123,21 @@ const CreateAdmin = () => {
 
                 </div>
                 <div className='flex flex-row-reverse items-center gap-x-[22px]'>
-                    <div className=' flex flex-col gap-y-[5px] text-right text-text-black'>
+                    <div className=' flex flex-col gap-y-[5px] text-right text-text-black dark:text-white'>
                         <label htmlFor="name" className=' mr-1' >كلمة المرور</label>
-                        <div className='w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] px-4 flex items-center '>
+                        <div className='w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] dark:bg-[#F0F2F4]/[0.13] px-4 flex items-center '>
                             <img src={showPassword ? EyeSlashIcon : EyeIcon} alt="" onClick={()=> setShowPassword(!showPassword)} 
                             className={` cursor-pointer ${isIconshowed? 'block' : 'hidden'}`} />
-                            <input type={showPassword? "text" : "password"} className=' text-right flex-1  h-full bg-transparent
+                            <input type={showPassword? "text" : "password"} className=' text-right flex-1  h-full bg-transparent 
                             ' placeholder=' كلمه المرور هنا' ref={passwordRef} 
                                 onChange={(e) => setIsIconshowed(e.target.value)}
                             />
                         </div>
                     
                     </div>
-                    <div className=' flex flex-col gap-y-[5px] text-right text-text-black'>
+                    <div className=' flex flex-col gap-y-[5px] text-right text-text-black dark:text-white'>
                         <label htmlFor="id"  className=' mr-1' >  تأكيد كلمة المرور</label>
-                        <div className='w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] px-4 flex items-center '>
+                        <div className='w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] dark:bg-[#F0F2F4]/[0.13] px-4 flex items-center '>
                             <img src={showPassword ? EyeSlashIcon : EyeIcon} alt="" onClick={()=> setShowPassword(!showPassword)} 
                             className={` cursor-pointer ${isIconshowed? 'block' : 'hidden'}`} />
                             <input type={showPassword? "text" : "password"} className=' text-right flex-1  h-full bg-transparent

@@ -13,9 +13,13 @@ import { toast } from 'sonner';
 import { useParams } from 'react-router-dom';
 import EyeSlashIcon from '../../assets/login/EyeSlashIcon.svg'
 import EyeIcon from '../../assets/login/EyeIcon.svg'
+import EyeDarkIcon from '../../assets/login/dark-eye.svg'
+import EyeSlashDarkIcno from '../../assets/login/dark-eye-slash.svg'
+import { useThemeStore } from '../../stores/ThemeStore';
 
 
 const UpdateAdmin = () => {
+    const {dark} = useThemeStore()
     const { id } = useParams<{id : string}>();
 
     const [selectedImage, setSelectedImage] = useState(null);
@@ -193,7 +197,7 @@ const UpdateAdmin = () => {
   return (
     <div className=' pb-5'>
     <ControlCard icon="Settings" title='  أضافة مسؤل جديد  ' neasted={true}/>
-    <div className=' mt-6 w-full h-[803px] bg-[#FDFDFE] rounded-lg  pt-[75px] px-[113px]
+    <div className=' mt-6 w-full h-[803px] bg-[#FDFDFE] dark:bg-primary-dark rounded-lg  pt-[75px] px-[113px]
         flex flex-col gap-y-12
     '
         style={{
@@ -204,17 +208,17 @@ const UpdateAdmin = () => {
             <UploadImage   selectedImage={selectedImage} setSelectedImage={setSelectedImage} setSelectedFile={setSelectedFile}   />
             <div className=' flex flex-col items-center gap-y-3'>
                 <div className='flex flex-row-reverse items-center gap-x-[22px]'>
-                    <div className=' flex flex-col gap-y-[5px] text-right text-text-black'>
+                    <div className=' flex flex-col gap-y-[5px] text-right text-text-black dark:text-white'>
                         <label htmlFor="name" className=' mr-1' >الاسم</label>
-                        <input type="text" className=' text-right w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] px-4  
+                        <input type="text" className=' text-right w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] dark:bg-[#F0F2F4]/[0.13] px-4  
                         ' placeholder='اسم الطالب هنا' ref={nameRef}
                         defaultValue={dataUser && dataUser.user.name}
                         />
 
                     </div>
-                    <div className=' flex flex-col gap-y-[5px] text-right text-text-black'>
+                    <div className=' flex flex-col gap-y-[5px] text-right text-text-black dark:text-white'>
                         <label htmlFor="id"  className=' mr-1' > الايميل</label>
-                        <input type="text" className=' text-right w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] px-4
+                        <input type="text" className=' text-right w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] dark:bg-[#F0F2F4]/[0.13] px-4
                             
                         ' placeholder=' ايميل المسؤول هنا' ref={emailRef} 
                         defaultValue={dataUser && dataUser.user.email}
@@ -224,11 +228,15 @@ const UpdateAdmin = () => {
 
                 </div>
                 <div className='flex flex-row-reverse items-center gap-x-[22px]'>
-                    <div className=' flex flex-col gap-y-[5px] text-right text-text-black'>
+                    <div className=' flex flex-col gap-y-[5px] text-right text-text-black dark:text-white'>
                         <label htmlFor="name" className=' mr-1' >كلمة المرور</label>
-                         <div className='w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] px-4 flex items-center '>
-                            <img src={showPassword ? EyeSlashIcon : EyeIcon} alt="" onClick={()=> setShowPassword(!showPassword)} 
-                            className={` cursor-pointer ${isIconshowed? 'block' : 'hidden'}`} />
+                         <div className='w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] dark:bg-[#F0F2F4]/[0.13] px-4 flex items-center '>
+                            {dark? 
+                            <img src={showPassword ? EyeDarkIcon :  EyeSlashDarkIcno} alt="" onClick={()=> setShowPassword(!showPassword)}   className={` cursor-pointer w-6 h-6 ${isIconshowed? 'block' : 'hidden'}`} />
+                            :
+                            <img src={showPassword ? EyeIcon :  EyeSlashIcon} alt="" onClick={()=> setShowPassword(!showPassword)}    className={` cursor-pointer ${isIconshowed? 'block' : 'hidden'}`}/>
+                            }
+
                             <input type={showPassword? "text" : "password"} className=' text-right flex-1  h-full bg-transparent
                             ' placeholder=' كلمه المرور هنا' ref={passwordRef} 
                                 onChange={(e) => setIsIconshowed(e.target.value)}
@@ -236,11 +244,14 @@ const UpdateAdmin = () => {
                         </div>
 
                     </div>
-                    <div className=' flex flex-col gap-y-[5px] text-right text-text-black'>
+                    <div className=' flex flex-col gap-y-[5px] text-right text-text-black dark:text-white'>
                         <label htmlFor="id"  className=' mr-1' >  تأكيد كلمة المرور</label>
-                        <div className='w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] px-4 flex items-center '>
-                            <img src={showPassword ? EyeSlashIcon : EyeIcon} alt="" onClick={()=> setShowPassword(!showPassword)} 
-                            className={` cursor-pointer ${isIconshowed? 'block' : 'hidden'}`} />
+                        <div className='w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] dark:bg-[#F0F2F4]/[0.13] px-4 flex items-center '>
+                        {dark? 
+                            <img src={showPassword ? EyeDarkIcon :  EyeSlashDarkIcno} alt="" onClick={()=> setShowPassword(!showPassword)}   className={` cursor-pointer w-6 h-6 ${isIconshowed? 'block' : 'hidden'}`} />
+                            :
+                            <img src={showPassword ? EyeIcon :  EyeSlashIcon} alt="" onClick={()=> setShowPassword(!showPassword)}    className={` cursor-pointer ${isIconshowed? 'block' : 'hidden'}`}/>
+                            }
                             <input type={showPassword? "text" : "password"} className=' text-right flex-1  h-full bg-transparent
                             ' placeholder=' كلمه المرور هنا' ref={confirmPasswordRef} 
                                 onChange={(e) => setIsIconshowed(e.target.value)}

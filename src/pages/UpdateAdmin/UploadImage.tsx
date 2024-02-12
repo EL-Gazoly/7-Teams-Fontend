@@ -1,11 +1,14 @@
 import React from "react";
 import NoPic from '../../assets/students/no-pic-light.svg'
+import NoPicDark from '../../assets/settings/Person-dark.svg'
 import { Button } from "@nextui-org/react";
+import { useThemeStore } from "../../stores/ThemeStore";
 export function UploadImage({
   selectedImage,
     setSelectedImage,
     setSelectedFile
 }) {
+    const {dark} = useThemeStore()
     const handleImageUpload = (event) => {
         const file = event.target.files[0];
         
@@ -30,7 +33,7 @@ export function UploadImage({
                 objectFit: 'cover',
                 borderRadius: '50%',
 
-            }} /> : <img src={NoPic} alt="Placeholder" />}
+            }} /> : <img src={dark? NoPicDark: NoPic} alt="Placeholder" />}
             </div>
             <div className='flex flex-col gap-y-4 '>
                 <div className='flex flex-row-reverse items-center gap-x-4'>
@@ -41,7 +44,7 @@ export function UploadImage({
         type="file" id="image-upload" accept=".png, .jpeg, .jpg" style={{
           display: 'none'
         }} onChange={handleImageUpload} />
-                <Button className='inline-flex h-[54px] py-2 px-4 bg-[#CF0644] text-white dark:text-[#CF0644] dark:bg-white items-center justify-center rounded-lg' onClick={handleImageRemove}>
+                <Button className='inline-flex h-[54px] py-2 px-4 bg-[#CF0644] text-white  items-center justify-center rounded-lg' onClick={handleImageRemove}>
                     حذف
                 </Button>
                 </div>
