@@ -47,14 +47,14 @@ const AddWithExcel = () => {
         className='w-[177px] h-[51px] py-2 px-4 rounded-lg flex items-center justify-center gap-x-2 bg-[#4E5464]'
         onPress={() => onOpen()}
       >
-        <span className='text-white text-sm font-bold'>إضافة بواسطه اكسيل</span>
+        <span className='text-sm font-bold'>إضافة بواسطه اكسيل</span>
       </Button>
 
       <Modal isOpen={isOpen} onClose={onClose} size='xl'>
         <ModalContent className='flex flex-y gap-y-8'>
           <ModalHeader>
             <div className='w-full flex items-center justify-center'>
-              <span className='text-xl font-bold text-text-black'>إضافة بواسطه اكسيل</span>
+              <span className='text-xl font-bold text-text-black dark:text-white'>إضافة بواسطه اكسيل</span>
             </div>
           </ModalHeader>
 
@@ -62,10 +62,10 @@ const AddWithExcel = () => {
             <div className='flex flex-col gap-y-5'>
               <div className='flex flex-col gap-y-5 text-right text-text-black'>
                 {selectedFile ? (
-                  <div className='flex items-center justify-between border border-gray-300 rounded-lg py-3 px-4 bg-gray-100'>
-                    <span className='text-gray-800'>{selectedFile.name}</span>
+                  <div className='flex items-center justify-between border border-gray-300 dark:border-dark-bg rounded-lg py-3 px-4 bg-gray-100  dark:bg-dark-item'>
+                    <span className='text-gray-800 dark:text-white'>{selectedFile.name}</span>
                     <Button
-                      className='text-red-500 hover:text-red-700 focus:outline-none'
+                      className='text-red-500 hover:text-red-700 dark:bg-danger dark:text-white focus:outline-none'
                       onClick={handleDeleteFile}
                     >
                       مسح
