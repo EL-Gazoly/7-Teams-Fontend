@@ -93,6 +93,8 @@ const CertificatesPage = () => {
         return 'الثانوي'
       case 'Middle':
         return 'المتوسط'
+      case 'Primary':
+        return 'الابتدائي'
         default:
           return ''
     }
@@ -105,6 +107,12 @@ const CertificatesPage = () => {
         return 'الثاني'
       case 'third':
         return 'الثالث'
+      case 'fourth':
+        return 'الرابع'
+      case 'fifth':
+        return 'الخامس'
+      case 'sixth':
+        return 'السادس'
       default:
         return ''
     }
@@ -140,7 +148,7 @@ const CertificatesPage = () => {
                 <div className=' flex flex-col items-center gap-y-14'>
                   <div className=' relative w-[612px] h-[411px] certificateDiv text-text-black text-xs'>
                     <Image src={Tempelete}  className='z-0'  />
-                    <div className=' absolute top-[39%] left-[30%]'>{school}</div>
+                    <div className=' absolute top-[39%] left-[30%]'>{student.schoolName}</div>
                       <div className=' absolute top-[45%] left-[50%]'>{student.label.substring(0,10)}</div>
                       <div className=' absolute top-[46%] left-[31%]'>{student.number}</div>
                       <div className=' absolute top-[53%] left-[49%]'>{course.label}</div>

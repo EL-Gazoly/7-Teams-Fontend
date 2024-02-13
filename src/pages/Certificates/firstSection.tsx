@@ -11,13 +11,14 @@ type Props = {
         value: string;
         label: string;
     }>>;
-    student: {value: string, label: string, number: string, class: string, team: string};
+    student: {value: string, label: string, number: string, class: string, team: string, schoolName: string};
     setStudent:  React.Dispatch<React.SetStateAction<{
         value: string;
         label: string;
         number: string;
         class: string;
         team: string;
+        schoolName: string;
     }>>;
     head: string;
     setHead: React.Dispatch<React.SetStateAction<string>>;

@@ -133,6 +133,7 @@ const ChooseStudent = (props) => {
             number: student.generatedId,
             class: student.class.number,
             team: student.team.name,
+            schoolName : student.schoolName,
         };
         });
  
