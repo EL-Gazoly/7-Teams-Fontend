@@ -47,7 +47,7 @@ const AddWithExcel = () => {
         className='w-[177px] h-[51px] py-2 px-4 rounded-lg flex items-center justify-center gap-x-2 bg-[#4E5464]'
         onPress={() => onOpen()}
       >
-        <span className='text-sm font-bold'>إضافة بواسطه اكسيل</span>
+        <span className='text-sm font-bold text-white'>إضافة بواسطه اكسيل</span>
       </Button>
 
       <Modal isOpen={isOpen} onClose={onClose} size='xl'>

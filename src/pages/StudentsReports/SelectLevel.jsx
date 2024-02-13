@@ -7,6 +7,7 @@ import { useThemeStore} from '../../stores/ThemeStore.ts'
 const options = [
   { value: 'High', label: 'الصف الثانوي', image: GroupIcon },
   { value: 'Middle', label: 'الصف الاعدادي', image: GroupIcon },
+  { value: 'Primary', label: 'الصف الابتدائي', image: GroupIcon },
 
 ]
 
@@ -75,7 +76,7 @@ const SelectLevel = (props) => {
         zIndex: '1000',
         width: '201px',
         height: '81px',
-        backgroundColor: '#444',
+        backgroundColor:  dark?  '#3A3F47' :  '#444',
         color: 'white' ,
         display: 'flex',
         alignItems: 'center',
@@ -95,7 +96,7 @@ const SelectLevel = (props) => {
         width: '195px',
         direction : 'rtl',
         maxHeight: '320px',
-        backgroundColor: '#292D32',
+        backgroundColor:  dark?  '#3A3F47' :  '#444',
         cursor: 'pointer',
         gap: '8px',
         overflow: 'hidden', 

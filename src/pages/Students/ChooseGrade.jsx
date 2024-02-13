@@ -1,10 +1,11 @@
 import { FC, useEffect, useState } from 'react';
 import Select from 'react-select';
-import GroupIcon from '../../assets/students/group.png'
+import GroupIcon from '../../assets/Reports/group-dark.png'
 import { useThemeStore } from '../../stores/ThemeStore'
 const options = [
   { value: 'High', label: 'الصف الثانوي', image: GroupIcon },
   { value: 'Middle', label: 'الصف الاعدادي', image: GroupIcon },
+  { value: 'Primary', label: 'الصف الابتدائي', image: GroupIcon },
 ]
 
 
@@ -71,7 +72,7 @@ const ChooseGrade = (props) => {
         ...provided,
         width: '201px',
         height: '81px',
-        backgroundColor: '#444',
+        backgroundColor:  dark ? '#40444D' : '#444',
         color: 'white' ,
         display: 'flex',
         alignItems: 'center',
@@ -90,7 +91,7 @@ const ChooseGrade = (props) => {
         width: '201px',
         direction : 'rtl',
         maxHeight: '320px',
-        backgroundColor: '#292D32',
+        backgroundColor:  dark ? '#40444D' : '#444',
         cursor: 'pointer',
         gap: '8px',
         overflow: 'hidden', 
@@ -147,7 +148,7 @@ const ChooseGrade = (props) => {
       isSearchable={true}
       getOptionLabel={(option) => (
         <div className='selected flex items-center gap-x-6 text-xs font-medium'>
-          <img src={option.image} alt={option.label} style={customStyles.optionImage} className=' w-10 h-10'/>
+          <img src={GroupIcon} alt={option.label} style={customStyles.optionImage} className=' w-10 h-10'/>
           <span className={`${ selectedOption && selectedOption.value === "Ultrasound" ? 'text-[10px]' : ''}`}> {option.label} </span>
         </div>
       )}
