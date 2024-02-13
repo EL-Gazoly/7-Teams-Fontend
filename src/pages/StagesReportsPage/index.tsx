@@ -6,7 +6,11 @@ import GroupDarkIcon from '../../assets/Reports/group-dark.png'
 import { useThemeStore } from '../../stores/ThemeStore'
 import { Link } from 'react-router-dom'
 const list = [
-  
+    {
+        title : "الصف الابتدائي",
+        icon : GroupIcon,
+        link: '/reports/stages/d0be4668-a1b2-4ed5-a47b-fa3218a055b2'
+    },
     {
         title : "الصف المتوسط",
         icon : GroupIcon,
@@ -17,6 +21,8 @@ const list = [
         icon : GroupIcon,
         link: '/reports/stages/1781aa8d-369d-4875-8a32-c8aac39ea543'
     },
+   
+
 ]
 
 const StagesReportsPage  = () => {

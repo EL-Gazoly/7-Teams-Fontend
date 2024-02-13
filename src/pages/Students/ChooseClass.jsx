@@ -7,6 +7,9 @@ const options = [
     { value: 'first', label: 'الصف الاول', image: GroupIcon },
     { value: 'second', label: 'الصف الثاني', image: GroupIcon },
     { value: 'third', label: 'الصف الثالث', image: GroupIcon },
+    { value: 'fourth', label: 'الصف الرابع', image: GroupIcon },
+    { value: 'fifth', label: 'الصف الخامس', image: GroupIcon },
+    { value: 'sixth', label: 'الصف السادس', image: GroupIcon },
 ]
 
 

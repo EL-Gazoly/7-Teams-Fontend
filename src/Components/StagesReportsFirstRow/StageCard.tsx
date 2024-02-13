@@ -52,7 +52,9 @@ const StageCard = () => {
 
         <div className=' w-full flex items-center justify-center mr-3'>
          <span className=' w-28 text-2xl font-bold text-center ml-7'> {
-                stage === '20f9b0c6-37fa-4509-987a-6be7b341d98e' ? 'الصف المتوسط' : 'الصف الثانوي'
+                stage === '20f9b0c6-37fa-4509-987a-6be7b341d98e' ? 'الصف المتوسط' :
+                stage === 'd0be4668-a1b2-4ed5-a47b-fa3218a055b2' ? 'الصف الابتدائي' :
+                'الصف الثانوي'
          }</span>
 
         </div>

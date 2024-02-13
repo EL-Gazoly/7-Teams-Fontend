@@ -6,7 +6,36 @@ import { Link } from 'react-router-dom'
 import GroupDarkIcon from '../../assets/Reports/group-dark.png'
 import { useThemeStore } from '../../stores/ThemeStore'
 const list = [
-  
+    {
+        title : "الصف الأول الابتدائي",
+        icon : GroupIcon,
+        link: '/reports/classes/299b30a9-cc2b-4d90-91c3-87a4e17c181e'
+    },
+    {
+        title : "الصف الثاني الابتدائي",
+        icon : GroupIcon,
+        link: '/reports/classes/3005a5f7-c133-434e-be98-7dd3b78fedfd'
+    },
+    {
+        title : "الصف الثالث الابتدائي",
+        icon : GroupIcon,
+        link: '/reports/classes/e713070c-853e-465d-9e72-0787f344147a'
+    },
+    {
+        title : "الصف الرابع الابتدائي",
+        icon : GroupIcon,
+        link: '/reports/classes/6b10f49d-a110-420d-8595-9b8616d7c854'
+    },
+    {
+        title : "الصف الخامس الابتدائي",
+        icon : GroupIcon,
+        link: '/reports/classes/1535cadc-70b9-4535-994b-e4c20c3912ae'
+    },
+    {
+        title : "الصف السادس الابتدائي",
+        icon : GroupIcon,
+        link: '/reports/classes/99b559a7-0e9d-40fb-a952-6c25895ceedf'
+    },
     {
         title : "الصف الأول المتوسط",
         icon : GroupIcon,

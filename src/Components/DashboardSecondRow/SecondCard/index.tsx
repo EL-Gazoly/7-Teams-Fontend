@@ -46,22 +46,27 @@ const SecondCard = ({rolesCount}) => {
   const [supervisorCount, setSupervisorCount] = useState(0)
   const [totalCount, setTotalCount] = useState(0)
   useEffect(() => {
-    if(rolesCount){
+    if(rolesCount ){
+    
    const teacherCount = rolesCount.filter((role) => role['name'] === 'معلم')
     const adminCount = rolesCount.filter((role) => role['name'] === 'ادمن')
     const supervisorCount = rolesCount.filter((role) => role['name'] === 'المدير التنفيذي')
-      teacherCount.forEach((teacher) => {
+    console.log(teacherCount)
+    
+    teacherCount.length &&  teacherCount.forEach((teacher) => {
         setTeacherCount(teacher['users'].length)
       })
-      adminCount.forEach((admin) => {
+    
+    adminCount.length &&   adminCount.forEach((admin) => {
         setAdminCount(admin['users'].length)
       })
-      supervisorCount.forEach((supervisor) => {
+    supervisorCount.length &&  supervisorCount.forEach((supervisor) => {
         setSupervisorCount(supervisor['users'].length)
       })
+      if(teacherCount.length && adminCount.length && supervisorCount.length)
       setTotalCount(teacherCount[0]['users'].length + adminCount[0]['users'].length + supervisorCount[0]['users'].length)
-    } 
    
+   }
   }
   , [rolesCount])
 
