@@ -7,7 +7,7 @@ import LogsTable from '../../Components/LogsTable'
 const LogsPage = () => {
   return (
     <div className=' w-full overflow'>
-      <ControlCard icon='System' title='Logs' neasted={false} />
+      <ControlCard icon='System' title='سجل النظام' neasted={false} />
         <div className=' flex flex-col mt-4 gap-y-5'>
             <div className=' w-full h-[104.28px] bg-[#F7F9FC] dark:bg-primary-dark rounded-lg
                     flex items-center justify-between px-5 

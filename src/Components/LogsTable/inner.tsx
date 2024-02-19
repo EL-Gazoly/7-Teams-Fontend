@@ -12,6 +12,10 @@ const LogsTableItem = () => {
       <Item />
        <Divider className=' w-full bg-[#8B8D90] dark:bg-[#383C42]' />
       <Item />
+       <Divider className=' w-full bg-[#8B8D90] dark:bg-[#383C42]' />
+      <Item />
+       <Divider className=' w-full bg-[#8B8D90] dark:bg-[#383C42]' />
+      <Item />
     </div>
   )
 }
