@@ -122,7 +122,7 @@ const data = {
             borderColor: 'rgb(75, 192, 192)',
             borderWidth: 1,
             borderRadius: 3,
-            barThickness: 1,
+            barThickness: 22,
             hoverBackgroundColor: '#2DEC4C',
             hoverBorderColor: '#2DEC4C',
         },

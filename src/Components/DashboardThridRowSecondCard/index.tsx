@@ -58,7 +58,7 @@ const DashboardThridRowSecondCol = ({studentExperiments}) => {
     }, [timeValue, studentExperiments])
     
   return (
-    <div className=' w-[408px] flex-1 h-[332px] rounded-2xl bg-white  dark:bg-[#252A33] p-[30px] flex flex-col gap-y-[30px]'>
+    <div className=' max-w-[408px] flex-1 h-[332px] rounded-2xl bg-white  dark:bg-[#252A33] p-[30px] flex flex-col gap-y-[30px]'>
 
         <div className=' w-[352px] flex items-center  justify-between'>
             <span className=' text-[#444] dark:text-white text-[17px] font-bold '
