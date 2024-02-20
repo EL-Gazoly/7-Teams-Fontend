@@ -50,20 +50,20 @@ const SideBar = () => {
     console.log(localStorage.getItem('isAdmin'))
 
   return (
-    <div className=" relative">
-        <div className=' w-[213px] h-screen flex flex-col px-5 py-[53px] gap-y-10 bg-[#F7F9FC] dark:bg-[#252A33] overflow-hidden'
+    <div className=" fixed w-[213px]">
+        <div className='  h-full flex flex-col px-5 py-[53px] gap-y-10 bg-[#F7F9FC] dark:bg-[#252A33] overflow-hidden'
         style={{
             filter : "drop-shadow(0px 3.25px 21.125px rgba(0, 0, 0, 0.25))"
         }}
         >
 
-            <div className="flex items-center justify-center font-medium text-[#42464B]">
+            <div className="flex items-center justify-center font-medium text-[#42464B] overflow-x-hidden">
                 <Image src={dark ? DarkLogo : LogoImage} width={153} height={49} />
 
             </div>
 
             <Tabs classNames={{
-                "base" : "text-white",
+                "base" : "text-white overflow-x-hidden",
                 "tabList" : "flex flex-col w-full h-full bg-transparent space-y-7",
                 "cursor" : "h-[46px] flex items-center justify-center rounded-[6.5px]",
                 "tabContent" : " text-xs"

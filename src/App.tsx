@@ -40,10 +40,15 @@ function App() {
       fontFamily: 'Cairo'
     }}>
      <Toaster position="top-right" richColors   />
-      <div className="  w-screen h-screen bg-[#E9EBEE] dark:bg-[#2E3643] overflow-hidden flex flex-row-reverse">
-        {!isLoginPage &&  <SideBar />}
-        <div className=" w-full h-full flex items-center justify-center">
-          <div className=" w-[1000px] h-full overflow-y-auto overflow-x-hidden scroll">
+      <div className="  w-screen h-screen bg-[#E9EBEE] dark:bg-[#2E3643] overflow-y-auto overflow-hidden flex flex-row-reverse">
+        {!isLoginPage &&
+        <div className=" w-[213px]">
+          <SideBar />
+          </div>
+          
+          } 
+        <div className=" flex-1 flex items-center justify-center">
+          <div className=" w-[1000px] h-full">
           <Routes>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/$.0" element={<ErrorPage />} />
