@@ -1,14 +1,19 @@
 import React from 'react'
 import { Avatar } from '@nextui-org/react'
-const Item = () => {
+import noPic from '../../assets/students/noPic.svg'
+const Item = ({log}) => {
+  const date = new Date(log?.createdAt)
+
   return (
     <div className=' flex items-center gap-x-20 h-full flex-row-reverse  '>
-       
-            <Avatar size='md' src='https://via.placeholder.com/150' />
-
+        <div className=' w-12 h-12 bg-[#F6F6F6] rounded-full flex items-center justify-center'>
+          { log.user && log.user.imageUrl ? <Avatar className=' w-11 h-11' src={`${import.meta.env.VITE_API_URL}${log.user?.imageUrl}`} fallback={noPic}/> : <img src={noPic} alt="" /> }
+        </div>
             <div className=' flex flex-col gap-y-3 text-end text-text-black dark:text-white'>
-                <span> احمد سعيد اتصل بالنظاره رقم ٢</span>
-                <span className=' text-xs text-[##122333bf] dark:text-white/75'> اليوم فى 5:24</span>
+                <span> {log?.action}</span>
+                <span className=' text-xs text-[##122333bf] dark:text-white/75'> 
+                  {date?.toLocaleString()}
+                </span>
 
             </div>
         
