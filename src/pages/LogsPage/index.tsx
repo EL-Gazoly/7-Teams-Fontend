@@ -1,4 +1,4 @@
-import React from 'react'
+import {useState, useEffect} from 'react'
 import ControlCard from '../../Components/ContraolCard'
 import SearchIcon from '../../assets/Landing/ChooseHeadset/search.png'
 import CalendarIcon from '../../assets/Logs/calendar-month.svg'
@@ -6,17 +6,37 @@ import { Button, Pagination } from '@nextui-org/react'
 import LogsTable from '../../Components/LogsTable'
 import { useQuery } from '@apollo/client'
 import { GETLOGS } from '../../graphql/LogsQuery'
-import Loading from '../../Components/Loading'
 const LogsPage = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [take, setTake] = useState(10);
+  const [logs, setLogs] = useState([]);
+  const [total, setTotal] = useState(0)
+  
   const { loading, error, data } = useQuery(GETLOGS,  {variables: { 
-    skip: 0,
-    take: 10 
+    skip: (currentPage - 1) * 100,
+    take: take 
   },
-    fetchPolicy: 'no-cache'
   },);
-  if (loading) return <Loading />;
+useEffect(() => {
+  if(data){
+    setLogs(data.logs)
+  }
+  if (data?.logsCount) {
+    setTotal(data.logsCount)
+  }
+}, [data])
+
+
   if (error) return <p>Error</p>;
-  console.log(data);
+  console.log({
+    currentPage: currentPage - 1,
+    take: take,
+    data: data
+  });
+  const handlePageChange = (page) => {
+    setTake(10);
+    setCurrentPage(page);
+  }
   return (
     <div className=' w-full overflow pb-5'>
       <ControlCard icon='System' title='سجل النظام' neasted={false} />
@@ -39,12 +59,22 @@ const LogsPage = () => {
             </div>
 
             <div className=' w-full flex items-center justify-between'>
-                <Pagination  isCompact showControls={ (data?.logsCount / 10) > 1 } total={data?.logsCount / 10 } initialPage={1}  loop/>
-                <span className=' font-medium text-sm text-[#667085] dark:text-white'> Showing 1-10 from 100  </span> 
+                <Pagination  isCompact showControls total={Math.ceil(total / 100) } initialPage={1}  
+                 page={currentPage}
+                 onChange={handlePageChange}
+                />
+                <span className=' font-medium text-sm text-[#667085] dark:text-white'> Showing 1-{take} from 100  </span> 
 
             </div>
             <div className=' w-full overflow-y-scroll'>
-             <LogsTable data={data}/>
+             <LogsTable
+             data={data}
+              setTake={setTake}
+              loading={loading}
+              logs={logs}
+              currentPage={currentPage}
+
+             />
             </div>
             
         </div>

@@ -10,6 +10,9 @@ export const GETLOGS = gql`
     user {
       imageUrl
       name
+      roles {
+        name
+      }
     }
     createdAt
   }
