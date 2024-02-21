@@ -16,20 +16,25 @@ const LogsTableItem = ({data, setTake, loading, logs, currentPage}) => {
       .replace('logged in', 'قام بتسجيل الدخول')
       .replace('logged out', 'قام بتسجيل الخروج')
       .replace('using', 'بإستخدام')
+      .replace('on', 'علي نظاره افتراضيه رقم')
       .replace('device', 'نظارة افتراضية رقم')
       .replace('role', 'صلاحية')
-      .replace('excel file', 'ملف اكسل');
+      .replace('excel file', 'ملف اكسل')
+      .replace('LiquidViscosity', 'لزوجة السائل')
+
   
     if (user) {
       newAction = newAction.split('Created').join(`قام <span style="font-weight: bold;"> ${user.roles.name} ${user.name} </span> بإنشاء`)
         .split('Updated').join(`قام <span style="font-weight: bold;"> ${user.roles.name} ${user.name} </span> بتحديث`)
         .split('Create').join(`قام <span style="font-weight: bold;"> ${user.roles.name} ${user.name} </span> بإنشاء`)
-        .split('Update').join(`قام <span style="font-weight: bold;"> ${user.roles.name} ${user.name} </span> بتحديث`);
+        .split('Update').join(`قام <span style="font-weight: bold;"> ${user.roles.name} ${user.name} </span> بتحديث`)
+        .splig('Start Course').join(`قام <span style="font-weight: bold;"> ${user.roles.name} ${user.name} </span> ببدأ الدورة`)
     } else {
       newAction = newAction.split('Created').join(`قام <span style="font-weight: bold;"> السوبر الادمن ${admin.name}</span> بإنشاء`)
         .split('Updated').join(`قام <span style="font-weight: bold;"> السوبر الادمن ${admin.name}</span> بتحديث`)
         .split('Create').join(`قام <span style="font-weight: bold;"> السوبر الادمن ${admin.name}</span> بإنشاء`)
-        .split('Update').join(`قام <span style="font-weight: bold;"> السوبر الادمن ${admin.name}</span> بتحديث`);
+        .split('Update').join(`قام <span style="font-weight: bold;"> السوبر الادمن ${admin.name}</span> بتحديث`)
+        .split('Start Course').join(`قام <span style="font-weight: bold;"> السوبر الادمن ${admin.name}</span> ببدأ الدورة`)
     }
   
     // Change the color of the word "بانشاء" to green
@@ -38,6 +43,7 @@ const LogsTableItem = ({data, setTake, loading, logs, currentPage}) => {
     newAction = newAction.replace('بتحديث', '<span style="color: yellow;">بتحديث</span>');
     newAction = newAction.replace('قام بتسجيل الدخول', '<span style="color: #2DEC4C;">قام بتسجيل الدخول</span>');
     newAction = newAction.replace('قام بتسجيل الخروج', '<span style="color: #FB3471;">قام بتسجيل الخروج</span>');
+    newAction = newAction.replace('ببدأ الدورة', '<span style="color: #2DEC4C;">ببدا الدورة </span>');
   
     return newAction;
   };
@@ -85,7 +91,7 @@ const LogsTableItem = ({data, setTake, loading, logs, currentPage}) => {
               `}
               >
                 <TableCell> 
-                  {log?.action.includes('logged') ?
+                  {log?.action.includes('logged') || log?.action.includes('Course') ?
                     <Image src={HeadsetImage} width={73} height={40} />
                   :
                 <div className=' w-14 h-14 bg-[#F6F6F6] rounded-full flex items-center justify-center mr-2'>

@@ -19,3 +19,11 @@ export const GETLOGS = gql`
   logsCount
 }
 `;
+
+export const CREATELOG = gql`
+mutation CreateLog($data: CreateLogInput!) {
+  createLog(data: $data) {
+    logId
+  }
+}
+`

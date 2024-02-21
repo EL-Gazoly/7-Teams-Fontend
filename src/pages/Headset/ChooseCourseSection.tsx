@@ -4,11 +4,14 @@ import SelectExpirment from '../../Components/SelectCourse/SelectExpriment'
 import SelectHowToStart from '../../Components/SelectCourse/SelectHowToOpen'
 import { Button } from '@nextui-org/react'
 import { useState,useEffect } from 'react'
+import { useMutation } from '@apollo/client'
+import { CREATELOG, GETLOGS } from '../../graphql/LogsQuery'
 
 import options from '../../Components/SelectCourse/options'
 
 import db from '../../config/firebase'
 import { ref, set, update} from 'firebase/database'
+import { create } from 'zustand'
 
 type ChooseCourseSectionProps = {
   selectedHeadsets: any[]
@@ -16,6 +19,10 @@ type ChooseCourseSectionProps = {
 }
 
 const ChooseCourseSection = ({selectedHeadsets, setSelectedHeadsets}: ChooseCourseSectionProps) => {
+  const [createLog, { loading: loadingCreateLog, error: errorCreateLog, data: dataCreateLog }] = useMutation(CREATELOG,{
+    refetchQueries : [{query : GETLOGS}]
+  });
+
   const [SelectdSubject, setSelectedSubject] = useState(null)
   const [SelectedChapter, setSelectedChapter] = useState(null)
   const [SelectedExpirment, setSelectedExpriemnt] = useState(null)
@@ -42,7 +49,7 @@ const ChooseCourseSection = ({selectedHeadsets, setSelectedHeadsets}: ChooseCour
       })
   }
 
-  const handelStartCourse = (macAddress) => {
+  const handelStartCourse = async (macAddress) => {
     const deviceQuery = ref(db, `/Devices/${macAddress}`);
     try {
         update(deviceQuery, {
@@ -54,12 +61,17 @@ const ChooseCourseSection = ({selectedHeadsets, setSelectedHeadsets}: ChooseCour
                 "Command" : "Open",
             }
         })
+        await createLog({
+          variables: {
+            data: {
+              action: `Start Course ${SelectedExpirment.title} on ${macAddress}`,
+            }
+          }
+        })
     } catch (error) {
         console.error("Error fetching data:", error);
     }
   }
-
-
 
   return (
     <div className='w-full bg-white/50 dark:bg-[#262B34]/50 h-[85px] inline-flex items-center px-[30px] gap-x-4'
