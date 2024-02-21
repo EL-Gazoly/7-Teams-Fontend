@@ -1,9 +1,11 @@
 import React from 'react'
 import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Spinner, Avatar, Button, Image} from "@nextui-org/react";
 import noPic from '../../assets/students/noPic.svg'
+import noPicDark from '../../assets/Logs/dark-person.svg'
 import HeadsetImage from '../../assets/Landing/HeadsetCard/headset.png';
+import { useThemeStore } from '../../stores/ThemeStore';
 const LogsTableItem = ({data, setTake, loading, logs, currentPage}) => {
- 
+  const {dark} = useThemeStore();
   const ReadableDate = (date) => {
     return new Date(date).toLocaleString()
   }
@@ -94,8 +96,8 @@ const LogsTableItem = ({data, setTake, loading, logs, currentPage}) => {
                   {log?.action.includes('logged') || log?.action.includes('Course') ?
                     <Image src={HeadsetImage} width={73} height={40} />
                   :
-                <div className=' w-14 h-14 bg-[#F6F6F6] rounded-full flex items-center justify-center mr-2'>
-                  { log.user && log.user.imageUrl ? <Avatar className=' w-full h-full' src={`${import.meta.env.VITE_API_URL}${log.user?.imageUrl}`} fallback={noPic}/> : <img src={noPic} alt="" /> }
+                <div className=' w-14 h-14 bg-[#F6F6F6] dark:bg-[#F7F9FC]/20 rounded-full flex items-center justify-center mr-2'>
+                  { log.user && log.user.imageUrl ? <Avatar className=' w-full h-full' src={`${import.meta.env.VITE_API_URL}${log.user?.imageUrl}`} fallback={noPic}/> : <img src={dark? noPicDark : noPic} alt="" /> }
                 </div>
                 }
 
