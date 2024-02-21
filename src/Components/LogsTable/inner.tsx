@@ -1,5 +1,4 @@
 import React from 'react'
-import Item from './item'
 import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Spinner, Avatar, Button, Image} from "@nextui-org/react";
 import noPic from '../../assets/students/noPic.svg'
 import HeadsetImage from '../../assets/Landing/HeadsetCard/headset.png';
