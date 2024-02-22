@@ -64,7 +64,7 @@ const ChooseCourseSection = ({selectedHeadsets, setSelectedHeadsets}: ChooseCour
         await createLog({
           variables: {
             data: {
-              action: `Start Course ${SelectedExpirment.title} on ${macAddress}`,
+              action: `Start ${SelectedHowToStart} ${SelectedExpirment.title} on device number ${macAddress}`,
             }
           }
         })

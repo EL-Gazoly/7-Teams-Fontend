@@ -18,28 +18,33 @@ const LogsTableItem = ({data, setTake, loading, logs, currentPage}) => {
       .replace('logged in', 'قام بتسجيل الدخول')
       .replace('logged out', 'قام بتسجيل الخروج')
       .replace('using', 'بإستخدام')
-      .replace('on', 'علي نظاره افتراضيه رقم')
+      .replace('on device number', 'علي نظاره افتراضيه رقم')
       .replace('device', 'نظارة افتراضية رقم')
-      .replace('role', 'صلاحية')
+      .replace('role', ' صلاحية')
       .replace('excel file', 'ملف اكسل')
       .replace('LiquidViscosity', 'لزوجة السائل')
       .replace('DensityOfWood', 'كثافة الخشب')
       .replace('EffectiveUseOfBunsenBurner', ' استخدام موقد بنسن ')
       .replace('VolumeCalculation', 'تحديد الحجم')
+      .replace('FullCourse', ' الدروه كامله لتجربه')
+      .replace('StartTraining', 'التدريب لتجربه')
+      .replace('Practical', 'الاختبار العملي لتجربه')
+      .replace('Theoretical', 'الاختبار النظري لتجربه')
+
 
   
     if (user) {
-      newAction = newAction.split('Created').join(`قام <span style="font-weight: bold;"> ${user.roles.name} ${user.name} </span> بإنشاء`)
-        .split('Updated').join(`قام <span style="font-weight: bold;"> ${user.roles.name} ${user.name} </span> بتحديث`)
-        .split('Create').join(`قام <span style="font-weight: bold;"> ${user.roles.name} ${user.name} </span> بإنشاء`)
-        .split('Update').join(`قام <span style="font-weight: bold;"> ${user.roles.name} ${user.name} </span> بتحديث`)
-        .splig('Start Course').join(`قام <span style="font-weight: bold;"> ${user.roles.name} ${user.name} </span> ببدأ الدورة`)
+      newAction = newAction.split('Created').join(`قام <span style="font-weight: bold;"> ${user.roles.name} ${user.name} </span>  بإنشاء`)
+        .split('Updated').join(`قام <span style="font-weight: bold;"> ${user?.roles?.name} ${user?.name} </span> بتحديث`)
+        .split('Create').join(`قام <span style="font-weight: bold;"> ${user?.roles.name} ${user?.name} </span>  بإنشاء`)
+        .split('Update').join(`قام <span style="font-weight: bold;"> ${user?.roles.name} ${user?.name} </span> بتحديث`)
+        .split('Start').join(`قام <span style="font-weight: bold;"> ${user?.roles.name} ${user?.name} </span> ببدأ `)
     } else {
       newAction = newAction.split('Created').join(`قام <span style="font-weight: bold;"> السوبر الادمن ${admin.name}</span> بإنشاء`)
-        .split('Updated').join(`قام <span style="font-weight: bold;"> السوبر الادمن ${admin.name}</span> بتحديث`)
-        .split('Create').join(`قام <span style="font-weight: bold;"> السوبر الادمن ${admin.name}</span> بإنشاء`)
-        .split('Update').join(`قام <span style="font-weight: bold;"> السوبر الادمن ${admin.name}</span> بتحديث`)
-        .split('Start Course').join(`قام <span style="font-weight: bold;"> السوبر الادمن ${admin.name}</span> ببدأ الدورة`)
+        .split('Updated').join(`قام <span style="font-weight: bold;"> كبير المشرفين ${admin.name}</span> بتحديث`)
+        .split('Create').join(`قام <span style="font-weight: bold;"> كبير المشرفين ${admin.name}</span> بإنشاء`)
+        .split('Update').join(`قام <span style="font-weight: bold;"> كبير المشرفين ${admin.name}</span> بتحديث`)
+        .split('Start').join(`قام <span style="font-weight: bold;"> كبير المشرفين ${admin.name}</span> ببدأ `)
     }
   
     // Change the color of the word "بانشاء" to green
@@ -48,7 +53,7 @@ const LogsTableItem = ({data, setTake, loading, logs, currentPage}) => {
     newAction = newAction.replace('بتحديث', '<span style="color: yellow;">بتحديث</span>');
     newAction = newAction.replace('قام بتسجيل الدخول', '<span style="color: #2DEC4C;">قام بتسجيل الدخول</span>');
     newAction = newAction.replace('قام بتسجيل الخروج', '<span style="color: #FB3471;">قام بتسجيل الخروج</span>');
-    newAction = newAction.replace('ببدأ الدورة', '<span style="color: #2DEC4C;">ببدا الدورة </span>');
+    newAction = newAction.replace('ببدأ ', '<span style="color: #2DEC4C;">ببدا</span>');
   
     return newAction;
   };
