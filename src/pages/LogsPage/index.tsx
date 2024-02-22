@@ -30,11 +30,7 @@ useEffect(() => {
 
 
   if (error) return <p>Error</p>;
-  console.log({
-    currentPage: currentPage - 1,
-    take: take,
-    data: data
-  });
+  
   const handlePageChange = (page) => {
     setTake(10);
     setCurrentPage(page);
