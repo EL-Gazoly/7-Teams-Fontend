@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Spinner, Avatar, Button, Image} from "@nextui-org/react";
 import noPic from '../../assets/students/noPic.svg'
-import noPicDark from '../../assets/Logs/dark-person.svg'
+import noPicDark from '../../assets/LogsAsessts/dark-person.svg'
 import HeadsetImage from '../../assets/Landing/HeadsetCard/headset.png';
 import { useThemeStore } from '../../stores/ThemeStore';
 const LogsTableItem = ({data, setTake, loading, logs, currentPage, date, filter}) => {

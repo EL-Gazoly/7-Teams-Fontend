@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import ControlCard from '../../Components/ContraolCard'
 import SearchIcon from '../../assets/Landing/ChooseHeadset/search.png'
-import CalendarIcon from '../../assets/Logs/calendar-month.svg'
+import CalendarIcon from '../../assets/LogsAsessts/calendar-month.svg'
 import { Button, Pagination } from '@nextui-org/react'
 import LogsTable from '../../Components/LogsTable'
 import { useQuery } from '@apollo/client'
