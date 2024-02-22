@@ -30,7 +30,7 @@ useEffect(() => {
 
 
   if (error) return <p>Error</p>;
-  
+
   const handlePageChange = (page) => {
     setTake(10);
     setCurrentPage(page);
@@ -40,22 +40,12 @@ useEffect(() => {
       <ControlCard icon='System' title='سجل النظام' neasted={false} />
         <div className=' flex flex-col mt-4 gap-y-5'>
             <div className=' w-full h-[104.28px] bg-[#F7F9FC] dark:bg-primary-dark rounded-lg
-                    flex items-center justify-between px-5 
+                    flex items-center justify-start px-5 
             '>
                     <Button className=' w-[131px] h-12 bg-[#444] gap-x-5 rounded-md text-white dark:bg-[#464A52]'>
                         <img src={CalendarIcon} alt="" />
                         <span> الفتره</span>
                     </Button>
-                   <div className='w-[296px] h-12 bg-[#F0F2F4] dark:bg-[#F0F2F421] rounded-lg px-[18px] gap-x-[10px] flex items-center justify-center'>
-                            
-                            <img src={SearchIcon} alt="" />
-                            <input type="text" className='flex-1 bg-transparent text-right text-xs placeholder:text-[#929496] font-medium' 
-                            placeholder=' ... بحث ' 
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            />
-                           
-
-                    </div>
             </div>
 
             <div className=' w-full flex items-center justify-between'>

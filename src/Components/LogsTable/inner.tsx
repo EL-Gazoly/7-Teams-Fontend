@@ -49,11 +49,11 @@ const LogsTableItem = ({data, setTake, loading, logs, currentPage}) => {
   
     // Change the color of the word "بانشاء" to green
     const regex = new RegExp('بإنشاء', 'g');
-    newAction = newAction.replace(regex, '<span style="color: #2DEC4C;">بانشاء</span>');
-    newAction = newAction.replace('بتحديث', '<span style="color: yellow;">بتحديث</span>');
-    newAction = newAction.replace('قام بتسجيل الدخول', '<span style="color: #2DEC4C;">قام بتسجيل الدخول</span>');
-    newAction = newAction.replace('قام بتسجيل الخروج', '<span style="color: #FB3471;">قام بتسجيل الخروج</span>');
-    newAction = newAction.replace('ببدأ ', '<span style="color: #2DEC4C;">ببدا</span>');
+    newAction = newAction.replace(regex, '<span style="color: #2DEC4C; font-weight: bold;">بانشاء</span>');
+    newAction = newAction.replace('بتحديث', '<span style="color: #F98535; font-weight: bold;">بتحديث</span>');
+    newAction = newAction.replace('قام بتسجيل الدخول', '<span style="color: #2DEC4C; font-weight: bold;">قام بتسجيل الدخول</span>');
+    newAction = newAction.replace('قام بتسجيل الخروج', '<span style="color: #FB3471; font-weight: bold;">قام بتسجيل الخروج</span>');
+    newAction = newAction.replace('ببدأ ', '<span style="color: #2DEC4C; font-weight: bold;">ببدا</span>');
   
     return newAction;
   };
