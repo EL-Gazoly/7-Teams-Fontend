@@ -6,6 +6,8 @@ import db from '../../../config/firebase';
 import { ref, update} from 'firebase/database'
 import { useParams } from 'react-router-dom';
 import { useThemeStore } from '../../../stores/ThemeStore';
+import { useMutation } from '@apollo/client'
+import { CREATELOG, GETLOGS } from '../../../graphql/LogsQuery'
 
 type SelectedCourseProps = {
     selectedItem: {
@@ -19,6 +21,9 @@ type SelectedCourseProps = {
 
 
 const SelectedCourse = ({selectedItem , setSelectedItem} : SelectedCourseProps) => {
+    const [createLog, { loading: loadingCreateLog, error: errorCreateLog, data: dataCreateLog }] = useMutation(CREATELOG,{
+        refetchQueries : [{query : GETLOGS}]
+      });
     const { dark } = useThemeStore()
     const { mac } = useParams<{ mac: string }>()
 
@@ -35,7 +40,7 @@ const SelectedCourse = ({selectedItem , setSelectedItem} : SelectedCourseProps) 
         handelOpenCourse("Theoretical")
     }
 
-    const handelOpenCourse = (type) => {
+    const handelOpenCourse = async (type) => {
         const deviceQuery = ref(db, `/Devices/${mac}`);
         try {
             update(deviceQuery, {
@@ -47,6 +52,13 @@ const SelectedCourse = ({selectedItem , setSelectedItem} : SelectedCourseProps) 
                     "Command" : "Open",
                 }
             })
+            await createLog({
+                variables: {
+                  data: {
+                    action: `Start ${type} ${selectedItem.label} on device number ${mac}`,
+                  }
+                }
+              })
         } catch (error) {
             console.error("Error fetching data:", error);
         }

@@ -17,6 +17,7 @@ const LogsPage = () => {
     skip: (currentPage - 1) * 100,
     take: take 
   },
+  fetchPolicy: 'no-cache'
   },);
 useEffect(() => {
   if(data){
