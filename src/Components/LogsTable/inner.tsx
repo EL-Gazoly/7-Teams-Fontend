@@ -1,10 +1,11 @@
-import React from 'react'
+import {useEffect, useState} from 'react'
 import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Spinner, Avatar, Button, Image} from "@nextui-org/react";
 import noPic from '../../assets/students/noPic.svg'
 import noPicDark from '../../assets/Logs/dark-person.svg'
 import HeadsetImage from '../../assets/Landing/HeadsetCard/headset.png';
 import { useThemeStore } from '../../stores/ThemeStore';
-const LogsTableItem = ({data, setTake, loading, logs, currentPage}) => {
+const LogsTableItem = ({data, setTake, loading, logs, currentPage, date, filter}) => {
+  const [filterDate, setFilterDate] = useState(null) // [0] start date, [1] end date
   const {dark} = useThemeStore();
   const ReadableDate = (date) => {
     return new Date(date).toLocaleString()
@@ -57,6 +58,22 @@ const LogsTableItem = ({data, setTake, loading, logs, currentPage}) => {
   
     return newAction;
   };
+
+  useEffect(() => {
+    if (filter){
+      setFilterDate(date)
+    }
+    if (date === null){
+      setFilterDate(null)
+    }
+  }, [filter, date])
+
+  if (filterDate){
+    // filter logs date range falls between the[0] and [1]
+   logs = logs.filter(log => {
+    return new Date(log.createdAt) >= filterDate[0] && new Date(log.createdAt) <= filterDate[1]
+   })
+  }
 
   return (
 
