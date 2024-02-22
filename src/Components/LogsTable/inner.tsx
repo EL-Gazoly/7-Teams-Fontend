@@ -23,6 +23,9 @@ const LogsTableItem = ({data, setTake, loading, logs, currentPage}) => {
       .replace('role', 'صلاحية')
       .replace('excel file', 'ملف اكسل')
       .replace('LiquidViscosity', 'لزوجة السائل')
+      .replace('DensityOfWood', 'كثافة الخشب')
+      .replace('EffectiveUseOfBunsenBurner', ' استخدام موقد بنسن ')
+      .replace('VolumeCalculation', 'تحديد الحجم')
 
   
     if (user) {

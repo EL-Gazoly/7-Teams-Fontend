@@ -8,6 +8,7 @@ import { useQuery } from '@apollo/client'
 import { GETLOGS } from '../../graphql/LogsQuery'
 const LogsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState('' as string)
   const [take, setTake] = useState(10);
   const [logs, setLogs] = useState([]);
   const [total, setTotal] = useState(0)
@@ -52,7 +53,9 @@ useEffect(() => {
                             
                             <img src={SearchIcon} alt="" />
                             <input type="text" className='flex-1 bg-transparent text-right text-xs placeholder:text-[#929496] font-medium' 
-                            placeholder=' ... بحث '  />
+                            placeholder=' ... بحث ' 
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            />
                            
 
                     </div>
