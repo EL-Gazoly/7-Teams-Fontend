@@ -5,6 +5,7 @@ import OfflineIcon from '../../assets/Landing/HeadsetCard/wifi-square.svg';
 import HeadsetImage from '../../assets/Landing/HeadsetCard/headset.png';
 import SelectCard from '../../assets/Landing/HeadsetCard/select.png';
 import SucessGif from '../../assets/Landing/HeadsetCard/sucesss.gif';
+import StartGif from '../../assets/Landing/HeadsetCard/Selected.gif'
 import PingIcon from '../../assets/Landing/HeadsetCard/ping.svg';
 import { useNavigate } from 'react-router-dom';
 import { set, ref } from 'firebase/database';
@@ -133,7 +134,9 @@ const HeadsetCard = ({ device, index, selectedHeadsets, setSelectedHeadsets, sho
 
           
           {device.selected && <div className='absolute bottom-[-1%] left-[-2%]'><Image src={SelectCard} /></div>}
-        {device.started && <div className='absolute inset-0 bg-white mt-10'><img src={SucessGif} /></div>}
+        {device.started && <div className='absolute inset-0 bg-white w-full h-full z-100 dark:bg-primary-dark mt-10'>
+                  <img src={StartGif} alt="" className=' absolute top-[18%] left-[38%]' />
+          </div>}
       </div>
     
   );
