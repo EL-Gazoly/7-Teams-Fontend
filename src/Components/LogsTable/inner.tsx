@@ -41,7 +41,7 @@ const LogsTableItem = ({data, setTake, loading, logs, currentPage, date, filter}
         .split('Update').join(`قام <span style="font-weight: bold;"> ${user?.roles.name} ${user?.name} </span> بتحديث`)
         .split('Start').join(`قام <span style="font-weight: bold;"> ${user?.roles.name} ${user?.name} </span> ببدأ `)
     } else {
-      newAction = newAction.split('Created').join(`قام <span style="font-weight: bold;"> السوبر الادمن ${admin.name}</span> بإنشاء`)
+      newAction = newAction.split('Created').join(`قام <span style="font-weight: bold;"> كبير المشرفين ${admin.name}</span> بإنشاء`)
         .split('Updated').join(`قام <span style="font-weight: bold;"> كبير المشرفين ${admin.name}</span> بتحديث`)
         .split('Create').join(`قام <span style="font-weight: bold;"> كبير المشرفين ${admin.name}</span> بإنشاء`)
         .split('Update').join(`قام <span style="font-weight: bold;"> كبير المشرفين ${admin.name}</span> بتحديث`)
