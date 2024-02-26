@@ -126,7 +126,7 @@ const LoginPage = () => {
                             <img src={showPassword ? EyeIcon :  EyeSlashIcon} alt="" onClick={()=> setShowPassword(!showPassword)}    className={` cursor-pointer ${isIconshowed? 'block' : 'hidden'}`}/>
                             }
                             <input type={showPassword? "text" : "password"} placeholder='ادخل كلمة المرور' ref={passwordRef}
-                                className=' flex-1 h-full bg-transparent  text-right placeholder:text-[#2929295C] text-text-black dark:text-white dark:placeholder:text-white/80 text-xs  ' 
+                                className=' flex-1 h-full bg-transparent  text-right placeholder:text-[#2929295C] text-text-black` dark:text-white dark:placeholder:text-white/80 text-xs  ' 
                                     onChange={(e) => setIsIconshowed(e.target.value)}
                                 />
                             </div>
