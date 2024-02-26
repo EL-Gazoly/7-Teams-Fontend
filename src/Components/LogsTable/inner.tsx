@@ -118,7 +118,7 @@ const LogsTableItem = ({data, setTake, loading, logs, currentPage, date, filter}
               `}
               >
                 <TableCell> 
-                  {log?.action.includes('logged') || log?.action.includes('Course') ?
+                  {log?.action.includes('logged') || log?.action.includes('Start') ?
                     <Image src={HeadsetImage} width={73} height={40} />
                   :
                 <div className=' w-14 h-14 bg-[#F6F6F6] dark:bg-[#F7F9FC]/20 rounded-full flex items-center justify-center mr-2'>

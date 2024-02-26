@@ -13,6 +13,7 @@ import EyeIcon from '../../assets/login/EyeIcon.svg'
 import EyeDarkIcon from '../../assets/login/dark-eye.svg'
 import EyeSlashDarkIcno from '../../assets/login/dark-eye-slash.svg'
 import { useThemeStore } from '../../stores/ThemeStore';
+import { Link } from 'react-router-dom';
 const LoginPage = () => {
     const { dark } = useThemeStore();
     const emailRef = useRef<HTMLInputElement>();
@@ -125,7 +126,7 @@ const LoginPage = () => {
                             <img src={showPassword ? EyeIcon :  EyeSlashIcon} alt="" onClick={()=> setShowPassword(!showPassword)}    className={` cursor-pointer ${isIconshowed? 'block' : 'hidden'}`}/>
                             }
                             <input type={showPassword? "text" : "password"} placeholder='ادخل كلمة المرور' ref={passwordRef}
-                                className=' flex-1 h-full bg-transparent  text-right placeholder:text-[#2929295C] text-white dark:placeholder:text-white/80 text-xs  ' 
+                                className=' flex-1 h-full bg-transparent  text-right placeholder:text-[#2929295C] text-text-black dark:text-white dark:placeholder:text-white/80 text-xs  ' 
                                     onChange={(e) => setIsIconshowed(e.target.value)}
                                 />
                             </div>
@@ -141,7 +142,7 @@ const LoginPage = () => {
                     </Button>
                     <div className='mt-2 w-full flex items-center justify-between'>
                         <span className='text-[#3D3C3C] dark:text-white text-xs font-medium underline'>هل تحتاج مساعدة؟</span>
-                        <span className='text-[#3D3C3C] dark:text-white text-xs font-medium underline'>www.7-teams.com</span>
+                        <a href="https://www.7teamstech.com" target='_black' className='text-[#3D3C3C] dark:text-white text-xs font-medium underline'>www.7teamstech.com</a>
                     </div>
                 </div>
             </div>
