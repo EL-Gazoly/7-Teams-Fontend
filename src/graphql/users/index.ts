@@ -42,8 +42,8 @@ export const getUser = gql`
 `
 
 export const updateUser = gql`
-mutation UpdateUser($updateUserId: String!, $data: UpdateUserInput!, $image: Upload) {
-  updateUser(id: $updateUserId, data: $data, image: $image) {
+mutation UpdateUser($updateUserId: String!, $data: UpdateUserInput!, $image: Upload, $removeImage: Boolean) {
+  updateUser(id: $updateUserId, data: $data, image: $image, removeImage: $removeImage) {
     name
     email
     imageUrl

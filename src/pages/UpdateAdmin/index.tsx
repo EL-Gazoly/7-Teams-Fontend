@@ -17,7 +17,6 @@ import EyeDarkIcon from '../../assets/login/dark-eye.svg'
 import EyeSlashDarkIcno from '../../assets/login/dark-eye-slash.svg'
 import { useThemeStore } from '../../stores/ThemeStore';
 
-
 const UpdateAdmin = () => {
     const {dark} = useThemeStore()
     const { id } = useParams<{id : string}>();
@@ -71,68 +70,6 @@ const UpdateAdmin = () => {
     const confirmPasswordRef = useRef<HTMLInputElement>();
     const notifcationRef = useRef(false);
 
-    
-    const updateWithoutImage = async (name, email, password, role) => {
-        await update({
-            variables : {
-                updateUserId: id,
-                data: {
-                    name,
-                    email,
-                    hashedPassword : password,
-                    roleId: role,
-                }
-            },
-            
-        
-        })
-    }
-    const updateWithImageAndPassword = async (name, email, password, role , image) => {
-        await update({
-            variables : {
-                updateUserId: id,
-                data: {
-                    name,
-                    email,
-                    hashedPassword : password,
-                    roleId: role,
-                },
-                image : image ? image : null
-            },
-            
-        
-        })
-    }
-    const updateWithImageAndWithoutPassword = async (name, email, role , image) => {
-        await update({
-            variables : {
-                updateUserId: id,
-                data: {
-                    name,
-                    email,
-                    roleId: role,
-                },
-                image : image ? image : null
-            },
-            
-        
-        })
-    }
-
-    const updateWithoutImageAndPassword = async (name, email, role) => {
-        await update({
-            variables : {
-                updateUserId: id,
-                data: {
-                    name,
-                    email,
-                    roleId: role,
-                }
-            },
-            
-        
-        })
-    }
 
     const handelSubmit = async () => {
         notifcationRef.current = false;
@@ -150,27 +87,38 @@ const UpdateAdmin = () => {
         const EmailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
         if (!EmailRegex.test(email)) return toast.error(' برجاء ادخال ايميل صحيح ')
         console.log(dataUser.user)
-        if ((selectedImage && !sleectedFile)){
-            if (password && confirmPassword) {
-                updateWithoutImage(name, email, password, role)
-            }
-            else  {
-                updateWithoutImageAndPassword(name, email, role)
-            }
-        }
-        else {
-            if (password && confirmPassword) {
-                updateWithImageAndPassword(name, email, password, role, image)
-            }
-            else {
-              if (selectedImage && sleectedFile) {
-                updateWithImageAndWithoutPassword(name, email, role, image)
-              }
-                else {
-                    updateWithoutImageAndPassword(name, email, role)
-                }
-            }
-        }
+    if (!password && !confirmPassword) 
+       { 
+            console.log('no password')
+            await update({
+                variables : {
+                    updateUserId: id,
+                    data: {
+                        name,
+                        email,
+                        roleId: role,
+                    },
+                    image : image ? image : null,
+                    removeImage : dataUser.user.imageUrl && !selectedImage ? true : false
+                },
+            })}
+    else if (password && confirmPassword && password === confirmPassword)
+    {
+        await update({
+            variables : {
+                updateUserId: id,
+                data: {
+                    name,
+                    email,
+                    hashedPassword : password,
+                    roleId: role,
+                },
+                image : image ? image : null,
+                removeImage : dataUser.user.imageUrl && !selectedImage ? true : false
+            },
+        })
+    }
+
     }
 
     let reactSelectOptions 
