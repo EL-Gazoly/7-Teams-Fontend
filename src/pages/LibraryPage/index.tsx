@@ -1,22 +1,25 @@
-import {useState} from 'react'
-// import ControlCard from '../../Components/ContraolCard'
-// import SearchIcon from '../../assets/Landing/ChooseHeadset/search.png'
-// import { Image, Tabs, Tab } from '@nextui-org/react'
-// import GridSelected from '../../assets/students/grid-selected.svg'
-// import GridUnSelected from '../../assets/students/grid-unselected.svg'
-
-// import StackSelected from '../../assets/students/stack-selected.svg'
-// import StackUnSelected from '../../assets/students/stack-unselected.svg'
-
-// import ChooseGrade from '../Students/ChooseGrade.jsx'
+import onProgressLight from '../../assets/library/onProgrss-light.svg'
+import onProgressDark from '../../assets/library/onProgrss-dark.svg'
+import { useThemeStore } from '../../stores/ThemeStore'
+import ControlCard from '../../Components/ContraolCard'
 
 const Library = () => {
-    const [activeTab, setActiveTab] = useState("stack")
+  const {dark} = useThemeStore()
+    
   return (
-    <>
+    <div className=' w-full h-full flex flex-col'>
+      <ControlCard icon="Library" title=' الوسائط المحفوظه ' neasted={false}/>
+      <div className=' w-full h-full flex flex-col gap-y-8 items-center justify-center'>
+            <img src={dark ? onProgressDark : onProgressLight} alt="" />
+            <span className={` ${dark ? "opacity-40" : "opacity-50"}`}>
+              جاري العمل على هذه الصفحة
+            </span>
+      </div>
+
+    
     
 
-    </>
+    </div>
   )
 }
 
