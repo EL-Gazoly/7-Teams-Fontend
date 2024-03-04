@@ -10,7 +10,7 @@ const Library = () => {
     <div className=' w-full h-full flex flex-col'>
       <ControlCard icon="Library" title=' الوسائط المحفوظه ' neasted={false}/>
       <div className=' w-full h-full flex flex-col gap-y-8 items-center justify-center'>
-            <img src={dark ? onProgressDark : onProgressLight} alt="" />
+            <img src={dark ? onProgressDark : onProgressLight} alt="" width={150} height={150} />
             <span className={` ${dark ? "opacity-40" : "opacity-50"}`}>
               جاري العمل على هذه الصفحة
             </span>
