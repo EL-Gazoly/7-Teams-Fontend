@@ -6,6 +6,7 @@ import Loading from '../../Components/Loading';
 import db from '../../config/firebase';
 import { ref, onValue, set } from 'firebase/database';
 import { select } from '@nextui-org/react';
+import HeadsetCardSkeleton from '../../Components/HeadsetCard/Skeleton';
 
 type HeadsetProps = {
   setSelectedHeadsets: React.Dispatch<any>
@@ -88,13 +89,17 @@ const HeadsetsSection = ({setSelectedHeadsets, selectedHeadsets, searchQuery, sh
 
   return (
     <div className='mt-6 grid grid-cols-4 max-w-full gap-y-4 gap-x-[18px] pr-1' style={{ direction: 'rtl' }}>
-      {
+      
+      { loading || error  ? Array(24).fill(0).map((_, index)  =>
+        <HeadsetCardSkeleton key={index} />
+         ) :
         selectedHeadsets.map((device, index) => (
           <HeadsetCard key={index} device={device} index={index}
           selectedHeadsets={selectedHeadsets[index]} setSelectedHeadsets={setSelectedHeadsets}
           showConnected={showConnected}
           />
         ))}
+        
     </div>
   );
 };
