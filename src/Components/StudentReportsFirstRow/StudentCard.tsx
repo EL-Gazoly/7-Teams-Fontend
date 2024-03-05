@@ -70,7 +70,7 @@ const StudentCard = ({data, ref}) => {
 
         <div className=' w-full flex items-center justify-center gap-x-[18px]'>
             <div className=' flex flex-col gap-y-3'>
-                <span className=' text-[#111928] dark:text-white text-2xl font-bold'>{data?.student.name.substring(0, 10)} </span>
+                <span className=' text-[#111928] dark:text-white text-2xl font-bold'>{data?.student.name.substring(0, 10)} </span>``
                 <div className='flex items-center justify-center  text-xl font-medium text-primary'>   
                 <span className=''>{data?.student.facilityId}</span>
                 <span>#</span>
