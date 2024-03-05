@@ -13,7 +13,10 @@ const StudentCard = ({student}) => {
                 </div>
         <div className=' flex flex-col items-center gap-y-1'>
             <span className='text-text-black dark:text-white text-[10px] font-bold'> {student.name.substring(0,15)} </span>
-            <span className=' text-success text-[11px] font-medium'> #{student?.generatedId}</span>
+            <div className='flex items-center justify-center  text-xs font-semibold text-primary'>
+              <span className=''>{student.facilityId}</span>
+              <span>#</span>
+              </div>
 
         </div>
       

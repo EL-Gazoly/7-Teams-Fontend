@@ -5,7 +5,7 @@ import noPic from '../../../assets/students/noPic.svg'
 type Student = {
   imageUrl: string;
   name: string;
-  generatedId: number;
+  facilityId: string;
   device: {
     name: string;
   };
@@ -53,7 +53,11 @@ const StudentsStackViews = ({ students }: StudentStackProps) => {
               <span className='text-text-black dark:text-white text-sm font-b old'>{student.name}</span>
             </TableCell>
             <TableCell>
-              <span className='text-xs font-semibold text-primary'>#{student.generatedId}</span>
+              <div className='flex items-center justify-center  text-xs font-semibold text-primary'>   
+                <span className=''>{student.facilityId}</span>
+                <span>#</span>
+              </div>
+              
             </TableCell>
             <TableCell className='relative'>
               <div className={`absolute top-[40%] right-[35%] w-[60px] h-[26px] ${student.device?.name ?   "bg-primary " : " bg-disconnected-gradient"} rounded flex flex-row-reverse items-center justify-center gap-x-[4px]`}>

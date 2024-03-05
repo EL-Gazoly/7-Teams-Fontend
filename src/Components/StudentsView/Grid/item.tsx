@@ -6,7 +6,7 @@ type studentCardProps = {
   student : {
     imageUrl : string,
     name : string,
-    generatedId : number,
+    facilityId : string,
     device : {
       name : string
     }
@@ -29,7 +29,7 @@ const StudentCard = ({student} : studentCardProps) => {
                 </div>
                 <div className=' flex flex-col text-xs font-bold gap-y-[5px] text-center'>
                     <span className=' text-text-black dark:text-white'>{student.name.substring(0,15)}</span>
-                    <span className=' text-primary text-xs font-medium'>#{student.generatedId}</span>
+                    <span className=' text-primary text-xs font-medium'>#{student.facilityId}</span>
 
                 </div>
             </div>

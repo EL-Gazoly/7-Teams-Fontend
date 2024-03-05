@@ -4,7 +4,7 @@ type studentsGridProps = {
   students : [{
     imageUrl : string,
     name : string,
-    generatedId : number,
+    facilityId : string,
     device : {
       name : string
     }

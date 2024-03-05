@@ -7,7 +7,7 @@ query Students {
         studentId
         name
         imageUrl
-        generatedId
+        facilityId
             device {
                 name
             }

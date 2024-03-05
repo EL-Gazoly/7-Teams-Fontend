@@ -4,8 +4,7 @@ import { useQuery } from '@apollo/client';
 import { GetDevices } from '../../graphql/devices';
 import Loading from '../../Components/Loading';
 import db from '../../config/firebase';
-import { ref, onValue, set } from 'firebase/database';
-import { select } from '@nextui-org/react';
+import { ref, onValue } from 'firebase/database';
 import HeadsetCardSkeleton from '../../Components/HeadsetCard/Skeleton';
 
 type HeadsetProps = {

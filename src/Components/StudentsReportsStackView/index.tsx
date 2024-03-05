@@ -60,7 +60,10 @@ const StackView = ({data}) => {
                     <span className='text-[#292D32] dark:text-white text-sm font-bold'> {student?.name} </span>
                 </TableCell>
                 <TableCell className=' cursor-pointer'onClick={()=> navigate(`/reports/students/${student?.studentId}}`)}>
-                    <span className='text-xs font-semibold text-primary '>#{student?.generatedId}</span>
+                <div className='flex items-center justify-center  text-xs font-semibold text-primary'>
+                  <span className=''>{student.facilityId}</span>
+                  <span>#</span>
+                </div>
                 </TableCell>
                 <TableCell className=' cursor-pointer'onClick={()=> navigate(`/reports/students/${student?.studentId}}`)}>
                     <span className='text-sm font-bold text-[#292D32] dark:text-white'>{student?.schoolName}</span>

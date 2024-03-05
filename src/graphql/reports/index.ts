@@ -4,7 +4,7 @@ export const GetStudentReports = gql`
  query Student($studentId: String!) {
   student(id: $studentId) {
     name
-    generatedId
+    facilityId
     imageUrl
     team {
       teamId
@@ -39,7 +39,7 @@ export const GetStudents = gql`
         schoolName
         name
         imageUrl
-        generatedId
+        facilityId
           team {
             name
           }

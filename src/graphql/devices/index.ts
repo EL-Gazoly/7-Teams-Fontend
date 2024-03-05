@@ -8,7 +8,7 @@ export const GetDevices = gql`
             macAddress
                 student {
                     name
-                    generatedId
+                    facilityId
                 }
         }
   }
