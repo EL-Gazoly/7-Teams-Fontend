@@ -74,7 +74,7 @@ class IpcFunctions{
         try {
           flag = true
           const currentIP = store.get('ip')
-            excuteCommand(`scrcpy -s ${currentIP} --video-bit-rate 8M --max-size 2048 --crop 1600:900:2017:510 -t --window-title B-Vision-Stream  --no-audio`);
+            excuteCommand(`scrcpy -s ${currentIP} --video-bit-rate 8M --max-size 2048 --crop 1600:900:2017:510 -t --window-title 7teams-Stream  --no-audio`);
           event.sender.send('start-stream-reply', 'Stream Started');
         } catch (err) {
             console.error('Something went wrong:', err.stack);
@@ -85,7 +85,7 @@ class IpcFunctions{
       async  handleScreenRecord(event) {
         try {
           const currentIP = store.get('ip')
-            excuteCommand(`scrcpy -s ${currentIP} --max-size 2048 --crop 1600:900:2017:510  --no-audio -N --window-title B-Vision-Recoard  --record=../../assets/recoard.mp4`);
+            excuteCommand(`scrcpy -s ${currentIP} --max-size 2048 --crop 1600:900:2017:510  --no-audio -N --window-title 7teams-Recoard  --record=../../assets/recoard.mp4`);
           event.sender.send('screenrecord-reply', 'Screen Record Started');
         } catch (err) {
             console.error('Something went wrong:', err.stack);
