@@ -8,23 +8,25 @@ import LogoImage from '../../assets/SideBar/Open/logo.png'
 import DarkLogo from '../../assets/SideBar/Open/dark-logo.png'
 import SelectedHeadset from '../../assets/SideBar/Open/Selected/headset.svg'
 import Headset from '../../assets/SideBar/Open/default/headset.svg'
-import SelectedCourses from '../../assets/SideBar/Open/Selected/courses.png'
+import SelectedCourses from '../../assets/SideBar/Open/Selected/courses.svg'
 import Courses from '../../assets/SideBar/Open/default/courses.svg'
-import SelectedStudents from '../../assets/SideBar/Open/Selected/students.png'
+import SelectedStudents from '../../assets/SideBar/Open/Selected/students.svg'
 import Students from '../../assets/SideBar/Open/default/students.svg'
-import SelectedLibrary from '../../assets/SideBar/Open/Selected/library.png'
+import SelectedLibrary from '../../assets/SideBar/Open/Selected/library.svg'
 import library from '../../assets/SideBar/Open/default/library.svg'
-import SelectedReports from '../../assets/SideBar/Open/Selected/reports.png'
+import SelectedReports from '../../assets/SideBar/Open/Selected/reports.svg'
 import Reports from '../../assets/SideBar/Open/default/reports.svg'
-import SelectedCertificates from '../../assets/SideBar/Open/Selected/certificates.png'
+import SelectedCertificates from '../../assets/SideBar/Open/Selected/certificates.svg'
 import Certificates from '../../assets/SideBar/Open/default/certificates.svg'
-import SelectedDashboard from '../../assets/SideBar/Open/Selected/dashboard.png'
+import SelectedDashboard from '../../assets/SideBar/Open/Selected/dashboard.svg'
 import Dashboard from '../../assets/SideBar/Open/default/dashboard.svg'
-import SelectedLogs from '../../assets/SideBar/Open/Selected/logs.png'
+import SelectedLogs from '../../assets/SideBar/Open/Selected/logs.svg'
 import Logs from '../../assets/SideBar/Open/default/logs.svg'
-import SelectedSettings from '../../assets/SideBar/Open/Selected/settings.png'
+import SelectedSettings from '../../assets/SideBar/Open/Selected/settings.svg'
 import Settings from '../../assets/SideBar/Open/default/settings.svg'
 import ArrowIcon from '../../assets/SideBar/Open/arrow.png'
+import SelectedSchoolIcon from '../../assets/SideBar/Open/school.svg'
+import SchoolIcon from '../../assets/SideBar/Open/default/school.svg'
 
 import { useThemeStore } from "../../stores/ThemeStore";
 
@@ -64,7 +66,7 @@ const SideBar = () => {
 
             <Tabs classNames={{
                 "base" : "text-white overflow-x-hidden",
-                "tabList" : "flex flex-col w-full h-full bg-transparent space-y-7",
+                "tabList" : "flex flex-col w-full h-full bg-transparent space-y-6",
                 "cursor" : "h-[46px] flex items-center justify-center rounded-[6.5px]",
                 "tabContent" : " text-xs"
             }}
@@ -110,6 +112,19 @@ const SideBar = () => {
                         <div className=" w-[159px] flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
                             <img src={active==="/students" || dark ? SelectedStudents : Students} width={25} height={25}  />
                             <span>الطلاب</span>
+                        </div>
+                    } />
+                )
+               }
+               {
+                (
+                    localStorage.getItem('isAdmin') === 'true' ||
+                    localStorage.getItem('isStudentsAccess') === 'true'
+                ) && (
+                    <Tab key={"/schools"}   title={
+                        <div className=" w-[159px] flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
+                            <img src={active==="/schools" || dark ? SelectedSchoolIcon : SchoolIcon} width={25} height={25}  />
+                            <span>المدارس</span>
                         </div>
                     } />
                 )

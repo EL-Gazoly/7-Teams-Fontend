@@ -1,13 +1,13 @@
-import HeadsetLight from '../../assets/ControlCard/Light/Headset.png'
-import CoursesLight from '../../assets/ControlCard/Light/Courses.png'
-import StudentLight from '../../assets/ControlCard/Light/Users.png'
-import LibraryLight from '../../assets/ControlCard/Light/Library.png'
-import CertificateLight from '../../assets/ControlCard/Light/Certificates.png'
-import SystemIconLight from '../../assets/ControlCard/Light/System.png'
-import ReportLight from '../../assets/ControlCard/Light/Reports.png'
-import SettingLight from '../../assets/ControlCard/Light/Settings.png'
-import DashboardLight from '../../assets/ControlCard/Light/Dashboard.png'
-
+import HeadsetLight from '../../assets/ControlCard/Light/Headset.svg'
+import CoursesLight from '../../assets/ControlCard/Light/Courses.svg'
+import StudentLight from '../../assets/ControlCard/Light/Users.svg'
+import LibraryLight from '../../assets/ControlCard/Light/Library.svg'
+import CertificateLight from '../../assets/ControlCard/Light/Certificates.svg'
+import SystemIconLight from '../../assets/ControlCard/Light/System.svg'
+import ReportLight from '../../assets/ControlCard/Light/Reports.svg'
+import SettingLight from '../../assets/ControlCard/Light/Settings.svg'
+import DashboardLight from '../../assets/ControlCard/Light/Dashboard.svg'
+import SchoolLight from '../../assets/ControlCard/Light/school.svg'
 import BackIconLight from '../../assets/ControlCard/Light/Iconsax/Outline/arrowleft.svg'
 import DarkArrow from '../../assets/ControlCard/dark/Iconsax/Outline/arrowleft.png'
 
@@ -62,6 +62,8 @@ const ControlCard = ({icon, title, neasted}:Props) => {
         return SystemIconLight;
       case 'Settings' :
         return SettingLight
+      case 'Schools' : 
+        return SchoolLight
     }
   }
 
