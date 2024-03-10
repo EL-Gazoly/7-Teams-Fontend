@@ -4,7 +4,6 @@ import ControlCard from '../../Components/ContraolCard'
 import { Image, Button } from '@nextui-org/react'
 import SearchIcon from '../../assets/Landing/ChooseHeadset/search.png'
 import AddIcon from '../../assets/students/add.svg'
-import SchoolIcon from '../../assets/SideBar/Open/school.svg'
 import { useNavigate } from 'react-router-dom'
 import SchoolTable from './table'
 const SchoolsPage = () => {
@@ -15,7 +14,7 @@ const SchoolsPage = () => {
         <div className=' flex flex-col gap-y-10'>
             <div className=' h-36 w-full bg-[#F7F9FC] dark:bg-[#252A33] flex justify-between items-center px-7'>
                 <Button className=' px-4  h-12 gap-x-4 flex items-center justify-center bg-primary rounded-lg'
-                    onPress={() => navigate('/students/create')}
+                    onPress={() => navigate('/schools/create')}
                 >
                     <Image src={AddIcon} />
                     <span className=' text-white text-sm font-bold '>إضافة مدرسه</span>
