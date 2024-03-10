@@ -3,8 +3,8 @@ import ControlCard from '../../Components/ContraolCard'
 import SchoolIcon from '../../assets/SideBar/Open/school.svg'
 import { Button } from '@nextui-org/react'
 import AddIcon from '../../assets/students/add.svg'
-import { CreateSchools, getSchools } from '../../graphql/School'
-import { useMutation } from '@apollo/client'
+import { CreateSchools, getSchools, getLatestSchool } from '../../graphql/School'
+import { useMutation, useQuery } from '@apollo/client'
 import Loading from '../../Components/Loading'
 import { toast } from 'sonner'
 
@@ -13,9 +13,12 @@ const CreateSchool = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const nameRef = useRef<HTMLInputElement>();
 
+  const {data: schoolData, loading: schoolLoading, error: schoolError} = useQuery(getLatestSchool);
+
   const [createSchool, {data, loading, error}] = useMutation(CreateSchools , {
-    refetchQueries: [{query: getSchools}]
+    refetchQueries: [{query: getSchools}, {query: getLatestSchool}]
   });
+  
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     
@@ -58,12 +61,26 @@ const CreateSchool = () => {
     }
   }, [data]);
 
-  if (loading) {
+  if (loading || schoolLoading) {
     return <Loading />;
   }
   if (error) {
     toast.error('حدث خطأ اثناء اضافة المدرسة');
   }
+
+  function convertToFiveDigits(number) {
+    // Convert number to string
+    number = Number(number) + 1;
+    let numString = number.toString();
+    
+    // Check the length of the string
+    if (numString.length < 5) {
+        // Add zeros to the beginning of the string to make it 5 digits long
+        numString = "0".repeat(5 - numString.length) + numString;
+    }
+    
+    return numString;
+}
 
 
   return (
@@ -117,7 +134,7 @@ const CreateSchool = () => {
                     رقم المدرسة
                     </span>
                     <span className=' text-[32px]  font-bold text-white/70'>
-                      1465
+                    {convertToFiveDigits(schoolData?.latestSchool?.uniqueId)}
                     </span>
 
                   </div>

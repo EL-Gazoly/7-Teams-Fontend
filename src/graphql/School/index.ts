@@ -20,3 +20,10 @@ export const getSchools = gql`
         }
 }
 `
+export const getLatestSchool = gql`
+    query LatestSchool {
+        latestSchool {
+            uniqueId
+        }
+    }
+`
