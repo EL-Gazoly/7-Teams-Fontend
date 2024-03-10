@@ -4,9 +4,16 @@ import EditIcon from '../../assets/schools/Edit/Edit_Pencil_Line_01.svg'
 import LightEditIcon from '../../assets/schools/dark/Edit_Pencil_Line_01.svg'
 import LightSchoolIcon from '../../assets/SideBar/Open/default/school.svg'
 import { useThemeStore } from '../../stores/ThemeStore';
+import { useQuery } from '@apollo/client';
+import { getSchools } from '../../graphql/School';
+import Loading from '../../Components/Loading';
 
 const SchoolTable = () => {
     const {dark} = useThemeStore()
+    const {data, loading, error} = useQuery(getSchools)
+    if (loading) {
+        return <Loading />
+    }
   return (
     <Table
     isHeaderSticky
@@ -31,28 +38,35 @@ const SchoolTable = () => {
     </TableHeader>
 
     <TableBody>
-    
-        <TableRow >
-          <TableCell className='flex items-center justify-center'>
-            <div className=' w-12 h-12 bg-[#F7F9FC] dark:bg-[#EEEFF2]/10 rounded-full flex items-center justify-center'>
-                <img src={dark? SchoolIcon : LightSchoolIcon} className=' w-10 h-6'/>
-            </div>
-          </TableCell>
-          <TableCell>
-            <span className='text-text-black dark:text-white text-sm font-b old'>Hamed</span>
-          </TableCell>
-          <TableCell>
-            <div className='flex items-center justify-center  text-xs font-semibold text-primary'>   
-              <span className=''>12311</span>
-              <span>#</span>
-            </div>
-            
-          </TableCell>
-          <TableCell className='flex w-full items-center justify-center'>
-            <img src={dark? EditIcon : LightEditIcon} alt="" className=' self-center' />
-          </TableCell>
-        </TableRow>
-
+    {
+        data?.admin?.schools?.map((school, index) => {
+            return (
+                <TableRow key={index}>
+                <TableCell className='flex items-center justify-center'>
+                  <div className=' w-12 h-12 bg-[#F7F9FC] dark:bg-[#EEEFF2]/10 rounded-full flex items-center justify-center'>
+                      <img src={
+                        school.imageUrl ? import.meta.env.VITE_API_URL + school.imageUrl:
+                        dark? SchoolIcon : LightSchoolIcon} className={` ${school?.imageUrl? "w-full h-full rounded-full object-cover": "w-10 h-6"} `}/>
+                  </div>
+                </TableCell>
+                <TableCell>
+                  <span className='text-text-black dark:text-white text-sm font-b old'>{school.name}</span>
+                </TableCell>
+                <TableCell>
+                  <div className='flex items-center justify-center  text-xs font-semibold text-primary'>   
+                    <span className=''>{school.uniqueId}</span>
+                    <span>#</span>
+                  </div>
+                  
+                </TableCell>
+                <TableCell className='flex w-full items-center justify-center'>
+                  <img src={dark? EditIcon : LightEditIcon} alt="" className=' self-center' />
+                </TableCell>
+              </TableRow>
+            )
+        })
+    }
+       
     </TableBody>
   </Table>
   )

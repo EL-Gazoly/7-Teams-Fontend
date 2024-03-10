@@ -3,7 +3,7 @@ import ControlCard from '../../Components/ContraolCard'
 import SchoolIcon from '../../assets/SideBar/Open/school.svg'
 import { Button } from '@nextui-org/react'
 import AddIcon from '../../assets/students/add.svg'
-import { CreateSchools } from '../../graphql/School'
+import { CreateSchools, getSchools } from '../../graphql/School'
 import { useMutation } from '@apollo/client'
 import Loading from '../../Components/Loading'
 import { toast } from 'sonner'
@@ -13,7 +13,9 @@ const CreateSchool = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const nameRef = useRef<HTMLInputElement>();
 
-  const [createSchool, {data, loading, error}] = useMutation(CreateSchools);
+  const [createSchool, {data, loading, error}] = useMutation(CreateSchools , {
+    refetchQueries: [{query: getSchools}]
+  });
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     

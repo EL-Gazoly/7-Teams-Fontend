@@ -9,3 +9,14 @@ export const CreateSchools = gql`
   }
 }
 `
+export const getSchools = gql`
+    query Schools {
+        admin {
+            schools {
+            imageUrl
+            name
+            uniqueId
+            }
+        }
+}
+`
