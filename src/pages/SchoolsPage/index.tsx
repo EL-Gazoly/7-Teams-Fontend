@@ -1,4 +1,4 @@
-import React from 'react'
+import {useState} from 'react'
 import SelectedSchoolIcon from '../../assets/SideBar/Open/school.svg'
 import ControlCard from '../../Components/ContraolCard'
 import { Image, Button } from '@nextui-org/react'
@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom'
 import SchoolTable from './table'
 const SchoolsPage = () => {
     const navigate = useNavigate()
+    const [schools, setSchools] = useState(0)
   return (
     <div className=' flex flex-col gap-y-8'>
         <ControlCard icon='Schools' title='المدارس' neasted={false} />
@@ -32,10 +33,10 @@ const SchoolsPage = () => {
             </div>
             <div className='flex flex-row-reverse items-center justify-center self-end text-lg font-bold gap-x-1'>
                 <span>المدارس المسجلة في النظام</span>
-                <span>( 12 مدرسه)</span>
+                <span>( {schools} )</span>
             </div>
             <div className=' mt-2'>
-                <SchoolTable />
+                <SchoolTable setSchools={setSchools} />
 
             </div>
 

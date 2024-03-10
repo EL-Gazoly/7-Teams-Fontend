@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Table, TableHeader, TableBody, TableColumn, TableRow, TableCell, Avatar } from '@nextui-org/react';
 import SchoolIcon from '../../assets/SideBar/Open/school.svg'
 import EditIcon from '../../assets/schools/Edit/Edit_Pencil_Line_01.svg'
@@ -8,12 +9,18 @@ import { useQuery } from '@apollo/client';
 import { getSchools } from '../../graphql/School';
 import Loading from '../../Components/Loading';
 
-const SchoolTable = () => {
+const SchoolTable = ({setSchools}) => {
     const {dark} = useThemeStore()
     const {data, loading, error} = useQuery(getSchools)
+    useEffect(() => {
+      if (data) {
+          setSchools(data.admin.schools.length)
+      }
+  }, [data])
     if (loading) {
         return <Loading />
     }
+
   return (
     <Table
     isHeaderSticky
