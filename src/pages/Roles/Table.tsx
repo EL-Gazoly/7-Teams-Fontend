@@ -117,6 +117,14 @@ const RolesTables = ({searchQuery}) => {
                             <span className=''> التحكم في نظارة الواقع الافتراضي </span>
                         </div>
                     }
+                    {
+                        role.isSchoolAccess && 
+                        <div className='flex items-center gap-x-2 col-span-2 '>
+                            <div className=' w-1 h-1 bg-text-black mt-1 dark:bg-white' />
+                            <span className=''> التحكم في المدارس </span>
+                        </div>
+
+                    }
                     </div>
                    
                 </TableCell>

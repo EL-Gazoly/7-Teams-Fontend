@@ -21,6 +21,7 @@ const UpdateRolePage = () => {
   const [isHeadsetAcsess, setIsHeadsetAccsess] = useState(false)
   const [isCourseAcsess, setIsCourseAccsess] = useState(false)
   const [isStudentAcsess, setIsStudentAccsess] = useState(false)
+  const [isSchoolAccess, setIsSchoolAccsess] = useState(false)
   const [isLibraryAcsess, setIsLibraryAccsess] = useState(false)
   const [isReportAcsess, setIsReportAccsess] = useState(false)
   const [isCertificateAcsess, setIsCertificateAccsess] = useState(false)
@@ -48,6 +49,7 @@ const UpdateRolePage = () => {
             setIsHeadsetAccsess(role.isDevicesAccess)
             setIsCourseAccsess(role.isCoursesAccsess)
             setIsStudentAccsess(role.isStudentsAccess)
+            setIsSchoolAccsess(role.isSchoolAccess)
             setIsLibraryAccsess(role.isLibraryAccess)
             setIsReportAccsess(role.isReportsAccess)
             setIsCertificateAccsess(role.isCertificatesAccess)
@@ -68,6 +70,7 @@ const UpdateRolePage = () => {
           isDevicesAccess: isHeadsetAcsess,
           isCoursesAccsess: isCourseAcsess,
           isStudentsAccess: isStudentAcsess,
+          isSchoolAccess: isSchoolAccess,
           isLibraryAccess: isLibraryAcsess,
           isReportsAccess: isReportAcsess,
           isCertificatesAccess: isCertificateAcsess,
@@ -101,6 +104,7 @@ const UpdateRolePage = () => {
               isHeadsetAcsess,
               isCourseAcsess,
               isStudentAcsess,
+              isSchoolAccess,
               isLibraryAcsess,
               isReportAcsess,
               isCertificateAcsess,
@@ -111,6 +115,7 @@ const UpdateRolePage = () => {
               setIsHeadsetAccsess,
               setIsCourseAccsess,
               setIsStudentAccsess,
+              setIsSchoolAccsess,
               setIsLibraryAccsess,
               setIsReportAccsess,
               setIsCertificateAccsess,

@@ -9,7 +9,7 @@ import SettingLight from '../../assets/ControlCard/Light/Settings.svg'
 import DashboardLight from '../../assets/ControlCard/Light/Dashboard.svg'
 import SchoolLight from '../../assets/ControlCard/Light/school.svg'
 import BackIconLight from '../../assets/ControlCard/Light/Iconsax/Outline/arrowleft.svg'
-import DarkArrow from '../../assets/ControlCard/dark/Iconsax/Outline/arrowleft.png'
+import DarkArrow from '../../assets/ControlCard/dark/arrow.svg'
 
 
 import { Image, Switch, cn, Button, Avatar } from '@nextui-org/react'

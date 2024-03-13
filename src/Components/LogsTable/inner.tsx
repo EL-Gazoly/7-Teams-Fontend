@@ -31,6 +31,7 @@ const LogsTableItem = ({data, setTake, loading, logs, currentPage, date, filter}
       .replace('StartTraining', 'التدريب لتجربه')
       .replace('Practical', 'الاختبار العملي لتجربه')
       .replace('Theoretical', 'الاختبار النظري لتجربه')
+      .replace('School', 'مدرسه :')
 
 
   

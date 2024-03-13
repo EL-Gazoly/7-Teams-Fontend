@@ -49,24 +49,23 @@ const SideBar = () => {
         setActive(getFirstWordFromPath(location.pathname))
     }, [])
 
-    console.log(localStorage.getItem('isAdmin'))
 
   return (
-    <div className=" fixed w-[213px]">
+    <div className=" fixed w-[213px] h-screen">
         <div className='  h-full flex flex-col px-5 py-[53px] gap-y-10 bg-[#F7F9FC] dark:bg-[#252A33] overflow-hidden'
         style={{
             filter : "drop-shadow(0px 3.25px 21.125px rgba(0, 0, 0, 0.25))"
         }}
         >
 
-            <div className="flex items-center justify-center font-medium text-[#42464B] overflow-x-hidden">
+            <div className="flex items-center justify-center font-medium text-[#42464B] overflow-hidden">
                 <Image src={dark ? DarkLogo : LogoImage} width={153} height={49} />
 
             </div>
 
             <Tabs classNames={{
                 "base" : "text-white overflow-x-hidden",
-                "tabList" : "flex flex-col w-full h-full bg-transparent space-y-6",
+                "tabList" : "flex flex-col w-full h-full bg-transparent space-y-[22px]",
                 "cursor" : "h-[46px] flex items-center justify-center rounded-[6.5px]",
                 "tabContent" : " text-xs"
             }}
@@ -119,7 +118,7 @@ const SideBar = () => {
                {
                 (
                     localStorage.getItem('isAdmin') === 'true' ||
-                    localStorage.getItem('isStudentsAccess') === 'true'
+                    localStorage.getItem('isSchoolAccess') === 'true'
                 ) && (
                     <Tab key={"/schools"}   title={
                         <div className=" w-[159px] flex items-center justify-start mr-4 gap-x-4 mt-3 font-medium text-sm  flex-row-reverse">
@@ -223,11 +222,7 @@ const SideBar = () => {
             </Tabs>
             
         </div>
-        <div className=" absolute top-[50%] left-[-35%]">
-                    <div className=" w-[147px] h-5 rounded-3xl bg-primary rotate-90 flex items-center justify-center cursor-pointer">
-                       <Image src={ArrowIcon} radius="none" className=" -rotate-90"/>
-                    </div>
-        </div>
+      
     </div>
     
   )

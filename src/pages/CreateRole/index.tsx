@@ -18,6 +18,7 @@ const CreateRolePage = () => {
   const [isHeadsetAcsess, setIsHeadsetAccsess] = useState(false)
   const [isCourseAcsess, setIsCourseAccsess] = useState(false)
   const [isStudentAcsess, setIsStudentAccsess] = useState(false)
+  const [isSchoolAccess, setIsSchoolAccsess] = useState(false)
   const [isLibraryAcsess, setIsLibraryAccsess] = useState(false)
   const [isReportAcsess, setIsReportAccsess] = useState(false)
   const [isCertificateAcsess, setIsCertificateAccsess] = useState(false)
@@ -76,6 +77,7 @@ const CreateRolePage = () => {
               isHeadsetAcsess,
               isCourseAcsess,
               isStudentAcsess,
+              isSchoolAccess,
               isLibraryAcsess,
               isReportAcsess,
               isCertificateAcsess,
@@ -86,6 +88,7 @@ const CreateRolePage = () => {
               setIsHeadsetAccsess,
               setIsCourseAccsess,
               setIsStudentAccsess,
+              setIsSchoolAccsess,
               setIsLibraryAccsess,
               setIsReportAccsess,
               setIsCertificateAccsess,

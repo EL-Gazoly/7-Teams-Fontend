@@ -26,6 +26,7 @@ export const getRole = gql`
     name
     isUsersAccess
     isStudentsAccess
+    isSchoolAccess
     isRolesAccess
     isReportsAccess
     isLogsAccess
@@ -47,6 +48,7 @@ query GetRolesWithPermessions {
       isUsersAccess
       isRolesAccess
       isStudentsAccess
+      isSchoolAccess
       isReportsAccess
       isLogsAccess
       isLibraryAccess

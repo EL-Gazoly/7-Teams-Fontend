@@ -85,6 +85,7 @@ const LoginPage = () => {
             localStorage.setItem('sevenTeamAuth', `${userData?.loginUser?.token}`)
             localStorage.setItem('isDevicesAccess', `${userData?.loginUser?.roles?.isDevicesAccess}`)
             localStorage.setItem('isStudentsAccess', `${userData?.loginUser?.roles?.isStudentsAccess}`)
+            localStorage.setItem('isSchoolAccess', `${userData?.loginUser?.roles?.isSchoolAccess}`)
             localStorage.setItem('isRolesAccess', `${userData?.loginUser?.roles?.isRolesAccess}`)
             localStorage.setItem('isUsersAccess', `${userData?.loginUser?.roles?.isUsersAccess}`)
             localStorage.setItem('isReportsAccess', `${userData?.loginUser?.roles?.isReportsAccess}`)

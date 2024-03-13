@@ -15,6 +15,8 @@ type permessionsType = {
     setIsCourseAccsess : React.Dispatch<React.SetStateAction<boolean>>
     isStudentAcsess : boolean
     setIsStudentAccsess : React.Dispatch<React.SetStateAction<boolean>>
+    isSchoolAccess : boolean
+    setIsSchoolAccsess : React.Dispatch<React.SetStateAction<boolean>>
     isLibraryAcsess : boolean
     setIsLibraryAccsess : React.Dispatch<React.SetStateAction<boolean>>
     isReportAcsess : boolean
@@ -55,6 +57,12 @@ const RolesSection = ({disabled, nameRef, permssions} : RolesSectionProps) => {
             description : "سيكون لدى المستخدم في هذا الدور القدرة على تصفح قسم الطلاب والتحكم بهم واضافة طلاب جدد للنظام.",
             selected : permssions.isStudentAcsess,
             onChange : permssions.setIsStudentAccsess
+        },
+        school : {
+            name : "التحكم في قسم المدارس",
+            description : "سيكون لدى المستخدم في هذا الدور القدرة على تصفح المدارس والتحكم بها واضافة مدارس جديدة للنظام.",
+            selected : permssions.isSchoolAccess,
+            onChange : permssions.setIsSchoolAccsess
         },
         library : {
             name : "التحكم في قسم مكتبة الوسائط",

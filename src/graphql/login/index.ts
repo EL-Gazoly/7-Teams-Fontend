@@ -19,6 +19,7 @@ mutation LoginUser($email: String!, $hashedPassword: String!) {
       isLogsAccess
       isReportsAccess
       isRolesAccess
+      isSchoolAccess
       isStudentsAccess
       isUsersAccess
       isLibraryAccess
