@@ -67,11 +67,14 @@ const SchoolTable = ({setSchools}) => {
                   </div>
                   
                 </TableCell>
-                <TableCell className='flex w-full items-center justify-center'>
-                  <Link to={`/schools/update/${school.schoolId}`}>
-                   <img src={dark? EditIcon : LightEditIcon} alt="" className=' self-center' />
-                  </Link>
-                </TableCell>
+                <TableCell className='relative'>
+            <div className='absolute top-[40%] right-[30%]' >
+              <Link to={`/schools/update/${school.schoolId}`}  >
+                <img src={dark? EditIcon : LightEditIcon} alt=""  />
+              </Link>
+            </div>
+            
+          </TableCell>
               </TableRow>
             )
         })
