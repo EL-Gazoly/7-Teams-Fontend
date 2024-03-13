@@ -1,17 +1,20 @@
 import {useState, useRef, useEffect} from 'react'
 import ControlCard from '../../Components/ContraolCard'
 import SchoolIcon from '../../assets/SideBar/Open/school.svg'
+import LightSchoolIcon from '../../assets/SideBar/Open/default/school.svg'
 import { Button } from '@nextui-org/react'
 import AddIcon from '../../assets/students/add.svg'
 import { CreateSchools, getSchools, getLatestSchool } from '../../graphql/School'
 import { useMutation, useQuery } from '@apollo/client'
 import Loading from '../../Components/Loading'
 import { toast } from 'sonner'
+import { useThemeStore } from '../../stores/ThemeStore'
 
 const CreateSchool = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const nameRef = useRef<HTMLInputElement>();
+  const {dark} = useThemeStore();
 
   const {data: schoolData, loading: schoolLoading, error: schoolError} = useQuery(getLatestSchool);
 
@@ -89,22 +92,16 @@ const CreateSchool = () => {
         <div className='w-full h-[655px] bg-white dark:bg-[#252A33] rounded-lg flex items-center justify-center'>
             <div className="flex flex-col gap-y-9 items-center justify-center">
                 <div className=' flex flex-col gap-y-8'>
-                  <div className=' w-[116px] h-[116px] self-center rounded-full dark:bg-[#EEEFF2]/20 flex items-center justify-center'>
-                  {selectedImage ? <img src={selectedImage} alt="Selected" style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                borderRadius: '50%',
-
-            }} /> : <img src={SchoolIcon} alt="Placeholder" />}
+                  <div className=' w-[116px] h-[116px] self-center rounded-full bg-[#EEEFF2] dark:bg-[#EEEFF2]/20 flex items-center justify-center'>
+                  {selectedImage ? <img src={selectedImage} alt="Selected" className=' w-full h-full object-cover rounded-full' /> : <img src={dark? SchoolIcon : LightSchoolIcon} alt="Placeholder" className=' w-[59px] h-[60px]' />}
                   </div>
                   <div className=' flex flex-col gap-y-5'>
                     <div className=' flex items-center self-center gap-x-3'>
-                        <Button className=' w-[171px] h-[51px] rounded-lg text-white bg-[#FF5948]/60' onPress={handleImageRemove}>
+                        <Button className=' w-[171px] h-[51px] rounded-lg text-white bg-[#CF0644] dark:bg-[#FF5948]/60' onPress={handleImageRemove}>
                         حذف 
                         </Button>
 
-                        <label htmlFor="image-upload" className='w-[171px] h-[51px] text-white bg-[#52D867]/40 flex items-center justify-center rounded-lg cursor-pointer'>
+                        <label htmlFor="image-upload" className='w-[171px] h-[51px] text-white bg-primary bg-[#52D867]/40 flex items-center justify-center rounded-lg cursor-pointer'>
                         تحميل صوره جديده
                        </label>
                       <input key={selectedImage} // Add this key to force re-render on file change
@@ -121,26 +118,26 @@ const CreateSchool = () => {
                 </div>
                 <div className=' flex items-center gap-x-14 flex-row-reverse'>
                   <div className="flex flex-col gap-y-3 text-[15.25px]">
-                    <span className=' text-white/60 font-bold self-end'>
+                    <span className=' text-text-black/60 dark:text-white/60 font-bold self-end'>
                     اسم المدرسة
                     </span>
-                    <input type="text" ref={nameRef} className=' w-[379.28px] h-[65.75px] px-5 text-right rounded-lg dark:bg-[#1F242D]/70 text-text-black dark:text-white placeholder:text-white/60 placeholder:font-bold'
+                    <input type="text" ref={nameRef} className=' w-[379.28px] h-[65.75px] px-5 text-right rounded-lg  bg-[#E9E9E9] dark:bg-[#1F242D]/70 text-text-black dark:text-white dark:placeholder:text-white/60 placeholder:text-text-black/40 placeholder:font-bold'
                       placeholder='ادخل اسم المدرسة'
                     />
 
                   </div>
                   <div className=' flex flex-col gap-y-6'>
-                     <span className=' text-white font-bold self-end text-sm'>
+                     <span className=' text-text-black dark:text-white font-bold self-end text-sm'>
                     رقم المدرسة
                     </span>
-                    <span className=' text-[32px]  font-bold text-white/70'>
+                    <span className=' text-[32px]  font-bold text-text-black/40 dark:text-white/70'>
                     {convertToFiveDigits(schoolData?.latestSchool?.uniqueId)}
                     </span>
 
                   </div>
 
                 </div>
-                <Button className=' w-[217px] h-16 mt-6 rounded-md' onPress={handleCreateSchool}>
+                <Button className=' w-[217px] h-16 mt-6 rounded-md bg-[#4E5464] text-white' onPress={handleCreateSchool}>
                   <img src={AddIcon} alt="" />
                   <span>اضافة مدرسة جديدة</span>
                 </Button>
