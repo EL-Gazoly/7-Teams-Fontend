@@ -13,6 +13,7 @@ export const getSchools = gql`
     query Schools {
         admin {
             schools {
+            schoolId
             imageUrl
             name
             uniqueId
@@ -26,4 +27,21 @@ export const getLatestSchool = gql`
             uniqueId
         }
     }
+`
+export const getSchool = gql`
+    query School($schoolId: String!) {
+        school(schoolId: $schoolId) {
+            imageUrl
+            name
+            uniqueId
+        }
+    }
+`
+
+export const updateSchool = gql`
+mutation UpdateSchool($schoolId: String, $data: UpdateSchoolInput!, $removeImage: Boolean, $image: Upload) {
+  updateSchool(schoolId: $schoolId, data: $data, removeImage: $removeImage, image: $image) {
+    name
+  }
+}
 `

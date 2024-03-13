@@ -8,6 +8,7 @@ import { useThemeStore } from '../../stores/ThemeStore';
 import { useQuery } from '@apollo/client';
 import { getSchools } from '../../graphql/School';
 import Loading from '../../Components/Loading';
+import { Link } from 'react-router-dom';
 
 const SchoolTable = ({setSchools}) => {
     const {dark} = useThemeStore()
@@ -48,7 +49,7 @@ const SchoolTable = ({setSchools}) => {
     {
         data?.admin?.schools?.map((school, index) => {
             return (
-                <TableRow key={index}>
+                <TableRow key={school.schoolId}>
                 <TableCell className='flex items-center justify-center'>
                   <div className=' w-12 h-12 bg-[#F7F9FC] dark:bg-[#EEEFF2]/10 rounded-full flex items-center justify-center'>
                       <img src={
@@ -67,7 +68,9 @@ const SchoolTable = ({setSchools}) => {
                   
                 </TableCell>
                 <TableCell className='flex w-full items-center justify-center'>
-                  <img src={dark? EditIcon : LightEditIcon} alt="" className=' self-center' />
+                  <Link to={`/schools/update/${school.schoolId}`}>
+                   <img src={dark? EditIcon : LightEditIcon} alt="" className=' self-center' />
+                  </Link>
                 </TableCell>
               </TableRow>
             )
