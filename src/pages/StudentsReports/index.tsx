@@ -26,7 +26,7 @@ const StudentsReports = () => {
     students = students.filter((student) => {
        return (
         student.name.toLowerCase().includes(searchQuery) ||
-        student.generatedId.toString().includes(searchQuery) 
+        student.facilityId.toString().includes(searchQuery) 
        )
     });
     
