@@ -36,12 +36,14 @@ export const GetStudents = gql`
     admin {
         students {
         studentId
-        schoolName
         name
         imageUrl
         facilityId
           team {
             name
+            school {
+              name
+            }
           }
           class {
             number

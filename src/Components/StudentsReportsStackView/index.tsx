@@ -11,6 +11,8 @@ const StackView = ({data}) => {
             return 'الثانوي'
             case 'Middle':
             return 'المتوسط'
+            case 'Primary':
+            return 'الابتدائي'
         }
     }
     const getGrade = (grade) => {
@@ -21,6 +23,12 @@ const StackView = ({data}) => {
             return 'الثاني'
             case 'third':
             return 'الثالث'
+            case 'fourth':
+            return 'الرابع'
+            case 'fifth':
+            return 'الخامس'
+            case 'sixth':
+            return 'السادس'
         }
     }
   return (
@@ -66,7 +74,7 @@ const StackView = ({data}) => {
                 </div>
                 </TableCell>
                 <TableCell className=' cursor-pointer'onClick={()=> navigate(`/reports/students/${student?.studentId}}`)}>
-                    <span className='text-sm font-bold text-[#292D32] dark:text-white'>{student?.schoolName}</span>
+                    <span className='text-sm font-bold text-[#292D32] dark:text-white'>{student?.team?.school?.name}</span>
                 </TableCell>
                 <TableCell className=' cursor-pointer'onClick={()=> navigate(`/reports/students/${student?.studentId}}`)}>
                     <span className='text-sm font-bold text-[#292D32] dark:text-white'> {getGrade(student?.class.number)} </span>
