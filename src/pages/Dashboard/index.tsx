@@ -16,7 +16,6 @@ const Dashboard = () => {
     console.log(error?.message || totalCourseTime?.message)
     toast.error("حدث خطأ أثناء تحميل البيانات")
   }
-  if (data) console.log(data?.admin.Team)
 
   return (
     <div>

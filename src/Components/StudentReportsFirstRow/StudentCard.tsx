@@ -79,7 +79,7 @@ const StudentCard = ({data, ref}) => {
             </div>
             <Divider orientation="vertical" className='bg-[#111928]' />
             <div className=' flex flex-col gap-y-[10px] text-[15px] text-[#1119288F] dark:text-white/80'>
-                <span >مدرسة : جده الحديثة</span>
+                <span >مدرسة :  {data?.student.team.school.name}</span>
                 <span >المرحلة : {getStage(data?.student.team.name)}</span>
                 <span >الصف : {getGrade(data?.student.class.number)}</span>
 

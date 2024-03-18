@@ -9,6 +9,9 @@ export const GetStudentReports = gql`
     team {
       teamId
       name
+      school {
+          name
+        }
     }
     class {
       number
