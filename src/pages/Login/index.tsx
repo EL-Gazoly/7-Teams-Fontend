@@ -38,6 +38,9 @@ const LoginPage = () => {
             }
         }
     }, [adminError, userError]);
+    useEffect(() => {
+        emailRef.current.focus();
+    }, []);
 
     const handleAdminLogin = () => {
         loginAdmin({
@@ -116,7 +119,13 @@ const LoginPage = () => {
                         <div className="email flex flex-col text-right gap-y-[5px]">
                             <label htmlFor="email" className='text-[#3D3C3C] dark:text-white text-xs'>البريد الاليكتروني</label>
                             <input type="email" placeholder='ادخل البريد الالكتروني' ref={emailRef}
-                                className='text-right w-[276px] h-12 bg-[#E6E8EB66] placeholder:text-[#2929295C] dark:text-white dark:placeholder:text-white/80 text-xs rounded-md px-4' />
+                                className='text-right w-[276px] h-12 bg-[#E6E8EB66] placeholder:text-[#2929295C] dark:text-white dark:placeholder:text-white/80 text-xs rounded-md px-4'
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter') {
+                                        passwordRef.current.focus();
+                                    }
+                                }}
+                                />
                         </div>
                         <div className="password mt-5 flex flex-col text-right gap-y-[5px]">
                             <label htmlFor="password" className='text-[#3D3C3C] dark:text-white text-xs'>كلمة المرور</label>
@@ -129,6 +138,12 @@ const LoginPage = () => {
                             <input type={showPassword? "text" : "password"} placeholder='ادخل كلمة المرور' ref={passwordRef}
                                 className=' flex-1 h-full bg-transparent  text-right placeholder:text-[#2929295C] text-text-black` dark:text-white dark:placeholder:text-white/80 text-xs  ' 
                                     onChange={(e) => setIsIconshowed(e.target.value)}
+                                    onKeyDown={(e) => {
+                                        if (e.key === 'Enter') {
+                                            handleLogin();
+                                        }
+                                    
+                                    }}
                                 />
                             </div>
                         </div>
