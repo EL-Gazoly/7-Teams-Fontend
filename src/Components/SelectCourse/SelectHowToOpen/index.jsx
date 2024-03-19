@@ -4,8 +4,8 @@ import unSelectedStart from '../../../assets/SelectCourse/SelectHowtoStart/unsel
 import SelectedStart from '../../../assets/SelectCourse/SelectHowtoStart/selected.svg'
 import {useThemeStore} from '../../../stores/ThemeStore';
 const options = [
-  { value: 'FullCourse', label: "أبدأ الشرح ", image : unSelectedStart, selected : SelectedStart},
-  { value: 'StartTraining', label: "أبدأ التجربة " , image : unSelectedStart, selected : SelectedStart},
+  { value: 'FullCourse', label: "أبدأ التجربه كامله ", image : unSelectedStart, selected : SelectedStart},
+  { value: 'StartTraining', label: "أبدأ الشرح النظري " , image : unSelectedStart, selected : SelectedStart},
   { value: 'Practical', label: "أبدأ الأختبار العملي" , image : unSelectedStart, selected : SelectedStart},
   { value: 'Theoretical', label: "أبدأ الأختبار النظري" , image : unSelectedStart, selected : SelectedStart},
 ];

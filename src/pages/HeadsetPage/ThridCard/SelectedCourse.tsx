@@ -79,8 +79,8 @@ const SelectedCourse = ({selectedItem , setSelectedItem} : SelectedCourseProps) 
             </div>
 
             <div className=' grid grid-cols-2 max-w-[335px] gap-x-[10px] gap-y-[14px] '>
-                <Button className=' w-40 h-[52px] p-[18px] rounded-lg font-bold text-sm' color='primary' onPress={handelStartFullCourse}> أبدأ الشرح </Button>
-                <Button className=' w-40 h-[52px] p-[18px] rounded-lg font-bold text-sm' color='primary' onPress={handelStartTraning}> أبدأ التجربه </Button>
+                <Button className=' w-40 h-[52px] p-[18px] rounded-lg font-bold text-sm' color='primary' onPress={handelStartFullCourse}> أبدأ التجربه كامله </Button>
+                <Button className=' w-40 h-[52px] p-[18px] rounded-lg font-bold text-sm' color='primary' onPress={handelStartTraning}> أبدأ الشرح النظري </Button>
                 <Button className=' w-40 h-[52px] p-[18px] rounded-lg font-bold text-sm' color='primary' onPress={handelStartPracticalTest}> أبدأ الأختبار العملي </Button>
                 <Button className=' w-40 h-[52px] p-[18px] rounded-lg font-bold text-sm' color='primary' onPress={handelStartTheoreticalTest}> أبدأ الأختيار النظري </Button>
             </div>
