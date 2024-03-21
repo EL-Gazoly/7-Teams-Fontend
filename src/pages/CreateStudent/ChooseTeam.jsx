@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import Select from 'react-select';
 import GroupIcon from '../../assets/Reports/group-dark.png'
+import GroupIconLight from '../../assets/students/group.png'
 import { useThemeStore } from '../../stores/ThemeStore'
 const options = [
   { value: 'High', label: 'الصف الثانوي', image: GroupIcon },
@@ -28,7 +29,7 @@ const ChooseGrade = (props) => {
       control: (provided) => ({
         ...provided,
         direction : 'rtl',
-        backgroundColor:  selectedOption? '#50D766' : dark ? '#1F242DAB' : '#F0F2F4',
+        backgroundColor:   dark ? '#1F242DAB' : '#F0F2F4',
         backdropFilter: 'blur(73px)',
         borderRadius: '4px',
         cursor: 'pointer',
@@ -73,7 +74,7 @@ const ChooseGrade = (props) => {
         width: '178px',
         height: '81px',
         backgroundColor:  dark ? '#1F242DAB' : '#F0F2F4',
-        color: 'white' ,
+        color: dark? 'white' : 122333,
         display: 'flex',
         alignItems: 'center',
         padding: '10px', 
@@ -115,7 +116,7 @@ const ChooseGrade = (props) => {
       }),
       placeholder: (provided) => ({
         ...provided,
-        color : "#FFFFFF87",
+        color : dark ? "#FFFFFF87" : "#9DA4B0",
         fontSize: '15px',
         marginLeft: '10px',
         
@@ -148,7 +149,7 @@ const ChooseGrade = (props) => {
       isSearchable={true}
       getOptionLabel={(option) => (
         <div className='selected flex items-center gap-x-2 text-xs font-medium'>
-          <img src={GroupIcon} alt={option.label} style={customStyles.optionImage} className=' w-10 h-10'/>
+          <img src={dark? GroupIcon : GroupIconLight } alt={option.label} style={customStyles.optionImage} className=' w-10 h-10'/>
           <span className={`text-xs]`}> {option.label} </span>
         </div>
       )}

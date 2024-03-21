@@ -106,7 +106,7 @@ const ChooseSchool = (props) => {
       }),
       placeholder: (provided) => ({
         ...provided,
-        color : "#FFFFFF87",
+        color : dark ? "#FFFFFF87" : "#9DA4B0",
         fontSize: '15px',
         marginRight: '21px',
         
