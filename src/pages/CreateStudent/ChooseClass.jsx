@@ -3,16 +3,6 @@ import Select from 'react-select';
 import GroupIcon from '../../assets/Reports/group-dark.png'
 import { useThemeStore } from '../../stores/ThemeStore'
 
-const options = [
-    { value: 'first', label: 'الصف الاول', image: GroupIcon },
-    { value: 'second', label: 'الصف الثاني', image: GroupIcon },
-    { value: 'third', label: 'الصف الثالث', image: GroupIcon },
-    { value: 'fourth', label: 'الصف الرابع', image: GroupIcon },
-    { value: 'fifth', label: 'الصف الخامس', image: GroupIcon },
-    { value: 'sixth', label: 'الصف السادس', image: GroupIcon },
-]
-
-
 const ChooseClass = (props) => {
   const {dark} = useThemeStore();
     const [selectedOption, setSelectedOption] = useState(props.selectedCourse);
@@ -145,7 +135,7 @@ const ChooseClass = (props) => {
   return (
     <div className="App">
     <Select
-      options={options}
+      options={props.options}
       styles={customStyles}
       placeholder="اختر الصف"
       value={selectedOption}

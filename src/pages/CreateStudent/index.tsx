@@ -19,6 +19,21 @@ import EyeIcon from '../../assets/login/EyeIcon.svg'
 import EyeDarkIcon from '../../assets/login/dark-eye.svg'
 import EyeSlashDarkIcno from '../../assets/login/dark-eye-slash.svg'
 import { useThemeStore } from '../../stores/ThemeStore';
+import GroupIcon from '../../assets/Reports/group-dark.png'
+const PrimaryOptions = [
+  { value: 'first', label: 'الصف الاول', image: GroupIcon },
+  { value: 'second', label: 'الصف الثاني', image: GroupIcon },
+  { value: 'third', label: 'الصف الثالث', image: GroupIcon },
+  { value: 'fourth', label: 'الصف الرابع', image: GroupIcon },
+  { value: 'fifth', label: 'الصف الخامس', image: GroupIcon },
+  { value: 'sixth', label: 'الصف السادس', image: GroupIcon },
+]
+
+const SecondaryOptions = [
+  { value: 'first', label: 'الصف الاول', image: GroupIcon },
+  { value: 'second', label: 'الصف الثاني', image: GroupIcon },
+  { value: 'third', label: 'الصف الثالث', image: GroupIcon },
+]
 const CreateStudent = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
@@ -66,22 +81,22 @@ const CreateStudent = () => {
       }
     });
   };
-useEffect(() => {
-    
-      if (data) {
-        if (notficationRef.current) {
-        toast.success('Student created successfully');
-        notficationRef.current = false;
+  useEffect(() => {
+      
+        if (data) {
+          if (notficationRef.current) {
+          toast.success('Student created successfully');
+          notficationRef.current = false;
+          }
         }
-      }
-      if (error) {
-        if (notficationRef.current) {
-        toast.error(error.message);
-        notficationRef.current = false;
+        if (error) {
+          if (notficationRef.current) {
+          toast.error(error.message);
+          notficationRef.current = false;
+          }
         }
-      }
-    
-}, [data, error]);
+      
+  }, [data, error]);
   if (loading) return <Loading />;
 
   return (
@@ -131,6 +146,7 @@ useEffect(() => {
               <ChooseClass 
                 selectedClass={selectedClass}
                 setSelectedClass={setSelectedClass}
+                options={selectedTeam === 'Primary' ? PrimaryOptions : SecondaryOptions}
               />
             </div>
 
