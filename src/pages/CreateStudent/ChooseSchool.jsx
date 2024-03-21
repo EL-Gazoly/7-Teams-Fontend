@@ -108,7 +108,7 @@ const ChooseSchool = (props) => {
         ...provided,
         color : dark ? "#FFFFFF87" : "#9DA4B0",
         fontSize: '15px',
-        marginRight: '21px',
+        marginRight: '8px',
         
         
       }),

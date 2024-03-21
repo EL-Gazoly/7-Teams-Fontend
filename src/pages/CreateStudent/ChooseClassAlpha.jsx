@@ -127,7 +127,7 @@ const ChooseClassAlpha = (props) => {
           ...provided,
            color : dark ? "#FFFFFF87" : "#9DA4B0",
           fontSize: '15px',
-          marginLeft: '10px',
+          marginRight: '8px',
           
           
         }),

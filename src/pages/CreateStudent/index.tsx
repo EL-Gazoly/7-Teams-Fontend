@@ -138,7 +138,7 @@ const CreateStudent = () => {
               selectedSchool={selectedSchool}
               setSelectedSchool={setSelectedSchool}
             />
-            <div className='flex flex-row-reverse items-center gap-x-3'>
+            <div className='flex flex-row-reverse items-center gap-x-4'>
               <ChooseTeam 
                 selectedTeam={selectedTeam}
                 setSelectedTeam={setSelectedTeam}
