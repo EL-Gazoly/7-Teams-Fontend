@@ -152,9 +152,9 @@ const ChooseClass = (props) => {
       onChange={handleChange}
       isSearchable={true}
       getOptionLabel={(option) => (
-        <div className='selected flex items-center gap-x-6 text-xs font-medium'>
+        <div className='selected flex items-center gap-x-2 text-xs font-medium'>
           <img src={option.image} alt={option.label} style={customStyles.optionImage} className=' w-10 h-10'/>
-          <span className={`${ selectedOption && selectedOption.value === "Ultrasound" ? 'text-[10px]' : ''}`}> {option.label} </span>
+          <span className={`text-xs`}> {option.label} </span>
         </div>
       )}
     />

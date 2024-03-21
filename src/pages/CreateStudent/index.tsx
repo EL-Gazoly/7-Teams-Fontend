@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import ControlCard from '../../Components/ContraolCard';
 import { Button, Image } from '@nextui-org/react';
 import AddIcon from '../../assets/students/add.svg';
@@ -22,7 +22,7 @@ import { useThemeStore } from '../../stores/ThemeStore';
 const CreateStudent = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
-  const [selectedSchool, setSelectedSchool] = useState('');
+  const [selectedSchool, setSelectedSchool] = useState<any>();
   const [selectedTeam, setSelectedTeam] = useState('');
   const [selectedClass, setSelectedClass] = useState('');
   const [selectedClassAlpha, setSelectedClassAlpha] = useState('');
@@ -39,30 +39,50 @@ const CreateStudent = () => {
   const idRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const confirmPasswordRef = useRef<HTMLInputElement>(null);
+  const notficationRef = useRef(false);
 
   const handleCreateStudent = async () => {
+    notficationRef.current = true;
     const name = nameRef.current?.value;
     const id = idRef.current?.value;
+    const password = passwordRef.current?.value;
     const image = selectedFile;
-    if (!name || !id) return toast.error('Please fill all fields');
+    if (!name || !id || !password || !selectedSchool || !selectedTeam || !selectedClass || !selectedClassAlpha )
+     return toast.error('Please fill all fields');
+    if (password !== confirmPasswordRef.current?.value) return toast.error('Password does not match');
     await createStudentMutation({
       variables: {
         data: {
           name: name,
           facilityId: id,
-          classId: "65d2322b-1d47-42b1-8739-f10a83378355",
-          teamId: "1781aa8d-369d-4875-8a32-c8aac39ea543"
+          schoolId: selectedSchool.id,
+          teamName: selectedTeam,
+          classNumber: selectedClass,
+          classalpha: selectedClassAlpha,
+          password: password
+
         },
         image: image,
       }
     });
   };
-
+useEffect(() => {
+    
+      if (data) {
+        if (notficationRef.current) {
+        toast.success('Student created successfully');
+        notficationRef.current = false;
+        }
+      }
+      if (error) {
+        if (notficationRef.current) {
+        toast.error(error.message);
+        notficationRef.current = false;
+        }
+      }
+    
+}, [data, error]);
   if (loading) return <Loading />;
-  if (error) toast.error(error.message);
-  if (data) {
-    toast.success('Student created successfully');
-  }
 
   return (
     <div className=' pb-8'>
@@ -103,7 +123,7 @@ const CreateStudent = () => {
               selectedSchool={selectedSchool}
               setSelectedSchool={setSelectedSchool}
             />
-            <div className='flex items-center gap-x-3'>
+            <div className='flex flex-row-reverse items-center gap-x-3'>
               <ChooseTeam 
                 selectedTeam={selectedTeam}
                 setSelectedTeam={setSelectedTeam}
@@ -123,7 +143,7 @@ const CreateStudent = () => {
               />
           </div>
 
-          <div className=' flex flex-row-reverse items-center gap-x-7'>
+          <div className=' flex flex-row-reverse items-center gap-x-7 mr-4'>
             <div className='w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] dark:bg-dark-item/70 px-4 flex items-center '>
                     {dark? 
                     <img src={showPassword ? EyeDarkIcon :  EyeSlashDarkIcno} alt="" onClick={()=> setShowPassword(!showPassword)}   className={` cursor-pointer w-6 h-6 ${isIconshowed? 'block' : 'hidden'}`} />
