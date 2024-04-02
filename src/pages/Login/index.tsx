@@ -38,9 +38,6 @@ const LoginPage = () => {
             }
         }
     }, [adminError, userError]);
-    useEffect(() => {
-        emailRef.current.focus();
-    }, []);
 
     const handleAdminLogin = () => {
         loginAdmin({
@@ -118,7 +115,7 @@ const LoginPage = () => {
                     <div className='flex flex-col items-center mt-[55px]'>
                         <div className="email flex flex-col text-right gap-y-[5px]">
                             <label htmlFor="email" className='text-[#3D3C3C] dark:text-white text-xs'>البريد الاليكتروني</label>
-                            <input type="email" placeholder='ادخل البريد الالكتروني' ref={emailRef}
+                            <input autoFocus type="email" placeholder='ادخل البريد الالكتروني' ref={emailRef}
                                 className='text-right w-[276px] h-12 bg-[#E6E8EB66] placeholder:text-[#2929295C] dark:text-white dark:placeholder:text-white/80 text-xs rounded-md px-4'
                                 onKeyDown={(e) => {
                                     if (e.key === 'Enter') {

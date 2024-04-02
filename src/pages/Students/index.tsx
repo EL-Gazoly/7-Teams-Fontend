@@ -20,6 +20,9 @@ import { useQuery } from '@apollo/client'
 import Loading from '../../Components/Loading'
 import { useThemeStore } from '../../stores/ThemeStore'
 
+import EditIcon from '../../assets/settings/vuesax/linear/vuesax/linear/user-edit.svg'
+import DarkEditIcon from '../../assets/settings/dark/vuesax/linear/user-edit.svg'
+
 const StudentsPage = () => {
     const { loading, error, data: studentsData } = useQuery(getStudents, {fetchPolicy: 'no-cache'});
     const [activeTab, setActiveTab] = useState("stack")

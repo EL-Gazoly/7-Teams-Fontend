@@ -1,8 +1,13 @@
 import React from 'react';
 import { Table, TableHeader, TableBody, TableColumn, TableRow, TableCell, Avatar } from '@nextui-org/react';
 import noPic from '../../../assets/students/noPic.svg'
+import EditIcon from '../../../assets/settings/vuesax/linear/vuesax/linear/user-edit.svg'
+import DarkEditIcon from '../../../assets/settings/dark/vuesax/linear/user-edit.svg'
+import { useThemeStore } from '../../../stores/ThemeStore';
+import { Link } from 'react-router-dom';
 
 type Student = {
+  studentId: string;
   imageUrl: string;
   name: string;
   facilityId: string;
@@ -17,6 +22,7 @@ type StudentStackProps = {
 
 const StudentsStackViews = ({ students }: StudentStackProps) => {
   if (students) console.log(students);
+  const { dark } = useThemeStore();
 
   return (
     <Table
@@ -39,6 +45,7 @@ const StudentsStackViews = ({ students }: StudentStackProps) => {
         <TableColumn>اسم المستخدم</TableColumn>
         <TableColumn>رمز الدخول</TableColumn>
         <TableColumn>الحاله</TableColumn>
+        <TableColumn>تعديل</TableColumn>
       </TableHeader>
 
       <TableBody>
@@ -67,8 +74,18 @@ const StudentsStackViews = ({ students }: StudentStackProps) => {
                 </span>
               </div>
             </TableCell>
+
+            <TableCell className='relative'>
+            <div className='absolute top-[40%] right-[30%]' >
+              <Link to={`/students/update/${student.studentId}`}  >
+                <img src={dark? DarkEditIcon : EditIcon} alt=""  />
+              </Link>
+            </div>
+            
+          </TableCell>
           </TableRow>
         ))}
+
       </TableBody>
     </Table>
   );

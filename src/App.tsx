@@ -33,6 +33,7 @@ import LogsPage from "./pages/LogsPage"
 import SchoolsPage from "./pages/SchoolsPage"
 import CreateSchool from "./pages/CreateSchool"
 import UpdateSchool from "./pages/UpdateSchool"
+import UpdateStudent from "./pages/UpdateStudent"
 function App() {
   const location = useLocation();
   const isLoginPage = location.pathname === '/login';
@@ -63,6 +64,7 @@ function App() {
                 <Route path="/students"   element={<StudentsPage />}/>
                 <Route path="/courses/:course"   element={<CoursePage />}/>
                 <Route path="/students/create" element={<CreateStudent />} />
+                <Route path="/students/update/:id" element={<UpdateStudent />} />
                 <Route path="/library" element={<Library />} />
                 <Route path="/certificates" element={<CertificatesPage />} />
                 <Route path="/settings" element={<GeneralSettingsPage />} />

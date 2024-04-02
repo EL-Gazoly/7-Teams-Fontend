@@ -36,3 +36,26 @@ export const createStudentWithExcel = gql`
     uploadStudentByExcel(file: $file) 
   }
 `
+
+export const getStudent = gql`
+  query Student($studentId: String!) {
+  student(id: $studentId) {
+    name
+    facilityId
+    imageUrl
+    classalpha
+    team {
+      name
+      school {
+        name
+        schoolId
+      }
+    }
+    class {
+      number
+    }
+    password
+  }
+}
+
+`
