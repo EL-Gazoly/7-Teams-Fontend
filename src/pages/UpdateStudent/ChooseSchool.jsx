@@ -31,9 +31,10 @@ const ChooseSchool = (props) => {
         setSelectedOption(null);
       }
       if (props.selectedSchool && options) {
-        const option =  options.find((option) => option.value === props.selectedSchool.name)
+        const option =  options.find((option) => option.value === props.selectedSchool.value)
   
         setSelectedOption(option);
+        
       }
     }, [data, props.selectedSchool]);
   

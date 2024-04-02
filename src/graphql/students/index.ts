@@ -59,3 +59,23 @@ export const getStudent = gql`
 }
 
 `
+export const updateStudent = gql`
+mutation Mutation($updateStudentId: String!, $data: UpdateStudentInput!, $removeImage: Boolean, $image: Upload) {
+  updateStudent(id: $updateStudentId, data: $data, removeImage: $removeImage, image: $image) {
+     name
+    facilityId
+    imageUrl
+    classalpha
+    team {
+      name
+      school {
+        name
+        schoolId
+      }
+    }
+    class {
+      number
+    }
+  }
+}
+`

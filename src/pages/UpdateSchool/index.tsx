@@ -3,7 +3,7 @@ import ControlCard from '../../Components/ContraolCard'
 import SchoolIcon from '../../assets/SideBar/Open/school.svg'
 import LightSchoolIcon from '../../assets/SideBar/Open/default/school.svg'
 import { Button } from '@nextui-org/react'
-import AddIcon from '../../assets/students/add.svg'
+import EditIcon from '../../assets/schools/Edit/Edit_Pencil_Line_01.svg'
 import { getSchools, getSchool, updateSchool } from '../../graphql/School'
 import { useMutation, useQuery } from '@apollo/client'
 import Loading from '../../Components/Loading'
@@ -105,6 +105,7 @@ const UpdateSchool = () => {
       
       return numString;
   }
+  if(data) console.log(data)
   
   return (
     <div className=' flex flex-col gap-y-8 items-center'>
@@ -159,8 +160,8 @@ const UpdateSchool = () => {
 
                 </div>
                 <Button className=' w-[217px] h-16 mt-6 rounded-md bg-[#4E5464] text-white' onPress={handleUpdateSchool}>
-                  <img src={AddIcon} alt="" />
-                  <span>اضافة مدرسة جديدة</span>
+                  <img src={EditIcon} alt="" />
+                  <span>تعديل بيانات المدرسه </span>
                 </Button>
 
                 
