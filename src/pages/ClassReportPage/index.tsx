@@ -9,7 +9,7 @@ import { GetClassReports } from '../../graphql/reports'
 import { useParams } from 'react-router-dom'
 import Loading from '../../Components/Loading'
 const ClassReportPage = () => {
-  const {id} = useParams()
+  const {stage , class: number} = useParams()
   const [totalTheoreticalTestGrade, setTotalTheoreticalTestGrade] = useState(0)
   const [totalPracticalTime, setTotalPracticalTime] = useState(0)
   const [totalTheorticalTime, setTotalTheorticalTime] = useState(0)
@@ -25,7 +25,8 @@ const ClassReportPage = () => {
   const [overallTime, setOverallTime] = useState(0)
   const { loading, error, data } = useQuery(GetClassReports,{
     variables: {
-      classId: id
+      number: number,
+      name: stage
     }
   })
   useEffect(() => {
@@ -47,8 +48,8 @@ const ClassReportPage = () => {
     let enterPratical = 0;
   
     let totalStudents = 0;
-  
-    data.class.students.forEach((student) => {
+    data.classesByNumber.forEach((classes) => {
+    classes.students.forEach((student) => {
         let maxTheoreticalTestGrade = 0;
         let maxPracticalTestGrade = 0;
   
@@ -75,6 +76,8 @@ const ClassReportPage = () => {
         totalStudents++;
   
     });
+    }
+    );
 
     const practicalTestGradePercentage = (practicalTestGrade / (totalStudents * 100)) * 100;
     const theoreticalTestGradePercentage = (totalTheoreticalTestGrade / (totalStudents * 100)) * 100;

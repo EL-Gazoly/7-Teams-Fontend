@@ -56,8 +56,8 @@ const TotalGradesForClass = ({experiments}) => {
   const calculateTotal = () => {
       let theorticalMax = []
       let practicalMax = []
- 
-        experiments.class.students.forEach((student) => {
+        experiments.classesByNumber.forEach((classes) => {
+        classes.students.forEach((student) => {
           let maxTheoreticalTestGrade = 0;
           let maxPracticalTestGrade = 0;
     
@@ -71,6 +71,8 @@ const TotalGradesForClass = ({experiments}) => {
             theorticalMax.push(maxTheoreticalTestGrade)
             practicalMax.push(maxPracticalTestGrade)
         })
+        }
+        );
         setThorticalOccurance(countOccurrences(theorticalMax))
         setPracticalOccurance(countOccurrences(practicalMax))
 

@@ -9,62 +9,62 @@ const list = [
     {
         title : "الصف الأول الابتدائي",
         icon : GroupIcon,
-        link: '/reports/classes/299b30a9-cc2b-4d90-91c3-87a4e17c181e'
+        link: '/reports/classes/Primary/first'
     },
     {
         title : "الصف الثاني الابتدائي",
         icon : GroupIcon,
-        link: '/reports/classes/3005a5f7-c133-434e-be98-7dd3b78fedfd'
+        link: '/reports/classes/Primary/second'
     },
     {
         title : "الصف الثالث الابتدائي",
         icon : GroupIcon,
-        link: '/reports/classes/e713070c-853e-465d-9e72-0787f344147a'
+        link: '/reports/classes/Primary/third'
     },
     {
         title : "الصف الرابع الابتدائي",
         icon : GroupIcon,
-        link: '/reports/classes/6b10f49d-a110-420d-8595-9b8616d7c854'
+        link: '/reports/classes/Primary/fourth'
     },
     {
         title : "الصف الخامس الابتدائي",
         icon : GroupIcon,
-        link: '/reports/classes/1535cadc-70b9-4535-994b-e4c20c3912ae'
+        link: '/reports/classes/Primary/fifth'
     },
     {
         title : "الصف السادس الابتدائي",
         icon : GroupIcon,
-        link: '/reports/classes/99b559a7-0e9d-40fb-a952-6c25895ceedf'
+        link: '/reports/classes/Primary/sixth'
     },
     {
         title : "الصف الأول المتوسط",
         icon : GroupIcon,
-        link: '/reports/classes/fad58648-c419-4701-985a-b8707446074b'
+        link: '/reports/classes/Middel/first'
     },
     {
         title : "الصف الثاني المتوسط",
         icon : GroupIcon,
-        link: '/reports/classes/42e9c8a6-7c33-4ada-8215-65465a495912'
+        link: '/reports/classes/Middel/second'
     },
     {
         title : "الصف الثالث المتوسط",
         icon : GroupIcon,
-        link: '/reports/classes/d401bb95-d5ad-4b34-ae7a-e5db984f2b14'
+        link: '/reports/classes/Middel/third'
     },
     {
         title : "الصف الأول الثانوي",
         icon : GroupIcon,
-        link: '/reports/classes/65d2322b-1d47-42b1-8739-f10a83378355'
+        link: '/reports/classes/High/first'
     },
     {
         title : "الصف الثاني الثانوي",
         icon : GroupIcon,
-        link: '/reports/classes/056e7db3-66c1-450d-99b6-50c8206efc78'
+        link: '/reports/classes/High/second'
     },
     {
         title : "الصف الثالث الثانوي",
         icon : GroupIcon,
-        link: '/reports/classes/5b9b06d4-2278-476c-a6f2-02dd366b18ef'
+        link: '/reports/classes/High/third'
     },
 ]
 

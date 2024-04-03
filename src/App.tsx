@@ -85,7 +85,7 @@ function App() {
                 <Route path="/reports/stages/:stage" element={<StageReportPage />} />
                 <Route path= '/reports/classes' element={<ClassesReportsPage/>} />
                 {/* @ts-ignore */}
-                <Route path="/reports/classes/:id" element={<ClassReportPage />} />
+                <Route path="/reports/classes/:stage/:class" element={<ClassReportPage />} />
                 <Route path ='/logs' element={<LogsPage />} />
                 <Route path="/schools" element={<SchoolsPage />} />
                 <Route path="/schools/create" element={<CreateSchool />} />

@@ -18,8 +18,8 @@ const ExpermientEnteranceCounter = ({data}) => {
 
     const calculateTotal = () => {
         const experimentTotalsMap = new Map();
-        
-          data.class.students.forEach((student) => {
+          data.classesByNumber.forEach((classes) => {
+          classes.students.forEach((student) => {
             const exprimentMap = new Map();
         
             // Collect maximum values for each experiment ID
@@ -49,6 +49,8 @@ const ExpermientEnteranceCounter = ({data}) => {
               }
             });
           });
+        }
+        )
         ;
         const summedExperimentTotals = new Map();
         experimentTotalsMap.forEach((totalsList, exprimentName) => {

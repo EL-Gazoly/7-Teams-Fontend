@@ -109,9 +109,9 @@ export const GetTeamReports = gql`
 `
 
 export const GetClassReports = gql`
-  query Class($classId: String!) {
-  class(id: $classId) {
-       classId
+  query ClassesByNumber($number: String!, $name: String!) {
+  classesByNumber(number: $number, name: $name) {
+    classId
         number
       students {
         classalpha

@@ -49,8 +49,8 @@ const ClassesReportFourthRow = ({experminets}) => {
   })
   const calculateTotal = () => {
     const result = {};
-
-    experminets.class.students.forEach(student => {
+    experminets.classesByNumber.forEach(classes => {
+    classes.students.forEach(student => {
       const classalpha = student.classalpha;
     
       if (!result[classalpha]) {
@@ -70,6 +70,8 @@ const ClassesReportFourthRow = ({experminets}) => {
     
       result[classalpha].totalStudents += 1;
     });
+    }
+    );
     
     // Calculate averages
     for (const classalpha in result) {
