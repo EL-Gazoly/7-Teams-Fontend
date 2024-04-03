@@ -90,8 +90,8 @@ const StageReportPage = () => {
     setEnterTheortical(enterTheortical)
     setEnterPratical(enterPratical)
     setTotalStudents(totalStudents)
-    setPracticalTestGradePercentage(Math.round(practicalTestGradePercentage))
-    setTheoreticalTestGradePercentage(Math.round(theoreticalTestGradePercentage))
+    setPracticalTestGradePercentage(Math.round(practicalTestGradePercentage > 100 ? 100 : practicalTestGradePercentage))
+    setTheoreticalTestGradePercentage(Math.round(theoreticalTestGradePercentage > 100 ? 100 : theoreticalTestGradePercentage))
     setOverallGrade(overallGrade)
     setOverallTime(totalPracticalTime+ totalTrainingTime + totalTrainingTime)
   }
