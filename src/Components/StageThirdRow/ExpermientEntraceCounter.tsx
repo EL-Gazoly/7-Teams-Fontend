@@ -20,7 +20,8 @@ const ExpermientEnteranceCounter = ({data, setEnterTraining, setEnterTheortical,
 
     const calculateTotal = () => {
         const experimentTotalsMap = new Map();
-        data.classes.forEach((classObj) => {
+        data.teamByName.forEach((team) => {
+        team.classes.forEach((classObj) => {
           classObj.students.forEach((student) => {
             const exprimentMap = new Map();
         
@@ -52,6 +53,7 @@ const ExpermientEnteranceCounter = ({data, setEnterTraining, setEnterTheortical,
             });
           });
         });
+      });
         const summedExperimentTotals = new Map();
         experimentTotalsMap.forEach((totalsList, exprimentName) => {
           const summedTotals = totalsList.reduce((acc, totals) => {

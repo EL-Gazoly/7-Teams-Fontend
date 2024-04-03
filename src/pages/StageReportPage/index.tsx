@@ -5,10 +5,9 @@ import StageSecondRow from '../../Components/StageSecondRow'
 import StageThirdRow from '../../Components/StageThirdRow'
 import StageReportsFourthRow from '../../Components/StageReportsFoutrhRow'
 import { useQuery } from '@apollo/client'
-import { GetTeamReports } from '../../graphql/reports'
+import {  GetTeamReports } from '../../graphql/reports'
 import { useParams } from 'react-router-dom'
 import Loading from '../../Components/Loading'
-import { set } from 'firebase/database'
 const StageReportPage = () => {
   const { stage } = useParams()
   const [totalTheoreticalTestGrade, setTotalTheoreticalTestGrade] = useState(0)
@@ -26,7 +25,7 @@ const StageReportPage = () => {
   const [overallTime, setOverallTime] = useState(0)
   const { loading, error, data } = useQuery(GetTeamReports,{
     variables:{
-      teamId: stage
+      name: stage
     }
   })
   useEffect(() => {
@@ -49,8 +48,8 @@ const StageReportPage = () => {
     let enterPratical = 0;
   
     let totalStudents = 0;
-  
-    data.team.classes.forEach((classInfo) => {
+    data.teamByName.forEach((team) => {
+    team.classes.forEach((classInfo) => {
       classInfo.students.forEach((student) => {
         let maxTheoreticalTestGrade = 0;
         let maxPracticalTestGrade = 0;
@@ -77,6 +76,7 @@ const StageReportPage = () => {
         totalStudents++;
       });
     });
+  });
     console.log("Total Theoretical Test Grade:", totalTheoreticalTestGrade);
 
     const practicalTestGradePercentage = (practicalTestGrade / (totalStudents * 100)) * 100;
@@ -103,6 +103,7 @@ const StageReportPage = () => {
     console.log("Percentage Practical Test Grade:", practicalTestGradePercentage.toFixed(2) + "%");
     console.log("Percentage Theoretical Test Grade:", theoreticalTestGradePercentage.toFixed(2) + "%");
   }
+  if (data) console.log(data)
   
   return (
     <div className=''>
@@ -119,7 +120,7 @@ const StageReportPage = () => {
            <StageSecondRow enterTraining={enterTraining} enterTheortical={enterTheortical} enterPratical={enterPratical} 
             totalPracticalTime={totalPracticalTime} totalTheorticalTime={totalTheorticalTime} totalTrainingTime={totalTrainingTime}
            />
-           <StageThirdRow data={data?.team} 
+           <StageThirdRow data={data} 
             setEnterTraining={setEnterTraining} setEnterTheortical={setEnterTheortical} setEnterPratical={setEnterPratical}
             enterTraining={enterTraining} enterTheortical={enterTheortical} enterPratical={enterPratical}
            />

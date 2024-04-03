@@ -108,6 +108,35 @@ query Team($teamId: String!) {
 
 `
 
+export const GetTeamsReportsByName = gql`
+  query TeamByName($name: String!) {
+  teamByName(name: $name) {
+     classes {
+       classId
+        number
+      students {
+        studnetExpriment {
+            expriment {
+            exprimentId
+            name
+          }
+          theoreticalTestGrade
+          totalPraticalTime
+          totalTheorticalTime
+          totalTrainingTime
+          practicalTestGrade
+          enterTraining
+          enterTheortical
+          enterPratical
+        
+        }
+      
+      }
+     }
+  }
+}
+`
+
 export const GetClassReports = gql`
   query Class($classId: String!) {
   class(id: $classId) {

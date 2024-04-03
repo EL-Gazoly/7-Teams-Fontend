@@ -9,17 +9,17 @@ const list = [
     {
         title : "الصف الابتدائي",
         icon : GroupIcon,
-        link: '/reports/stages/d0be4668-a1b2-4ed5-a47b-fa3218a055b2'
+        link: '/reports/stages/Primary'
     },
     {
         title : "الصف المتوسط",
         icon : GroupIcon,
-        link: '/reports/stages/20f9b0c6-37fa-4509-987a-6be7b341d98e',
+        link: '/reports/stages/Middle',
     },
     {
         title : "الصف الثانوي",
         icon : GroupIcon,
-        link: '/reports/stages/1781aa8d-369d-4875-8a32-c8aac39ea543'
+        link: '/reports/stages/High'
     },
    
 
