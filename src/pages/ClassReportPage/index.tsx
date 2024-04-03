@@ -69,31 +69,33 @@ const ClassReportPage = () => {
           enterTheortical += experiment.enterTheortical;
           enterPratical += experiment.enterPratical;
         });
+        totalStudents += classes.students.length; 
   
         // Update total practical and theoretical test grades with the maximum values
         practicalTestGrade += maxPracticalTestGrade;
   
-        totalStudents++;
+        
   
     });
     }
     );
+    console.log("Total stduent is ", totalStudents)
 
     const practicalTestGradePercentage = (practicalTestGrade / (totalStudents * 100)) * 100;
     const theoreticalTestGradePercentage = (totalTheoreticalTestGrade / (totalStudents * 100)) * 100;
     const overallGrade = ((totalTheoreticalTestGrade + practicalTestGrade ) / (totalStudents * 100) * 100)
-  
-    setTotalTheoreticalTestGrade(totalTheoreticalTestGrade)
+  console.log("Total Theoretical Test Grade:", totalTheoreticalTestGrade);
+    setTotalTheoreticalTestGrade(totalTheoreticalTestGrade > 100 ? 100 : totalTheoreticalTestGrade)
     setTotalPracticalTime(totalPracticalTime)
     setTotalTheorticalTime(totalTheorticalTime)
     setTotalTrainingTime(totalTrainingTime)
-    setPracticalTestGrade(practicalTestGrade)
+    setPracticalTestGrade(practicalTestGrade > 100 ? 100 : practicalTestGrade )
     setEnterTraining(enterTraining)
     setEnterTheortical(enterTheortical)
     setEnterPratical(enterPratical)
     setTotalStudents(totalStudents)
-    setPracticalTestGradePercentage(Math.round(practicalTestGradePercentage))
-    setTheoreticalTestGradePercentage(Math.round(theoreticalTestGradePercentage))
+    setPracticalTestGradePercentage(Math.round(practicalTestGradePercentage > 100 ? 100 : practicalTestGradePercentage))
+    setTheoreticalTestGradePercentage(Math.round(theoreticalTestGradePercentage > 100 ? 100 : theoreticalTestGradePercentage))
     setOverallGrade(overallGrade)
     setOverallTime(totalPracticalTime+ totalTrainingTime + totalTrainingTime)
     
