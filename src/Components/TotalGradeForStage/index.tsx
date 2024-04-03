@@ -56,8 +56,6 @@ const TotalGradeForStage = ({experiments}) => {
             practicalMax.push(maxPracticalTestGrade)
         })})
       })
-        console.log("theorticalMax", theorticalMax)
-        console.log(practicalMax)
         setThorticalOccurance(countOccurrences(theorticalMax))
         setPracticalOccurance(countOccurrences(practicalMax))
 

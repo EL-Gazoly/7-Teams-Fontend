@@ -35,7 +35,6 @@ const StageReportPage = () => {
   }, [data])
   if (loading) return <Loading />
   if (error) return console.log(error)
-  if (data) console.log(data)
 
   function calculateTotal() {
     let totalTheoreticalTestGrade = 0;
@@ -77,12 +76,10 @@ const StageReportPage = () => {
       });
     });
   });
-    console.log("Total Theoretical Test Grade:", totalTheoreticalTestGrade);
 
     const practicalTestGradePercentage = (practicalTestGrade / (totalStudents * 100)) * 100;
     const theoreticalTestGradePercentage = (totalTheoreticalTestGrade / (totalStudents * 100)) * 100;
     const overallGrade = ((totalTheoreticalTestGrade + practicalTestGrade ) / (totalStudents * 100) * 100)
-    console.log("this is total", (totalTheoreticalTestGrade+practicalTestGrade) / (totalStudents * 100))
   
     setTotalTheoreticalTestGrade(totalTheoreticalTestGrade)
     setTotalPracticalTime(totalPracticalTime)
@@ -97,13 +94,7 @@ const StageReportPage = () => {
     setTheoreticalTestGradePercentage(Math.round(theoreticalTestGradePercentage))
     setOverallGrade(overallGrade)
     setOverallTime(totalPracticalTime+ totalTrainingTime + totalTrainingTime)
-    
-
-  
-    console.log("Percentage Practical Test Grade:", practicalTestGradePercentage.toFixed(2) + "%");
-    console.log("Percentage Theoretical Test Grade:", theoreticalTestGradePercentage.toFixed(2) + "%");
   }
-  if (data) console.log(data)
   
   return (
     <div className=''>

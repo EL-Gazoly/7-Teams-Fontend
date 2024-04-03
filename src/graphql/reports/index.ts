@@ -80,35 +80,6 @@ export const GetStudentTime = gql`
 `;
 
 export const GetTeamReports = gql`
-query Team($teamId: String!) {
-  team(id: $teamId) {
-    classes {
-       classId
-        number
-      students {
-        studnetExpriment {
-            expriment {
-            exprimentId
-            name
-          }
-          theoreticalTestGrade
-          totalPraticalTime
-          totalTheorticalTime
-          totalTrainingTime
-          practicalTestGrade
-          enterTraining
-          enterTheortical
-          enterPratical
-        
-        }
-      }
-    }
-  }
-}
-
-`
-
-export const GetTeamsReportsByName = gql`
   query TeamByName($name: String!) {
   teamByName(name: $name) {
      classes {
