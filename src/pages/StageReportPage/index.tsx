@@ -79,7 +79,7 @@ const StageReportPage = () => {
 
     const practicalTestGradePercentage = (practicalTestGrade / (totalStudents * 100)) * 100;
     const theoreticalTestGradePercentage = (totalTheoreticalTestGrade / (totalStudents * 100)) * 100;
-    const overallGrade = ((totalTheoreticalTestGrade + practicalTestGrade ) / (totalStudents * 100) * 100)
+    const overallGrade = ((totalTheoreticalTestGrade + practicalTestGrade ) / (totalStudents * 200) * 100)
   
     setTotalTheoreticalTestGrade(totalTheoreticalTestGrade)
     setTotalPracticalTime(totalPracticalTime)
