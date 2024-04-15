@@ -11,28 +11,33 @@ import SchoolDarkIcon from '../../assets/Reports/schools.png'
 import ClasseDarkIcon from '../../assets/Reports/classes.png'
 import { useThemeStore } from '../../stores/ThemeStore'
 import { useNavigate } from 'react-router-dom'
+import { link } from 'original-fs'
 
 const list = [
     {
         title : "الطلاب",
         icon : PersonIcon,
-        dark : PersonDarkIcon
+        dark : PersonDarkIcon,
+        link : '/reports/students'
     }
     ,{
         title : "المراحل التعليمية",
         icon : GroupIcon,
-        dark : GroupDarkIcon
+        dark : GroupDarkIcon,
+        link : '/reports/stages'
     },
     {
         title : "الفصول الدراسية",
         icon : ClasseIcon,
-        dark : ClasseDarkIcon
+        dark : ClasseDarkIcon,
+        link : '/reports/classes'
     },
 
     ,{
         title : "المدارس",
         icon : SchoolIcon,
-        dark : SchoolDarkIcon
+        dark : SchoolDarkIcon,
+        link : '/reports/schools'
     }
 ]
 
@@ -81,11 +86,7 @@ const ReportsPage = () => {
                         <div key={index} className={` w-[492px] h-64 rounded-lg bg-white dark:bg-primary-dark flex flex-col items-center justify-center gap-y-5
                         ${index !== 3 ? ' cursor-pointer' : ''}
                         `}
-                            onClick={() => index === 0 ? navigate('/reports/students') : 
-                            index === 1 ? navigate('/reports/stages')   :
-                            index === 2 ? navigate('/reports/classes') :
-                        null}
-                        >
+                            onClick={() => navigate(item.link)} >
                             {index !== 0 ?
                                     <div className=' w-32 h-32 bg-[#EEEFF2] dark:bg-[#5C6067] rounded-full flex items-center justify-center'
                                         style={{
