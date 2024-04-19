@@ -103,7 +103,7 @@ const SchoolReport = () => {
   return (
     <div ref={pageRef} className=' flex flex-col gap-y-7 items-center'>
        <ControlCard icon='Schools' title='المدارس' neasted={true} />
-        <div className=' max-w-full flex flex-col gap-x-1 gap-y-3 items-center'>
+        <div className=' max-w-full flex flex-col gap-x-1 gap-y-3 items-center certificateDiv'>
             <FirstRow data={data} totatotalTheoreticalTestGrade={theoreticalTestGradePercentage}
             practicalTestGrade={practicalTestGradePercentage} overallGrade={overallGrade} 
             totalPracticalTime={totalPracticalTime} totalTheorticalTime={totalTheorticalTime} totalTrainingTime={totalTrainingTime} />

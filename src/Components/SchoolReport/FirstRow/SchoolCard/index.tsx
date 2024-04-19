@@ -4,6 +4,7 @@ import { useThemeStore } from '../../../../stores/ThemeStore'
 import SchoolDarkIcon from '../../../../assets/Reports/schools.png'
 import SchoolIcon from '../../../../assets/Reports/school.png'
 import { Button } from '@nextui-org/react'
+import html2canvas from 'html2canvas'
 const SchoolCard = ({data}) => {
     const {dark} = useThemeStore()
      const convertAndPrint = () => {
@@ -50,7 +51,7 @@ const SchoolCard = ({data}) => {
 
         <div className=' w-full flex flex-col gap-y-1 items-center justify-center'>
          <span className=' text-2xl font-bold text-center'> {data.school.name} </span>
-            <span className=' w-28  font-light text-primary text-center ml-7'> #{data.school.uniqueId} </span>
+            <span className=' w-28  font-light text-primary text-center'> #{data.school.uniqueId} </span>
 
 
         </div>
