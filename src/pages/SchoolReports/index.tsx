@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import ControlCard from '../../Components/ContraolCard'
 import SearchIcon from '../../assets/Landing/ChooseHeadset/search.png'
 import { useQuery } from '@apollo/client'
@@ -10,13 +10,20 @@ import { useThemeStore } from '../../stores/ThemeStore'
 import { Link } from 'react-router-dom'
 const SchoolReports = () => {
     const [search, setSearch] = useState('')
+    const [schools, setSchools] = useState([])
     const {dark} = useThemeStore()
 
     const { loading, error, data } = useQuery(getSchools);
+    useEffect(() => {
+        if (data) {
+            setSchools(data.admin.schools)
+        }
+    }, [data])
     if (loading) return <Loading />
     if (error) return console.log(error);
     if (search) {
-        data.admin.schools.filter((school: any) => {
+        schools.filter((school) => {
+            console.log(search)
             return school.name.toLowerCase().includes(search.toLowerCase())
         })
     }
@@ -40,13 +47,13 @@ const SchoolReports = () => {
 
             </div>
 
-            <div className=' max-w-full grid grid-cols-4 gap-1'
+            <div className=' max-w-full grid grid-cols-4 gap-x-1 gap-y-3'
                 style={{
                     direction: 'rtl'
                 }}
             >
                {
-                data?.admin.schools.map((school: any) => (
+                schools.map((school: any) => (
                       <Link to={`/reports/schools/${school.schoolId}`} key={school.schoolId} className=' w-60 h-28 rounded-md flex  items-center px-6 gap-x-5 bg-white dark:bg-[#262B34]'>
                         <div className=' w-16 h-16 bg-[#F6F6F6] dark:bg-[#3B4048] rounded-full flex items-center justify-center'>
                             <img src={school.imageUrl? import.meta.env.VITE_API_URL + school.imageUrl :

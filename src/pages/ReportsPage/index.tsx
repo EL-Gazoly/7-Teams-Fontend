@@ -84,7 +84,7 @@ const ReportsPage = () => {
                 {
                     searched.map((item,index) => (
                         <div key={index} className={` w-[492px] h-64 rounded-lg bg-white dark:bg-primary-dark flex flex-col items-center justify-center gap-y-5
-                        ${index !== 3 ? ' cursor-pointer' : ''}
+                         cursor-pointer
                         `}
                             onClick={() => navigate(item.link)} >
                             {index !== 0 ?

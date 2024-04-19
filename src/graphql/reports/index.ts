@@ -134,3 +134,36 @@ export const GetClassReports = gql`
   }
 }
 `;
+
+export const GetSchoolReports = gql`
+  query School($schoolId: String!) {
+  school(schoolId: $schoolId) {
+    name
+    uniqueId
+    imageUrl
+    teams {
+      name
+      classes {
+        classId
+        number
+        students {
+          studnetExpriment {
+            expriment {
+              exprimentId
+              name
+            }
+            theoreticalTestGrade
+            practicalTestGrade
+            totalPraticalTime
+            totalTheorticalTime
+            totalTrainingTime
+            enterTheortical
+            enterTraining
+            enterPratical
+          }
+        }
+      }
+    }
+  }
+}
+`
