@@ -45,11 +45,14 @@ class IpcFunctions{
         }
       }
 
-      async  handleScreenshot(event) {
+      async  handleScreenshot(event, arg1, arg2) {
         try {
+          console.log(arg1 , arg2)
           const currentIP = store.get('ip');
           const screenshotPath = '../../assets/screen.png';
-          const outputPath = path.join(__dirname, '..', 'assets', 'screen.png')
+          const outputPath = path.join(__dirname, '..', 'assets', `${arg2}.png`)
+
+          await excuteCommand(`echo. > ${outputPath}`)
       
           await excuteCommand(`adb -s ${currentIP}:5555 exec-out screencap -p > ${outputPath}`);
           
@@ -62,7 +65,7 @@ class IpcFunctions{
           // Save the cropped image
           await image.writeAsync(outputPath);
       
-          event.sender.send('screenshot-reply');
+          event.sender.send('screenshot-reply', outputPath);
         } catch (err) {
           console.error('Something went wrong:', err.stack);
           event.reply('error-reply', err);

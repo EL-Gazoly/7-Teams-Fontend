@@ -21,6 +21,7 @@ query DeviceByMac($macAddress: String!) {
     name
     student {
       name
+      facilityId
       studnetExpriment {
         exprimentId
         progress
