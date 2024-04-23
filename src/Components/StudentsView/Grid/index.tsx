@@ -15,7 +15,7 @@ type studentsGridProps = {
 const StudentsGridView = ({students}: studentsGridProps) => {
   
   return (
-    <div className=" w-full grid grid-cols-4 gap-x-4 gap-y-6">
+    <div className=" w-full grid grid-cols-4 gap-x-4 gap-y-6 pb-5">
       {students &&
         students.map((student ,index) => (
           <StudentCard key={index} student={student}  />
