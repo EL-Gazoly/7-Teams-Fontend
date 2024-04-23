@@ -8,9 +8,10 @@ import { ref, update, onValue} from 'firebase/database'
 
 type Props = {
   ipcRenderer: any
+  device: any
 }
 
-const SecondCard = ({ipcRenderer} : Props) => {
+const SecondCard = ({ipcRenderer, device} : Props) => {
 const [isRecording, setIsRecording] = useState(false)
 
   const handelStream = () => {
@@ -19,7 +20,12 @@ const [isRecording, setIsRecording] = useState(false)
   }
 
   const handelScreenShot = () => {
-    ipcRenderer.send('screenshot')
+    if(device?.student.length !== 0){
+      ipcRenderer.send('screenshot', device.student[0].name , device.student[0].facilityId )
+    }
+    else {
+      ipcRenderer.send("screenshot", "none", "none")
+    }
   }
 
   const hadnelRecoard = () => {

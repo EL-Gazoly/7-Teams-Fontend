@@ -61,6 +61,12 @@ const HeadsetPage = () => {
     };
   }, [mac, isLoading]); 
 
+  useEffect(()=>{
+      ipcRenderer.on('screenshot-reply',  (arg) => {
+        console.log(arg)
+      })
+  },[])
+
   const getHighestProgress = (data) => {
     const result = {};
     data.forEach(item => {
@@ -100,7 +106,7 @@ const HeadsetPage = () => {
           <div className='flex flex-col mt-6 items-center gap-y-6 pb-5'>
         <div className='w-full flex flex-row-reverse items-center gap-x-4'>
           {device && <FirstCard device={device.deviceByMac} deviceState={deviceState} />}
-          <SecondCard ipcRenderer={ipcRenderer} />
+          <SecondCard ipcRenderer={ipcRenderer} device={device.deviceByMac} />
         </div>
         <div className='w-full flex items-center gap-x-4 flex-row-reverse'>
           <ThridCard />

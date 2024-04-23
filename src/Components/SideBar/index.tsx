@@ -52,7 +52,7 @@ const SideBar = () => {
 
   return (
     <div className=" fixed w-[213px] h-screen">
-        <div className='  h-full flex flex-col px-5 py-[53px] gap-y-10 bg-[#F7F9FC] dark:bg-[#252A33] overflow-hidden'
+        <div className='  h-full flex flex-col px-5 py-[53px] gap-y-6 bg-[#F7F9FC] dark:bg-[#252A33] overflow-hidden'
         style={{
             filter : "drop-shadow(0px 3.25px 21.125px rgba(0, 0, 0, 0.25))"
         }}
@@ -65,7 +65,7 @@ const SideBar = () => {
 
             <Tabs classNames={{
                 "base" : "text-white overflow-x-hidden",
-                "tabList" : "flex flex-col w-full h-full bg-transparent space-y-[22px]",
+                "tabList" : "flex flex-col w-full h-full bg-transparent space-y-[22px] overflow-hidden",
                 "cursor" : "h-[46px] flex items-center justify-center rounded-[6.5px]",
                 "tabContent" : " text-xs"
             }}
