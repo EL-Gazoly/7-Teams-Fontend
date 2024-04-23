@@ -62,7 +62,7 @@ const HeadsetPage = () => {
   }, [mac, isLoading]); 
 
   useEffect(()=>{
-      ipcRenderer.on('screenshot-reply',  (arg) => {
+      ipcRenderer.on('screenshot-reply',  (event , arg) => {
         console.log(arg)
       })
   },[])
