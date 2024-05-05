@@ -3,7 +3,7 @@ import SelectChapter from './SelectCourse/SelectChapter'
 import SelectExpirment from './SelectCourse/SelectExpriment'
 import SelectHowToStart from './SelectCourse/SelectHowToOpen'
 import { Button } from '@nextui-org/react'
-import { useState,useEffect } from 'react'
+import { useState,useEffect, useReducer } from 'react'
 import { useMutation } from '@apollo/client'
 import { CREATELOG, GETLOGS } from '../../../graphql/LogsQuery'
 
@@ -18,6 +18,8 @@ type ChooseCourseSectionProps = {
   setSelectedHeadsets: React.Dispatch<any>
 }
 
+
+
 const ChooseCourseSection = ({selectedHeadsets, setSelectedHeadsets}: ChooseCourseSectionProps) => {
   const [createLog, { loading: loadingCreateLog, error: errorCreateLog, data: dataCreateLog }] = useMutation(CREATELOG,{
     refetchQueries : [{query : GETLOGS}]
@@ -27,6 +29,8 @@ const ChooseCourseSection = ({selectedHeadsets, setSelectedHeadsets}: ChooseCour
   const [SelectedChapter, setSelectedChapter] = useState(null)
   const [SelectedExpirment, setSelectedExpriemnt] = useState(null)
   const [SelectedHowToStart, setSelectedHowToStart] = useState(null)
+
+ 
   const [key, setKey] = useState(0)
 
   const handelOpenCourse = () => {
@@ -81,9 +85,9 @@ const ChooseCourseSection = ({selectedHeadsets, setSelectedHeadsets}: ChooseCour
     key={key}
     >
     
-        <SelectSubject options={options} SelectdSubject={SelectdSubject} setSelectedSubject={setSelectedSubject} />
-        <SelectChapter options={options}  SelectdSubject={SelectdSubject} SelectedChapter={SelectedChapter}  setSelectedChapter={setSelectedChapter} />
-        <SelectExpirment options={options}  SelectdSubject={SelectdSubject} SelectedExpirment={SelectedExpirment} setSelectedExpriemnt={setSelectedExpriemnt} />
+        <SelectSubject options={options} SelectdSubject={SelectdSubject} setSelectedSubject={setSelectedSubject} setSelectedChapter={setSelectedChapter} setSelectedExpriemnt={setSelectedExpriemnt} />
+        <SelectChapter options={options}  SelectdSubject={SelectdSubject} SelectedChapter={SelectedChapter}  setSelectedChapter={setSelectedChapter} setSelectedExpriemnt={setSelectedExpriemnt} />
+        <SelectExpirment options={options}  SelectdSubject={SelectdSubject} SelectedChapter={SelectedChapter}  SelectedExpirment={SelectedExpirment} setSelectedExpriemnt={setSelectedExpriemnt} />
         <SelectHowToStart SelectHowToStart={SelectedHowToStart} setSelectedHowToStart={setSelectedHowToStart} />
 
         <Button className=' flex items-center justify-center px-[14px] py-[7px] rounded-[7px]' color='primary' onPress={handelOpenCourse}  
