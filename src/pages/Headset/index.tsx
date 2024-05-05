@@ -1,8 +1,8 @@
 import {useState, useEffect} from 'react'
 import ControlCard from '../../Components/ContraolCard'
-import ChooseHeadsetSection from './ChooseHeadsetSection'
-import ChooseCourseSection from './ChooseCourseSection'
-import HeadsetsSection from './HeadsetsSection'
+import ChooseHeadsetSection from './_components/ChooseHeadsetSection'
+import ChooseCourseSection from './_components/ChooseCourseSection'
+import HeadsetsSection from './_components/HeadsetsSection'
 
 const HeadsetsPage = () => {
   const [selectedHeadsets, setSelectedHeadsets] = useState<any>([])

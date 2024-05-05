@@ -27,7 +27,7 @@ import CreateSchool from "../pages/CreateSchool";
 import UpdateSchool from "../pages/UpdateSchool";
 import SchoolReports from "../pages/SchoolReports";
 import SchoolReport from "../pages/SchoolReport";
-
+import UpdateStudent from "../pages/UpdateStudent";
 const routes = [
   { path: "/headsets", component: HeadsetsPage },
   { path: "/headsets/:mac", component: HeadsetPage },
@@ -35,6 +35,7 @@ const routes = [
   { path: "/students", component: StudentsPage },
   { path: "/courses/:course", component: CoursePage },
   { path: "/students/create", component: CreateStudent },
+  { path: "/students/update/:id", component: UpdateStudent},
   { path: "/library", component: Library },
   { path: "/certificates", component: CertificatesPage },
   { path: "/settings", component: GeneralSettingsPage },

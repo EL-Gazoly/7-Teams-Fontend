@@ -9,11 +9,11 @@ import Loading from '../../Components/Loading';
 import { UploadImage } from './UploadImage';
 import { getStudents } from '../../graphql/students';
 import { GetStudents } from '../../graphql/reports';
-import AddWithExcel from '../../Components/AddWithExcelModal';
-import ChooseSchool from './ChooseSchool';
-import ChooseTeam from './ChooseTeam';
-import ChooseClass from './ChooseClass';
-import ChooseClassAlpha from './ChooseClassAlpha';
+import AddWithExcel from './_components/AddWithExcelModal';
+import ChooseSchool from './_components/ChooseSchool';
+import ChooseTeam from './_components/ChooseTeam';
+import ChooseClass from './_components/ChooseClass';
+import ChooseClassAlpha from './_components/ChooseClassAlpha';
 import EyeSlashIcon from '../../assets/login/EyeSlashIcon.svg'
 import EyeIcon from '../../assets/login/EyeIcon.svg'
 import EyeDarkIcon from '../../assets/login/dark-eye.svg'

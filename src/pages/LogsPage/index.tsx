@@ -3,10 +3,10 @@ import ControlCard from '../../Components/ContraolCard'
 import SearchIcon from '../../assets/Landing/ChooseHeadset/search.png'
 import CalendarIcon from '../../assets/LogsAsessts/calendar-month.svg'
 import { Button, Pagination } from '@nextui-org/react'
-import LogsTable from '../../Components/LogsTable'
+import LogsTable from './_components/LogsTable'
 import { useQuery } from '@apollo/client'
 import { GETLOGS } from '../../graphql/LogsQuery'
-import CalendarComponent from '../../Components/Calendar'
+import CalendarComponent from './_components/Calendar'
 import { useDisclosure } from '@nextui-org/react'
 const LogsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
