@@ -15,57 +15,57 @@ import { toast } from 'sonner';
 const HeadsetPage = () => {
   const { mac } = useParams<{ mac: string }>()
   const navigate = useNavigate()
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
   const [deviceState, setDeviceState] = useState({});
   const [progress, setProgress] = useState(0);
   const ipcRenderer = (window as any).ipcRenderer;
 
   const { data: device, loading, error } = useQuery(GetDevice, { variables: { macAddress: mac }, fetchPolicy: 'no-cache' });
 
-  useEffect(() => {
-    const deviceQuery = ref(db, `/Devices/${mac}`);
-    const ipQuery = ref(db, `/Devices/${mac}/Get-IP`);
+  // useEffect(() => {
+  //   const deviceQuery = ref(db, `/Devices/${mac}`);
+  //   const ipQuery = ref(db, `/Devices/${mac}/Get-IP`);
 
-    update(deviceQuery, { "Get-IP": "get" });
+  //   update(deviceQuery, { "Get-IP": "get" });
 
-    const handleDeviceQuery = (snapshot) => {
-      const deviceInfo = snapshot.val();
-      setDeviceState(deviceInfo);
-    };
+  //   const handleDeviceQuery = (snapshot) => {
+  //     const deviceInfo = snapshot.val();
+  //     setDeviceState(deviceInfo);
+  //   };
 
-    const handleIPQuery = (snapshot) => {
-      const ipInfo = snapshot.val();
-      if (ipInfo !== 'get') { 
-        ipcRenderer.send('connect', ipInfo);
-    }
-    };
+  //   const handleIPQuery = (snapshot) => {
+  //     const ipInfo = snapshot.val();
+  //     if (ipInfo !== 'get') { 
+  //       ipcRenderer.send('connect', ipInfo);
+  //   }
+  //   };
 
-    onValue(deviceQuery, handleDeviceQuery);
-    onValue(ipQuery, handleIPQuery);
+  //   onValue(deviceQuery, handleDeviceQuery);
+  //   onValue(ipQuery, handleIPQuery);
 
-    const connectReplyHandler = (event, arg) => {
-      if (arg === "Connected") setIsLoading(false);
-    };
-    ipcRenderer.on('connect-reply', connectReplyHandler);
+  //   const connectReplyHandler = (event, arg) => {
+  //     if (arg === "Connected") setIsLoading(false);
+  //   };
+  //   ipcRenderer.on('connect-reply', connectReplyHandler);
 
-    const timeout = setTimeout(() => {
-      if (isLoading) {
-        navigate('/headsets');
-        toast.error(' اذا استمرت المشكله جرب توصيل الجهاز بالكمبيوتر مباشره ')
-        toast.error(' فشل الاتصال تاكد ان الجهاز متصل بنفس الشبكه ') 
-              }
-    }, 20000);// 20 seconds
+  //   const timeout = setTimeout(() => {
+  //     if (isLoading) {
+  //       navigate('/headsets');
+  //       toast.error(' اذا استمرت المشكله جرب توصيل الجهاز بالكمبيوتر مباشره ')
+  //       toast.error(' فشل الاتصال تاكد ان الجهاز متصل بنفس الشبكه ') 
+  //             }
+  //   }, 20000);// 20 seconds
 
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, [mac, isLoading]); 
+  //   return () => {
+  //     clearTimeout(timeout);
+  //   };
+  // }, [mac, isLoading]); 
 
-  useEffect(()=>{
-      ipcRenderer.on('screenshot-reply',  (arg) => {
-        console.log(arg)
-      })
-  },[])
+  // useEffect(()=>{
+  //     ipcRenderer.on('screenshot-reply',  (arg) => {
+  //       console.log(arg)
+  //     })
+  // },[])
 
   const getHighestProgress = (data) => {
     const result = {};

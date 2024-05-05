@@ -3,11 +3,13 @@ import {useState} from 'react'
 
 
 import Chemistry from '../../../assets/SelectCourse/SelectSubject/chemistry.svg'
+import Physics from '../../../assets/SelectCourse/SelectSubject/physics.svg'
 import SelectedCourse from './SelectedCourse';
 
 
 const ThridCard = () => {
     const [selectedItem, setSelectedItem] = useState(null)
+    const [selectedSubject, setSelectedSubject] = useState(null)
   return (
     <div className=' relative'>
         <div className=' w-[558px] h-[483px] bg-white dark:bg-primary-dark rounded-[18px]
@@ -25,7 +27,12 @@ const ThridCard = () => {
 
                 </div>
                 <div className=' flex flex-col w-full'>
-                  <Item   icon={Chemistry} title={" الكيمياء "} setSelectedItem={setSelectedItem}  /> 
+                  <Item   icon={Chemistry} title={" الكيمياء "} setSelectedItem={setSelectedItem} subject="chemistry"
+                    setSelectedSubject={setSelectedSubject} selectedSubject={selectedSubject}
+                  /> 
+                  <Item   icon={Physics} title={" الفيزياء "} setSelectedItem={setSelectedItem} subject="physics"
+                    setSelectedSubject={setSelectedSubject} selectedSubject={selectedSubject}
+                  /> 
                 </div>
 
             </div>
