@@ -49,6 +49,7 @@ query Admin {
         courses {
           chapters {
             expriments {
+              exprimentId
               StudentExpriment {
                 totalPraticalTime
                 totalTheorticalTime

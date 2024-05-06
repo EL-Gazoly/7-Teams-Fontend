@@ -4,33 +4,51 @@ import { Divider } from '@nextui-org/react'
 
 import Loading from '../../../../../Components/Loading'
 
+import { physicsOptions, chemistryOptions } from '../../../../../data/expermients'
+
 const DashboardTable = ({totalCourseTimeLoading}) => {
   const [totalTime, setTotalTime] = useState("")
+  const [physicsTime, setPhysicsTime] = useState("")
   useEffect(() => {
     if(totalCourseTimeLoading) {
-      const {totalPractical, totalTheoretical, totalTraining} = sumTimes(totalCourseTimeLoading)
-      console.log(totalPractical, totalTheoretical, totalTraining)
+      const {totalPractical, totalTheoretical, totalTraining, physicsTotalPractical, physicsTotalTheoretical, physicsTotalTraining} = sumTimes(totalCourseTimeLoading)
       setTotalTime(convertSecondsToHMS(totalPractical + totalTheoretical + totalTraining))
+      setPhysicsTime(convertSecondsToHMS(physicsTotalPractical + physicsTotalTheoretical + physicsTotalTraining))
     }
 
   }, [totalCourseTimeLoading])
-  function sumTimes(data: any): { totalPractical: number, totalTheoretical: number, totalTraining: number } {
+  function sumTimes(data: any): { totalPractical: number, totalTheoretical: number, totalTraining: number, physicsTotalPractical: number, physicsTotalTheoretical: number, physicsTotalTraining: number} {
     let totalPractical = 0;
     let totalTheoretical = 0;
     let totalTraining = 0;
+    let physicsTotalPractical = 0;
+    let physicsTotalTheoretical = 0;
+    let physicsTotalTraining = 0;
 
-    const processExpriments = (expriments: any[]) => {
-        expriments.forEach((expriment) => {
-            totalPractical += expriment.totalPraticalTime;
-            totalTheoretical += expriment.totalTheorticalTime;
-            totalTraining += expriment.totalTrainingTime;
-        });
+    const processExpriments = (expriments: any[], exprimentId) => {
+        const isPhyiics = physicsOptions.some((option) => option.value === exprimentId);
+        const isChemistry = chemistryOptions.some((option) => option.value === exprimentId);
+        if (isPhyiics) {
+            expriments.forEach((expriment) => {
+                physicsTotalPractical += expriment.totalPraticalTime;
+                physicsTotalTheoretical += expriment.totalTheorticalTime;
+                physicsTotalTraining += expriment.totalTrainingTime;
+            });
+        }
+        else if (isChemistry) {
+            expriments.forEach((expriment) => {
+                totalPractical += expriment.totalPraticalTime;
+                totalTheoretical += expriment.totalTheorticalTime;
+                totalTraining += expriment.totalTrainingTime;
+            });
+        }
     };
 
     const processCourses = (courses: any[]) => {
         courses.forEach((chapter) => {
             chapter.expriments.forEach((expriment: any) => {
-                processExpriments(expriment.StudentExpriment);
+                
+                processExpriments(expriment.StudentExpriment , expriment.exprimentId );
             }
             );
         });
@@ -50,6 +68,9 @@ const DashboardTable = ({totalCourseTimeLoading}) => {
         totalPractical,
         totalTheoretical,
         totalTraining,
+        physicsTotalPractical,
+        physicsTotalTheoretical,
+        physicsTotalTraining,
     };
 }
 
@@ -73,7 +94,7 @@ const convertSecondsToHMS = (seconds: number) => {
         </div>
         <Divider className=' w-full bg-[#EDF2F6BF]' />
         <div>
-            <Body totalTime={totalTime} />
+            <Body chemistryTotalTime={totalTime} physicsTotalTime={physicsTime} />
 
         </div>
     </div>
