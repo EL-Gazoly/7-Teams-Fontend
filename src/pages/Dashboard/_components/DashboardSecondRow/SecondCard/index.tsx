@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react'
 import { Divider } from '@nextui-org/react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import { set } from 'firebase/database';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -51,20 +52,26 @@ const SecondCard = ({rolesCount}) => {
    const teacherCount = rolesCount.filter((role) => role['name'] === 'معلم')
     const adminCount = rolesCount.filter((role) => role['name'] === 'ادمن')
     const supervisorCount = rolesCount.filter((role) => role['name'] === 'المدير التنفيذي')
+    console.log(adminCount)
     console.log(teacherCount)
     
     teacherCount.length &&  teacherCount.forEach((teacher) => {
+      console.log(teacher['users'].length)
         setTeacherCount(teacher['users'].length)
+        setTotalCount(prev => prev + teacher['users'].length)
       })
     
     adminCount.length &&   adminCount.forEach((admin) => {
+      console.log(admin['users'].length)
         setAdminCount(admin['users'].length)
+        setTotalCount(prev => prev + admin['users'].length)
       })
     supervisorCount.length &&  supervisorCount.forEach((supervisor) => {
+      console.log(supervisor['users'].length)
         setSupervisorCount(supervisor['users'].length)
+        setTotalCount(prev => prev + supervisor['users'].length)
       })
-      if(teacherCount.length && adminCount.length && supervisorCount.length)
-      setTotalCount(teacherCount[0]['users'].length + adminCount[0]['users'].length + supervisorCount[0]['users'].length)
+      
    
    }
   }
@@ -104,15 +111,15 @@ const SecondCard = ({rolesCount}) => {
             <div className='flex flex-col items-center gap-y-2 text-[10px]'>
               <div className=' flex items-center gap-x-1 w-[118px]'>
                   <div className=' w-3 h-2 rounded bg-[#009017]'  />
-                  <span className='dark:text-white '>{Math.floor(adminCount/totalCount* 100)}% مدير النظام</span>
+                  <span className='dark:text-white '>{ Math.floor(totalCount ? adminCount/totalCount* 100 : 0) }% مدير النظام</span>
               </div>
               <div className=' flex items-center gap-x-1 w-[118px] '>
                   <div className=' w-3 h-2 rounded bg-[#21FB45]'  />
-                  <span className='dark:text-white'>{Math.floor(supervisorCount/totalCount*100)}%  الإداريين التنفيذيين</span>
+                  <span className='dark:text-white'>{Math.floor(totalCount ? adminCount/totalCount* 100 : 0)}%  الإداريين التنفيذيين</span>
               </div>
               <div className=' flex items-center gap-x-1 w-[118px] '>
                   <div className=' w-3 h-2 rounded bg-[#8DF49D] mb-4'  />
-                  <span className='dark:text-white '> {Math.floor(teacherCount/totalCount*100)}% المعلمين أو المشرفين </span>
+                  <span className='dark:text-white '> {Math.floor(totalCount ? adminCount/totalCount* 100 : 0)}% المعلمين أو المشرفين </span>
               </div>
 
             </div>
