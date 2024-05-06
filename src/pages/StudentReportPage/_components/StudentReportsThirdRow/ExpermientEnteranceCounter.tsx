@@ -2,6 +2,7 @@ import { Divider } from '@nextui-org/react'
 import { useEffect, useState } from 'react'
 
 import { chemistryOptions, physicsOptions } from '../../../../data/expermients'
+import { set } from 'firebase/database'
 
 const ExpermientEnteranceCounter = ({expermients}) => {
     const [liquid, setLiquid] = useState(0)
@@ -25,7 +26,14 @@ const ExpermientEnteranceCounter = ({expermients}) => {
     ]
     useEffect(() => {
         if(expermients) {
-            
+            setLiquid(0)
+            setHeat(0)
+            setWood(0)
+            setVolume(0)
+            setCharles(0)
+            setSizeOfMole(0)
+            setInertia(0)
+            setGeigerDevice(0)
             expermients = Object.values(expermients)
             expermients.forEach((expermient)=>{
                 if(expermient.name== "Liquid Viscosity")
@@ -63,7 +71,7 @@ const ExpermientEnteranceCounter = ({expermients}) => {
 
             </div>
             <Divider className=' bg-[#2DEC4C]' />
-            <div className='w-full flex  flex-col gap-y-5 text-text-black dark:text-white text-xs overflow-scroll'>
+            <div className='w-full flex flex-1  overflow-y-auto flex-col gap-y-5 text-text-black dark:text-white text-xs overflow-scroll'>
          
                 {
                     optionswithState.map((option, index) => {
