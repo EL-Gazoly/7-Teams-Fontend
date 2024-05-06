@@ -11,61 +11,63 @@ import Loading from '../../Components/Loading';
 import db from '../../config/firebase'
 import { ref, update, onValue } from 'firebase/database'
 import { toast } from 'sonner';
+import {  physicsOptions } from '../../data/expermients';
 
 const HeadsetPage = () => {
   const { mac } = useParams<{ mac: string }>()
   const navigate = useNavigate()
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const [deviceState, setDeviceState] = useState({});
-  const [progress, setProgress] = useState(0);
+  const [chemistryProgres ,setChemistryProgres] = useState(0);
+  const [physicsProgres ,setPhysicsProgress] = useState(0);
   const ipcRenderer = (window as any).ipcRenderer;
 
   const { data: device, loading, error } = useQuery(GetDevice, { variables: { macAddress: mac }, fetchPolicy: 'no-cache' });
 
-  // useEffect(() => {
-  //   const deviceQuery = ref(db, `/Devices/${mac}`);
-  //   const ipQuery = ref(db, `/Devices/${mac}/Get-IP`);
+  useEffect(() => {
+    const deviceQuery = ref(db, `/Devices/${mac}`);
+    const ipQuery = ref(db, `/Devices/${mac}/Get-IP`);
 
-  //   update(deviceQuery, { "Get-IP": "get" });
+    update(deviceQuery, { "Get-IP": "get" });
 
-  //   const handleDeviceQuery = (snapshot) => {
-  //     const deviceInfo = snapshot.val();
-  //     setDeviceState(deviceInfo);
-  //   };
+    const handleDeviceQuery = (snapshot) => {
+      const deviceInfo = snapshot.val();
+      setDeviceState(deviceInfo);
+    };
 
-  //   const handleIPQuery = (snapshot) => {
-  //     const ipInfo = snapshot.val();
-  //     if (ipInfo !== 'get') { 
-  //       ipcRenderer.send('connect', ipInfo);
-  //   }
-  //   };
+    const handleIPQuery = (snapshot) => {
+      const ipInfo = snapshot.val();
+      if (ipInfo !== 'get') { 
+        ipcRenderer.send('connect', ipInfo);
+    }
+    };
 
-  //   onValue(deviceQuery, handleDeviceQuery);
-  //   onValue(ipQuery, handleIPQuery);
+    onValue(deviceQuery, handleDeviceQuery);
+    onValue(ipQuery, handleIPQuery);
 
-  //   const connectReplyHandler = (event, arg) => {
-  //     if (arg === "Connected") setIsLoading(false);
-  //   };
-  //   ipcRenderer.on('connect-reply', connectReplyHandler);
+    const connectReplyHandler = (event, arg) => {
+      if (arg === "Connected") setIsLoading(false);
+    };
+    ipcRenderer.on('connect-reply', connectReplyHandler);
 
-  //   const timeout = setTimeout(() => {
-  //     if (isLoading) {
-  //       navigate('/headsets');
-  //       toast.error(' اذا استمرت المشكله جرب توصيل الجهاز بالكمبيوتر مباشره ')
-  //       toast.error(' فشل الاتصال تاكد ان الجهاز متصل بنفس الشبكه ') 
-  //             }
-  //   }, 20000);// 20 seconds
+    const timeout = setTimeout(() => {
+      if (isLoading) {
+        navigate('/headsets');
+        toast.error(' اذا استمرت المشكله جرب توصيل الجهاز بالكمبيوتر مباشره ')
+        toast.error(' فشل الاتصال تاكد ان الجهاز متصل بنفس الشبكه ') 
+              }
+    }, 20000);// 20 seconds
 
-  //   return () => {
-  //     clearTimeout(timeout);
-  //   };
-  // }, [mac, isLoading]); 
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [mac, isLoading]); 
 
-  // useEffect(()=>{
-  //     ipcRenderer.on('screenshot-reply',  (arg) => {
-  //       console.log(arg)
-  //     })
-  // },[])
+  useEffect(()=>{
+      ipcRenderer.on('screenshot-reply',  (arg) => {
+        console.log(arg)
+      })
+  },[])
 
   const getHighestProgress = (data) => {
     const result = {};
@@ -81,14 +83,21 @@ const HeadsetPage = () => {
   if (error) console.log(error.message);
 
   useEffect(() => {
-    let totalProgress = 0;
+    let chemistryTotalProgress = 0;
+    let physicsTotalProgress = 0;
     if (device && device?.deviceByMac?.student[0]?.studnetExpriment){
         const highestProgressForEachExperiment = getHighestProgress(device.deviceByMac.student[0].studnetExpriment) as any;
+        console.log(device.deviceByMac.student[0].studnetExpriment)
         highestProgressForEachExperiment.forEach((expriment) => {
-          totalProgress += expriment.progress;
+          if (expriment.exprimentId in physicsOptions){
+            physicsTotalProgress += expriment.progress;
+          }
+          chemistryTotalProgress += expriment.progress;
         });
-        const total = totalProgress / 3;
-        setProgress(total);
+        const chemistryTotal = chemistryTotalProgress / 6;
+        const physicsTotal = physicsTotalProgress / 2;
+        setChemistryProgres(chemistryTotal);
+        setPhysicsProgress(physicsTotal);
     }
     
   }, [device]);
@@ -110,7 +119,7 @@ const HeadsetPage = () => {
         </div>
         <div className='w-full flex items-center gap-x-4 flex-row-reverse'>
           <ThridCard />
-          <FourthCard progress={progress} />
+          <FourthCard chemistryProgres={chemistryProgres} physicsProgres={physicsProgres} />
         </div>
       </div>
         )

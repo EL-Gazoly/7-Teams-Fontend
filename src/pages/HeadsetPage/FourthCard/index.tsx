@@ -1,11 +1,12 @@
 import React from 'react'
 
 import Chemistry from '../../../assets/SelectCourse/SelectSubject/chemistry.svg'
+import Physics from '../../../assets/SelectCourse/SelectSubject/physics.svg'
 import Item from './item'
 
 
 
-const FourthCard = ({progress}) => {
+const FourthCard = ({physicsProgres, chemistryProgres}) => {
   return (
     <div className=' w-[444px] h-[485px] rounded-[21px] bg-white dark:bg-primary-dark
      py-7 flex flex-col gap-y-3 items-end
@@ -26,7 +27,8 @@ const FourthCard = ({progress}) => {
       </div>
 
       <div className='mt-4 flex flex-col gap-y-[50px] items-center px-8 text-text-black text-xs'>
-        <Item icon={Chemistry} title={" الكيمياء "} percentage={progress? progress*100 : 0} />
+        <Item icon={Chemistry} title={" الكيمياء "} percentage={chemistryProgres? chemistryProgres*100 : 0} />
+        <Item icon={Physics} title={" الفيزياء "} percentage={physicsProgres? physicsProgres *100 : 0} />
 
       </div>
 

@@ -14,7 +14,7 @@ type SelectedCourseProps = {
         value: string;
         icon: string;
         title: string;
-        label: string;
+        name: string;
     };
     setSelectedItem: React.Dispatch<any>
 }
@@ -47,7 +47,7 @@ const SelectedCourse = ({selectedItem , setSelectedItem} : SelectedCourseProps) 
                 "Control-App": {
                     "Course": "com.SevenTeams.ScienceExperiments",
                     "ExperimentId": selectedItem.value,
-                    "ExperimentName": selectedItem.label,
+                    "ExperimentName": selectedItem.title,
                     "Type": type,
                     "Command" : "Open",
                 }
@@ -55,7 +55,7 @@ const SelectedCourse = ({selectedItem , setSelectedItem} : SelectedCourseProps) 
             await createLog({
                 variables: {
                   data: {
-                    action: `Start ${type} ${selectedItem.label} on device number ${mac}`,
+                    action: `Start ${type} ${selectedItem.name} on device number ${mac}`,
                   }
                 }
               })
@@ -75,7 +75,7 @@ const SelectedCourse = ({selectedItem , setSelectedItem} : SelectedCourseProps) 
                      <Image src={selectedItem.icon} width={54} height={59} radius='none' />
                 </div>
                
-                <span className=' text-text-black dark:text-white text-[21px] font-bold'> {selectedItem.title} </span>
+                <span className=' text-text-black dark:text-white text-[21px] font-bold'> {selectedItem.name} </span>
             </div>
 
             <div className=' grid grid-cols-2 max-w-[335px] gap-x-[10px] gap-y-[14px] '>
