@@ -1,11 +1,11 @@
 import React from 'react'
 import Dots from '../../assets/Reports/dotshorizontal.svg'
-import PrinterIcon from '../../assets/Reports/printer.png'
+import PrinterIcon from '../../../../assets/Reports/printer.png'
 import { Button, Avatar, Divider } from '@nextui-org/react'
 import html2canvas from 'html2canvas';
-import noPic from '../../assets/students/noPic.svg'
-import noPicDark from '../../assets/students/no-pic.svg'
-import { useThemeStore } from '../../stores/ThemeStore';
+import noPic from '../../../../assets/students/noPic.svg'
+import noPicDark from '../../../../assets/students/no-pic.svg'
+import { useThemeStore } from '../../../../stores/ThemeStore';
 
 const StudentCard = ({data, ref}) => {
     const {dark} = useThemeStore();

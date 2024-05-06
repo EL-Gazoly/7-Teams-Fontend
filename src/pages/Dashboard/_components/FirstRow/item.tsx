@@ -1,8 +1,8 @@
 import React from 'react'
-import UserIcon from '../../../assets/Dashboard/user.svg'
-import ClockIcon from '../../../assets/Dashboard/clock.svg'
-import SelectedCertificates from '../../../assets/Dashboard/certificateIcon.svg'
-import Mask from '../../../assets/Dashboard/mask.png'
+import UserIcon from '../../../../assets/Dashboard/user.svg'
+import ClockIcon from '../../../../assets/Dashboard/clock.svg'
+import SelectedCertificates from '../../../../assets/Dashboard/certificateIcon.svg'
+import Mask from '../../../../assets/Dashboard/mask.png'
 
 type CardItemProps = {
     title: string

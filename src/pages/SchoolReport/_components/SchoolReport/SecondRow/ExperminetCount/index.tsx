@@ -1,5 +1,5 @@
 import { Divider } from '@nextui-org/react'
-import DoughuntChart from '../../../../../../Components/StudentExperminetCount/DoughnutChart'
+import DoughuntChart from '../../../../../StudentReportPage/_components/StudentExperminetCount/DoughnutChart'
 import { useLocation } from 'react-router-dom'
 const ExpermientCount = ({enterPractical, enterTheortical, enterTraining}) => {
   return (

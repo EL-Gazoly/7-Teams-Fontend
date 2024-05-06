@@ -20,7 +20,7 @@ ChartJS.register(
 );
 import './index.css'
 
-import { useThemeStore } from '../../../stores/ThemeStore';
+import { useThemeStore } from '../../../../../stores/ThemeStore';
 
 const labels = [' ثالث ثانوي ' , ' ثاني ثاوي' , ' اول ثانوي' , ' ثالث متوسط ', ' ثاني متوسط ', ' اول متوسط ' , 
 "اول ابتدائي" , "ثاني ابتدائي" , "ثالث ابتدائي" , "رابع ابتدائي" , "خامس ابتدائي" , "سادس ابتدائي"

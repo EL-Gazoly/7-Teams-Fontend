@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import { Divider } from '@nextui-org/react'
-import Chemistry from '../../assets/SelectCourse/SelectSubject/chemistry.svg'
+import Chemistry from '../../../../assets/SelectCourse/SelectSubject/chemistry.svg'
 
 import grade from 'letter-grade'
 const StudentResults = ({expermients, maxGrades}) => {

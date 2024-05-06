@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './style.css';
-import FirstFirePic from '../../assets/coursePage/1.png';
-import SecondFirePic from '../../assets/coursePage/2.png';
-import LeftArrow from '../../assets/coursePage/LeftArrow.png';
+import FirstFirePic from '../../../../assets/coursePage/1.png';
+import SecondFirePic from '../../../../assets/coursePage/2.png';
+import LeftArrow from '../../../../assets/coursePage/LeftArrow.png';
 import { Button, Image } from '@nextui-org/react';
 
 const images = [FirstFirePic, SecondFirePic, FirstFirePic];

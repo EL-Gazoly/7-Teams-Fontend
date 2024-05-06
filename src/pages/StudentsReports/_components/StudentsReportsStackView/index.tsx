@@ -1,7 +1,7 @@
 import React from 'react'
 import { Table, TableHeader, TableBody, TableColumn, TableRow, TableCell, Avatar } from '@nextui-org/react';
 import { useNavigate } from 'react-router-dom';
-import noPic from '../../assets/students/noPic.svg'
+import noPic from '../../../../assets/students/noPic.svg'
 
 const StackView = ({data}) => {
     const navigate = useNavigate()

@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react'
 import Body from './Body'
 import { Divider } from '@nextui-org/react'
 
-import Loading from '../../Loading'
+import Loading from '../../../../../Components/Loading'
 
 const DashboardTable = ({totalCourseTimeLoading}) => {
   const [totalTime, setTotalTime] = useState("")

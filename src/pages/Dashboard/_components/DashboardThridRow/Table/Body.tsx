@@ -1,4 +1,4 @@
-import Chemistry from '../../../assets/SelectCourse/SelectSubject/chemistry.svg'
+import Chemistry from '../../../../../assets/SelectCourse/SelectSubject/chemistry.svg'
 
 const Body = ({totalTime}) => {
   return (

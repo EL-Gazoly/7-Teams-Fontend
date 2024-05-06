@@ -1,8 +1,8 @@
 import { Divider } from '@nextui-org/react'
-import LiquidExpirment from '../../assets/SelectCourse/SelectExpriment/Chemistry/liquid.svg'
-import HeatExpriment from '../../assets/SelectCourse/SelectExpriment/Chemistry/heat.svg'
-import DenistyOfWood from '../../assets/SelectCourse/SelectExpriment/Chemistry/DensityOfWood.svg'
-import VolumeCalculation from '../../assets/SelectCourse/SelectExpriment/Chemistry/size.svg'
+import LiquidExpirment from '../../../../assets/SelectCourse/SelectExpriment/Chemistry/liquid.svg'
+import HeatExpriment from '../../../../assets/SelectCourse/SelectExpriment/Chemistry/heat.svg'
+import DenistyOfWood from '../../../../assets/SelectCourse/SelectExpriment/Chemistry/DensityOfWood.svg'
+import VolumeCalculation from '../../../../assets/SelectCourse/SelectExpriment/Chemistry/size.svg'
 import { useEffect, useState } from 'react'
 
 const ExpermientEnteranceCounter = ({expermients}) => {
