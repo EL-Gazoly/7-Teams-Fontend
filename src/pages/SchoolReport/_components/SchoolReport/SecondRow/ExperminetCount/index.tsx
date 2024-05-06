@@ -15,7 +15,7 @@ const ExpermientCount = ({enterPractical, enterTheortical, enterTraining}) => {
       </div>
       <div className=' w-full flex items-center justify-between'>
         <div className=' flex flex-col gap-y-[6px]'>
-            <span className=' text-[#444] dark:text-white text-[40px] font-bold'>{0+0+0}</span>
+            <span className=' text-[#444] dark:text-white text-[40px] font-bold'>{enterTraining + enterTheortical + enterPractical}</span>
             <div className=' flex flex-col gap-y-3'>
                 <div className=' flex items-center gap-x-3'>
                     <div className=' w-[14px] h-7 rounded bg-[#009017]' />
