@@ -2,16 +2,11 @@ import React from 'react'
 import TotalGradeForStage from '../TotalGradeForStage'
 import ExpermientEnteranceCounter from './ExpermientEntraceCounter'
 
-const StageThirdRow = ({data, setEnterTraining, setEnterPratical, setEnterTheortical,
-  enterPratical, enterTheortical, enterTraining
-}) => {
+const StageThirdRow = ({data}) => {
   return (
     <div className=' flex items-center gap-x-2'>
         <TotalGradeForStage experiments={data} />
-        <ExpermientEnteranceCounter data={data} 
-        setEnterTraining={setEnterTraining} setEnterPratical={setEnterPratical} setEnterTheortical={setEnterTheortical}
-        enterPratical={enterPratical} enterTheortical={enterTheortical} enterTraining={enterTraining}
-        />
+        <ExpermientEnteranceCounter data={data}  />
         
     
   </div>

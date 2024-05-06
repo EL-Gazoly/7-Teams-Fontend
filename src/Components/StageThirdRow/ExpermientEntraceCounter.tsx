@@ -1,17 +1,28 @@
 import { useEffect, useState} from 'react'
 import { Divider } from '@nextui-org/react'
-import LiquidExpirment from '../../assets/SelectCourse/SelectExpriment/Chemistry/liquid.svg'
-import HeatExpriment from '../../assets/SelectCourse/SelectExpriment/Chemistry/heat.svg'
-import DenistyOfWood from '../../assets/SelectCourse/SelectExpriment/Chemistry/DensityOfWood.svg'
-import VolumeCalculation from '../../assets/SelectCourse/SelectExpriment/Chemistry/size.svg'
 
-const ExpermientEnteranceCounter = ({data, setEnterTraining, setEnterTheortical, setEnterPratical, enterTraining
-    , enterTheortical, enterPratical
-}) => {
+import { chemistryOptions, physicsOptions } from '../../data/expermients'
+const ExpermientEnteranceCounter = ({data}) => {
     const [liquid, setLiquid] = useState(0)
     const [heat, setHeat] = useState(0)
     const [wood, setWood] = useState(0)
     const [volume, setVolume] = useState(0)
+    const [charles, setCharles] = useState(0)
+    const [sizeOfMole, setSizeOfMole] = useState(0)
+    const [Inertia, setInertia] = useState(0)
+    const [GeigerDevice, setGeigerDevice] = useState(0)
+
+      const optionswithState = [
+        {...chemistryOptions[0], state: liquid},
+        {...chemistryOptions[1], state: heat},
+        {...chemistryOptions[2], state: wood},
+        {...chemistryOptions[3], state: volume},
+        {...chemistryOptions[4], state: charles},
+        {...chemistryOptions[5], state: sizeOfMole},
+        {...physicsOptions[0], state: Inertia},
+        {...physicsOptions[1], state: GeigerDevice},
+
+    ]
     useEffect(() => {
     
             calculateTotal()
@@ -87,10 +98,31 @@ const ExpermientEnteranceCounter = ({data, setEnterTraining, setEnterTheortical,
             summedExperimentTotals.get("Volume Calculation").totalEnterTraining + summedExperimentTotals.get("Volume Calculation").totalEnterTheortical + summedExperimentTotals.get("Volume Calculation").totalEnterPratical
                 : 0
             )
+        setCharles(
+            summedExperimentTotals.get("Charles") ?
+            summedExperimentTotals.get("Charles").totalEnterTraining + summedExperimentTotals.get("Charles").totalEnterTheortical + summedExperimentTotals.get("Charles").totalEnterPratical
+                : 0
+            )
+        setSizeOfMole(
+            summedExperimentTotals.get("SizeOfMole") ?
+            summedExperimentTotals.get("SizeOfMole").totalEnterTraining + summedExperimentTotals.get("SizeOfMole").totalEnterTheortical + summedExperimentTotals.get("SizeOfMole").totalEnterPratical
+                : 0
+            )
+        setInertia(
+            summedExperimentTotals.get("Inertia") ?
+            summedExperimentTotals.get("Inertia").totalEnterTraining + summedExperimentTotals.get("Inertia").totalEnterTheortical + summedExperimentTotals.get("Inertia").totalEnterPratical
+                : 0
+            )
+        setGeigerDevice(
+            summedExperimentTotals.get("GeigerDevice") ?
+            summedExperimentTotals.get("GeigerDevice").totalEnterTraining + summedExperimentTotals.get("GeigerDevice").totalEnterTheortical + summedExperimentTotals.get("GeigerDevice").totalEnterPratical
+                : 0
+            )
+          
 
     }
   return (
-    <div className=' w-[532px] h-[354px] p-7 bg-white dark:bg-primary-dark rounded-lg flex flex-col gap-y-5'>
+    <div className=' w-[532px] h-[354px] overflow-y-auto p-7 bg-white dark:bg-primary-dark rounded-lg flex flex-col gap-y-5'>
         <span className=' text-text-black dark:text-white text-sm font-bold'>عدد مرات  الدخول الى التجارب </span>
         <div className=' flex flex-col items-center gap-4'>
             <div className=' w-full flex items-center justify-between text-[10px] text-[#96A5B8]'>
@@ -105,49 +137,28 @@ const ExpermientEnteranceCounter = ({data, setEnterTraining, setEnterTheortical,
             </div>
             <Divider className=' bg-[#2DEC4C]' />
             <div className='w-full flex flex-col gap-y-5 text-text-black dark:text-white text-xs'>
-                <div className='w-full flex items-center justify-between'>
-                    <div className='flex items-center gap-x-8 '>
-                        <span className=' font-medium'>01</span>
-                        <img src={LiquidExpirment} alt="" className=' w-5 h-5' />
-                        <span className=' font-bold'>لزوجه السائل</span>
-                    </div>
-                    <div className=' w-[41px] h-[42px] flex items-center justify-center bg-[#E8E9EB] dark:bg-[#2E333B] font-medium'>
-                            {liquid}
-                    </div> 
-                </div>
-                <div className='w-full flex items-center justify-between'>
-                    <div className='flex items-center gap-x-8 '>
-                        <span className=' font-medium'>02</span>
-                        <img src={DenistyOfWood} alt="" className=' w-5 h-5' />
-                        <span className=' font-bold'> كثافه الخشب</span>
-                    </div>
-                    <div className=' w-[41px] h-[42px] flex items-center justify-center bg-[#E8E9EB] dark:bg-[#2E333B] font-medium'>
-                            {wood}
-                    </div> 
-                </div>
-                <div className='w-full flex items-center justify-between'>
-                    <div className='flex items-center gap-x-8 '>
-                        <span className=' font-medium'>03</span>
-                        <img src={HeatExpriment} alt="" className=' w-5 h-5' />
-                        <span className=' font-bold'> استخدام موقد بنسن</span>
-                    </div>
-                    <div className=' w-[41px] h-[42px] flex items-center justify-center bg-[#E8E9EB] dark:bg-[#2E333B] font-medium'>
-                            {heat}
-                    </div> 
-                </div>
-                <div className='w-full flex items-center justify-between'>
-                        <div className='flex items-center gap-x-8 '>
-                            <span className=' font-medium'>04</span>
-                            <img src={VolumeCalculation} alt="" className=' w-5 h-5' />
-                            <span className=' font-bold'> تحديد الحجم</span>
-                        </div>
-                        <div className=' w-[41px] h-[42px] flex items-center justify-center bg-[#E8E9EB] dark:bg-[#2E333B] font-medium'>
-                                {volume}
-                        </div> 
-                    </div>
+
+              {
+                  optionswithState.map((option, index) => {
+                      return (
+                          <div className='w-full h-full flex items-center justify-between'>
+                              <div className='flex items-center gap-x-8 '>
+                                  <span className=' font-medium'>{index + 1}</span>
+                                  <img src={option.icon} alt="" className=' w-5 h-10' />
+                                  <span className=' font-bold'>{option.name}</span>
+                              </div>
+                              <div className=' w-[41px] h-[42px] flex items-center justify-center dark:bg-[#373C44] font-medium'>
+                                  {option.state}
+                              </div> 
+                          </div>
+                      )
+                  })
+              }
+                
 
 
             </div>
+
 
 
         </div>
