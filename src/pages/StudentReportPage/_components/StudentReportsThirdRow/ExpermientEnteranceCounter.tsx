@@ -25,23 +25,24 @@ const ExpermientEnteranceCounter = ({expermients}) => {
     ]
     useEffect(() => {
         if(expermients) {
+            
             expermients = Object.values(expermients)
             expermients.forEach((expermient)=>{
-                if(expermient.title== "Liquid Viscosity")
+                if(expermient.name== "Liquid Viscosity")
                     setLiquid(liquid + expermient.enterPratical + expermient.enterTheortical + expermient.enterTraining)
-                if(expermient.title== "Effective Use Of Bunsen Burner")
+                if(expermient.name== "Effective Use Of Bunsen Burner")
                     setHeat(heat + expermient.enterPratical + expermient.enterTheortical + expermient.enterTraining)
-                if(expermient.title== "Density Of Wood")
+                if(expermient.name== "Density Of Wood")
                     setWood(wood + expermient.enterPratical + expermient.enterTheortical + expermient.enterTraining)
-                if(expermient.title== "Volume Calculation")
+                if(expermient.name== "Volume Calculation")
                     setVolume(volume + expermient.enterPratical + expermient.enterTheortical + expermient.enterTraining)
-                if(expermient.title== "Charles")
+                if(expermient.name== "Charles")
                     setCharles(charles + expermient.enterPratical + expermient.enterTheortical + expermient.enterTraining)
-                if(expermient.title== "SizeOfMole")
+                if(expermient.name== "SizeOfMole")
                     setSizeOfMole(sizeOfMole + expermient.enterPratical + expermient.enterTheortical + expermient.enterTrainin)
-                if (expermient.title == "Inertia")
+                if (expermient.name == "Inertia")
                     setInertia(Inertia + expermient.enterPratical + expermient.enterTheortical + expermient.enterTraining)
-                if (expermient.title == "GeigerDevice")
+                if (expermient.name == "GeigerDevice")
                     setGeigerDevice(GeigerDevice + expermient.enterPratical + expermient.enterTheortical + expermient.enterTraining)
                 
             })
