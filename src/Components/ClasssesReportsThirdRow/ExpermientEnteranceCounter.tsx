@@ -1,9 +1,5 @@
 import { useEffect, useState} from 'react'
 import { Divider } from '@nextui-org/react'
-import LiquidExpirment from '../../assets/SelectCourse/SelectExpriment/Chemistry/liquid.svg'
-import HeatExpriment from '../../assets/SelectCourse/SelectExpriment/Chemistry/heat.svg'
-import DenistyOfWood from '../../assets/SelectCourse/SelectExpriment/Chemistry/DensityOfWood.svg'
-import VolumeCalculation from '../../assets/SelectCourse/SelectExpriment/Chemistry/size.svg'
 
 import { chemistryOptions, physicsOptions } from '../../data/expermients'
 const ExpermientEnteranceCounter = ({data}) => {
@@ -138,7 +134,7 @@ const ExpermientEnteranceCounter = ({data}) => {
 
             </div>
             <Divider className=' bg-[#2DEC4C]' />
-            <div className='w-full flex flex-col gap-y-5 text-text-black dark:text-white  text-xs'>
+         
              <div className='w-full flex flex-col gap-y-5 text-text-black dark:text-white text-xs'>
 
               {
@@ -162,7 +158,7 @@ const ExpermientEnteranceCounter = ({data}) => {
 
             </div>
 
-            </div>
+          
 
 
         </div>
