@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 import { toast } from 'sonner';
 import Loading from '../../Components/Loading';
-import ControlCard from '../../Components/ContraolCard';
+import ControlCard from '../../Components/ControlCard';
 import { Button, Image } from '@nextui-org/react';
 import DarkEditIcon from '../../assets/settings/dark/vuesax/linear/user-edit.svg'
 import { UploadImage } from './UploadImage';

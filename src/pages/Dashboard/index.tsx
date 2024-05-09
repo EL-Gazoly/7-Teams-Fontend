@@ -1,5 +1,5 @@
 import React from 'react'
-import ControlCard from '../../Components/ContraolCard'
+import ControlCard from '../../Components/ControlCard'
 import FirstRow from './_components/FirstRow'
 import SecondRow from './_components/DashboardSecondRow'
 import DashboardThridRow from './_components/DashboardThridRow'

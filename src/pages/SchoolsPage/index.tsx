@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import SelectedSchoolIcon from '../../assets/SideBar/Open/school.svg'
-import ControlCard from '../../Components/ContraolCard'
+import ControlCard from '../../Components/ControlCard'
 import { Image, Button } from '@nextui-org/react'
 import SearchIcon from '../../assets/Landing/ChooseHeadset/search.png'
 import AddIcon from '../../assets/students/add.svg'

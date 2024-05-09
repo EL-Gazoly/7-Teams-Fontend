@@ -1,6 +1,6 @@
 import { SearchStudent } from './SearchStudent';
 import React, {useState, useEffect} from 'react'
-import ControlCard from '../../Components/ContraolCard'
+import ControlCard from '../../Components/ControlCard'
 import StackView from './_components/StudentsReportsStackView';
 import GridView from './_components/StudentsReportsGridView';
 import { useQuery } from '@apollo/client';

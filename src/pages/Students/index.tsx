@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import ControlCard from '../../Components/ContraolCard'
+import ControlCard from '../../Components/ControlCard'
 import { Image, Button,Tabs, Tab } from '@nextui-org/react'
 import SearchIcon from '../../assets/Landing/ChooseHeadset/search.png'
 import AddIcon from '../../assets/students/add.svg'

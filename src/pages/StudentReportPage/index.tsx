@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { GetStudentReports } from '../../graphql/reports';
 import Loading from '../../Components/Loading';
-import ControlCard from '../../Components/ContraolCard'
+import ControlCard from '../../Components/ControlCard'
 import StudentReportsFirstRow from './_components/StudentReportsFirstRow';
 import StudentReportsSecondRow from './_components/StudentReportsSecondRow';
 import StudentReportsThirdRow from './_components/StudentReportsThirdRow';

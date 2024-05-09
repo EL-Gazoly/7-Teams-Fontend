@@ -1,5 +1,5 @@
 import {useState, useRef, useEffect} from 'react'
-import ControlCard from '../../Components/ContraolCard'
+import ControlCard from '../../Components/ControlCard'
 import SchoolIcon from '../../assets/SideBar/Open/school.svg'
 import LightSchoolIcon from '../../assets/SideBar/Open/default/school.svg'
 import { Button } from '@nextui-org/react'

@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react'
-import ControlCard from '../../Components/ContraolCard'
+import ControlCard from '../../Components/ControlCard'
 import SearchIcon from '../../assets/Landing/ChooseHeadset/search.png'
 import CalendarIcon from '../../assets/LogsAsessts/calendar-month.svg'
 import { Button, Pagination } from '@nextui-org/react'

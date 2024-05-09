@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FirstCard } from './FirstCard';
-import ControlCard from '../../Components/ContraolCard'
+import ControlCard from '../../Components/ControlCard'
 import SecondCard from './SecondCard';
 import ThridCard from './ThridCard';
 import FourthCard from './FourthCard';

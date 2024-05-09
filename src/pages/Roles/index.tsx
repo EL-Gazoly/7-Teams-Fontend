@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import ControlCard from '../../Components/ContraolCard'
+import ControlCard from '../../Components/ControlCard'
 import SearchIcon from '../../assets/Landing/ChooseHeadset/search.png'
 import AddIcon from '../../assets/students/add.svg'
 import UserIcon from '../../assets/students/user.svg'

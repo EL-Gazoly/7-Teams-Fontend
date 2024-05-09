@@ -1,7 +1,7 @@
 import onProgressLight from '../../assets/library/onProgrss-light.svg'
 import onProgressDark from '../../assets/library/onProgrss-dark.svg'
 import { useThemeStore } from '../../stores/ThemeStore'
-import ControlCard from '../../Components/ContraolCard'
+import ControlCard from '../../Components/ControlCard'
 
 const Library = () => {
   const {dark} = useThemeStore()

@@ -1,5 +1,5 @@
 import {useRef , useState, useEffect} from 'react'
-import ControlCard from '../../Components/ContraolCard'
+import ControlCard from '../../Components/ControlCard'
 import FirstRow from './_components/SchoolReport/FirstRow'
 import SecondRow from './_components/SchoolReport/SecondRow'
 import ThirdRow from './_components/SchoolReport/ThirdRow'

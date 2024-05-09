@@ -1,6 +1,6 @@
 import { UploadImage } from './UploadImage';
 import React, {useState, useRef, useEffect} from 'react'
-import ControlCard from '../../Components/ContraolCard'
+import ControlCard from '../../Components/ControlCard'
 import { Button, Image, user } from '@nextui-org/react';
 import AddIcon from '../../assets/students/add.svg'
 import ChooseRole from './ChooseRole';

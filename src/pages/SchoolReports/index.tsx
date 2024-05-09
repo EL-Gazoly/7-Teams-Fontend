@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react'
-import ControlCard from '../../Components/ContraolCard'
+import ControlCard from '../../Components/ControlCard'
 import SearchIcon from '../../assets/Landing/ChooseHeadset/search.png'
 import { useQuery } from '@apollo/client'
 import { getSchools } from '../../graphql/School'

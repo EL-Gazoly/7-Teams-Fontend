@@ -1,5 +1,5 @@
 import {useEffect , useState} from 'react'
-import ControlCard from '../../Components/ContraolCard'
+import ControlCard from '../../Components/ControlCard'
 import StagesReportFirstRow from '../../Components/StagesReportsFirstRow'
 import StageSecondRow from '../../Components/StageSecondRow'
 import StageThirdRow from '../../Components/StageThirdRow'

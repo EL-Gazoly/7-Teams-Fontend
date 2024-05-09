@@ -1,5 +1,5 @@
 import React from 'react'
-import ControlCard from '../../Components/ContraolCard'
+import ControlCard from '../../Components/ControlCard'
 import ChemistryVideo from '../../assets/coursePage/chemistry.mp4'
 import BackIcon from '../../assets/coursePage/back.png'
 import HorizontalScrollGallery from './_components/HorizontalScroll'

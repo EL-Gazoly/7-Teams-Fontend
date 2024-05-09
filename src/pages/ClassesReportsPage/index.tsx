@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import ControlCard from '../../Components/ContraolCard'
+import ControlCard from '../../Components/ControlCard'
 import SearchIcon from '../../assets/Landing/ChooseHeadset/search.png'
 import GroupIcon from '../../assets/Reports/group.png'
 import { Link } from 'react-router-dom'

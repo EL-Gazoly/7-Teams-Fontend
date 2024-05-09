@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react'
-import ControlCard from '../../Components/ContraolCard'
+import ControlCard from '../../Components/ControlCard'
 import ChooseHeadsetSection from './_components/ChooseHeadsetSection'
 import ChooseCourseSection from './_components/ChooseCourseSection'
 import HeadsetsSection from './_components/HeadsetsSection'

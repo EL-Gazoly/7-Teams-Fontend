@@ -1,4 +1,4 @@
-import ControlCard from "../../Components/ContraolCard"
+import ControlCard from "../../Components/ControlCard"
 import AdminPic from '../../assets/settings/admin.svg'
 import AdminDarkPic from '../../assets/settings/admin-dark.png'
 import { useThemeStore } from "../../stores/ThemeStore"
