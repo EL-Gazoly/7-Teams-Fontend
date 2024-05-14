@@ -1,6 +1,6 @@
 import { FirstSection } from './firstSection';
 import React, {useState} from 'react'
-import ControlCard from '../../Components/ContraolCard'
+import ControlCard from '../../Components/ControlCard'
 import Tempelete from '../../assets/certificates/tempelate.png'
 import PrintIcon from '../../assets/certificates/print.png'
 import MailIcon from '../../assets/certificates/mail.png'
