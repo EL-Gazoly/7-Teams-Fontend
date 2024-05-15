@@ -65,7 +65,7 @@ class IpcFunctions{
           // Save the cropped image
           await image.writeAsync(outputPath);
       
-          event.sender.send('screenshot-reply', outputPath);
+          event.sender.send('screenshot-reply', `${arg2}.png`);
         } catch (err) {
           console.error('Something went wrong:', err.stack);
           event.reply('error-reply', err);

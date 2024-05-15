@@ -24,6 +24,7 @@ const HeadsetPage = () => {
   const [deviceState, setDeviceState] = useState({});
   const [chemistryProgres ,setChemistryProgres] = useState(0);
   const [physicsProgres ,setPhysicsProgress] = useState(0);
+  const [uploadImagePath, setUploadPath] = useState()
   const ipcRenderer = (window as any).ipcRenderer;
 
   const { data: device, loading, error } = useQuery(GetDevice, { variables: { macAddress: mac }, fetchPolicy: 'no-cache' });
@@ -69,7 +70,8 @@ const HeadsetPage = () => {
 
   useEffect(()=>{
       ipcRenderer.on('screenshot-reply',  (event , arg) => {
-        console.log(arg)
+        console.log(arg + " " + Date.now())
+        setUploadPath(arg)
       })
   },[])
 
@@ -108,8 +110,9 @@ const HeadsetPage = () => {
   
    const onUpload = async() => {
     const imagePath = await ("../../../assets/none.png")
+    const argPath = await (`../../../assets/${uploadImagePath}`)
       try {
-          const response = await fetch(imagePath);
+          const response = await fetch(argPath);
           const blob = await response.blob();
           // Create a File object using the blob and file name
           const file = new File([blob], `20246.png`, { type: blob.type });
@@ -125,6 +128,8 @@ const HeadsetPage = () => {
             console.error('Error reading file:', error);
         }
   }
+  if (loadingMutaion) return <div>Loading ...</div>
+  if (errorMutation) return <div>{errorMutation.message}</div>
 
   return (
     <div>
