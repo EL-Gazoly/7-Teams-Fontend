@@ -12,8 +12,12 @@ import db from '../../config/firebase'
 import { ref, update, onValue } from 'firebase/database'
 import { toast } from 'sonner';
 import {  physicsOptions } from '../../data/expermients';
+import { UploadFileToS3 } from '../../graphql/AmazonS3'
+import { useMutation } from '@apollo/client'
+import { Button } from '@nextui-org/react';
 
 const HeadsetPage = () => {
+   const [uploadFileToS3, {data, loading: loadingMutaion, error : errorMutation}] = useMutation(UploadFileToS3)
   const { mac } = useParams<{ mac: string }>()
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(true)
@@ -101,6 +105,26 @@ const HeadsetPage = () => {
     }
     
   }, [device]);
+  
+   const onUpload = async() => {
+    const imagePath = await ("../../../assets/none.png")
+      try {
+          const response = await fetch(imagePath);
+          const blob = await response.blob();
+          // Create a File object using the blob and file name
+          const file = new File([blob], `20246.png`, { type: blob.type });
+          // Call the mutation 
+        
+          await uploadFileToS3({
+              variables: {
+                  file: file,
+                  facilityId: `20249`
+              }
+          });
+          } catch (error) {
+            console.error('Error reading file:', error);
+        }
+  }
 
   return (
     <div>
@@ -113,6 +137,7 @@ const HeadsetPage = () => {
         
         : (
           <div className='flex flex-col mt-6 items-center gap-y-6 pb-5'>
+            <Button onPress={onUpload}> Upload</Button>
         <div className='w-full flex flex-row-reverse items-center gap-x-4'>
           {device && <FirstCard device={device.deviceByMac} deviceState={deviceState} />}
           <SecondCard ipcRenderer={ipcRenderer} device={device.deviceByMac} />
