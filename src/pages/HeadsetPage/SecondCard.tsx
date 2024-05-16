@@ -1,17 +1,21 @@
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import StreamIcon from '../../assets/headset page/stream.png';
 import ScreenShotIcon from '../../assets/headset page/screenshot.png';
 import RecoardIcon from '../../assets/headset page/recoard.png';
 import { Image, Button } from '@nextui-org/react';
-import db from '../../config/firebase'
-import { ref, update, onValue} from 'firebase/database'
+
+type isImageUploadingAction = {
+  type: 'start' | 'end' | 'none';
+}
 
 type Props = {
   ipcRenderer: any
   device: any
+  dispatchIsImageUpload : React.Dispatch<isImageUploadingAction>
+  onOpen : () => void
 }
 
-const SecondCard = ({ipcRenderer, device} : Props) => {
+const SecondCard = ({ipcRenderer, device, dispatchIsImageUpload, onOpen} : Props) => {
 const [isRecording, setIsRecording] = useState(false)
 
   const handelStream = () => {
@@ -26,6 +30,8 @@ const [isRecording, setIsRecording] = useState(false)
     else {
       ipcRenderer.send("screenshot", "none", "none")
     }
+    dispatchIsImageUpload({type: 'start'})
+    onOpen()
   }
 
   const hadnelRecoard = () => {

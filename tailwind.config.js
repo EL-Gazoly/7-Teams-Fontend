@@ -43,6 +43,10 @@ export default {
           "primary" : {
             foreground: "#FFFFFF",
             background: "#50D766",
+          },
+          "danger":{
+            foreground: "#FFFFFF",
+            background: "#FF1F64"
           }
         }
       },
@@ -51,6 +55,10 @@ export default {
           "primary" : {
             foreground: "#FFFFFF",
             background: "#50D766",
+          },
+          "danger":{
+            foreground: "#FFFFFF",
+            background: "#FF1F64"
           }
         }
       }

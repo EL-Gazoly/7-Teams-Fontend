@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useReducer } from 'react';
 import { FirstCard } from './FirstCard';
 import ControlCard from '../../Components/ControlCard'
 import SecondCard from './SecondCard';
@@ -12,19 +12,47 @@ import db from '../../config/firebase'
 import { ref, update, onValue } from 'firebase/database'
 import { toast } from 'sonner';
 import {  physicsOptions } from '../../data/expermients';
-import { UploadFileToS3 } from '../../graphql/AmazonS3'
-import { useMutation } from '@apollo/client'
+
 import { Button } from '@nextui-org/react';
+import UploadMoadl from './_components/UploadMoadl';
+import { useDisclosure } from '@nextui-org/react';
+
+type isImageUploadingState = {
+  isImageUploading: boolean | null;
+}
+type isImageUploadingAction = {
+  type: 'start' | 'end' | 'none';
+}
+
+
+const dispacth = (state : isImageUploadingState, action : isImageUploadingAction) => {
+  switch (action.type) {
+    case 'start':
+      return true;
+    case 'end':
+      return false;
+    case 'none':
+      return null;
+    default:
+      return state;
+  }
+
+}
 
 const HeadsetPage = () => {
-   const [uploadFileToS3, {data, loading: loadingMutaion, error : errorMutation}] = useMutation(UploadFileToS3)
+
   const { mac } = useParams<{ mac: string }>()
   const navigate = useNavigate()
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
   const [deviceState, setDeviceState] = useState({});
   const [chemistryProgres ,setChemistryProgres] = useState(0);
   const [physicsProgres ,setPhysicsProgress] = useState(0);
   const [uploadImagePath, setUploadPath] = useState()
+
+  const [isImageUploading, dispatchIsImageUpload] = useReducer(dispacth , {isImageUploading: null})
+
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
   const ipcRenderer = (window as any).ipcRenderer;
 
   const { data: device, loading, error } = useQuery(GetDevice, { variables: { macAddress: mac }, fetchPolicy: 'no-cache' });
@@ -72,6 +100,7 @@ const HeadsetPage = () => {
       ipcRenderer.on('screenshot-reply',  (event , arg) => {
         console.log(arg + " " + Date.now())
         setUploadPath(arg)
+        dispatchIsImageUpload({type: 'end'})
       })
   },[])
 
@@ -108,31 +137,10 @@ const HeadsetPage = () => {
     
   }, [device]);
   
-   const onUpload = async() => {
-    const imagePath = await ("../../../assets/none.png")
-    const argPath = await (`../../../assets/${uploadImagePath}`)
-      try {
-          const response = await fetch(argPath);
-          const blob = await response.blob();
-          // Create a File object using the blob and file name
-          const file = new File([blob], `20246.png`, { type: blob.type });
-          // Call the mutation 
-        
-          await uploadFileToS3({
-              variables: {
-                  file: file,
-                  facilityId: `20249`
-              }
-          });
-          } catch (error) {
-            console.error('Error reading file:', error);
-        }
-  }
-  if (loadingMutaion) return <div>Loading ...</div>
-  if (errorMutation) return <div>{errorMutation.message}</div>
+
 
   return (
-    <div>
+    <div className=' '>
       <ControlCard icon="Headset" title=' نظارة الواقع الافتراضي ' neasted={true} />
       {
         loading || isLoading ?
@@ -142,10 +150,13 @@ const HeadsetPage = () => {
         
         : (
           <div className='flex flex-col mt-6 items-center gap-y-6 pb-5'>
-            <Button onPress={onUpload}> Upload</Button>
+            <Button onPress={onOpen}> Upload</Button>
         <div className='w-full flex flex-row-reverse items-center gap-x-4'>
           {device && <FirstCard device={device.deviceByMac} deviceState={deviceState} />}
-          <SecondCard ipcRenderer={ipcRenderer} device={device.deviceByMac} />
+          <SecondCard ipcRenderer={ipcRenderer} device={device.deviceByMac} 
+            dispatchIsImageUpload={dispatchIsImageUpload}
+            onOpen={onOpen}
+          />
         </div>
         <div className='w-full flex items-center gap-x-4 flex-row-reverse'>
           <ThridCard />
@@ -154,7 +165,9 @@ const HeadsetPage = () => {
       </div>
         )
       }
-      
+      <UploadMoadl isOpen={isOpen} onOpenChange={onOpenChange} isImageUploading={isImageUploading}
+        uploadImagePath={uploadImagePath}
+      />
     </div>
   );
 }
