@@ -41,6 +41,7 @@ export const getStudent = gql`
   query Student($studentId: String!) {
   student(id: $studentId) {
     name
+    studentId
     facilityId
     imageUrl
     classalpha

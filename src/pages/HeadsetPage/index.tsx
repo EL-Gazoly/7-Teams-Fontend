@@ -14,7 +14,7 @@ import { toast } from 'sonner';
 import {  physicsOptions } from '../../data/expermients';
 
 import { Button } from '@nextui-org/react';
-import UploadMoadl from './_components/UploadMoadl';
+import UploadMoadl from './_components/UploadModal';
 import { useDisclosure } from '@nextui-org/react';
 
 type isImageUploadingState = {

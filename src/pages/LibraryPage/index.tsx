@@ -1,59 +1,78 @@
-import onProgressLight from '../../assets/library/onProgrss-light.svg'
-import onProgressDark from '../../assets/library/onProgrss-dark.svg'
-import { useThemeStore } from '../../stores/ThemeStore'
+import { SearchStudent } from '../StudentsReports/SearchStudent';
+import React, {useState, useEffect} from 'react'
 import ControlCard from '../../Components/ControlCard'
-import { Button } from '@nextui-org/react'
-import { UploadFileToS3 } from '../../graphql/AmazonS3'
-import { useMutation } from '@apollo/client'
+import StackView from './_components/StackView';
+import GridView from './_components/GridView';
+import { useQuery } from '@apollo/client';
+import { GetStudents } from '../../graphql/reports';
+import Loading from '../../Components/Loading';
 
-const Library = () => {
-  const [uploadFileToS3, {data, loading, error}] = useMutation(UploadFileToS3)
-  const {dark} = useThemeStore()
-  const onUpload = async() => {
-    const imagePath = await ("../../../assets/none.png")
-      try {
-          const response = await fetch(imagePath);
-          const blob = await response.blob();
-          // Create a File object using the blob and file name
-          const file = new File([blob], `20246.png`, { type: blob.type });
-          // Call the mutation 
-        
-          await uploadFileToS3({
-              variables: {
-                  file: file,
-                  facilityId: `20249`
-              }
-          });
-          } catch (error) {
-            console.error('Error reading file:', error);
-        }
-  }
-  if (loading) {
-    return <div>Loading...</div>
-  }
-  if (error) {
-    return <div>Error! {error.message}</div>
-  }
 
-  // this code 
+
+
   
+
+const LibraryPage = () => {
+        const [activeTab, setActiveTab] = useState("grid")
+    const { loading, error, data } = useQuery(GetStudents);
+    const [searchQuery, setSearchQuery] = useState('')
+    const [selectedLevel, setSelectedLevel] = useState('')
+    const [selectedClass, setSelectedClass] = useState('')
+    let students = data?.admin.students || [];
+
+  if (loading) return <Loading />
+  if (error) return console.log(error);
+
+
+  if (searchQuery) {
+    students = students.filter((student) => {
+       return (
+        student.name.toLowerCase().includes(searchQuery) ||
+        student.facilityId.toString().includes(searchQuery) 
+       )
+    });
     
+}
+  if(selectedLevel){
+    students = students.filter((student) => {
+        console.log(student.team.name)
+        return student?.team.name === selectedLevel
+    })
+    console.log(students)
+  }
+  if(selectedClass){
+    students = students.filter((student) => {
+        return student?.class.number === selectedClass
+    })
+
+  }
+const clearFilters = () => {
+  setSelectedLevel('')
+  setSelectedClass('')
+}
+
   return (
-    <div className=' w-full h-full flex flex-col'>
-      <ControlCard icon="Library" title=' الوسائط المحفوظه ' neasted={false}/>
-      <div className=' w-full h-full flex flex-col gap-y-8 items-center justify-center'>
-            <img src={dark ? onProgressDark : onProgressLight} alt="" width={150} height={150} />
-            <span className={` ${dark ? "opacity-40" : "opacity-50"}`}>
-              جاري العمل على هذه الصفحة
-            </span>
-            <Button onPress={onUpload}> Upload</Button>
-      </div>
+   <React.Fragment> 
+        <ControlCard icon="Library" title='الوسائط' neasted={false} />
+        <div className=' mt-[22px] flex flex-col items-center gap-y-6'>
+            <SearchStudent  activeTab={activeTab}  setActiveTab={setActiveTab} data={data?.admin.students} 
+              setSearchQuery={setSearchQuery}
+              selectedLevel={selectedLevel}
+              setSelectedLevel={setSelectedLevel}
+              selectedClass={selectedClass}
+              setSelectedClass={setSelectedClass}
+              clearFilters={clearFilters}
+            />
 
-    
-    
+            {
+                activeTab === 'stack' ? <StackView data={students} /> : <GridView data={students} />
+            }
 
-    </div>
+        </div>
+      
+    </React.Fragment>
+
   )
 }
 
-export default Library
+export default LibraryPage
