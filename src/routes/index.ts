@@ -29,14 +29,12 @@ import UpdateSchool from "../pages/UpdateSchool";
 import SchoolReports from "../pages/SchoolReports";
 import SchoolReport from "../pages/SchoolReport";
 import UpdateStudent from "../pages/UpdateStudent";
-import CraeteCourse from "../pages/CreateCourse";
 import PicturePage from "../pages/StudentPicturesPage";
 import VideosCard from '../pages/VideosCard'
 const routes = [
   { path: "/headsets", component: HeadsetsPage },
   { path: "/headsets/:mac", component: HeadsetPage },
   { path: "/courses", component: CoursesPage },
-  { path: "/courses/create", component: CraeteCourse },
   { path: "/courses/:course", component: CoursePage },
   { path: "/students", component: StudentsPage },
   { path: "/students/create", component: CreateStudent },

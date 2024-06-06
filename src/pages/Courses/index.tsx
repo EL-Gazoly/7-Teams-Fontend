@@ -6,7 +6,6 @@ import "./style.css";
 import CourseStoreCard from "./CourseStoreCard";
 import { useNavigate } from "react-router-dom";
 import { useThemeStore } from "../../stores/ThemeStore";
-import AddIcon from "../../assets/students/add.svg";
 const CoursesPage = () => {
   const navigate = useNavigate();
   const { dark } = useThemeStore();
@@ -32,7 +31,7 @@ const CoursesPage = () => {
         <div className=" ml-28 flex flex-row items-center justify-center gap-x-[150px] z-10 overflow-y-hidden">
           <div className="flex fle-col items-center gap-y-[26px] ">
             <div className="flex flex-col text-center gap-y-2 text-[#122333] dark:text-white font-bold ">
-              <span className=" text-4xl ">منهج الكمياء</span>
+              <span className=" text-4xl ">منهج الكيمياء</span>
               <span className=" text-sm ">متوفره الأن</span>
               <Button
                 className=" text-white text-sm font-bold bg-primary-gradient"
@@ -55,15 +54,6 @@ const CoursesPage = () => {
       <CourseStoreCard name="منهج الجيولوجيا" />
       <CourseStoreCard name="منهج الفزياء" />
       <CourseStoreCard name="منهج الأحياء" />
-
-      <Button
-        className=" mt-5 w-[132px] h-12 col-span-3 justify-self-center"
-        color="primary"
-        onPress={() => navigate("/courses/create")}
-      >
-        <img src={AddIcon} alt="" className=" w-7 h-7" />
-        <span>اضافة منهج </span>
-      </Button>
     </div>
   );
 };
