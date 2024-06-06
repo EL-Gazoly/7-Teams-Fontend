@@ -37,11 +37,11 @@ const [isRecording, setIsRecording] = useState(false)
   const hadnelRecoard = () => {
     setIsRecording(!isRecording)
     if (isRecording) {
-        ipcRenderer.send('stop-screenrecord')
+        ipcRenderer.send('stop-screenrecord' ,  device.student[0].facilityId)
         console.log('stop-screenrecord')
         return
     }
-    ipcRenderer.send('screenrecord')
+    ipcRenderer.send('screenrecord' ,  device.student[0].facilityId)
     console.log('screenrecord')
   }
 

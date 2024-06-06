@@ -12,10 +12,9 @@ import db from '../../config/firebase'
 import { ref, update, onValue } from 'firebase/database'
 import { toast } from 'sonner';
 import {  physicsOptions } from '../../data/expermients';
-
-import { Button } from '@nextui-org/react';
 import UploadMoadl from './_components/UploadModal';
 import { useDisclosure } from '@nextui-org/react';
+import UploadVideoModal from './_components/UploadVideoModal';
 
 type isImageUploadingState = {
   isImageUploading: boolean | null;
@@ -51,6 +50,7 @@ const HeadsetPage = () => {
 
   const [isImageUploading, dispatchIsImageUpload] = useReducer(dispacth , {isImageUploading: null})
 
+  const { isOpen : isOpenImage, onOpen: onOpenImage, onOpenChange: onOpenChangeImage } = useDisclosure();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   const ipcRenderer = (window as any).ipcRenderer;
@@ -101,6 +101,12 @@ const HeadsetPage = () => {
         console.log(arg + " " + Date.now())
         setUploadPath(arg)
         dispatchIsImageUpload({type: 'end'})
+      })
+      ipcRenderer.on('stop-screenrecord-reply' , (event , arg) => {
+        console.log(arg)
+        setUploadPath(arg)
+        dispatchIsImageUpload({type: 'end'})
+        onOpen()
       })
   },[])
 
@@ -154,7 +160,7 @@ const HeadsetPage = () => {
           {device && <FirstCard device={device.deviceByMac} deviceState={deviceState} />}
           <SecondCard ipcRenderer={ipcRenderer} device={device.deviceByMac} 
             dispatchIsImageUpload={dispatchIsImageUpload}
-            onOpen={onOpen}
+            onOpen={onOpenImage}
           />
         </div>
         <div className='w-full flex items-center gap-x-4 flex-row-reverse'>
@@ -164,8 +170,11 @@ const HeadsetPage = () => {
       </div>
         )
       }
-      <UploadMoadl isOpen={isOpen} onOpenChange={onOpenChange} isImageUploading={isImageUploading}
-        uploadImagePath={uploadImagePath} facilityId={device?.deviceByMac?.student? device?.deviceByMac.student[0].facilityId : undefined}
+      <UploadMoadl isOpen={isOpenImage} onOpenChange={onOpenChangeImage} isImageUploading={isImageUploading}
+        uploadImagePath={uploadImagePath} facilityId={device?.deviceByMac?.student? device?.deviceByMac.student[0]?.facilityId : undefined}
+      />
+      <UploadVideoModal isOpen={isOpen} onOpenChange={onOpenChange} isImageUploading={isImageUploading}
+        uploadImagePath={uploadImagePath} facilityId={device?.deviceByMac?.student? device?.deviceByMac.student[0]?.facilityId : undefined}
       />
     </div>
   );

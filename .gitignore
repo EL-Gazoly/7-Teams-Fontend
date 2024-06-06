@@ -29,3 +29,4 @@ SevenTeams_installer
 *.sw?
 
 *.mp4
+assets/*
