@@ -3,7 +3,8 @@ import CoursesPage from "../pages/Courses";
 import CoursePage from "../pages/CoursePage";
 import StudentsPage from "../pages/Students";
 import CreateStudent from "../pages/CreateStudent";
-import Library from "../pages/LibraryPage";
+import LibraryPage from "../pages/LIbraryPage";
+import UserLibaryPage from '../pages/UserLibraryPage'
 import CertificatesPage from "../pages/Certificates";
 import GeneralSettingsPage from "../pages/Settings";
 import AdminsPage from "../pages/Admins";
@@ -29,6 +30,8 @@ import SchoolReports from "../pages/SchoolReports";
 import SchoolReport from "../pages/SchoolReport";
 import UpdateStudent from "../pages/UpdateStudent";
 import CraeteCourse from "../pages/CreateCourse";
+import PicturePage from "../pages/StudentPicturesPage";
+import VideosCard from '../pages/VideosCard'
 const routes = [
   { path: "/headsets", component: HeadsetsPage },
   { path: "/headsets/:mac", component: HeadsetPage },
@@ -38,7 +41,10 @@ const routes = [
   { path: "/students", component: StudentsPage },
   { path: "/students/create", component: CreateStudent },
   { path: "/students/update/:id", component: UpdateStudent},
-  { path: "/library", component: Library },
+  { path: "/library", component: LibraryPage },
+  { path: "/library/students/:id", component: UserLibaryPage },
+  { path: "/library/students/:id/pictures", component: PicturePage },
+  { path: "/library/students/:id/videos", component: VideosCard },
   { path: "/certificates", component: CertificatesPage },
   { path: "/settings", component: GeneralSettingsPage },
   { path: "/settings/admins", component: AdminsPage },

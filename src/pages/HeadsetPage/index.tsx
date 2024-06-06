@@ -12,7 +12,9 @@ import db from '../../config/firebase'
 import { ref, update, onValue } from 'firebase/database'
 import { toast } from 'sonner';
 import {  physicsOptions } from '../../data/expermients';
-import UploadMoadl from './_components/UploadMoadl';
+
+import { Button } from '@nextui-org/react';
+import UploadMoadl from './_components/UploadModal';
 import { useDisclosure } from '@nextui-org/react';
 
 type isImageUploadingState = {

@@ -1,3 +1,4 @@
+import {useEffect , useState} from 'react'
 import {  Modal,
         ModalContent,
         ModalHeader,
@@ -10,10 +11,15 @@ import {  Modal,
 import { UploadFileToS3 } from '../../../graphql/AmazonS3'
 import { useMutation } from '@apollo/client'
 
+import FirstSucessIcon from '../../../assets/UploadMediaHeadsetPage/first.svg'
+import SecondSucessIcon from '../../../assets/UploadMediaHeadsetPage/second.svg'
+import ThirdSucessIcon from '../../../assets/UploadMediaHeadsetPage/third.svg'
+import FourthSucessIcon from '../../../assets/UploadMediaHeadsetPage/fourth.svg'
+import FifthSucessIcon from '../../../assets/UploadMediaHeadsetPage/fifth.svg'
+import SixthSucessIcon from '../../../assets/UploadMediaHeadsetPage/sixth.svg'
 import FinalSucessIcon from '../../../assets/UploadMediaHeadsetPage/final.svg'
-import { toast } from 'sonner';
 
-
+const frames = [FirstSucessIcon, SecondSucessIcon, ThirdSucessIcon, FourthSucessIcon, FifthSucessIcon, SixthSucessIcon, FinalSucessIcon]
 type isImageUploadingState = {
   isImageUploading: boolean | null;
 }
@@ -23,31 +29,53 @@ type UploadModalProps = {
     onOpenChange : () => void;
     isImageUploading: boolean | isImageUploadingState;
     uploadImagePath: string;
-    facilityId : string | undefined
 }
 
 
-const UploadMoadl = ({isOpen, onOpenChange, isImageUploading, uploadImagePath, facilityId} : UploadModalProps) => {
-           const [uploadFileToS3, {data, loading: loadingMutaion, error : errorMutation}] = useMutation(UploadFileToS3)
-      console.log(facilityId)
+const UploadMoadl = ({isOpen, onOpenChange, isImageUploading, uploadImagePath} : UploadModalProps) => {
+       const [currentFrame, setCurrentFrame] = useState(0)
+       const [uploadFileToS3, {data, loading: loadingMutaion, error : errorMutation}] = useMutation(UploadFileToS3)
+       const [imagePath, setImagePath] = useState('')
+       useEffect(() => {
+        if (data) setCurrentFrame(0);
+
+        if (!isImageUploading) {
+        const interval = setInterval(() => {
+        setCurrentFrame((prevFrame) => {
+        if (prevFrame === frames.length - 12) {
+          clearInterval(interval);
+          return prevFrame; // Stay on the last frame
+        }
+        return prevFrame + 1;
+      });
+        }, 100)
+        
+        return () => clearInterval(interval)
+      }
+    }, [isImageUploading, data])
+    useEffect(() => {
+      if (uploadImagePath) {
+        setImagePath(`../../../ assets/${uploadImagePath}`)
+      }
+    }
+    , [uploadImagePath])
 
     const onUpload = async() => {
-    const argPath = await (`../../../../assets/${uploadImagePath}`)
+    const imagePath = await ("../../../assets/none.png")
+    const argPath = await (`../../../assets/${uploadImagePath}`)
       try {
           const response = await fetch(argPath);
           const blob = await response.blob();
+          // Create a File object using the blob and file name
           const file = new File([blob], `20246.png`, { type: blob.type });
+          // Call the mutation 
         
           await uploadFileToS3({
               variables: {
                   file: file,
-                  facilityId: facilityId !== undefined ? facilityId : '0000'
+                  facilityId: `20249`
               }
-          })
-          .then(()=>{
-            toast.success("تم رفع الصوره بنجاح")
-            onOpenChange()
-          })
+          });
           } catch (error) {
             console.error('Error reading file:', error);
         }
@@ -61,9 +89,6 @@ const UploadMoadl = ({isOpen, onOpenChange, isImageUploading, uploadImagePath, f
         <ModalContent>
             <ModalHeader> 
                 {
-                  loadingMutaion ? 
-                  'جاري رفع الصوره الي الكلاود'
-                  :
                   isImageUploading === false || data ?
                   'تم رفع الصوره من نظاره الواقع الافتراضي بنجاح'
                   : 
@@ -77,17 +102,17 @@ const UploadMoadl = ({isOpen, onOpenChange, isImageUploading, uploadImagePath, f
 
             </ModalHeader>
             <ModalBody>
-              {isImageUploading === true || loadingMutaion?
+              {isImageUploading === true?
                 <Spinner size='lg' color='primary'/>
               : 
-              isImageUploading === false || !loadingMutaion ?
-                <img src={FinalSucessIcon} alt='success' className=' transition-all ease-in-out' width={100} height={100} />
+              isImageUploading === false ?
+                <img src={frames[currentFrame]} alt='success' className=' transition-all ease-in-out' width={119} height={119} />
               :
                 <span className=' text-5xl text-danger font-bold'>X</span>
               }
             </ModalBody>
             <ModalFooter className=' flex flex-col gap-y-[18px]'>
-                <Button className=' w-[264px] h-[52px] rounded-[10px]  font-bold' color='primary' variant='shadow' size='lg'  isDisabled={isImageUploading !== false || loadingMutaion}
+                <Button className=' w-[264px] h-[52px] rounded-[10px]  font-bold' color='primary' variant='shadow' size='lg'  isDisabled={isImageUploading === false}
                   onPress={onUpload}
                 > 
                   {isImageUploading === false ? 
