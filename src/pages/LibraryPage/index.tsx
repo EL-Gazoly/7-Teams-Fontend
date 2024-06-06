@@ -1,8 +1,8 @@
 import { SearchStudent } from '../StudentsReports/SearchStudent';
 import React, {useState, useEffect} from 'react'
 import ControlCard from '../../Components/ControlCard'
-import StackView from './_components/StackView';
-import GridView from './_components/GridView';
+import StackView from './StackView';
+import GridView from './GridView';
 import { useQuery } from '@apollo/client';
 import { GetStudents } from '../../graphql/reports';
 import Loading from '../../Components/Loading';

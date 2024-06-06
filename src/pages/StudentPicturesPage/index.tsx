@@ -38,8 +38,8 @@ const PicturePage = () => {
          <div className="col-span-2  bg-white dark:bg-primary-dark h-64 flex items-center justify-center flex-col gap-y-[14px] rounded-md">
           <div className=' w-28 h-28 bg-[#F6F6F6] dark:bg-[#EEEFF21A] flex items-center justify-center rounded-full'>
           {
-            data?.student?.imageUrl ? 
-            <img src={`${import.meta.env.VITE_API_URL}${data.student.imageUrl}`} alt="" className=' w-full h-full rounded-full' /> 
+            studentImage ? 
+            <img src={`${import.meta.env.VITE_API_URL}${studentImage}`} alt="" className=' w-full h-full rounded-full' /> 
             :
             <img src={dark ? noPicDark : noPic} alt="" width={58} height={58} />
           }  

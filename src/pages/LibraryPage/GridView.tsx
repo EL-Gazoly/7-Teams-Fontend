@@ -1,5 +1,4 @@
-import React from 'react'
-import StudentCard from './StudentsCard'
+import StudentCard from "./_components/StudentsCard";
 
 const GridView = ({data}) => {
   return (

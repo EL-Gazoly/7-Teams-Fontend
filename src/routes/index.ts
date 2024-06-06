@@ -3,7 +3,7 @@ import CoursesPage from "../pages/Courses";
 import CoursePage from "../pages/CoursePage";
 import StudentsPage from "../pages/Students";
 import CreateStudent from "../pages/CreateStudent";
-import LibraryPage from "../pages/LIbraryPage";
+import LibraryPage from '../pages/LibraryPage';
 import UserLibaryPage from '../pages/UserLibraryPage'
 import CertificatesPage from "../pages/Certificates";
 import GeneralSettingsPage from "../pages/Settings";
