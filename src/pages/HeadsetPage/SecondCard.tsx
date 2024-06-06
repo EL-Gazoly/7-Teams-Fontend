@@ -3,7 +3,7 @@ import StreamIcon from '../../assets/headset page/stream.png';
 import ScreenShotIcon from '../../assets/headset page/screenshot.png';
 import RecoardIcon from '../../assets/headset page/recoard.png';
 import { Image, Button } from '@nextui-org/react';
-
+import ScreenRecoard from '../../assets/HeadsetProfile/recoard.png'
 type isImageUploadingAction = {
   type: 'start' | 'end' | 'none';
 }
@@ -17,7 +17,7 @@ type Props = {
 
 const SecondCard = ({ipcRenderer, device, dispatchIsImageUpload, onOpen} : Props) => {
 const [isRecording, setIsRecording] = useState(false)
-
+const [showRecordingDiv, setShowRecordingDiv] = useState(false);
   const handelStream = () => {
     ipcRenderer.send('start-stream')
     console.log('start-streaming')
@@ -34,15 +34,17 @@ const [isRecording, setIsRecording] = useState(false)
     onOpen()
   }
 
-  const hadnelRecoard = () => {
+  const handleRecord = () => {
     setIsRecording(!isRecording)
     if (isRecording) {
         ipcRenderer.send('stop-screenrecord' ,  device.student[0].facilityId)
         console.log('stop-screenrecord')
+        setTimeout(() => setShowRecordingDiv(false), 500)
         return
     }
     ipcRenderer.send('screenrecord' ,  device.student[0].facilityId)
-    console.log('screenrecord')
+    
+    setTimeout(() => setShowRecordingDiv(true), 10);
   }
 
 
@@ -68,16 +70,30 @@ const [isRecording, setIsRecording] = useState(false)
           </div>
           <span className='text-sm'>لقطة شاشة</span>
         </Button>
-
-        <Button className='h-28 bg-video-gradient rounded-[14px] flex flex-col items-center justify-center gap-y-2 text-white font-bold'
-          onPress={hadnelRecoard}
-        >
-          <div className='w-11 h-11 bg-white rounded-full flex flex-col items-center justify-center'>
+        
+        <div className='relative'>
+      <Button
+        className='w-full h-28 bg-video-gradient rounded-[14px] flex flex-col items-center justify-center gap-y-2 text-white font-bold'
+        onPress={handleRecord}
+      >
+        <div className='w-11 h-11 bg-white rounded-full flex flex-col items-center justify-center'>
+          {isRecording ? (
+            <div className='w-3 h-3 rounded bg-video-gradient' />
+          ) : (
             <Image src={RecoardIcon} width={30} height={30} />
-          </div>
-          <span className='text-sm'>تسجيل الفيديو</span>
-        </Button>
-
+          )}
+        </div>
+        <span className='text-sm'>تسجيل الفيديو</span>
+      </Button>
+      {showRecordingDiv && (
+        <div
+          className={`absolute right-[45%] w-[200px] h-[60px] bg-[#ff1f64] rounded-md flex items-center justify-center gap-x-4 transform transition-transform duration-500 ${isRecording ? 'slide-in' : 'slide-out'}`}
+        >
+          <span className='text-sm'>جاري تسجيل الفيديو</span>
+          <img src={ScreenRecoard} alt='Screen Recoard' />
+        </div>
+      )}
+    </div>
       </div>
     </div>
   );

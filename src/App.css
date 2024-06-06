@@ -21,3 +21,33 @@ input:focus{
     transition: all 0.3s ease; /* Adding a transition for smoothness */
     border-radius: 6px; /* Adding border-radius for rounded corners */
   }
+
+  @keyframes slideIn {
+  from {
+    transform: translateY(0rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(3rem);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateY(3rem);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(0rem);
+    opacity: 0;
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.5s forwards;
+}
+
+.slide-out {
+  animation: slideOut 0.5s forwards;
+}
