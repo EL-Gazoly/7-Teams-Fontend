@@ -85,11 +85,13 @@ class IpcFunctions{
         }
       }
       
-      async  handleScreenRecord(event) {
+      async  handleScreenRecord(event , arg) {
         try {
+          console.log(arg)
           const currentIP = store.get('ip')
-            excuteCommand(`scrcpy -s ${currentIP} --max-size 2048 --crop 1600:900:2017:510  --no-audio -N --window-title 7teams-Recoard  --record=../../assets/recoard.mp4`);
-          event.sender.send('screenrecord-reply', 'Screen Record Started');
+          const outputPath = path.join(__dirname, '..', 'assets', `${arg}.mp4`)
+            excuteCommand(`scrcpy -s ${currentIP} --max-size 2048 --crop 1600:900:2017:510  --no-audio -N --window-title 7teams-Recoard  --record=${outputPath}`);
+          event.sender.send('screenrecord-reply', `${arg}.mp4`);
         } catch (err) {
             console.error('Something went wrong:', err.stack);
         event.reply('error-reply', err);
@@ -98,7 +100,8 @@ class IpcFunctions{
       
 
     
-    async  handleStopScreenRecord(event) {
+    async  handleStopScreenRecord(event, arg) {
+      const outputPath = path.join(__dirname, '..', 'assets', `${arg}.mp4`)
       try {
         isScrcpyRunning()
         .then(async (isRunning) => {
@@ -110,7 +113,7 @@ class IpcFunctions{
       else {
         await handleStopStreamAndScreenRecord(event);
       }
-        event.sender.send('stop-screenrecord-reply', 'Screen Record Stopped');
+        event.sender.send('stop-screenrecord-reply', `${arg}.mp4`);
     } catch (err) {
         console.error('Something went wrong:', err.stack);
         event.reply('error-reply', err);
