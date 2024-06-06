@@ -36,7 +36,6 @@ const UploadMoadl = ({isOpen, onOpenChange, isImageUploading, uploadImagePath} :
        const [currentFrame, setCurrentFrame] = useState(0)
        const [uploadFileToS3, {data, loading: loadingMutaion, error : errorMutation}] = useMutation(UploadFileToS3)
        const [imagePath, setImagePath] = useState('')
-    
        useEffect(() => {
         if (data) setCurrentFrame(0);
 
@@ -54,7 +53,6 @@ const UploadMoadl = ({isOpen, onOpenChange, isImageUploading, uploadImagePath} :
         return () => clearInterval(interval)
       }
     }, [isImageUploading, data])
-
     useEffect(() => {
       if (uploadImagePath) {
         setImagePath(`../../../ assets/${uploadImagePath}`)
@@ -62,11 +60,9 @@ const UploadMoadl = ({isOpen, onOpenChange, isImageUploading, uploadImagePath} :
     }
     , [uploadImagePath])
 
-
-
     const onUpload = async() => {
     const imagePath = await ("../../../assets/none.png")
-    const argPath = await (`../../..//assets/${uploadImagePath}`)
+    const argPath = await (`../../../assets/${uploadImagePath}`)
       try {
           const response = await fetch(argPath);
           const blob = await response.blob();
@@ -92,16 +88,18 @@ const UploadMoadl = ({isOpen, onOpenChange, isImageUploading, uploadImagePath} :
     >
         <ModalContent>
             <ModalHeader> 
-              {
-                isImageUploading === false || data ?
-                'تم رفع الصوره من نظاره الواقع الافتراضي بنجاح'
-                : 
-                isImageUploading === true  || loadingMutaion?
-                '  برجاء الانتظار حتى يتم تحميل الصورة '
-                : errorMutation || isImageUploading === null ?
-                'لم يتم رفع الصورة بنجاح'
-                : null
-              }
+                {
+                  isImageUploading === false || data ?
+                  'تم رفع الصوره من نظاره الواقع الافتراضي بنجاح'
+                  : 
+                  isImageUploading === true  || loadingMutaion?
+                  '  برجاء الانتظار حتى يتم تحميل الصورة '
+                  : errorMutation && isImageUploading === null &&
+                  'لم يتم رفع الصورة بنجاح'
+                }
+             
+
+
             </ModalHeader>
             <ModalBody>
               {isImageUploading === true?
@@ -109,9 +107,6 @@ const UploadMoadl = ({isOpen, onOpenChange, isImageUploading, uploadImagePath} :
               : 
               isImageUploading === false ?
                 <img src={frames[currentFrame]} alt='success' className=' transition-all ease-in-out' width={119} height={119} />
-              :
-              false ? 
-                <img src={"../../../../assets/none.png"} alt='success' className=' transition-all ease-in-out' width={119} height={119} />
               :
                 <span className=' text-5xl text-danger font-bold'>X</span>
               }
