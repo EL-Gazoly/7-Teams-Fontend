@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useReducer } from 'react';
+import { useEffect, useState, useReducer } from 'react';
 import { FirstCard } from './FirstCard';
 import ControlCard from '../../Components/ControlCard'
 import SecondCard from './SecondCard';
@@ -12,8 +12,6 @@ import db from '../../config/firebase'
 import { ref, update, onValue } from 'firebase/database'
 import { toast } from 'sonner';
 import {  physicsOptions } from '../../data/expermients';
-
-import { Button } from '@nextui-org/react';
 import UploadMoadl from './_components/UploadMoadl';
 import { useDisclosure } from '@nextui-org/react';
 
@@ -43,7 +41,7 @@ const HeadsetPage = () => {
 
   const { mac } = useParams<{ mac: string }>()
   const navigate = useNavigate()
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const [deviceState, setDeviceState] = useState({});
   const [chemistryProgres ,setChemistryProgres] = useState(0);
   const [physicsProgres ,setPhysicsProgress] = useState(0);
@@ -150,7 +148,6 @@ const HeadsetPage = () => {
         
         : (
           <div className='flex flex-col mt-6 items-center gap-y-6 pb-5'>
-            <Button onPress={onOpen}> Upload</Button>
         <div className='w-full flex flex-row-reverse items-center gap-x-4'>
           {device && <FirstCard device={device.deviceByMac} deviceState={deviceState} />}
           <SecondCard ipcRenderer={ipcRenderer} device={device.deviceByMac} 
@@ -166,7 +163,7 @@ const HeadsetPage = () => {
         )
       }
       <UploadMoadl isOpen={isOpen} onOpenChange={onOpenChange} isImageUploading={isImageUploading}
-        uploadImagePath={uploadImagePath}
+        uploadImagePath={uploadImagePath} facilityId={device?.student? device?.student[0].facilityId : undefined}
       />
     </div>
   );
