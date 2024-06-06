@@ -18,6 +18,7 @@ import FourthSucessIcon from '../../../assets/UploadMediaHeadsetPage/fourth.svg'
 import FifthSucessIcon from '../../../assets/UploadMediaHeadsetPage/fifth.svg'
 import SixthSucessIcon from '../../../assets/UploadMediaHeadsetPage/sixth.svg'
 import FinalSucessIcon from '../../../assets/UploadMediaHeadsetPage/final.svg'
+import { toast } from 'sonner';
 
 const frames = [FirstSucessIcon, SecondSucessIcon, ThirdSucessIcon, FourthSucessIcon, FifthSucessIcon, SixthSucessIcon, FinalSucessIcon]
 type isImageUploadingState = {
@@ -29,30 +30,35 @@ type UploadModalProps = {
     onOpenChange : () => void;
     isImageUploading: boolean | isImageUploadingState;
     uploadImagePath: string;
+    facilityId : string | undefined;
 }
 
 
-const UploadMoadl = ({isOpen, onOpenChange, isImageUploading, uploadImagePath} : UploadModalProps) => {
+const UploadMoadl = ({isOpen, onOpenChange, isImageUploading, uploadImagePath, facilityId} : UploadModalProps) => {
        const [currentFrame, setCurrentFrame] = useState(0)
        const [uploadFileToS3, {data, loading: loadingMutaion, error : errorMutation}] = useMutation(UploadFileToS3)
        const [imagePath, setImagePath] = useState('')
+       console.log(facilityId)
        useEffect(() => {
+        let interval;
         if (data) setCurrentFrame(0);
-
+    
         if (!isImageUploading) {
-        const interval = setInterval(() => {
-        setCurrentFrame((prevFrame) => {
-        if (prevFrame === frames.length - 12) {
-          clearInterval(interval);
-          return prevFrame; // Stay on the last frame
+            interval = setInterval(() => {
+                setCurrentFrame((prevFrame) => {
+                    if (prevFrame < frames.length - 1) {
+                        return prevFrame + 1;
+                    } else {
+                        clearInterval(interval);
+                        return prevFrame;
+                    }
+                });
+            }, 100);
         }
-        return prevFrame + 1;
-      });
-        }, 100)
-        
-        return () => clearInterval(interval)
-      }
-    }, [isImageUploading, data])
+    
+        // Clear the interval when the component unmounts
+        return () => clearInterval(interval);
+    }, [data, isImageUploading]);
     useEffect(() => {
       if (uploadImagePath) {
         setImagePath(`../../../ assets/${uploadImagePath}`)
@@ -67,15 +73,24 @@ const UploadMoadl = ({isOpen, onOpenChange, isImageUploading, uploadImagePath} :
           const response = await fetch(argPath);
           const blob = await response.blob();
           // Create a File object using the blob and file name
-          const file = new File([blob], `20246.png`, { type: blob.type });
+          const file = new File([blob], `${facilityId ? facilityId : "0000"}.png`, { type: blob.type });
           // Call the mutation 
         
           await uploadFileToS3({
               variables: {
                   file: file,
-                  facilityId: `20249`
+                  facilityId:  facilityId ? facilityId : `20249`
               }
-          });
+          })
+          .then(()=> {
+            toast.success('تم رفع الصوره بنجاح')
+            onOpenChange()
+
+          })
+          .catch((error) => {
+            toast.error('لم يتم رفع الصوره بنجاح')
+            console.error('Error uploading file:', error);
+          })
           } catch (error) {
             console.error('Error reading file:', error);
         }
@@ -102,7 +117,7 @@ const UploadMoadl = ({isOpen, onOpenChange, isImageUploading, uploadImagePath} :
 
             </ModalHeader>
             <ModalBody>
-              {isImageUploading === true?
+              {isImageUploading === true || loadingMutaion?
                 <Spinner size='lg' color='primary'/>
               : 
               isImageUploading === false ?
@@ -112,7 +127,7 @@ const UploadMoadl = ({isOpen, onOpenChange, isImageUploading, uploadImagePath} :
               }
             </ModalBody>
             <ModalFooter className=' flex flex-col gap-y-[18px]'>
-                <Button className=' w-[264px] h-[52px] rounded-[10px]  font-bold' color='primary' variant='shadow' size='lg'  isDisabled={isImageUploading === false}
+                <Button className=' w-[264px] h-[52px] rounded-[10px]  font-bold' color='primary' variant='shadow' size='lg'  isDisabled={isImageUploading === true}
                   onPress={onUpload}
                 > 
                   {isImageUploading === false ? 

@@ -137,7 +137,7 @@ const HeadsetPage = () => {
     
   }, [device]);
   
-
+  console.log(device)
 
   return (
     <div className=' '>
@@ -165,7 +165,7 @@ const HeadsetPage = () => {
         )
       }
       <UploadMoadl isOpen={isOpen} onOpenChange={onOpenChange} isImageUploading={isImageUploading}
-        uploadImagePath={uploadImagePath} facilityId={device?.student? device?.student[0].facilityId : undefined}
+        uploadImagePath={uploadImagePath} facilityId={device?.deviceByMac?.student? device?.deviceByMac.student[0].facilityId : undefined}
       />
     </div>
   );
