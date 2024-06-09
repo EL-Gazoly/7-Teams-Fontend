@@ -8,13 +8,14 @@ import Landing from "./pages/Landing";
 import { Toaster } from "sonner";
 import routes from "./routes";
 import "./App.css";
-
+import useTranslationStore from "./stores/LanguageStore";
 function App() {
   const isLoginPage = useLocation().pathname === "/login";
+  const { language } = useTranslationStore();
   return (
     <div style={{ fontFamily: 'Cairo' }}>
       <Toaster position="top-right" richColors />
-      <div className="w-screen h-screen bg-[#E9EBEE] dark:bg-[#2E3643] overflow-y-auto overflow-hidden flex flex-row-reverse">
+      <div className={`w-screen h-screen bg-[#E9EBEE] dark:bg-[#2E3643] overflow-y-auto overflow-hidden flex ${language === 'ar' && "flex-row-reverse"}`}>
          {!isLoginPage &&
         <div className=" w-[213px]">
           <SideBar />

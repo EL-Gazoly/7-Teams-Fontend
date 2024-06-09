@@ -11,6 +11,8 @@ import SchoolLight from '../../assets/ControlCard/Light/school.svg'
 import BackIconLight from '../../assets/ControlCard/Light/Iconsax/Outline/arrowleft.svg'
 import DarkArrow from '../../assets/ControlCard/dark/arrow.svg'
 
+import useTranslationStore from '../../stores/LanguageStore'
+
 import Info from '../../assets/ControlCard/info.svg'
 import { Dropdown,
   DropdownTrigger,
@@ -37,6 +39,7 @@ type Props ={
 
 const ControlCard = ({icon, title, neasted, info}:Props) => {
   const {dark, setTheme} = useThemeStore()
+  const {language, setLanguage, getTranslation} = useTranslationStore()
 
   useEffect(() => {
     setTheme(localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : false)
@@ -146,7 +149,11 @@ const ControlCard = ({icon, title, neasted, info}:Props) => {
               </svg>}
              />
              <div className=' flex items-center gap-x-2'>
-                <Button isIconOnly  className='  w-11 h-10 rounded-[14px] flex items-center justify-center cursor-pointer   bg-secondary '>
+                <Button isIconOnly  className='  w-11 h-10 rounded-[14px] flex items-center justify-center cursor-pointer   bg-secondary '
+                  onPress={() => 
+                    language === 'ar' ? setLanguage('en') : setLanguage('ar')
+                  }
+                >
                   <img src={LanguageIcon} width={21} height={21} />
                 </Button>
                 <Button isIconOnly  className='  w-11 h-10 rounded-[14px] flex items-center justify-center cursor-pointer   bg-secondary '

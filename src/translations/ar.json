@@ -1,3 +1,13 @@
 {
+    "sidebar-headset" : "نظاره الواقع الافتراضي",
+    "sidebar-course" : "المناهج التعليميه",
+    "sidebar-students" : "الطلاب",
+    "sidebar-schools" : "المدارس",
+    "sidebar-library" : "الوسائط المحفوظه",
+    "sidebar-reports" : "التقارير",
+    "sidebar-certificates" : "الشهادات",
+    "sidebar-dashboard" : "لوحه التحكم",
+    "sidebar-logs" : "سجل النظام",
+    "sidebar-settings" : "الاعدادات العامه"
     
 }

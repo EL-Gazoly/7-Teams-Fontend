@@ -1,3 +1,12 @@
 {
-    
+    "sidebar-headset": "Headsets",
+    "sidebar-course": "Courses",
+    "sidebar-students": "Students",
+    "sidebar-schools": "Schools",
+    "sidebar-library": "Library",
+    "sidebar-reports": "Reports",
+    "sidebar-certificates": "Certificates",
+    "sidebar-dashboard": "Dashboard",
+    "sidebar-logs": "System Logs",
+    "sidebar-settings": "General Settings"
 }
