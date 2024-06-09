@@ -29,13 +29,17 @@ const Card = ({title, icon, description}: Props) => {
   return (
     <div className=' w-[240px] h-[135px] rounded-lg p-3 text-white relative'
         style={{
-            backgroundImage: "linear-gradient(258deg, #3ABD4C  -0.65%, rgba(58, 189, 76, 0.48)  96.47%)"
+            backgroundImage: 
+            icon === 'user' ? "linear-gradient(258deg, #3ABD4C  -0.65%, rgba(58, 189, 76, 0.48)  96.47%)" :
+            icon === 'reports' ? "linear-gradient(258deg, #35DAF1 -0.65%, #06BBD3 96.47%)" :
+            icon === 'clock' ? " linear-gradient(258deg, #60A8F3 -0.65%, #1E7FEE 96.47%)" :
+            icon === 'certificate' && "linear-gradient(258deg, #FDA970 -0.65%, #F98535 96.47%)" 
         }}
     >
         <div className=' flex flex-col gap-y-3 w-full'>
             <div className=' flex items-center w-full justify-between '>
                 <span className=' text-[13px] font-bold ' > {title}</span>
-                <div className=' w-10 h-10 rounded-full flex items-center justify-center bg-white'>
+                <div className=' w-10 h-10 rounded-full flex items-center justify-center bg-white/25'>
                     <img src={getIcon()} alt="" />
                 </div>
 
