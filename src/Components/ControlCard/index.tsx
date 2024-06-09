@@ -11,6 +11,13 @@ import SchoolLight from '../../assets/ControlCard/Light/school.svg'
 import BackIconLight from '../../assets/ControlCard/Light/Iconsax/Outline/arrowleft.svg'
 import DarkArrow from '../../assets/ControlCard/dark/arrow.svg'
 
+import Info from '../../assets/ControlCard/info.svg'
+import { Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+ } from '@nextui-org/react'
+
 
 import { Image, Switch, cn, Button, Avatar } from '@nextui-org/react'
 import LanguageIcon from '../../assets/ControlCard/language.svg'
@@ -25,9 +32,10 @@ type Props ={
   icon : string
   title : string
   neasted: boolean
+  info?: string
 }
 
-const ControlCard = ({icon, title, neasted}:Props) => {
+const ControlCard = ({icon, title, neasted, info}:Props) => {
   const {dark, setTheme} = useThemeStore()
 
   useEffect(() => {
@@ -77,20 +85,38 @@ const ControlCard = ({icon, title, neasted}:Props) => {
     style={{
       backdropFilter: "blur(4.406332015991211px)"
     }}
-    >
-        <div className='flex items-center gap-x-[14px] text-[#292D32] dark:text-white text-2xl font-bold flex-row-reverse'>
-          {neasted && 
-          <div className=' w-11 h-11 rounded-full bg-[#E8E8EA] dark:bg-[#BDBEC0]/25 flex items-center justify-center cursor-pointer'
-            onClick={() => navigate(-1)}
-          >
-             <img src={dark ? DarkArrow : BackIconLight} alt="" className=' rotate-180 dark:rotate-0' />
-          </div>
-         
+    >   
+        <div className=' flex flex-row-reverse justify-center items-center gap-x-4'>
+          <div className='flex items-center gap-x-[14px] text-[#292D32] dark:text-white text-2xl font-bold flex-row-reverse'>
+            {neasted && 
+            <div className=' w-11 h-11 rounded-full bg-[#E8E8EA] dark:bg-[#BDBEC0]/25 flex items-center justify-center cursor-pointer'
+              onClick={() => navigate(-1)}
+            >
+              <img src={dark ? DarkArrow : BackIconLight} alt="" className=' rotate-180 dark:rotate-0' />
+            </div>
           
-          }
-            <img src={getIcon(icon)} className=' w-[30px] h-[30px]' />
-            <span> {title} </span>
+            
+            }
+              <img src={getIcon(icon)} className=' w-[30px] h-[30px]' />
+              <span> {title} </span>
+          </div>
+          <Dropdown>
+            <DropdownTrigger>
+            <div className=' inline-flex flex-row-reverse items-center justify-center gap-x-2 mt-2 text-[#BEBEBE] text-sm underline'>
+              <span>تعلميات</span>
+              <img role='button' src={Info} alt="" className=' w-4 h-4' />
+            </div>
+            </DropdownTrigger>
+            <DropdownMenu>
+              <DropdownItem>
+                {info}
+              </DropdownItem>
+              
+            </DropdownMenu>
+          </Dropdown>
+          
         </div>
+
         <div className=' flex items-center gap-x-6 flex-row-reverse'>
             <Switch
                 color='primary'
