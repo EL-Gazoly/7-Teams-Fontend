@@ -1,4 +1,6 @@
 {
+    "personal-account": "Personal Account",
+    "info": "info",
     "sidebar-headset": "Headsets",
     "sidebar-course": "Courses",
     "sidebar-students": "Students",
@@ -8,5 +10,43 @@
     "sidebar-certificates": "Certificates",
     "sidebar-dashboard": "Dashboard",
     "sidebar-logs": "System Logs",
-    "sidebar-settings": "General Settings"
+    "sidebar-settings": "General Settings",
+    "headset-select" : "Select connected headsets",
+    "connected-headsets-no" : "Headset connected",
+    "show-connected-headsets" : "Show connected headsets",
+    "search" : "Search",
+     "start_experiment": "Start",
+     "chemistry": "Chemistry",
+    "chemistry_first": "Chemistry 1",
+    "physics": "Physics",
+    "physics_first": "Physics 1",
+    "select_course_placeholder": "Select Course",
+    "select_how_to_start": "Select how to start",
+    "full_course": "full experiment",
+    "start_training": "theoretical explanation",
+    "practical_test": "practical test",
+    "theoretical_test": "theoretical test",
+    "select_chapter_placeholder": "Select Chapter",
+    "physics 1": "Physics 1",
+    "chemistry 1": "Chemistry 1",
+    "liquid_viscosity": "Liquid Viscosity",
+    "effective_use_of_bunsen_burner": "Effective Use of Bunsen Burner",
+    "density_of_wood": "Density of Wood",
+    "volume_calculation": "Volume Calculation",
+    "charles_law": "Charles's Law",
+    "size_of_mole": "Size of Mole",
+    "geiger_device": "Radioactivity",
+    "inertia": "Inertia",
+    "select_expirment_placeholder": "Select Experiment",
+    "student_help": "Help",
+    "connected": "Connected",
+    "not_connected": "Not Connected",
+    "select": "Select",
+    "deselect": "Deselect",
+    "noone": "No one"
+      
+      
+      
+      
+
 }

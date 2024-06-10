@@ -84,35 +84,36 @@ const ControlCard = ({icon, title, neasted, info}:Props) => {
   }
 
   return (  
-    <div className={`w-full h-[103px] rounded-b-[14px] ${dark? "dark:bg-[#252A33]" : "Control-card-bg"} light flex items-center px-[26px] justify-between flex-row-reverse`}
+    <div className={`w-full h-[103px] rounded-b-[14px] ${dark? "dark:bg-[#252A33]" : "Control-card-bg"} light flex items-center px-[26px] justify-between`}
     style={{
-      backdropFilter: "blur(4.406332015991211px)"
+      backdropFilter: "blur(4.406332015991211px)",
+      direction: language === "ar" ? "rtl" : "ltr"
     }}
     >   
-        <div className=' flex flex-row-reverse justify-center items-center gap-x-4'>
-          <div className='flex items-center gap-x-[14px] text-[#292D32] dark:text-white text-2xl font-bold flex-row-reverse'>
+        <div className={` flex  justify-center items-center gap-x-4`}>
+          <div className={`flex items-center gap-x-[14px] text-[#292D32] dark:text-white text-2xl font-bold `}>
             {neasted && 
             <div className=' w-11 h-11 rounded-full bg-[#E8E8EA] dark:bg-[#BDBEC0]/25 flex items-center justify-center cursor-pointer'
               onClick={() => navigate(-1)}
             >
-              <img src={dark ? DarkArrow : BackIconLight} alt="" className=' rotate-180 dark:rotate-0' />
+              <img src={dark ? DarkArrow : BackIconLight} alt="" className={` ${language === "ar" ? "rotate-180 dark:rotate-0" : "dark:rotate-180"} `} />
             </div>
           
             
             }
               <img src={getIcon(icon)} className=' w-[30px] h-[30px]' />
-              <span> {title} </span>
+              <span> {getTranslation(title)} </span>
           </div>
           <Dropdown>
             <DropdownTrigger>
-            <div className=' inline-flex flex-row-reverse items-center justify-center gap-x-2 mt-2 text-[#BEBEBE] text-sm underline'>
-              <span>تعلميات</span>
+            <div className=' inline-flex items-center justify-center gap-x-2 mt-2 text-[#BEBEBE] text-sm underline'>
+              <span>{getTranslation("info")}</span>
               <img role='button' src={Info} alt="" className=' w-4 h-4' />
             </div>
             </DropdownTrigger>
             <DropdownMenu>
               <DropdownItem>
-                {info}
+                {getTranslation(info)}
               </DropdownItem>
               
             </DropdownMenu>
@@ -120,7 +121,7 @@ const ControlCard = ({icon, title, neasted, info}:Props) => {
           
         </div>
 
-        <div className=' flex items-center gap-x-6 flex-row-reverse'>
+        <div className={` flex items-center gap-x-6`}>
             <Switch
                 color='primary'
                 size='lg'
@@ -162,13 +163,13 @@ const ControlCard = ({icon, title, neasted, info}:Props) => {
                   <img src={logoutIcon} width={21} height={21}   />
                 </Button>
              </div>
-                <div className='flex items-center gap-x-4 flex-row-reverse'>
+                <div className={`flex items-center gap-x-4`}>
                   <div className='w-[57px] h-[57px] rounded-full' >
                       <img src={Placeholder} alt="" className='w-[57px] h-[57px] rounded-full' />
                   </div>
                   <div className=' flex flex-col gap-y-[7px] text-[#292D32] dark:text-white text-right'>
                     <span className=' text-xs font-bold'>Sameh Ahmed</span>
-                    <span className='text-[10px] font-medium'>الملف الشخصي</span>
+                    <span className='text-[10px] font-medium'>{getTranslation("personal-account")}</span>
                   </div> 
 
                 </div>

@@ -20,12 +20,12 @@ import { chemistryOptions, physicsOptions } from '../../../../data/expermients'
 const options = {
     Chemistry: {
       icon: Chemistry,
-      name: 'الكيمياء',
+      name: 'chemistry',
       value : "chemistry",
       chapters : {
           first : {
             icon : Chemistry,
-            name : 'الكيمياء 1',
+            name : 'chemistry 1',
             value : "first",
             expermients :  [
               ...chemistryOptions
@@ -35,12 +35,12 @@ const options = {
     },
     Physics: {
       icon: Physics,
-      name: 'الفيزياء',
+      name: 'physics',
       value : "physics",
       chapters : {
         first : {
           icon : Physics,
-          name : 'الفيزياء 1',
+          name : 'physics 1',
           value : "first",
           expermients : [
             ...physicsOptions

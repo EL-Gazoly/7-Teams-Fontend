@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
 import { useThemeStore } from '../../../../../stores/ThemeStore.ts';
 import CustomStyle from '../CustomStyle.tsx';
-
+import useTranslationStore from '../../../../../stores/LanguageStore.ts';
 
 const SelectChapter = ( props) => {
   const {dark} = useThemeStore();
+  const {language, getTranslation} = useTranslationStore();
   const [selectedOption, setSelectedOption] = useState(props.SelectedChapter);
 
   const handleChange = (selectedOption) => {
@@ -39,7 +40,7 @@ const SelectChapter = ( props) => {
       <Select
         options={transformedChapters}
         styles={customStyles}
-        placeholder=" اختر الفصل "
+        placeholder={getTranslation('select_chapter_placeholder')}
         value={selectedOption}
         onChange={handleChange}
         isSearchable={true}
@@ -47,11 +48,11 @@ const SelectChapter = ( props) => {
         getOptionLabel={(option) => (
           <div className='selected flex items-center gap-x-6 text-xs font-medium'
             style={{
-              direction: "rtl"
+              direction: language === 'ar' ? 'rtl' : 'ltr',
             }}
           >
             <img src={option.image} alt={option.label} className=' w-10 h-10'/>
-            <span > {option.label} </span>
+            <span > {getTranslation(option.label)} </span>
           </div>
         )}
       />

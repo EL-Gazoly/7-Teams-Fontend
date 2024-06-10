@@ -3,9 +3,11 @@ import Select from 'react-select';
 import { useThemeStore } from '../../../../../stores/ThemeStore';
 
 import  CustomStyle from '../CustomStyle';
+import useTranslationStore from '../../../../../stores/LanguageStore';
 const SelectExpirment = ( props) => {
   const [selectedOption, setSelectedOption] = useState(props.SelectedExpirment);
   const {dark} = useThemeStore();
+  const {language, getTranslation} = useTranslationStore();
 
   const handleChange = (selectedOption) => {
     setSelectedOption(selectedOption);
@@ -46,19 +48,19 @@ const SelectExpirment = ( props) => {
             <Select
                 options={allExperiments}
                 styles={customStyles}
-                placeholder=" اختر التجربة "
+                placeholder={getTranslation('select_expirment_placeholder')}
                 value={selectedOption}
                 onChange={handleChange}
                 isSearchable={true}
                 //@ts-ignore
                 getOptionLabel={(option) => (
-                    <div className='selected flex items-center gap-x-3 text-xs font-medium'
+                    <div className='selected flex items-center gap-x-2 text-xs font-medium'
                         style={{
-                            direction: "rtl"
+                            direction: language === 'ar' ? 'rtl' : 'ltr',
                         }}
                     >
                         <img src={option.icon} alt={option.name} className=' w-10 h-10'/>
-                        <span> {option.name} </span>
+                        <span className= ' truncate'> {getTranslation(option.name)} </span>
                     </div>
                 )}
             />
