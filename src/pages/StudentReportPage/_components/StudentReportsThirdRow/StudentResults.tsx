@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Divider } from '@nextui-org/react';
-import Chemistry from '../../../../assets/SelectCourse/SelectSubject/chemistry.svg';
-import Physics from '../../../../assets/SelectCourse/SelectSubject/physics.svg';
+import Chemistry from '@/assets/SelectCourse/SelectSubject/chemistry.svg';
+import Physics from '@/assets/SelectCourse/SelectSubject/physics.svg';
 import grade from 'letter-grade';
-import { physicsOptions, chemistryOptions } from '../../../../data/expermients';
+import { physicsOptions, chemistryOptions } from '@/data/expermients';
 import useTranslationStore from '@/stores/LanguageStore';
 import { cn } from '@/lib/utils';
 

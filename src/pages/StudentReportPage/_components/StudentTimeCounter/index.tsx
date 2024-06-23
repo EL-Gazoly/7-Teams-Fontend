@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { Tabs, Tab, Divider } from '@nextui-org/react';
 import Progress from './Progress';
 import { useQuery } from '@apollo/client';
-import { GetStudentTime } from '../../../../graphql/reports';
-import Loading from '../../../../Components/Loading';
+import { GetStudentTime } from '@/graphql/reports';
+import Loading from '@/Components/Loading';
 import { useParams } from 'react-router-dom';
 import useTranslationStore from '@/stores/LanguageStore';
 

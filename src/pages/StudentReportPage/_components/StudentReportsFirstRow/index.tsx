@@ -1,6 +1,6 @@
 import React from 'react'
 import StudentCard from './StudentCard'
-import StatusCard from '../../../../Components/StatusCard/index'
+import StatusCard from '@/Components/StatusCard/index'
 
 const StudentReportsFirstRow = ({data, experiments, ref, maxGrades}) => {
   return (
