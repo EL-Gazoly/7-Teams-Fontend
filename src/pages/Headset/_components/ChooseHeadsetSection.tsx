@@ -74,7 +74,7 @@
           "cursor-pointer", "data-[selected=true]:bg-primary-gradient",
           "data-[hover=true]:bg-[#444]", 
         )}} radius='sm' onValueChange={toggleSelected}  isSelected={isTrue}  color='primary' >
-          <span className='w-full text-sm font-medium text-white' style={{ wordBreak: "break-all" }}> {getTranslation("headset-select")}</span>
+          <span className={`w-full font-medium text-white ${language === "ar" ? " text-sm" : " text-xs"}`} style={{ wordBreak: "break-all" }}> {getTranslation("headset-select")}</span>
         </Checkbox>
 
         <Divider orientation="vertical" className='h-[80%] bg-[#1223331A]/10' />
@@ -82,7 +82,7 @@
         {/* Connected Headset Info */}
         <div className='w-[272px] h-9 py-2 px-4 flex items-center justify-center rounded-[7px] gap-x-4 bg-primary'>
           <Image src={HeadsetImage} />
-          <span className='text-white font-medium text-sm'>{connectedLength} {getTranslation("connected-headsets-no")}</span>
+          <span className={`text-white font-medium ${language === "ar" ? " text-sm" : " text-xs"}`}>{connectedLength} {getTranslation("connected-headsets-no")}</span>
           <div className='w-[10px] h-[10px] rounded bg-[#45FF5F]' />
         </div>
 

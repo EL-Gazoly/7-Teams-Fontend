@@ -13,7 +13,7 @@ function App() {
   const isLoginPage = useLocation().pathname === "/login";
   const { language } = useTranslationStore();
   return (
-    <div style={{ fontFamily: 'Cairo' }}>
+    <div style={{ fontFamily: 'Cairo'  }}>
       <Toaster position="top-right" richColors />
       <div className={`w-screen h-screen bg-[#E9EBEE] dark:bg-[#2E3643] overflow-y-auto overflow-hidden flex ${language === 'ar' && "flex-row-reverse"}`}>
          {!isLoginPage &&
