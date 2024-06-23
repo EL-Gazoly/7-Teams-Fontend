@@ -1,4 +1,4 @@
-import StudentCard from "./_components/StudentsCard";
+import StudentCard from "@/pages/LIbraryPage/_components/StudentsCard";
 
 const GridView = ({data}) => {
   return (

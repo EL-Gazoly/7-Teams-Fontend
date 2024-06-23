@@ -1,11 +1,11 @@
-import { SearchStudent } from '../StudentsReports/SearchStudent';
+import { SearchStudent } from '@/pages/StudentsReports/SearchStudent';
 import React, {useState, useEffect} from 'react'
-import ControlCard from '../../Components/ControlCard'
-import StackView from './StackView';
-import GridView from './GridView';
+import ControlCard from '@/Components/ControlCard'
+import StackView from '@/pages/LIbraryPage/StackView';
+import GridView from '@/pages/LIbraryPage/GridView';
 import { useQuery } from '@apollo/client';
-import { GetStudents } from '../../graphql/reports';
-import Loading from '../../Components/Loading';
+import { GetStudents } from '@/graphql/reports';
+import Loading from '@/Components/Loading';
 
 
 
@@ -53,7 +53,7 @@ const clearFilters = () => {
 
   return (
    <React.Fragment> 
-        <ControlCard icon="Library" title='الوسائط' neasted={false} />
+        <ControlCard icon="Library" title='sidebar-library' neasted={false} />
         <div className=' mt-[22px] flex flex-col items-center gap-y-6'>
             <SearchStudent  activeTab={activeTab}  setActiveTab={setActiveTab} data={data?.admin.students} 
               setSearchQuery={setSearchQuery}
