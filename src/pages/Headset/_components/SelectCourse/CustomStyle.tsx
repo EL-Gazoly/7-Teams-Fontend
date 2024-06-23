@@ -1,4 +1,4 @@
-import useTranslationStore from "../../../../stores/LanguageStore";
+import useTranslationStore from "@/stores/LanguageStore";
 type customStylesProps = {
     dark: boolean;
     selectedOption: any;

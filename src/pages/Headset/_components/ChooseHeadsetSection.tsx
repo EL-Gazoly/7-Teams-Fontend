@@ -1,8 +1,8 @@
     import React, {useEffect, useState} from 'react';
     import { Checkbox, Divider, cn, Image, Tooltip } from '@nextui-org/react';
-    import HeadsetImage from '../../../assets/Landing/ChooseHeadset/headset.svg';
-    import SearchIcon from '../../../assets/Landing/ChooseHeadset/search.png';
-    import useTranslationStore from '../../../stores/LanguageStore';
+    import HeadsetImage from '@/assets/Landing/ChooseHeadset/headset.svg';
+    import SearchIcon from '@/assets/Landing/ChooseHeadset/search.png';
+    import useTranslationStore from '@/stores/LanguageStore';
 
     type Props ={
       setSelectedHeadsets: React.Dispatch<any>

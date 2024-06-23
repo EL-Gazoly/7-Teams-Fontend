@@ -5,11 +5,11 @@ import SelectHowToStart from './SelectCourse/SelectHowToOpen';
 import { Button } from '@nextui-org/react';
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { CREATELOG, GETLOGS } from '../../../graphql/LogsQuery';
+import { CREATELOG, GETLOGS } from '@/graphql/LogsQuery';
 import options from './SelectCourse/options';
-import db from '../../../config/firebase';
+import db from '@/config/firebase';
 import { ref, update } from 'firebase/database';
-import useTranslationStore from '../../../stores/LanguageStore';
+import useTranslationStore from '@/stores/LanguageStore';
 
 type ChooseCourseSectionProps = {
   selectedHeadsets: any[];

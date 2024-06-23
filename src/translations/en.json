@@ -57,12 +57,28 @@
     "chemistry_page_description": "Chemistry is the science that studies the particles that make up matter and the interactions that occur between them.",
     "subject-info": "Information about this subject",
     "chemistry_page_info": "Chemistry is the science that studies matter and the changes that occur to it, specifically studying its properties, structure, composition, behavior, reactions, and interactions. Chemistry studies atoms and the bonds that form between them to create molecules, and how these molecules subsequently bond to form matter. It also studies the reactions that occur between them. Chemistry plays a significant role in our lives and is involved in many fields, playing an important role in various industries, such as the food industry, cleaning materials, paints and dyes, pharmaceuticals, textiles and clothing, and weapons.",
-    "view-experiments": "View Experiment"
-      
-      
-      
-      
-      
-      
-
+    "view-experiments": "View Experiment",
+    "students": "Students",
+    "add_student": "Add Student",
+    "registered_students": "Students Registered in the System",
+    "student_count": "( {count} students )",
+    "student_info": "Information about this student",
+    "high_school": "High School",
+    "middle_school": "Middle School",
+    "primary_school": "Primary School",
+    "choose_grade": "Choose Grade",
+    "first_grade": "First Grade",
+    "second_grade": "Second Grade",
+    "third_grade": "Third Grade",
+    "fourth_grade": "Fourth Grade",
+    "fifth_grade": "Fifth Grade",
+    "sixth_grade": "Sixth Grade",
+    "choose_class": "Choose Class",
+    "image": "Image",
+    "username": "Username",
+    "access_code": "Access Code",
+    "status": "Status",
+    "edit": "Edit",
+    "disconnected": "Disconnected"
+ 
 }
