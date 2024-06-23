@@ -79,6 +79,19 @@
     "access_code": "Access Code",
     "status": "Status",
     "edit": "Edit",
-    "disconnected": "Disconnected"
- 
+    "disconnected": "Disconnected",
+    "student_name_placeholder": "Student Name Here",
+    "student_id_placeholder": "Student ID Here",
+    "password_placeholder": "Password Here",
+    "confirm_password_placeholder": "Confirm Password Here",
+    "add_student_button": "Add Student",
+    "please_fill_all_fields": "Please fill all fields",
+    "password_does_not_match": "Password does not match",
+    "student_created_successfully": "Student created successfully",
+    "choose_school": "Choose School",
+    "choose_class_alpha": "Choose Class",
+    "upload_new_image": "Upload New Image",
+    "remove": "Remove",
+    "image_requirements": "Images must be at least 300 x 300 pixels in size and in png or jpeg format"
+    
 }

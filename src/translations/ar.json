@@ -80,6 +80,19 @@
     "status": "الحاله",
     "edit": "تعديل",
     "connected-now": "متصل الان",
-    "disconnected": "غير متصل"
+    "disconnected": "غير متصل",
+    "student_name_placeholder": "اسم الطالب هنا",
+    "student_id_placeholder": "رقم الطالب هنا",
+    "password_placeholder": "الرقم السري هنا",
+    "confirm_password_placeholder": "تأكيد الرقم السري هنا",
+    "add_student_button": "إضافة طالب",
+    "please_fill_all_fields": "يرجى ملء جميع الحقول",
+    "password_does_not_match": "كلمة المرور غير متطابقة",
+    "student_created_successfully": "تم إنشاء الطالب بنجاح",
+    "choose_school": "اختر المدرسه",
+    "choose_class_alpha" : "اختر الفصل",
+    "upload_new_image": "تحميل صورة جديدة",
+    "remove": "حذف",
+    "image_requirements": "يجب أن تكون الصور بحجم 300 × 300 بكسل على الأقل بصيغة png أو jpeg"
     
 }

@@ -1,8 +1,9 @@
 import { FC, useEffect, useState } from 'react';
 import Select from 'react-select';
-import GroupIcon from '../../../assets/Reports/group-dark.png'
-import GroupIconLight from '../../../assets/students/group.png'
-import { useThemeStore } from '../../../stores/ThemeStore'
+import GroupIcon from '@/assets/Reports/group-dark.png'
+import GroupIconLight from '@/assets/students/group.png'
+import { useThemeStore } from '@/stores/ThemeStore'
+import useTranslationStore from '@/stores/LanguageStore';
 
 const options = [
     { value: 'A', label: '1', image: GroupIcon },
@@ -20,6 +21,7 @@ const options = [
 
 const ChooseClassAlpha = (props) => {
   const {dark} = useThemeStore();
+  const { language, getTranslation } = useTranslationStore();
     const [selectedOption, setSelectedOption] = useState(props.selectedCourse);
 
     const handleChange = (selectedOption) => {
@@ -37,7 +39,7 @@ const ChooseClassAlpha = (props) => {
       const customStyles = {
         control: (provided) => ({
           ...provided,
-          direction : 'rtl',
+          direction : language === 'ar' ? 'rtl' : 'ltr',
           backgroundColor:  dark ? '#1F242DAB' : '#F0F2F4',
           backdropFilter: 'blur(73px)',
           borderRadius: '4px',
@@ -50,7 +52,7 @@ const ChooseClassAlpha = (props) => {
             content:  `url("data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' width='22' height='23' viewBox='0 0 22 23' fill='none'><path d='M7.21607 2.69531L14.6971 2.69531C17.9467 2.69531 19.8839 4.63254 19.8839 7.88208V15.3542C19.8839 18.6127 17.9467 20.5499 14.6971 20.5499H7.22499C3.97545 20.5499 2.03823 18.6127 2.03823 15.3632V7.88208C2.0293 4.63254 3.96653 2.69531 7.21607 2.69531Z' fill='%23122333'/><path d='M10.9564 14.2206C11.126 14.2206 11.2956 14.1581 11.4295 14.0242L14.5809 10.8729C14.8397 10.614 14.8397 10.1855 14.5809 9.92659C14.322 9.6677 13.8935 9.6677 13.6346 9.92659L10.9564 12.6048L8.27818 9.92659C8.01929 9.6677 7.59078 9.6677 7.33188 9.92659C7.07299 10.1855 7.07299 10.614 7.33188 10.8729L10.4832 14.0242C10.6171 14.1581 10.7868 14.2206 10.9564 14.2206Z' fill='white'/></svg>")`,
               position: 'absolute',
             top: '60%',
-            left: '5%',
+            right: language === 'ar'  ? '86%' : '-1%',
             transform: 'translateY(-50%)',
             marginRight: '10px',
           '&:focus' :{
@@ -99,7 +101,7 @@ const ChooseClassAlpha = (props) => {
         menu: (provided) => ({
           ...provided,
           width: '380px',
-          direction : 'rtl',
+          direction :  language === 'ar' ? 'rtl' : 'ltr',
           maxHeight: '320px',
           backgroundColor:  dark ? '#1F242DAB' : '#F0F2F4',
           cursor: 'pointer',
@@ -152,13 +154,14 @@ const ChooseClassAlpha = (props) => {
     <Select
       options={options}
       styles={customStyles}
-      placeholder="اختر الصف"
+      placeholder={getTranslation('choose_class_alpha')}
       value={selectedOption}
       onChange={handleChange}
       isSearchable={true}
+      //@ts-ignore
       getOptionLabel={(option) => (
         <div className='selected flex items-center gap-x-6 text-xs font-medium'>
-          <img src={dark ? GroupIcon : GroupIconLight} alt={option.label} style={customStyles.optionImage} className=' w-10 h-10'/>
+          <img src={dark ? GroupIcon : GroupIconLight} alt={option.label}  className=' w-10 h-10'/>
           <span className={`${ selectedOption && selectedOption.value === "Ultrasound" ? 'text-[10px]' : ''}`}> {option.label} </span>
         </div>
       )}

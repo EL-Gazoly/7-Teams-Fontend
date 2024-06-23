@@ -1,38 +1,39 @@
-import React, { useState, useRef, useEffect } from 'react';
-import ControlCard from '../../Components/ControlCard';
+import { useState, useRef, useEffect } from 'react';
+import ControlCard from '@/Components/ControlCard';
 import { Button, Image } from '@nextui-org/react';
-import AddIcon from '../../assets/students/add.svg';
-import { createStudent } from '../../graphql/students';
+import AddIcon from '@/assets/students/add.svg';
+import { createStudent } from '@/graphql/students';
 import { useMutation } from '@apollo/client';
 import { toast } from 'sonner';
-import Loading from '../../Components/Loading';
+import Loading from '@/Components/Loading';
 import { UploadImage } from './UploadImage';
-import { getStudents } from '../../graphql/students';
-import { GetStudents } from '../../graphql/reports';
+import { getStudents } from '@/graphql/students';
+import { GetStudents } from '@/graphql/reports';
 import AddWithExcel from './_components/AddWithExcelModal';
 import ChooseSchool from './_components/ChooseSchool';
 import ChooseTeam from './_components/ChooseTeam';
 import ChooseClass from './_components/ChooseClass';
 import ChooseClassAlpha from './_components/ChooseClassAlpha';
-import EyeSlashIcon from '../../assets/login/EyeSlashIcon.svg'
-import EyeIcon from '../../assets/login/EyeIcon.svg'
-import EyeDarkIcon from '../../assets/login/dark-eye.svg'
-import EyeSlashDarkIcno from '../../assets/login/dark-eye-slash.svg'
-import { useThemeStore } from '../../stores/ThemeStore';
-import GroupIcon from '../../assets/Reports/group-dark.png'
+import EyeSlashIcon from '@/assets/login/EyeSlashIcon.svg'
+import EyeIcon from '@/assets/login/EyeIcon.svg'
+import EyeDarkIcon from '@/assets/login/dark-eye.svg'
+import EyeSlashDarkIcno from '@/assets/login/dark-eye-slash.svg'
+import { useThemeStore } from '@/stores/ThemeStore';
+import GroupIcon from '@/assets/Reports/group-dark.png'
+import useTranslationStore from '@/stores/LanguageStore';
+import { cn } from '@/lib/utils';
 const PrimaryOptions = [
-  { value: 'first', label: 'الصف الاول', image: GroupIcon },
-  { value: 'second', label: 'الصف الثاني', image: GroupIcon },
-  { value: 'third', label: 'الصف الثالث', image: GroupIcon },
-  { value: 'fourth', label: 'الصف الرابع', image: GroupIcon },
-  { value: 'fifth', label: 'الصف الخامس', image: GroupIcon },
-  { value: 'sixth', label: 'الصف السادس', image: GroupIcon },
-]
+  { value: 'first', label: 'first_grade', image: GroupIcon },
+  { value: 'second', label: 'second_grade', image: GroupIcon },
+  { value: 'third', label: 'third_grade', image: GroupIcon },
+  { value: 'fourth', label: 'fourth_grade', image: GroupIcon },
+  { value: 'fifth', label: 'fifth_grade', image: GroupIcon },
+  { value: 'sixth', label: 'sixth_grade', image: GroupIcon },]
 
 const SecondaryOptions = [
-  { value: 'first', label: 'الصف الاول', image: GroupIcon },
-  { value: 'second', label: 'الصف الثاني', image: GroupIcon },
-  { value: 'third', label: 'الصف الثالث', image: GroupIcon },
+  { value: 'first', label: 'first_grade', image: GroupIcon },
+  { value: 'second', label: 'second_grade', image: GroupIcon },
+  { value: 'third', label: 'third_grade', image: GroupIcon },
 ]
 const CreateStudent = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -45,7 +46,7 @@ const CreateStudent = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const { dark } = useThemeStore();
-
+  const { language, getTranslation } = useTranslationStore();
   const [createStudentMutation, { data, loading, error }] = useMutation(createStudent,{
     refetchQueries: [{ query: getStudents }, { query: GetStudents}],
   });
@@ -101,7 +102,7 @@ const CreateStudent = () => {
 
   return (
     <div className=' pb-8'>
-      <ControlCard icon="Students" title=' الطلاب ' neasted={true}/>
+      <ControlCard icon="Students" title={getTranslation("sidebar-students")} neasted={true}/>
       <div
         className='mt-6 w-full h-[703px] bg-[#FDFDFE] dark:bg-primary-dark rounded-lg pt-[70px] px-[113px] flex flex-col gap-y-12'
         style={{
@@ -115,19 +116,25 @@ const CreateStudent = () => {
           setSelectedFile={setSelectedFile}
         />
         <div className=' flex flex-col items-center gap-y-4'>
-          <div className='flex flex-row-reverse items-center gap-x-[22px]'>
+          <div className={cn('flex items-center gap-x-[22px]',
+            language === 'ar' ? 'flex-row-reverse' : 'flex-row'
+          )}>
       
             <input
               type='text'
-              className='text-right w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] dark:bg-dark-item/70 px-4'
-              placeholder='اسم الطالب هنا'
+              className={cn('w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] dark:bg-dark-item/70 px-4',
+                language === 'ar' ? 'text-right' : 'text-left'
+              )}
+              placeholder={getTranslation('student_name_placeholder')}  
               ref={nameRef}
             />
         
             <input
               type='text'
-              className='text-right w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] dark:bg-dark-item/70 px-4'
-              placeholder='رقم الطالب هنا'
+              className={cn('w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] dark:bg-dark-item/70 px-4',
+                language === 'ar' ? 'text-right' : 'text-left'
+              )}
+              placeholder={getTranslation('student_id_placeholder')}     
               ref={idRef}
             />
         
@@ -167,9 +174,11 @@ const CreateStudent = () => {
                     <img src={showPassword ? EyeIcon :  EyeSlashIcon} alt="" onClick={()=> setShowPassword(!showPassword)}    className={` cursor-pointer ${isIconshowed? 'block' : 'hidden'}`}/>
                     }
 
-                    <input type={showPassword? "text" : "password"} className=' text-right flex-1  h-full bg-transparent
-                    ' placeholder=' الرقم السري هنا' ref={passwordRef} 
-                        onChange={(e) => setIsIconshowed(e.target.value)}
+                    <input type={showPassword? "text" : "password"} className={cn('flex-1 h-full bg-transparent',
+                      language === 'ar' ? 'text-right' : 'text-left'
+                    )}
+                     placeholder={getTranslation('password_placeholder')} ref={passwordRef} 
+                     onChange={(e) => setIsIconshowed(e.target.value)}
                     />
             </div>
             <div className='w-[380px] rounded-lg h-[66px] bg-[#F0F2F4] dark:bg-dark-item/70 px-4 flex items-center '>
@@ -179,9 +188,11 @@ const CreateStudent = () => {
                     <img src={showPassword ? EyeIcon :  EyeSlashIcon} alt="" onClick={()=> setShowPassword(!showPassword)}    className={` cursor-pointer ${isIconshowed? 'block' : 'hidden'}`}/>
                     }
 
-                    <input type={showPassword? "text" : "password"} className=' text-right flex-1  h-full bg-transparent
-                    ' placeholder=' تاكيد الرقم السري هنا' ref={confirmPasswordRef} 
-                        onChange={(e) => setIsIconshowed(e.target.value)}
+                    <input type={showPassword? "text" : "password"} className={cn('flex-1  h-full bg-transparent',
+                      language === 'ar' ? 'text-right' : 'text-left'
+                    )}
+                     placeholder={getTranslation('confirm_password_placeholder')} ref={confirmPasswordRef} 
+                     onChange={(e) => setIsIconshowed(e.target.value)}
                     />
             </div>
 
@@ -195,7 +206,7 @@ const CreateStudent = () => {
             onPress={handleCreateStudent}
           >
             <Image src={AddIcon} />
-            <span className='text-white text-sm font-bold'>إضافة طالب</span>
+            <span className='text-white text-sm font-bold'>{getTranslation('add_student_button')}</span>
           </Button>
 
           <AddWithExcel />
