@@ -11,9 +11,13 @@ import { toast } from 'sonner'
 import { useParams } from 'react-router-dom'
 import { set } from 'firebase/database'
 import { useThemeStore } from '../../stores/ThemeStore'
+import useTranslationStore from '@/stores/LanguageStore';
+import { cn } from '@/lib/utils';
+
 
 const UpdateSchool = () => {
     const {id} = useParams()
+    const { language, getTranslation } = useTranslationStore();
     const [selectedImage, setSelectedImage] = useState(null);
     const [selectedFile, setSelectedFile] = useState(null);
     const nameRef = useRef<HTMLInputElement>();
@@ -49,7 +53,7 @@ const UpdateSchool = () => {
     const handleUpdateSchool = async () => {
       notifcationRef.current = false;
       if (!nameRef.current.value) {
-        toast.error('الرجاء ادخال اسم المدرسة');
+        toast.error(getTranslation('enter_school_name_error'));
         return;
       }
       try {
@@ -79,7 +83,7 @@ const UpdateSchool = () => {
         console.log(data);
         console.log(schoolData)
         if (notifcationRef.current) return;
-        toast.success('تم تعديل المدرسة بنجاح');
+        toast.success(getTranslation('school_added_success'));
         notifcationRef.current = true;
       }
     },[data]);
@@ -89,7 +93,7 @@ const UpdateSchool = () => {
       return <Loading />;
     }
     if (error) {
-      toast.error('حدث خطأ اثناء اضافة المدرسة');
+      toast.error(getTranslation('school_add_error'));
     }
   
     function convertToFiveDigits(number) {
@@ -109,49 +113,51 @@ const UpdateSchool = () => {
   
   return (
     <div className=' flex flex-col gap-y-8 items-center'>
-        <ControlCard icon='Schools' title='اضافه مدرسه جديدة' neasted={true}/>
-        <div className='w-full h-[655px] bg-white dark:bg-[#252A33] rounded-lg flex items-center justify-center'>
-            <div className="flex flex-col gap-y-9 items-center justify-center">
+         <ControlCard icon="Schools" title={getTranslation('add_new_school')} neasted={true} />
+         <div className="w-full h-[655px] bg-white dark:bg-[#252A33] rounded-lg flex items-center justify-center"
+              style={{
+                  direction: language === 'ar' ? 'rtl' : 'ltr',
+              }}
+            >        
+          <div className="flex flex-col gap-y-9 items-center justify-center">
                 <div className=' flex flex-col gap-y-8'>
                 <div className=' w-[116px] h-[116px] self-center rounded-full bg-[#EEEFF2] dark:bg-[#EEEFF2]/20 flex items-center justify-center'>
                   {selectedImage ? <img src={selectedImage} alt="Selected" className=' w-full h-full object-cover rounded-full' /> : <img src={dark? SchoolIcon : LightSchoolIcon} alt="Placeholder" className=' w-[59px] h-[60px]' />}
                   </div>
                   <div className=' flex flex-col gap-y-5'>
-                    <div className=' flex items-center self-center gap-x-3'>
+                    <div className=' flex flex-row-reverse items-center self-center gap-x-3'>
                     <Button className=' w-[171px] h-[51px] rounded-lg text-white bg-[#CF0644] dark:bg-[#FF5948]/60' onPress={handleImageRemove}>
-                        حذف 
+                    {getTranslation('delete')}
                         </Button>
 
                         <label htmlFor="image-upload" className='w-[171px] h-[51px] text-white bg-primary bg-[#52D867]/40 flex items-center justify-center rounded-lg cursor-pointer'>
-                        تحميل صوره جديده
-                       </label>
+                        {getTranslation('upload_new_image')}
+                         </label>
                       <input key={selectedImage} // Add this key to force re-render on file change
                         type="file" id="image-upload" accept=".png, .jpeg, .jpg" style={{
                           display: 'none'
                         }} onChange={handleImageUpload} />
                       
                     </div>
-                    <span className=' text-sm text-white'>
-                      png أو jpeg يجب أن تكون الصور بحجم 300 × 300 بكسل على الأقل بصيغة 
-                    </span>
+                    <span className=' text-sm text-white'>{getTranslation('image_requirements')} </span>
                   </div>
 
                 </div>
-                <div className=' flex items-center gap-x-14 flex-row-reverse'>
+                <div className=' flex items-center gap-x-14 '>
                   <div className="flex flex-col gap-y-3 text-[15.25px]">
-                  <span className=' text-text-black/60 dark:text-white/60 font-bold self-end'>
-                    اسم المدرسة
-                    </span>
-                    <input type="text" ref={nameRef} className=' w-[379.28px] h-[65.75px] px-5 text-right rounded-lg  bg-[#E9E9E9] dark:bg-[#1F242D]/70 text-text-black dark:text-white dark:placeholder:text-white/60 placeholder:text-text-black/40 placeholder:font-bold'
-                      placeholder='ادخل اسم المدرسة'
+                  <span className=' text-text-black/60 dark:text-white/60 font-bold '>
+                  {getTranslation('school_name')}
+                  </span>
+                    <input type="text" ref={nameRef} className=' w-[379.28px] h-[65.75px] px-5  rounded-lg  bg-[#E9E9E9] dark:bg-[#1F242D]/70 text-text-black dark:text-white dark:placeholder:text-white/60 placeholder:text-text-black/40 placeholder:font-bold'
+                      placeholder={getTranslation('enter_school_name')}
                       defaultValue={ data ? data?.updateSchool?.name : schoolData?.school?.name}
                     />
 
                   </div>
                   <div className=' flex flex-col gap-y-6'>
-                  <span className=' text-text-black dark:text-white font-bold self-end text-sm'>
-                    رقم المدرسة
-                    </span>
+                  <span className=' text-text-black dark:text-white font-bold  text-sm'>
+                  {getTranslation('school_number')}
+                  </span>
                     <span className=' text-[32px]  font-bold text-text-black/40 dark:text-white/70'>
                     {convertToFiveDigits(schoolData?.school?.uniqueId)}
                     </span>
@@ -161,7 +167,7 @@ const UpdateSchool = () => {
                 </div>
                 <Button className=' w-[217px] h-16 mt-6 rounded-md bg-[#4E5464] text-white' onPress={handleUpdateSchool}>
                   <img src={EditIcon} alt="" />
-                  <span>تعديل بيانات المدرسه </span>
+                  <span>{getTranslation('add_new_school_button')}</span>
                 </Button>
 
                 

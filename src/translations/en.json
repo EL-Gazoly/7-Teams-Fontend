@@ -92,6 +92,18 @@
     "choose_class_alpha": "Choose Class",
     "upload_new_image": "Upload New Image",
     "remove": "Remove",
-    "image_requirements": "Images must be at least 300 x 300 pixels in size and in png or jpeg format"
+    "image_requirements": "Images must be at least 300 x 300 pixels in size and in png or jpeg format",
+    "add_school": "Add School",
+    "registered_schools": "Schools Registered in the System",
+    "logo": "Logo",
+    "add_new_school": "Add New School",
+    "delete": "Delete",
+    "school_name": "School Name",
+    "school_number": "School Number",
+    "enter_school_name": "Enter School Name",
+    "add_new_school_button": "Add New School",
+    "school_added_success": "School added successfully",
+    "enter_school_name_error": "Please enter the school name",
+    "school_add_error": "An error occurred while adding the school"
     
 }

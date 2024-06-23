@@ -93,6 +93,17 @@
     "choose_class_alpha" : "اختر الفصل",
     "upload_new_image": "تحميل صورة جديدة",
     "remove": "حذف",
-    "image_requirements": "يجب أن تكون الصور بحجم 300 × 300 بكسل على الأقل بصيغة png أو jpeg"
-    
+    "image_requirements": "يجب أن تكون الصور بحجم 300 × 300 بكسل على الأقل بصيغة png أو jpeg",
+    "add_school": "إضافة مدرسة",
+    "registered_schools": "المدارس المسجلة في النظام",
+    "logo": "الشعار",
+    "add_new_school": "اضافه مدرسه جديدة",
+    "delete": "حذف",
+    "school_name": "اسم المدرسة",
+    "school_number": "رقم المدرسة",
+    "enter_school_name": "ادخل اسم المدرسة",
+    "add_new_school_button": "اضافة مدرسة جديدة",
+    "school_added_success": "تم اضافة المدرسة بنجاح",
+    "enter_school_name_error": "الرجاء ادخال اسم المدرسة",
+    "school_add_error": "حدث خطأ اثناء اضافة المدرسة"
 }
