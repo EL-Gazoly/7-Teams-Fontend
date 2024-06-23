@@ -4,6 +4,8 @@ import CertificateIcon from '../../assets/Reports/StudentReports/certificate.svg
 import ReportsIcon from '../../assets/Reports/StudentReports/reports.svg'
 import ClockIcon from '../../assets/Reports/StudentReports/clock.svg'
 import Mask from '../../assets/Dashboard/mask.png'
+import useTranslationStore from '@/stores/LanguageStore'
+import { cn } from '@/lib/utils'
 
 type Props ={
     title: string
@@ -12,6 +14,7 @@ type Props ={
 }
 
 const Card = ({title, icon, description}: Props) => {
+    const { language } = useTranslationStore();
     const getIcon = () => {
         switch (icon) {
             case 'user':
@@ -37,7 +40,9 @@ const Card = ({title, icon, description}: Props) => {
         }}
     >
         <div className=' flex flex-col gap-y-3 w-full'>
-            <div className=' flex items-center w-full justify-between '>
+            <div className={cn(' flex items-center w-full justify-between ',
+                language === 'ar' ? 'flex-row' : 'flex-row-reverse'
+            )}>
                 <span className=' text-[13px] font-bold ' > {title}</span>
                 <div className=' w-10 h-10 rounded-full flex items-center justify-center bg-white/25'>
                     <img src={getIcon()} alt="" />
@@ -47,7 +52,7 @@ const Card = ({title, icon, description}: Props) => {
 
             <span className=' text-[28px]  font-bold self-center' 
                 style={{
-                    direction: 'ltr'
+                    direction: language === 'ar' ? 'rtl' : 'ltr',
                 }}
             >{description} </span>
 

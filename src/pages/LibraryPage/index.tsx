@@ -7,11 +7,6 @@ import { useQuery } from '@apollo/client';
 import { GetStudents } from '@/graphql/reports';
 import Loading from '@/Components/Loading';
 
-
-
-
-  
-
 const LibraryPage = () => {
         const [activeTab, setActiveTab] = useState("grid")
     const { loading, error, data } = useQuery(GetStudents);
@@ -65,7 +60,7 @@ const clearFilters = () => {
             />
 
             {
-                activeTab === 'stack' ? <StackView data={students} /> : <GridView data={students} />
+                activeTab === 'stack' ? <StackView link={"/library/students/"} data={students} /> : <GridView link={"/library/students/"} data={students} />
             }
 
         </div>

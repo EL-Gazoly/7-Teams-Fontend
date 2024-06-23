@@ -1,15 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import { GetStudentReports } from '../../graphql/reports';
-import Loading from '../../Components/Loading';
-import ControlCard from '../../Components/ControlCard'
+import { GetStudentReports } from '@/graphql/reports';
+import Loading from '@/Components/Loading';
+import ControlCard from '@/Components/ControlCard'
 import StudentReportsFirstRow from './_components/StudentReportsFirstRow';
 import StudentReportsSecondRow from './_components/StudentReportsSecondRow';
 import StudentReportsThirdRow from './_components/StudentReportsThirdRow';
+import useTranslationStore from '@/stores/LanguageStore';
 
 const StudentReportsPage = () => {
   const pageRef = useRef(null);
+  const { language } = useTranslationStore();
   const [experiments, setExperiments] = useState(null);
   const [maxGrades, setMaxGrades] = useState(null);
   const { id } = useParams();
@@ -81,11 +83,11 @@ const StudentReportsPage = () => {
 
   return (
     <div ref={pageRef} className='student-reports-container'>
-      <ControlCard icon="Reports" title='التقارير' neasted={true} />
+      <ControlCard icon="Reports" title='sidebar-reports' neasted={true} />
 
       <div className=' mt-[17px] flex flex-col gap-y-4 pb-5 certificateDiv'
             style={{
-                direction: 'rtl'
+                direction: language === 'ar' ? 'rtl' : 'ltr',
             }}
         >
         <StudentReportsFirstRow data={data} experiments={experiments} maxGrades={maxGrades}  ref={pageRef}/>

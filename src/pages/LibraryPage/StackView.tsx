@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import noPic from '@/assets/students/noPic.svg';
 import useTranslationStore from '@/stores/LanguageStore';
 
-const StackView = ({ data }) => {
+const StackView = ({ data, link }) => {
   const navigate = useNavigate();
   const { language, getTranslation } = useTranslationStore();
 
@@ -63,7 +63,7 @@ const StackView = ({ data }) => {
           <TableRow key={index} className="z-0">
             <TableCell
               className="flex items-center justify-center cursor-pointer"
-              onClick={() => navigate(`/library/students/${student?.studentId}`)}
+              onClick={() => navigate(`${link}${student?.studentId}`)}
             >
               <div className="w-[50px] h-[50px] bg-[#F6F6F6] rounded-full flex items-center justify-center">
                 {student.imageUrl ? (
@@ -75,13 +75,13 @@ const StackView = ({ data }) => {
             </TableCell>
             <TableCell
               className="cursor-pointer"
-              onClick={() => navigate(`/library/students/${student?.studentId}`)}
+              onClick={() => navigate(`${link}${student?.studentId}`)}
             >
               <span className="text-[#292D32] dark:text-white text-sm font-bold">{student?.name}</span>
             </TableCell>
             <TableCell
               className="cursor-pointer"
-              onClick={() => navigate(`/library/students/${student?.studentId}`)}
+              onClick={() => navigate(`${link}${student?.studentId}`)}
             >
               <div className="flex items-center justify-center text-xs font-semibold text-primary">
                 <span>{student.facilityId}</span>
@@ -90,19 +90,19 @@ const StackView = ({ data }) => {
             </TableCell>
             <TableCell
               className="cursor-pointer"
-              onClick={() => navigate(`/library/students/${student?.studentId}`)}
+              onClick={() => navigate(`${link}${student?.studentId}`)}
             >
               <span className="text-sm font-bold text-[#292D32] dark:text-white">{student?.team?.school?.name}</span>
             </TableCell>
             <TableCell
               className="cursor-pointer"
-              onClick={() => navigate(`/library/students/${student?.studentId}`)}
+              onClick={() => navigate(`${link}${student?.studentId}`)}
             >
               <span className="text-sm font-bold text-[#292D32] dark:text-white">{getGrade(student?.class.number)}</span>
             </TableCell>
             <TableCell
               className="cursor-pointer"
-              onClick={() => navigate(`/library/students/${student?.studentId}`)}
+              onClick={() => navigate(`${link}${student?.studentId}`)}
             >
               <span className="text-sm font-bold text-[#292D32] dark:text-white">{getStage(student?.team.name)}</span>
             </TableCell>

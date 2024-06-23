@@ -1,13 +1,14 @@
 import {useEffect, useState} from 'react'
 import Card from './Card'
 import grade from 'letter-grade'
+import useTranslationStore from '@/stores/LanguageStore'
 
 const StatusCard = ({data, expermients, maxGrades}) => {
   const [totalTime, setTotalTime] = useState(0)
   const [totalEntrance, setTotalEntrance] = useState(0)
   const [totalMarks, setTotalMarks] = useState(0)
   const [totalFinished, setTotalFinished] = useState(0)
-  if(data) console.log(data)
+  const { getTranslation } = useTranslationStore()
   useEffect(() => {
       if(expermients){
         let maxTheortical = 0
@@ -60,15 +61,14 @@ const StatusCard = ({data, expermients, maxGrades}) => {
   }
 
   return (
-    <div className=' w-[532px] h-[324px] py-5 px-[18px] bg-white dark:bg-primary-dark rounded-lg'>
-      <div className=' max-w-full grid grid-cols-2 gap-4'>
-        <Card title='إجمالي الدورات المكتملة' icon='certificate' description={`${totalFinished}`}/>
-        <Card title='الأداء العام' icon='reports' description={`${grade(totalMarks) ? grade(totalMarks) : 'F'} `}/>
-        <Card title='الوقت الكلي' icon='clock' description={convertSecondsToHoursAndMinutes(totalTime)}/>
-        <Card title='إجمالي مرات تسجيل الدخول' icon='user' description={`${totalEntrance}`}/>
-
-      </div>
+    <div className='w-[532px] h-[324px] py-5 px-[18px] bg-white dark:bg-primary-dark rounded-lg'>
+    <div className='max-w-full grid grid-cols-2 gap-4'>
+      <Card title={getTranslation('total_completed_courses')} icon={'certificate'} description={`${totalFinished}`} />
+      <Card title={getTranslation('overall_performance')} icon={'reports'} description={`${grade(totalMarks) ? grade(totalMarks) : 'F'}`} />
+      <Card title={getTranslation('total_time')} icon={'clock'} description={convertSecondsToHoursAndMinutes(totalTime)} />
+      <Card title={getTranslation('total_logins')} icon={'user'} description={`${totalEntrance}`} />
     </div>
+  </div>
   )
 }
 

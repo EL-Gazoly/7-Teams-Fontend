@@ -6,11 +6,11 @@ import { Link } from 'react-router-dom'
 import { Avatar } from '@nextui-org/react'
 import useTranslationStore from '@/stores/LanguageStore'
 import { cn } from '@/lib/utils'
-const StudentCard = ({student}) => {
+const StudentCard = ({student, link}) => {
   const { language } = useTranslationStore();
   const {dark} = useThemeStore()
   return (
-    <Link to={`/library/students/${student?.studentId}`} className={cn(' w-[240px] h-[111px] bg-white dark:bg-primary-dark rounded-md flex items-center px-[22px] gap-x-4 z-0',
+    <Link to={`${link}${student?.studentId}`} className={cn(' w-[240px] h-[111px] bg-white dark:bg-primary-dark rounded-md flex items-center px-[22px] gap-x-4 z-0',
       language === 'ar' ? 'flex-row' : 'flex-row-reverse'
     )}>
          <div className='  w-[68px] h-[68px] bg-[#F6F6F6] dark:bg-[#3B4048] rounded-full flex items-center justify-center z-0'>
