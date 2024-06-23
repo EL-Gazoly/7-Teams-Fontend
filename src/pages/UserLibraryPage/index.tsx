@@ -1,15 +1,15 @@
-import ControlCard from '../../Components/ControlCard';
+import ControlCard from '@/Components/ControlCard';
 import { useParams, Link } from 'react-router-dom';
-import noPic from '../../assets/students/noPic.svg';
-import noPicDark from '../../assets/students/no-pic.svg';
-import ScreenShotIcon from '../../assets/library/pictures.svg';
-import ScreenRecoard from '../../assets/library/video.svg';
+import noPic from '@/assets/students/noPic.svg';
+import noPicDark from '@/assets/students/no-pic.svg';
+import ScreenShotIcon from '@/assets/library/pictures.svg';
+import ScreenRecoard from '@/assets/library/video.svg';
 import { useQuery } from '@apollo/client';
-import { getStudent } from '../../graphql/students';
+import { getStudent } from '@/graphql/students';
 import { useEffect } from 'react';
-import { useThemeStore } from '../../stores/ThemeStore';
-import Loading from '../../Components/Loading';
-import { useUserLibraryStore } from '../../stores/UserLibraryStore';
+import { useThemeStore } from '@/stores/ThemeStore';
+import Loading from '@/Components/Loading';
+import { useUserLibraryStore } from '@/stores/UserLibraryStore';
 import useTranslationStore from '@/stores/LanguageStore';
 import { cn } from '@/lib/utils';
 

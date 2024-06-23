@@ -1,14 +1,14 @@
 import React from "react";
 import SelectLevel from './SelectLevel.tsx'
 import SelectClass from './SelectClass.tsx'
-import SearchIcon from '../../assets/Landing/ChooseHeadset/search.png'
-import GridSelected from '../../assets/students/grid-selected.svg'
-import GridUnSelected from '../../assets/students/grid-unselected.svg'
+import SearchIcon from '@/assets/Landing/ChooseHeadset/search.png'
+import GridSelected from '@/assets/students/grid-selected.svg'
+import GridUnSelected from '@/assets/students/grid-unselected.svg'
 
-import StackSelected from '../../assets/students/stack-selected.svg'
-import StackUnSelected from '../../assets/students/stack-unselected.svg'
+import StackSelected from '@/assets/students/stack-selected.svg'
+import StackUnSelected from '@/assets/students/stack-unselected.svg'
 import { Image, Button,Tabs, Tab } from '@nextui-org/react'
-import { useThemeStore } from "../../stores/ThemeStore.js";
+import { useThemeStore } from "@/stores/ThemeStore.js";
 import useTranslationStore from "@/stores/LanguageStore.js";
 export const SearchStudent = ({
   activeTab,
@@ -72,7 +72,7 @@ const { language, getTranslation } = useTranslationStore()
                               cursor: "rounded    px-4 ",
                               tab: "h-full "
                             }} selectedKey={activeTab} onSelectionChange={(key: string) => setActiveTab(key)} aria-label="sidebar tabs">
-                                        <Tab key={"stack"} title={<Image src={activeTab === "stack" || dark ? StackSelected : StackUnSelected} radius='none' />} />
+                                <Tab key={"stack"} title={<Image src={activeTab === "stack" || dark ? StackSelected : StackUnSelected} radius='none' />} />
 
                                 
                                 <Tab key={"grid"} title={<Image src={activeTab === "grid" || dark ? GridSelected : GridUnSelected} radius='none' />} />

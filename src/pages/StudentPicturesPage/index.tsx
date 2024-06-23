@@ -1,17 +1,16 @@
-import ControlCard from '../../Components/ControlCard';
-import noPic from '../../assets/students/noPic.svg';
-import noPicDark from '../../assets/students/no-pic.svg';
-import ScreenShotIcon from '../../assets/HeadsetProfile/screenshot.png';
-import ScreenRecoard from '../../assets/HeadsetProfile/recoard.png';
+import ControlCard from '@/Components/ControlCard';
+import noPic from '@/assets/students/noPic.svg';
+import noPicDark from '@/assets/students/no-pic.svg';
+import ScreenShotIcon from '@/assets/HeadsetProfile/screenshot.png';
 import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom';
-import Loading from '../../Components/Loading';
-import { getPicturesByFacilityId } from '../../graphql/AmazonS3';
+import Loading from '@/Components/Loading';
+import { getPicturesByFacilityId } from '@/graphql/AmazonS3';
 import { useDisclosure } from '@nextui-org/react';
 import { useState } from 'react';
 import ImageView from './ImageView';
-import { useUserLibraryStore } from '../../stores/UserLibraryStore';
-import { useThemeStore } from '../../stores/ThemeStore';
+import { useUserLibraryStore } from '@/stores/UserLibraryStore';
+import { useThemeStore } from '@/stores/ThemeStore';
 import useTranslationStore from '@/stores/LanguageStore';
 import { cn } from '@/lib/utils';
 
