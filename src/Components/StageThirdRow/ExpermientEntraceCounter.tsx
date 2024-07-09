@@ -1,8 +1,10 @@
 import { useEffect, useState} from 'react'
 import { Divider } from '@nextui-org/react'
 
-import { chemistryOptions, physicsOptions } from '../../data/expermients'
+import { chemistryOptions, physicsOptions } from '@/data/expermients'
+import useTranslationStore from '@/stores/LanguageStore'
 const ExpermientEnteranceCounter = ({data}) => {
+  const { getTranslation } = useTranslationStore()
     const [liquid, setLiquid] = useState(0)
     const [heat, setHeat] = useState(0)
     const [wood, setWood] = useState(0)
@@ -123,16 +125,16 @@ const ExpermientEnteranceCounter = ({data}) => {
     }
   return (
     <div className=' w-[532px] h-[354px] overflow-y-auto p-7 bg-white dark:bg-primary-dark rounded-lg flex flex-col gap-y-5'>
-        <span className=' text-text-black dark:text-white text-sm font-bold'>عدد مرات  الدخول الى التجارب </span>
+        <span className=' text-text-black dark:text-white text-sm font-bold'> {getTranslation('experiment_entry_count')} </span>
         <div className=' flex flex-col items-center gap-4'>
             <div className=' w-full flex items-center justify-between text-[10px] text-[#96A5B8]'>
                 <div className=' flex items-center gap-x-8 t'>
-                    <span className='' >#</span>
-                    <span>التجربة</span>
-                    <span>اسم التجربه</span>
+                <span>#</span>
+              <span>{getTranslation('experiment')}</span>
+              <span>{getTranslation('experiment_name')}</span>
 
                 </div>
-                <span>العدد</span>
+                <span>{getTranslation('count')}</span>
 
             </div>
             <Divider className=' bg-[#2DEC4C]' />
@@ -145,7 +147,7 @@ const ExpermientEnteranceCounter = ({data}) => {
                               <div className='flex items-center gap-x-8 '>
                                   <span className=' font-medium'>{index + 1}</span>
                                   <img src={option.icon} alt="" className=' w-5 h-10' />
-                                  <span className=' font-bold'>{option.name}</span>
+                                  <span className=' font-bold'>{getTranslation(option.name)}</span>
                               </div>
                               <div className=' w-[41px] h-[42px] flex items-center justify-center dark:bg-[#373C44] font-medium'>
                                   {option.state}

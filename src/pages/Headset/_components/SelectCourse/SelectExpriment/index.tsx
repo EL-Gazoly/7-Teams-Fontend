@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
-import { useThemeStore } from '../../../../../stores/ThemeStore';
+import { useThemeStore } from '@/stores/ThemeStore';
 
 import  CustomStyle from '../CustomStyle';
-import useTranslationStore from '../../../../../stores/LanguageStore';
+import useTranslationStore from '@/stores/LanguageStore';
 const SelectExpirment = ( props) => {
   const [selectedOption, setSelectedOption] = useState(props.SelectedExpirment);
   const {dark} = useThemeStore();

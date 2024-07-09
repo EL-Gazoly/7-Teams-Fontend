@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
-import unSelectedStart from '../../../../../assets/SelectCourse/SelectHowtoStart/unselected.svg'
-import SelectedStart from '../../../../../assets/SelectCourse/SelectHowtoStart/selected.svg'
-import {useThemeStore} from '../../../../../stores/ThemeStore';
-import useTranslationStore from '../../../../../stores/LanguageStore';
+import unSelectedStart from '@/assets/SelectCourse/SelectHowtoStart/unselected.svg'
+import SelectedStart from '@/assets/SelectCourse/SelectHowtoStart/selected.svg'
+import {useThemeStore} from '@/stores/ThemeStore';
+import useTranslationStore from '@/stores/LanguageStore';
 const options = [
   { value: 'FullCourse', label: "full_course", image : unSelectedStart, selected : SelectedStart},
   { value: 'StartTraining', label: "start_training" , image : unSelectedStart, selected : SelectedStart},

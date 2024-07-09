@@ -1,4 +1,4 @@
-import { FirstSection } from './firstSection';
+import FirstSection  from './firstSection';
 import React, {useState} from 'react'
 import ControlCard from '../../Components/ControlCard'
 import Tempelete from '../../assets/certificates/tempelate.png'
@@ -10,15 +10,20 @@ import { SendEmail } from '../../graphql/email'
 import { useMutation } from '@apollo/client';
 import EnterEmailModal from './Modal';
 import { toast } from 'sonner';
+import Loading from '@/Components/Loading';
+import useTranslationStore from '@/stores/LanguageStore';
+import { cn } from '@/lib/utils';
 const CertificatesPage = () => {
   const [grade, setGrade] = useState({value: '', label: ''})
   const [course, setCourse] = useState({value: '', label: ''})
-  const [student, setStudent] = useState({value: '', label: ''})
+  const [student, setStudent] = useState({value: '', label: '', facilityId : '', class: '', team: '', schoolName: ''})
   const [head, setHead] = useState('')
   const [teacher, setTeacher] = useState('')
   const [school, setSchool] = useState('')
 
   const [isLoading, setIsLoading] = useState(false)
+
+  const { language, getTranslation } = useTranslationStore()
 
   if(isLoading) return <Loading />
   
@@ -29,8 +34,9 @@ const CertificatesPage = () => {
   const {isOpen, onOpen, onClose} = useDisclosure();
 
   const convertAndPrint = () => {
-    const divToPrint = document.querySelector('.certificateDiv');
+    const divToPrint = document.querySelector('.certificateDiv') as HTMLElement;
     if (divToPrint) {
+      // 
         html2canvas(divToPrint).then((canvas) => {
             const imgData = canvas.toDataURL('image/png');
 
@@ -55,7 +61,7 @@ const CertificatesPage = () => {
   };
 
   const sendCertificateAsFile = async () => {
-    const divToPrint = document.querySelector('.certificateDiv');
+    const divToPrint = document.querySelector('.certificateDiv') as HTMLElement;
     
     if (divToPrint) {
       try {
@@ -66,7 +72,7 @@ const CertificatesPage = () => {
         
         const certificateFile = new File([blobData], 'certificate.png', { type: 'image/png' });
         if (!email) {
-          toast.erro('الرجاء ادخال البريد الالكتروني')
+          toast.error('الرجاء ادخال البريد الالكتروني')
         }
         await sendEmail({
           variables: {
@@ -120,7 +126,7 @@ const CertificatesPage = () => {
 
   return (
     <React.Fragment>
-       <ControlCard icon="Certificates" title=' الشهادات  ' neasted={false}/>
+       <ControlCard icon="Certificates" title='sidebar-certificates' neasted={false}/>
         <div className=' mt-7 flex flex-col gap-y-6 pb-5'>
         <FirstSection 
             course={course}
@@ -135,14 +141,15 @@ const CertificatesPage = () => {
             setSchool={setSchool} 
           />
           <div className='w-full h-[667.78px] rounded-lg bg-light-bg dark:bg-primary-dark py-6 px-20 text-text-black dark:text-white
-            flex flex-col items-end gap-y-[38px]
+            flex flex-col gap-y-[38px]
           '
             style={{
                 boxShadow: "0px 3.547px 85.135px 0px rgba(18, 35, 51, 0.10)",
-                backdropFilter : "blur(22.614059448242188px)"
+                backdropFilter : "blur(22.614059448242188px)",
+                direction: language === 'ar' ? 'rtl' : 'ltr'
             }}
           >
-            <span className=' text-[21px] font-bold'>عرض الشهادة</span>
+            <span className=' text-[21px] font-bold'> {getTranslation("certificate_display")}</span>
             
             <div className=' flex w-full items-center justify-center'>
                 <div className=' flex flex-col items-center gap-y-14'>
@@ -150,7 +157,7 @@ const CertificatesPage = () => {
                     <Image src={Tempelete}  className='z-0'  />
                     <div className=' absolute top-[39%] left-[30%]'>{student.schoolName}</div>
                       <div className=' absolute top-[45%] left-[50%]'>{student.label.substring(0,10)}</div>
-                      <div className=' absolute top-[46%] left-[31%]'>{student.number}</div>
+                      <div className=' absolute top-[46%] left-[31%]'>{student.facilityId}</div>
                       <div className=' absolute top-[53%] left-[49%]'>{course.label}</div>
                       <div className=' absolute top-[53%] left-[31%]'>{getGrade(student.class)}</div>
                       <div className=' absolute top-[53%] left-[23%]'>{getTeam(student.team)}</div>
@@ -162,20 +169,26 @@ const CertificatesPage = () => {
                       
                   </div>
                    
-                    <div className=' flex items-center gap-x-4'>
-                        <Button className=' w-[192px]  h-12 py-2 px-4 flex items-center justify-center gap-x-2 rounded-lg bg-text-black dark:bg-[#40444C] text-white'
+                    <div className={cn(' flex items-center gap-x-4',
+                      language === 'ar' ? 'flex-row' : 'flex-row-reverse'
+                    )}>
+                        <Button className={cn(" w-[192px]  h-12 py-2 px-4 flex items-center justify-center gap-x-2 rounded-lg bg-text-black dark:bg-[#40444C] text-white",
+                           language === 'ar' ? 'flex-row' : 'flex-row-reverse'
+                        )}
                           onPress={handelOpen}
                         >
-                            <span className=' text-xs'>ارسال عبر البريد الالكتروني </span>
+                            <span className=' text-xs'>{getTranslation("send-by-email")}</span>
                             <Image src={MailIcon} width={21} height={21} radius='none'  className='mt-1'/>
                            
 
                         </Button>
-                        <Button className=' w-[192px]  h-12 py-2 px-4 flex items-center justify-center gap-x-2 rounded-lg bg-primary text-white'
+                        <Button className={cn(' w-[192px]  h-12 py-2 px-4 flex items-center justify-center gap-x-2 rounded-lg bg-primary text-white',
+                           language === 'ar' ? 'flex-row' : 'flex-row-reverse'
+                        )}
                           onPress={convertAndPrint}
                         >
-                            <span className=' text-xs'>طباعة الشهادة </span>
-                            <Image src={PrintIcon} width={21} height={21} radius='none'  className='mt-1'/>
+                            <span className=' text-xs'> {getTranslation("print-certificate")} </span>
+                            <Image src={PrintIcon} width={21} height={21} radius='none'/>
 
 
                         </Button>

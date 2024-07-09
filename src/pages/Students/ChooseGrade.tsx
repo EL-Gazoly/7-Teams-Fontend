@@ -3,7 +3,7 @@ import Select from 'react-select';
 import GroupIcon from '@/assets/Reports/group-dark.png'
 import { useThemeStore } from '@/stores/ThemeStore'
 import useTranslationStore from '@/stores/LanguageStore';
-import CustomStyle from './customStyles';
+import CustomStyle from './CustomStyles';
 const options = [
   { value: 'High', label: 'high_school', image: GroupIcon },
   { value: 'Middle', label: 'middle_school', image: GroupIcon },

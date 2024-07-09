@@ -1,14 +1,16 @@
 import {useEffect , useState} from 'react'
-import ControlCard from '../../Components/ControlCard'
-import StagesReportFirstRow from '../../Components/StagesReportsFirstRow'
-import StageSecondRow from '../../Components/StageSecondRow'
-import StageThirdRow from '../../Components/StageThirdRow'
-import StageReportsFourthRow from '../../Components/StageReportsFoutrhRow'
+import ControlCard from '@/Components/ControlCard'
+import StagesReportFirstRow from '@/Components/StagesReportsFirstRow'
+import StageSecondRow from '@/Components/StageSecondRow'
+import StageThirdRow from '@/Components/StageThirdRow'
+import StageReportsFourthRow from '@/Components/StageReportsFoutrhRow'
 import { useQuery } from '@apollo/client'
-import {  GetTeamReports } from '../../graphql/reports'
+import {  GetTeamReports } from '@/graphql/reports'
 import { useParams } from 'react-router-dom'
-import Loading from '../../Components/Loading'
+import Loading from '@/Components/Loading'
+import useTranslationStore from '@/stores/LanguageStore'
 const StageReportPage = () => {
+  const { language } = useTranslationStore()
   const { stage } = useParams()
   const [totalTheoreticalTestGrade, setTotalTheoreticalTestGrade] = useState(0)
   const [totalPracticalTime, setTotalPracticalTime] = useState(0)
@@ -101,7 +103,7 @@ const StageReportPage = () => {
         <ControlCard icon="Reports" title='التقارير' neasted={true} />
         <div className=' mt-[17px] flex flex-col gap-y-4 pb-5 certificateDiv'
             style={{
-                direction: 'rtl'
+                direction: language === 'ar' ? 'rtl' : 'ltr'
             }}
         >
            <StagesReportFirstRow totatotalTheoreticalTestGrade={theoreticalTestGradePercentage}

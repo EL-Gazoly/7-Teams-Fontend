@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
-import { useThemeStore } from '../../../../../stores/ThemeStore.ts';
+import { useThemeStore } from '@/stores/ThemeStore.ts';
 import CustomStyle from '../CustomStyle.tsx';
-import useTranslationStore from '../../../../../stores/LanguageStore.ts';
+import useTranslationStore from '@/stores/LanguageStore.ts';
 
 const SelectChapter = ( props) => {
   const {dark} = useThemeStore();
