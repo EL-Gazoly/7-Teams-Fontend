@@ -319,7 +319,41 @@
   "logsControlDescription": "The user with this role can view the system log section and see everything that happened in the system.",
   "roleControlDescription": "The user with this role can view roles, add roles for users, or remove them.",
   "adminControlDescription": "The user with this role can fully control adding, removing, and viewing admins.",
-  "roleUpdatedSuccessfully": "Role updated successfully"
+  "roleUpdatedSuccessfully": "Role updated successfully",
+  "grade1Primary": "First Grade Primary",
+  "grade2Primary": "Second Grade Primary",
+  "grade3Primary": "Third Grade Primary",
+  "grade4Primary": "Fourth Grade Primary",
+  "grade5Primary": "Fifth Grade Primary",
+  "grade6Primary": "Sixth Grade Primary",
+  "grade1Middle": "First Grade Middle",
+  "grade2Middle": "Second Grade Middle",
+  "grade3Middle": "Third Grade Middle",
+  "grade1High": "First Grade High",
+  "grade2High": "Second Grade High",
+  "grade3High": "Third Grade High",
+  "overallGradeForClass": "Overall Grade for Class",
+  "detailedGradeForPracticalTest": "Detailed Grade for Practical Test",
+  "detailedGradeForTheoreticalTest": "Detailed Grade for Theoretical Test",
+  "experimentEntries": "Number of Entries to Experiments",
+  "number": "Number",
+  "experimentName": "Experiment Name",
+  "liquidViscosity": "Liquid Viscosity",
+  "effectiveUseOfBunsenBurner": "Effective Use Of Bunsen Burner",
+  "densityOfWood": "Density Of Wood",
+  "volumeCalculation": "Volume Calculation",
+  "charlesLaw": "Charles's Law",
+  "sizeOfMole": "Size of Mole",
+  "geigerDevice": "Geiger Device",
+  "overallGradeForClasses": "Overall Grade for Classes",
+  "timeSpentOnPracticalTraining": "Time Spent on Practical Training",
+  "timeSpentOnPracticalTest": "Time Spent on Practical Test",
+  "timeSpentOnTheoreticalTest": "Time Spent on Theoretical Test",
+  "class1": "Class 1",
+  "class2": "Class 2",
+  "class3": "Class 3"  
+   
+  
   
 
 

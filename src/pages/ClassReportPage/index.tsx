@@ -8,6 +8,7 @@ import { useQuery } from '@apollo/client'
 import { GetClassReports } from '../../graphql/reports'
 import { useParams } from 'react-router-dom'
 import Loading from '../../Components/Loading'
+import useTranslationStore from '@/stores/LanguageStore'
 const ClassReportPage = () => {
   const {stage , class: number} = useParams()
   const [totalTheoreticalTestGrade, setTotalTheoreticalTestGrade] = useState(0)
@@ -23,6 +24,9 @@ const ClassReportPage = () => {
   const [theoreticalTestGradePercentage, setTheoreticalTestGradePercentage] = useState(0)
   const [overallGrade ,setOverallGrade ] = useState(0)
   const [overallTime, setOverallTime] = useState(0)
+
+  const { language, getTranslation } = useTranslationStore();
+
   const { loading, error, data } = useQuery(GetClassReports,{
     variables: {
       number: number,
@@ -107,10 +111,10 @@ const ClassReportPage = () => {
 
   return (
     <div className=''>
-        <ControlCard icon="Reports" title='التقارير' neasted={true} />
+        <ControlCard icon="Reports" title='reports' neasted={true} />
         <div className=' mt-[17px] flex flex-col gap-y-4 pb-5 certificateDiv'
             style={{
-                direction: 'rtl'
+                direction: language === 'ar' ? 'rtl' : 'ltr',
             }}
         >
            <ClassesReportFirstRow totatotalTheoreticalTestGrade={theoreticalTestGradePercentage}

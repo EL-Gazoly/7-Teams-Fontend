@@ -322,7 +322,41 @@
   "logsControlDescription": "سيكون لدى المستخدم في هذا الدور القدرة على عرض قسم سجل النظام ورؤية كل الأشياء التي حدثت في النظام.",
   "roleControlDescription": "سيكون لدى المستخدم في هذا الدور القدرة على عرض الأدوار وأضافة ادوار للمستخدين او ازالتها",
   "adminControlDescription": "سيكون لدى المستخدم في هذا الدور القدرة على الاطلاع عالتحم الكامل في اضافة وحذف والأطلاع علي المسؤولين",
-  "roleUpdatedSuccessfully": "تم تعديل الدور بنجاح"
+  "roleUpdatedSuccessfully": "تم تعديل الدور بنجاح",
+  "grade1Primary": "الصف الأول الابتدائي",
+  "grade2Primary": "الصف الثاني الابتدائي",
+  "grade3Primary": "الصف الثالث الابتدائي",
+  "grade4Primary": "الصف الرابع الابتدائي",
+  "grade5Primary": "الصف الخامس الابتدائي",
+  "grade6Primary": "الصف السادس الابتدائي",
+  "grade1Middle": "الصف الأول المتوسط",
+  "grade2Middle": "الصف الثاني المتوسط",
+  "grade3Middle": "الصف الثالث المتوسط",
+  "grade1High": "الصف الأول الثانوي",
+  "grade2High": "الصف الثاني الثانوي",
+  "grade3High": "الصف الثالث الثانوي",
+  "overallGradeForClass": "التقدير العام للفصل",
+  "detailedGradeForPracticalTest": "التقدير التفصيلى للأختبار العملى",
+  "detailedGradeForTheoreticalTest": "التقدير التفصيلى للأختبار النظرى",
+  "experimentEntries": "عدد مرات الدخول الى التجارب",
+  "number": "العدد",
+  "experimentName": "اسم التجربة",
+  "liquidViscosity": "لزوجة السائل",
+  "effectiveUseOfBunsenBurner": "الاستخدام الفعال لموقد بنسن",
+  "densityOfWood": "كثافة الخشب",
+  "volumeCalculation": "حساب الحجم",
+  "charlesLaw": "قانون تشارلز",
+  "sizeOfMole": "حجم الجزيء",
+  "geigerDevice": "جهاز جايجر",
+  "overallGradeForClasses": "التقدير العام للفصول",
+  "timeSpentOnPracticalTraining": "الوقت المستغرق للتدريب العملي",
+  "timeSpentOnPracticalTest": "الوقت المستغرق للاختبار العملي",
+  "timeSpentOnTheoreticalTest": "الوقت المستغرق للاختبار النظري",
+  "class1": "الفصل الأول",
+  "class2": "الفصل الثاني",
+  "class3": "الفصل الثالث"  
+  
+
 
 
  
