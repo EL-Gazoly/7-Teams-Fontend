@@ -123,7 +123,7 @@ const ClassReportPage = () => {
            <ClassessSecondRow  enterTraining={enterTraining} enterTheortical={enterTheortical} enterPratical={enterPratical} 
             totalPracticalTime={totalPracticalTime} totalTheorticalTime={totalTheorticalTime} totalTrainingTime={totalTrainingTime}/>
           <ClassesReportsThirdRow data={data} />
-          <ClassesReportFourthRow experminets={data} />
+          <ClassesReportFourthRow experiments={data} />
           
           
 
