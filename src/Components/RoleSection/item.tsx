@@ -1,17 +1,23 @@
 import React from 'react'
 import { Switch, Divider, cn } from '@nextui-org/react'
+import useTranslationStore from '@/stores/LanguageStore'
 type permessionprops = {
     permessions : Object
     permesssionKey : string
     disabled : boolean
 }
 const Permession = ({permessions, permesssionKey, disabled} : permessionprops) => {
-
+  const {language} = useTranslationStore()
 
   return (
-    <>
-        <div  className=' w-full flex flex-row-reverse justify-between items-end text-right'>
-            <div className='flex flex-col gap-y-[18px] text-text-black dark:text-white text-right '>
+    <div
+      style={{
+        direction: language === 'ar' ? 'rtl' : 'ltr',
+      }}
+      className=' w-full'
+    >
+        <div  className=' w-full flex  justify-between items-end '>
+            <div className='flex flex-col gap-y-[18px] text-text-black dark:text-white  '>
                 <span className=' text-xl font-bold'>{permessions[permesssionKey].name}</span>
                 <p className=' text-[#46434382] dark:text-white/50 w-[493px]'>{permessions[permesssionKey].description}</p>
             </div>
@@ -36,7 +42,7 @@ const Permession = ({permessions, permesssionKey, disabled} : permessionprops) =
 
         </div>
       { permesssionKey !== 'users' &&  <Divider className=' bg-[#919396] mt-5'/>}
-    </>
+    </div>
   )
 }
 

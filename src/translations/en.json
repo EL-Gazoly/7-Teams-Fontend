@@ -290,7 +290,38 @@
   "roleAdmin": "Admin",
   "roleMonitor": "Monitor",
   "chooseRolePlaceholder": "Choose role from here",
-  "adminUpdatedSuccessfully": "Admin updated successfully"
+  "adminUpdatedSuccessfully": "Admin updated successfully",
+  "addNewRole": "Add New Role",
+  "roleDescription": "Role Description",
+  "certificateControl": "Certificate Control",
+  "showCoursesSection": "Show Courses Section",
+  "showDashboard": "Show Dashboard",
+  "mediaControl": "Media Control",
+  "showSystemLog": "Show System Log",
+  "reportControl": "Report Control",
+  "roleControl": "Role Control",
+  "studentControl": "Student Control",
+  "adminControl": "Admin Control",
+  "deviceControl": "Device Control",
+  "schoolControl": "School Control",
+  "save": "Save",
+  "roleAddedSuccessfully": "Role added successfully",
+  "deviceControlDescription": "The user with this role can fully control the headset, start and stop courses, and view user performance.",
+  "showCoursesSectionDescription": "The user with this role can browse the courses section to see the role of each course.",
+  "studentControlDescription": "The user with this role can browse the students section, control them, and add new students to the system.",
+  "schoolControlDescription": "The user with this role can browse schools, control them, and add new schools to the system.",
+  "mediaControlDescription": "The user with this role can browse the media library, view and access screenshots and videos.",
+  "reportControlDescription": "The user with this role can view, access, and print user reports.",
+  "certificateControlDescription": "The user with this role can view the certificates section, create new certificates, and print them.",
+  "dashboardControl": "Dashboard Control",
+  "dashboardControlDescription": "The user with this role can view the dashboard section and see all system-related statistics.",
+  "logsControl": "System Log",
+  "logsControlDescription": "The user with this role can view the system log section and see everything that happened in the system.",
+  "roleControlDescription": "The user with this role can view roles, add roles for users, or remove them.",
+  "adminControlDescription": "The user with this role can fully control adding, removing, and viewing admins.",
+  "roleUpdatedSuccessfully": "Role updated successfully"
+  
+
 
 
 }
