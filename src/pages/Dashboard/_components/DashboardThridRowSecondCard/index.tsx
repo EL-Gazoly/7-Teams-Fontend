@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import { Tabs, Tab, Divider } from '@nextui-org/react'
 import Progress from './Progress'
-import { set } from 'firebase/database'
+import useTranslationStore from '@/stores/LanguageStore'
 
 const DashboardThridRowSecondCol = ({studentExperiments}) => {
     const [timeValue, setTimeValue] = useState<'day' | 'month' | 'year'>('day')
@@ -9,6 +9,7 @@ const DashboardThridRowSecondCol = ({studentExperiments}) => {
     const [totalPraticalTime, setTotalPraticalTime] = useState(0)
     const [totalTheorticalTime, setTotalTheorticalTime] = useState(0)
     const [totalTrainingTime, setTotalTrainingTime] = useState(0)
+    const {getTranslation} = useTranslationStore()
     const convertSecondsToHours = (seconds) => {
         return Math.floor(seconds / 60 / 60 )
     }
@@ -72,9 +73,9 @@ const DashboardThridRowSecondCol = ({studentExperiments}) => {
                 selectedKey={timeValue}
                 onSelectionChange={(key) => setTimeValue(key as 'day' | 'month' | 'year')}
             >
-                <Tab title='اليوم' key="day" />
-                <Tab title='الشهر' key={"month"} />
-                <Tab title='السنه' key={"year"} />
+                <Tab title={getTranslation("day")} key="day" />
+                <Tab title={getTranslation("month")} key={"month"} />
+                <Tab title={getTranslation("year")} key={"year"} />
             </Tabs>
 
 
@@ -82,10 +83,10 @@ const DashboardThridRowSecondCol = ({studentExperiments}) => {
 
         <div className=' w-full flex flex-col gap-y-3'>
             <Divider className=' bg-[#E5E5EF] w-[349.98px] self-center' />
-            <Progress value={totalTrainingTime} title={" التدريبات العمليه "}  timeValue={timeValue}/>
-            <Progress value={totalTheorticalTime} title={" الأختبارات النظرية"}  timeValue={timeValue}/>
-            <Progress value={totalPraticalTime } title={" الأختبارات العملية"}  timeValue={timeValue} />
-            <Progress value={totalTime} title={" الاجمالي "}  timeValue={timeValue} />
+            <Progress value={totalTrainingTime} title={getTranslation("practicalTraining")}  timeValue={timeValue}/>
+            <Progress value={totalTheorticalTime} title={getTranslation("theoreticalTests")}  timeValue={timeValue}/>
+            <Progress value={totalPraticalTime } title={getTranslation("practicalTests")}  timeValue={timeValue} />
+            <Progress value={totalTime} title={getTranslation("total")}  timeValue={timeValue} />
 
         </div>
 

@@ -1,19 +1,20 @@
 import Chemistry from '../../../../../assets/SelectCourse/SelectSubject/chemistry.svg'
 import Physics from '../../../../../assets/SelectCourse/SelectSubject/physics.svg'
-
+import useTranslationStore from '@/stores/LanguageStore'
 
 
 const Body = ({chemistryTotalTime, physicsTotalTime}) => {
+  const {getTranslation} = useTranslationStore()
   const options = [
   {
     value: 'الكيمياء',
-    label: 'الكيمياء',
+    label: 'chemistry',
     icon: Chemistry,
     time: chemistryTotalTime
   },
   {
     value: 'الفيزياء',
-    label: 'الفيزياء',
+    label: 'physics',
     icon: Physics,
     time: physicsTotalTime
   },
@@ -29,7 +30,7 @@ const Body = ({chemistryTotalTime, physicsTotalTime}) => {
                           <span> {index + 1} </span>
                           <div className=' flex items-center gap-x-3'>
                               <img src={option.icon} alt={option.label} />
-                              <span className='font-bold'> {option.label} </span>
+                              <span className='font-bold'> {getTranslation(option.label)} </span>
                           </div>
                       </div>
                       <div className=' mx-12 flex items-center gap-x-2'>

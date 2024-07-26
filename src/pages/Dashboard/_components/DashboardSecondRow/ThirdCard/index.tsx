@@ -21,10 +21,7 @@ ChartJS.register(
 import './index.css'
 
 import { useThemeStore } from '../../../../../stores/ThemeStore';
-
-const labels = [' ثالث ثانوي ' , ' ثاني ثاوي' , ' اول ثانوي' , ' ثالث متوسط ', ' ثاني متوسط ', ' اول متوسط ' , 
-"اول ابتدائي" , "ثاني ابتدائي" , "ثالث ابتدائي" , "رابع ابتدائي" , "خامس ابتدائي" , "سادس ابتدائي"
-]
+import useTranslationStore from '@/stores/LanguageStore';
 
 
 
@@ -44,6 +41,22 @@ const ThridCard = ({studentByGrade}) => {
 
 
   const {dark} = useThemeStore()
+  const {getTranslation} = useTranslationStore()
+
+  const labels = [
+    getTranslation('third_high'),
+    getTranslation('second_high'),
+    getTranslation('first_high'),
+    getTranslation('third_middle'),
+    getTranslation('second_middle'),
+    getTranslation('first_middle'),
+    getTranslation('sixth_primary'),
+    getTranslation('fifth_primary'),
+    getTranslation('fourth_primary'),
+    getTranslation('third_primary'),
+    getTranslation('second_primary'),
+    getTranslation('first_primary')
+  ];
   
   useEffect(() => {
     if (studentByGrade) {

@@ -7,22 +7,25 @@ import { useQuery } from '@apollo/client'
 import { getDashboardData , getTotalCourseTime} from '../../graphql/dashboard'
 import Loading from '../../Components/Loading'
 import { toast } from 'sonner'
+import useTranslationStore from '@/stores/LanguageStore'
 
 const Dashboard = () => {
   const {data, loading, error} = useQuery(getDashboardData)
+  const { language, getTranslation } = useTranslationStore();
   const {data: totalCourseTime, loading: totalCourseTimeLoading, error: totalCourseTimeError} = useQuery(getTotalCourseTime)
   if(loading || totalCourseTimeLoading) return <Loading />
   if (error || totalCourseTimeError) {
     console.log(error?.message || totalCourseTime?.message)
-    toast.error("حدث خطأ أثناء تحميل البيانات")
+    toast.error(getTranslation('error-loading-data'))
+
   }
 
   return (
     <div>
-        <ControlCard  icon='Dashboard' title=' لوحه التحكم ' neasted={false}/>
+        <ControlCard  icon='Dashboard' title='sidebar-dashboard' neasted={false}/>
         <div className='mt-4 w-full flex flex-col gap-y-4 pb-5'
             style={{
-                direction: 'rtl'
+                direction: language === 'ar' ? 'rtl' : 'ltr'
             }}
         >
           { data && !error && !totalCourseTimeError &&

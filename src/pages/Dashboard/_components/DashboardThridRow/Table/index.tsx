@@ -1,14 +1,13 @@
 import {useEffect, useState} from 'react'
 import Body from './Body'
 import { Divider } from '@nextui-org/react'
-
-import Loading from '../../../../../Components/Loading'
-
-import { physicsOptions, chemistryOptions } from '../../../../../data/expermients'
+import { physicsOptions, chemistryOptions } from '@/data/expermients'
+import useTranslationStore from '@/stores/LanguageStore'
 
 const DashboardTable = ({totalCourseTimeLoading}) => {
   const [totalTime, setTotalTime] = useState("")
   const [physicsTime, setPhysicsTime] = useState("")
+  const {getTranslation} = useTranslationStore()
   useEffect(() => {
     if(totalCourseTimeLoading) {
       const {totalPractical, totalTheoretical, totalTraining, physicsTotalPractical, physicsTotalTheoretical, physicsTotalTraining} = sumTimes(totalCourseTimeLoading)
@@ -86,9 +85,9 @@ const convertSecondsToHMS = (seconds: number) => {
         <div className=' w-full flex items-center justify-between text-xs text-[#96A5B8]'>
             <div className=' flex items-center gap-x-16 mx-5'>
                 <span> # </span>
-                <span> اسم الدورة </span>
+                <span> {getTranslation("course_name")} </span>
             </div>
-            <span className=' mx-14'> الوقت </span>
+            <span className=' mx-14'> {getTranslation("time")} </span>
 
       
         </div>
