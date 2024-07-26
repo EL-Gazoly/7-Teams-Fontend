@@ -1,47 +1,54 @@
-import {useState} from 'react'
-import ControlCard from '../../Components/ControlCard'
-import SearchIcon from '../../assets/Landing/ChooseHeadset/search.png'
-import AddIcon from '../../assets/students/add.svg'
-import UserIcon from '../../assets/students/user.svg'
-import { useNavigate } from 'react-router-dom'
-import { Image, Button } from '@nextui-org/react'
-import AdminsTable from './Table'
-
+import { useState } from 'react';
+import ControlCard from '../../Components/ControlCard';
+import SearchIcon from '../../assets/Landing/ChooseHeadset/search.png';
+import AddIcon from '../../assets/students/add.svg';
+import UserIcon from '../../assets/students/user.svg';
+import { useNavigate } from 'react-router-dom';
+import { Image, Button } from '@nextui-org/react';
+import AdminsTable from './Table';
+import useTranslationStore from '@/stores/LanguageStore';
 
 const AdminsPage = () => {
-    const [searchQuery, setSearchQuery] = useState<String>("");
-    const navigate = useNavigate()
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const navigate = useNavigate();
+  const { language, getTranslation } = useTranslationStore();
 
-    const handleSearch = (event) => {
-        setSearchQuery(event.target.value.toString().toLowerCase());
-    };
+  const handleSearch = (event) => {
+    setSearchQuery(event.target.value.toLowerCase());
+  };
+
   return (
     <div>
-        <ControlCard icon="Settings" title='  المسؤولون  ' neasted={true}/>
-        <div className="flex mt-4 flex-col items-center gap-y-4">
-            <div className=' h-36 w-full bg-[#F7F9FC] dark:bg-primary-dark flex justify-between items-center px-7'>
-                    <Button className=' px-4  h-12 gap-x-4 flex items-center justify-center bg-primary rounded-lg'
-                        onPress={() => navigate('/settings/admins/create')}
-                    >
-                        <Image src={AddIcon} />
-                        <span className=' text-white text-sm font-bold '>إضافة مسؤول جديد </span>
-                        <Image src={UserIcon} />
-                    </Button>
-                    
-                    <div className='w-[346px] h-12 bg-[#F0F2F4] dark:bg-[#40454D] rounded-lg px-[18px] gap-x-[10px] flex items-center justify-center'>
-                        
-                        <input type="text" className='flex-1 bg-transparent text-right text-xs placeholder:text-[#929496] font-medium'
-                         placeholder='البحث' onChange={handleSearch} />
-                        <img src={SearchIcon} alt="" />
+      <ControlCard icon="Settings" title={getTranslation('admins')} neasted={true} />
+      <div className="flex mt-4 flex-col items-center gap-y-4"
+        style={{ 
+          direction: language === 'ar' ? 'rtl' : 'ltr',
+        }}
+      >
+        <div className='h-36 w-full bg-[#F7F9FC] dark:bg-primary-dark flex justify-between items-center px-7'>
+          <Button 
+            className='px-4 h-12 gap-x-4 flex items-center justify-center bg-primary rounded-lg'
+            onPress={() => navigate('/settings/admins/create')}
+          >
+            <Image src={AddIcon} />
+            <span className='text-white text-sm font-bold'>{getTranslation('addAdmin')}</span>
+            <Image src={UserIcon} />
+          </Button>
 
-                    </div>
-
-            </div>
-            <AdminsTable searchQuery={searchQuery} />
-
+          <div className='w-[346px] h-12 bg-[#F0F2F4] dark:bg-[#40454D] rounded-lg px-[18px] gap-x-[10px] flex items-center justify-center'>
+            <input 
+              type="text" 
+              className='flex-1 bg-transparent text-xs placeholder:text-[#929496] font-medium'
+              placeholder={getTranslation('searchPlaceholder')} 
+              onChange={handleSearch} 
+            />
+            <img src={SearchIcon} alt="" />
+          </div>
         </div>
+        <AdminsTable searchQuery={searchQuery} />
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default AdminsPage
+export default AdminsPage;
