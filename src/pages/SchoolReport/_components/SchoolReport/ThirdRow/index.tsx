@@ -5,7 +5,7 @@ import ExpermientEnteranceCounter from './ExpermientEntranceCounter'
 
 const ThirdRow = ({data}) => {
   return (
-    <div className=' flex items-center gap-x-1 flex-row-reverse'>
+    <div className=' flex items-center gap-x-1'>
         <TotalGrade experminents={data} />
         <ExpermientEnteranceCounter data={data} />
       

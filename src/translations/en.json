@@ -351,9 +351,31 @@
   "timeSpentOnTheoreticalTest": "Time Spent on Theoretical Test",
   "class1": "Class 1",
   "class2": "Class 2",
-  "class3": "Class 3"  
-   
-  
+  "class3": "Class 3" ,
+  "multipleSchools": "Schools",
+  "totalTheoreticalTestGrade": "Total Theoretical Test Grade",
+  "totalPracticalTestGrade": "Total Practical Test Grade",
+  "totalTime": "Total Time",
+  "overallPerformance": "Overall Performance",
+  "entriesForGrade": "System Entries for Students of",
+  "trainingEntries": "Training Entries",
+  "theoreticalEntries": "Theoretical Test Entries",
+  "practicalEntries": "Practical Test Entries"  ,
+  "timeSpentFor": "Time Spent",
+  "overallGrade": "Overall Grade",
+  "forClass": "for Class",
+  "forStage": "for Stage",
+  "detailedGradePractical": "Detailed Grade for Practical Test",
+  "detailedGradeTheoretical": "Detailed Grade for Theoretical Test",
+  "numberOfStudents": "Number of Students" ,
+  "experimentEntranceCount": "Number of Entrances to Experiments" ,
+  "overallGradeLevels": "Overall Grade Levels",
+  "practicalTrainingTime": "Time Spent on Practical Training",
+  "practicalTestTime": "Time Spent on Practical Test",
+  "theoreticalTestTime": "Time Spent on Theoretical Test",
+  "secondaryLevel": "Secondary Level",
+  "middleLevel": "Middle Level",
+  "primaryLevel": "Primary Level"  
   
 
 

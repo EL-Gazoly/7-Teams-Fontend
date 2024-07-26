@@ -5,8 +5,10 @@ import SchoolDarkIcon from '../../../../../../assets/Reports/schools.png'
 import SchoolIcon from '../../../../../../assets/Reports/school.png'
 import { Button } from '@nextui-org/react'
 import html2canvas from 'html2canvas'
+import useTranslationStore from '@/stores/LanguageStore'
 const SchoolCard = ({data}) => {
     const {dark} = useThemeStore()
+    const { getTranslation } = useTranslationStore()
      const convertAndPrint = () => {
         const divToPrint = document.querySelector('.certificateDiv');
         if (divToPrint) {
@@ -38,7 +40,7 @@ const SchoolCard = ({data}) => {
         <div className=' w-full flex items-center justify-end '>
             <Button className=' bg-primary-gradient text-white w-[90px] h-[35px]' onPress={convertAndPrint}>
                 <img src={PrinterIcon} alt="" />
-                <span className=' text-xs'> طباعه </span>
+                <span className=' text-xs'> {getTranslation('print')} </span>
             </Button>
         </div>
         

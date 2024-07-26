@@ -8,6 +8,7 @@ import { useQuery } from '@apollo/client'
 import { GetSchoolReports } from '../../graphql/reports'
 import { useParams } from 'react-router-dom'
 import Loading from '../../Components/Loading'
+import useTranslationStore from '@/stores/LanguageStore'
 
 const SchoolReport = () => {
    const [totalTheoreticalTestGrade, setTotalTheoreticalTestGrade] = useState(0)
@@ -25,6 +26,8 @@ const SchoolReport = () => {
   const [overallTime, setOverallTime] = useState(0)
     const pageRef = useRef(null)
     const { id } = useParams()
+    const { language } = useTranslationStore()
+
     const { loading, error, data } = useQuery(GetSchoolReports,{
         variables:{
             schoolId: id
@@ -102,8 +105,12 @@ const SchoolReport = () => {
   
   return (
     <div ref={pageRef} className=' flex flex-col gap-y-7 items-center'>
-       <ControlCard icon='Schools' title='المدارس' neasted={true} />
-        <div className=' max-w-full flex flex-col gap-x-1 gap-y-3 items-center certificateDiv'>
+       <ControlCard icon='Schools' title='sidebar-schools' neasted={true} />
+        <div className=' max-w-full flex flex-col gap-x-1 gap-y-3 items-center certificateDiv'
+          style={{
+            direction: language === 'ar' ? 'rtl' : 'ltr',
+          }}
+        >
             <FirstRow data={data} totatotalTheoreticalTestGrade={theoreticalTestGradePercentage}
             practicalTestGrade={practicalTestGradePercentage} overallGrade={overallGrade} 
             totalPracticalTime={totalPracticalTime} totalTheorticalTime={totalTheorticalTime} totalTrainingTime={totalTrainingTime} />

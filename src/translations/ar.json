@@ -354,8 +354,32 @@
   "timeSpentOnTheoreticalTest": "الوقت المستغرق للاختبار النظري",
   "class1": "الفصل الأول",
   "class2": "الفصل الثاني",
-  "class3": "الفصل الثالث"  
-  
+  "class3": "الفصل الثالث"  ,
+  "multipleSchools": "مدارس",
+  "totalTheoreticalTestGrade": "مجموع درجة الاختبار النظري",
+  "totalPracticalTestGrade": "مجموع درجة الاختبار العملي",
+  "totalTime": "الوقت الكلي",
+  "overallPerformance": "الأداء العام",
+  "entriesForGrade": "عدد مرات الدخول للنظام لطلاب",
+  "trainingEntries": "عدد مرات الدخول على التدريب",
+  "theoreticalEntries": "عدد مرات الدخول على الاختبارات النظرية",
+  "practicalEntries": "عدد مرات الدخول على الاختبارات العملية"  ,
+  "timeSpentFor": "الوقت المستغرق",
+  "overallGrade": "التقدير العام",
+  "forClass": "للصف",
+  "forStage": "للمرحلة",
+  "detailedGradePractical": "التقدير التفصيلي للاختبار العملي",
+  "detailedGradeTheoretical": "التقدير التفصيلي للاختبار النظري",
+  "numberOfStudents": "عدد الطلاب"  ,
+  "experimentEntranceCount": "عدد مرات الدخول إلى التجارب",
+  "overallGradeLevels": "التقدير العام للمستويات",
+  "practicalTrainingTime": "الوقت المستغرق للتدريب العملي",
+  "practicalTestTime": "الوقت المستغرق للاختبار العملي",
+  "theoreticalTestTime": "الوقت المستغرق للاختبار النظري",
+  "secondaryLevel": "المستوى الثانوي",
+  "middleLevel": "المستوى المتوسط",
+  "primaryLevel": "المستوى الابتدائي"  
+
 
 
 
