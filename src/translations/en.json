@@ -243,5 +243,14 @@
   "timeSpent": "Time Spent",
   "practicalTraining": "Practical Training",
   "theoreticalTests": "Theoretical Tests",
-  "practicalTests": "Practical Tests"
+  "practicalTests": "Practical Tests",
+  "systemLog": "System Log",
+  "period": "Period",
+  "showing": "Showing",
+  "from": "from",
+  "to": "to",
+  "selectPeriod": "Select Period",
+  "cancel": "Cancel",
+  "confirm": "Confirm",
+  "all": "All"
 }

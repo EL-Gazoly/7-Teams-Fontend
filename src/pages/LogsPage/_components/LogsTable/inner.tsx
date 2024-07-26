@@ -4,9 +4,11 @@ import noPic from '../../../../assets/students/noPic.svg'
 import noPicDark from '../../../../assets/LogsAsessts/dark-person.svg'
 import HeadsetImage from '../../../../assets/Landing/HeadsetCard/headset.png';
 import { useThemeStore } from '../../../../stores/ThemeStore';
+import useTranslationStore from '@/stores/LanguageStore';
 const LogsTableItem = ({data, setTake, loading, logs, currentPage, date, filter}) => {
   const [filterDate, setFilterDate] = useState(null) // [0] start date, [1] end date
   const {dark} = useThemeStore();
+  const {language, getTranslation} = useTranslationStore()
   const ReadableDate = (date) => {
     return new Date(date).toLocaleString()
   }
@@ -14,6 +16,7 @@ const LogsTableItem = ({data, setTake, loading, logs, currentPage, date, filter}
 
 
   const rewriteLogs = (action, user, admin) => {
+    if (language !== 'ar') return action;
     let newAction = action.replace('user', 'المستخدم')
       .replace('student', 'طالب')
       .replace('logged in', 'قام بتسجيل الدخول')
@@ -99,7 +102,7 @@ const LogsTableItem = ({data, setTake, loading, logs, currentPage, date, filter}
     }
 
     style={{
-      direction: 'rtl'
+      direction: language === 'ar' ? 'rtl' : 'ltr'
     }}
       >
       <TableHeader className=' hidden invisible'>

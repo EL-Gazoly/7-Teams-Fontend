@@ -245,5 +245,14 @@
   "timeSpent": "الوقت المستغرق",
   "practicalTraining": "التدريبات العملية",
   "theoreticalTests": "الأختبارات النظرية",
-  "practicalTests": "الأختبارات العملية"
+  "practicalTests": "الأختبارات العملية",
+  "systemLog": "سجل النظام",
+  "period": "الفتره",
+  "showing": "عرض",
+  "from": "من",
+  "to": "إلى",
+  "selectPeriod": "اختر الفتره",
+  "cancel": "الغاء",
+  "confirm": "تأكيد",
+  "all": "الكل"
 }
