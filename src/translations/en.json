@@ -375,7 +375,29 @@
   "theoreticalTestTime": "Time Spent on Theoretical Test",
   "secondaryLevel": "Secondary Level",
   "middleLevel": "Middle Level",
-  "primaryLevel": "Primary Level"  
+  "primaryLevel": "Primary Level" ,
+  "chooseGrade": "Choose Grade",
+  "highGrade": "High Grade",
+  "middleGrade": "Middle Grade",
+  "primaryGrade": "Primary Grade" ,
+  "chooseSchool": "Choose School Name",
+  "chooseClass": "Choose Class",
+  "studentNamePlaceholder": "Enter student name here",
+  "studentIdPlaceholder": "Enter student ID here",
+  "editStudent": "Edit Student",
+  "pleaseFillAllFields": "Please fill all fields",
+  "passwordsDoNotMatch": "Password does not match",
+  "studentUpdatedSuccess": "Student updated successfully",
+  "errorUpdatingStudent": "Error updating student",
+  "firstGradePrimary": "First Grade",
+  "secondGradePrimary": "Second Grade",
+  "thirdGradePrimary": "Third Grade",
+  "fourthGradePrimary": "Fourth Grade",
+  "fifthGradePrimary": "Fifth Grade",
+  "sixthGradePrimary": "Sixth Grade",
+  "firstGradeSecondary": "First Grade",
+  "secondGradeSecondary": "Second Grade",
+  "thirdGradeSecondary": "Third Grade"    
   
 
 

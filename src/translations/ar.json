@@ -378,7 +378,29 @@
   "theoreticalTestTime": "الوقت المستغرق للاختبار النظري",
   "secondaryLevel": "المستوى الثانوي",
   "middleLevel": "المستوى المتوسط",
-  "primaryLevel": "المستوى الابتدائي"  
+  "primaryLevel": "المستوى الابتدائي"  ,
+  "chooseGrade": "اختر المرحلة",
+  "highGrade": "الصف الثانوي",
+  "middleGrade": "الصف الإعدادي",
+  "primaryGrade": "الصف الابتدائي" ,
+  "chooseSchool": "اختر اسم المدرسة"  ,
+  "chooseClass": "اختر الصف",
+  "studentNamePlaceholder": "اسم الطالب هنا",
+  "studentIdPlaceholder": "رقم الطالب هنا",
+  "editStudent": "تعديل طالب",
+  "pleaseFillAllFields": "يرجى ملء جميع الحقول",
+  "passwordsDoNotMatch": "كلمة المرور غير متطابقة",
+  "studentUpdatedSuccess": "تم تعديل الطالب بنجاح",
+  "errorUpdatingStudent": "خطأ في تعديل الطالب"  ,
+  "firstGradePrimary": "الصف الاول",
+  "secondGradePrimary": "الصف الثاني",
+  "thirdGradePrimary": "الصف الثالث",
+  "fourthGradePrimary": "الصف الرابع",
+  "fifthGradePrimary": "الصف الخامس",
+  "sixthGradePrimary": "الصف السادس",
+  "firstGradeSecondary": "الصف الاول",
+  "secondGradeSecondary": "الصف الثاني",
+  "thirdGradeSecondary": "الصف الثالث"  
 
 
 
