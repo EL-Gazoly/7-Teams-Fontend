@@ -19,7 +19,7 @@ const AdminsPage = () => {
 
   return (
     <div>
-      <ControlCard icon="Settings" title={getTranslation('admins')} neasted={true} />
+      <ControlCard icon="Settings" title={getTranslation('admins')} neasted={true} info='adminsPageDescription' />
       <div className="flex mt-4 flex-col items-center gap-y-4"
         style={{ 
           direction: language === 'ar' ? 'rtl' : 'ltr',

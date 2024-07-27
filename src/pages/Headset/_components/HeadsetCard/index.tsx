@@ -108,7 +108,7 @@ const HeadsetCard = ({ device, index, selectedHeadsets, setSelectedHeadsets, sho
       <button
         className='bg-white dark:bg-primary-dark w-full'
         onClick={() => navigate(`/headsets/${device.macAddress}`)}
-       
+        disabled={device.student.length === 0 || !device?.Connected}
       >
         <div className='relative w-full h-[37px] pt-3'>
           <div className='flex items-center gap-x-1'>

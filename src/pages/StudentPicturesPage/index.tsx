@@ -36,7 +36,7 @@ const PicturePage = () => {
 
   return (
     <div className="max-w-full grid grid-cols-1 gap-y-3">
-      <ControlCard icon="Library" title={getTranslation('student_media')} neasted={true} />
+      <ControlCard icon="Library" title={getTranslation('student_media')} neasted={true} info='picturesPageDescription' />
       <div className="col-span-2 bg-white dark:bg-primary-dark h-64 flex items-center justify-center flex-col gap-y-[14px] rounded-md">
         <div className='w-28 h-28 bg-[#F6F6F6] dark:bg-[#EEEFF21A] flex items-center justify-center rounded-full'>
           {studentImage ? 

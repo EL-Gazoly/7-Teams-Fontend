@@ -48,7 +48,7 @@ const clearFilters = () => {
 
   return (
    <React.Fragment> 
-        <ControlCard icon="Library" title='sidebar-library' neasted={false} />
+        <ControlCard icon="Library" title='sidebar-library' neasted={false} info='libraryPageDescription' />
         <div className=' mt-[22px] flex flex-col items-center gap-y-6'>
             <SearchStudent  activeTab={activeTab}  setActiveTab={setActiveTab} data={data?.admin.students} 
               setSearchQuery={setSearchQuery}

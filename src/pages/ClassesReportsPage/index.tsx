@@ -81,7 +81,7 @@ const ClassesReportsPage = () => {
 
   return (
     <div>
-      <ControlCard icon="Reports" title={getTranslation('reports')} neasted={true} />
+      <ControlCard icon="Reports" title={getTranslation('reports')} neasted={true} info='classesReportPageDescription' />
       <div className='flex flex-col items-center gap-y-5 mt-4'
         style={{
             direction: language === 'ar' ? 'rtl' : 'ltr',

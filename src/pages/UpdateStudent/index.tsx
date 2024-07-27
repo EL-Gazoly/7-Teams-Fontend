@@ -125,7 +125,7 @@ const UpdateStudent = () => {
 
   return (
     <div className='pb-8'>
-      <ControlCard icon="Students" title={getTranslation('students')} neasted={true} />
+      <ControlCard icon="Students" title={getTranslation('students')} neasted={true} info='updateStudentPageDescription' />
       <div className='mt-6 w-full h-[703px] bg-[#FDFDFE] dark:bg-primary-dark rounded-lg pt-[70px] px-[113px] flex flex-col gap-y-12'
         style={{
           boxShadow: '0px 3.812px 99.108px 0px rgba(0, 0, 0, 0.08)',

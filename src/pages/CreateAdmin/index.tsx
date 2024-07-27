@@ -100,7 +100,7 @@ const CreateAdmin = () => {
 
   return (
     <div className=' pb-5'>
-    <ControlCard icon="Settings" title='addNewAdmin' neasted={true}/>
+    <ControlCard icon="Settings" title='addNewAdmin' neasted={true} info='createAdminPageDescription'/>
 
     <div className=' mt-6 w-full h-[803px] bg-[#FDFDFE] dark:bg-primary-dark rounded-lg  pt-[75px] px-[113px]
         flex flex-col gap-y-12

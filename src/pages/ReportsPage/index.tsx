@@ -31,7 +31,7 @@ const ReportsPage = () => {
 
   return (
     <React.Fragment>
-      <ControlCard icon="Reports" title={getTranslation('reports')} neasted={false} />
+      <ControlCard icon="Reports" title={getTranslation('reports')} neasted={false} info='reportsPageDescription' />
       <div className='flex flex-col items-center gap-y-5 mt-4 pb-5'
         style={{ direction: language === "ar" ? "rtl" : "ltr" }}
       >

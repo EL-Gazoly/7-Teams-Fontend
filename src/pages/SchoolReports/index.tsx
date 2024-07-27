@@ -33,7 +33,7 @@ const SchoolReports = () => {
 
   return (
     <div className={`flex flex-col gap-y-[26px] ${language === 'ar' ? 'rtl' : 'ltr'}`}>
-      <ControlCard icon='Schools' title={getTranslation('schools')} neasted={true} />
+      <ControlCard icon='Schools' title={getTranslation('schools')} neasted={true} info='schoolReportPageDescription' />
 
       <div className='w-[1003px] h-[104px] bg-[#F7F9FC] dark:bg-[#262B34] rounded-lg flex items-center gap-x-12 px-14'>
         <span className='text-xs font-medium'>

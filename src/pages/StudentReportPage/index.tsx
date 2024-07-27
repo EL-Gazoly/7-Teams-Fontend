@@ -83,7 +83,7 @@ const StudentReportsPage = () => {
 
   return (
     <div ref={pageRef} className='student-reports-container'>
-      <ControlCard icon="Reports" title='sidebar-reports' neasted={true} />
+      <ControlCard icon="Reports" title='sidebar-reports' neasted={true} info='studentReportPageDescription' />
 
       <div className=' mt-[17px] flex flex-col gap-y-4 pb-5 certificateDiv'
             style={{

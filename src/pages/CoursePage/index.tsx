@@ -15,7 +15,7 @@ const CoursePage = () => {
 
     return (
         <React.Fragment>
-            <ControlCard icon="Courses" title={getTranslation("sidebar-course")} neasted />
+            <ControlCard icon="Courses" title={getTranslation("sidebar-course")} neasted info='CoursepageDescription' />
             <div className='mt-[18px] flex flex-col gap-y-5 items-center pb-8'>
                 <div className='relative w-[1000px]'>
                     <video src={ChemistryVideo} autoPlay loop muted className='w-full h-[413px] object-cover rounded-lg z-10' />

@@ -106,8 +106,8 @@ const ControlCard = ({icon, title, neasted, info}:Props) => {
           </div>
           <Dropdown>
             <DropdownTrigger>
-            <div className=' inline-flex items-center justify-center gap-x-2 mt-2 text-[#BEBEBE] text-sm underline'>
-              <span>{getTranslation("info")}</span>
+            <div className='max-w-[100px] break-words inline-flex items-center justify-center gap-x-2 mt-2 text-[#BEBEBE] text-sm underline'>
+              <span className=''>{getTranslation("info")}</span>
               <img role='button' src={Info} alt="" className=' w-4 h-4' />
             </div>
             </DropdownTrigger>

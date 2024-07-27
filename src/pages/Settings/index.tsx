@@ -16,7 +16,7 @@ const GeneralSettingsPage = () => {
 
   return (
     <div>
-      <ControlCard icon="Settings" title={getTranslation('generalSettings')} neasted={false} />
+      <ControlCard icon="Settings" title={getTranslation('generalSettings')} neasted={false} info="settingsPageDescription" />
       <div className="mt-6 flex  items-center justify-start gap-x-[22px] text-text-black dark:text-white font-medium"
         style={{ 
           direction: language === 'ar' ? 'rtl' : 'ltr',

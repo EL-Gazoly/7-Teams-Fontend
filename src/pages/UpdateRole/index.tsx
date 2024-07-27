@@ -90,7 +90,7 @@ const UpdateRolePage = () => {
 
   return (
     <>
-      <ControlCard icon="Settings" title={getTranslation('roles')} neasted={true} />
+      <ControlCard icon="Settings" title={getTranslation('roles')} neasted={true} info='updateRolePageDescription' />
       <div className='mt-[38px] flex flex-col items-center gap-y-7 pb-9'>
         <RolesSection
           disabled={false}

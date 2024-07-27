@@ -412,12 +412,53 @@
   "recording": "Recording",
   "courseCurriculums": "Course Curriculums",
   "selectExperiment": "Select Experiment",
-    "progressRecord": "Progress Record",
-    "progress": "Progress",
-    "date": "Date"  ,
-    "dateFormat": "November 24"
-  
-  
+  "progressRecord": "Progress Record",
+  "progress": "Progress",
+  "date": "Date"  ,
+  "dateFormat": "November 24",
+  "HeadsetDescription": "Manage VR headsets, open courses, connect for more info and control."  ,
+  "HeadsetPageDescription": "Stream VR content, take screenshots, record videos, view in library, open courses, check student progress",
+  "CoursesPageDescription": "View available courses on the site and watch them."    ,
+  "CoursepageDescription": "View course info, video, and screenshots from the content.",
+  "studentPageDescription": "View all students in the system in grid or list view, search or filter them, add a new student, or edit students." ,
+  "createStudentPageDescription": "Create a student and assign them to a grade."     ,
+  "updateStudentPageDescription": "Update student information, edit details, and assign to a class."  ,
+  "schoolPageDescription": "View schools, search them, add new schools, or edit them.",
+  "createSchoolPageDescription": "Create a new school and specify its details.",
+  "updateSchoolPageDescription": "Update current school details and edit its information.",
+  "libraryPageDescription": "You can select students, search and filter them, view in grid or list, and select a student to show their library.",
+  "userLibraryDescription": "You can select either videos for the student or screenshots for the student.",
+  "videoPageDescription": "You can select the video you want to play and view it.",
+  "picturesPageDescription": "You can select the image you want to view.",
+  "reportsPageDescription": "You can select to show reports for stages, classes, schools, or students and you can search them.",
+  "studentsReportsPageDescription": "You can view students, search or filter them, and select a student to view their reports.",
+  "studentReportPageDescription": "You can view the student info, their grades, and stats about them.",
+  "stagesReportsPageDescription": "You can view reports for different stages, search for them, and filter them.",
+  "stageReportPageDescription": "You can view the stage information and related statistics.",
+  "classesReportPageDescription": "Select or search for classes, then select to view the class report.",
+  "classReportPageDescription": "View class information and related statistics.",
+  "schoolReportPageDescription": "View schools and search them. Click on a school to view the statistics.",
+  "schoolReportsDescription": "View the school information and statistics.",
+  "certificatePageDescription": "You can print a certificate and send it via email by inputting the student info.",
+  "dashboardPageDescription": "This page shows comprehensive statistics for the entire application.",
+  "logsPageDescription": "This page shows every event that happens in the application.",
+  "settingsPageDescription": "This page can adjust the system admins and system roles.",
+  "adminsPageDescription": "You can view system admins, search for them, create new system admins, and edit them.",
+  "createAdminPageDescription": "You can create a new system admin by entering their information and assigning their role.",
+  "updateAdminPageDescription": "You can update the current system admin's information and modify their role and permissions.",
+  "rolesPageDescription": "You can view roles, search them, or add a new role or update an existing role.",
+  "createRolePageDescription": "Create a new role and define its permissions and responsibilities within the system.",
+  "updateRolePageDescription": "Update an existing role and modify its permissions and responsibilities within the system."
+
+
+
+
+
+
+
+
+
+
 
 
 

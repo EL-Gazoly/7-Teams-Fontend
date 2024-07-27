@@ -58,6 +58,7 @@ const LogsPage = () => {
         icon='System'
         title={getTranslation('systemLog')}
         neasted={false}
+        info='logsPageDescription'
       />
       <div className='flex flex-col mt-4 gap-y-5'>
         <div className='w-full h-[104.28px] bg-[#F7F9FC] dark:bg-primary-dark rounded-lg flex items-center justify-start px-5'>

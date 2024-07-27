@@ -134,7 +134,7 @@ const UpdateAdmin = () => {
 
   return (
     <div className='pb-5'>
-      <ControlCard icon="Settings" title={getTranslation('updateAdmin')} neasted={true} />
+      <ControlCard icon="Settings" title={getTranslation('updateAdmin')} neasted={true} info='updateAdminPageDescription' />
       <div className='mt-6 w-full h-[803px] bg-[#FDFDFE] dark:bg-primary-dark rounded-lg pt-[75px] px-[113px] flex flex-col gap-y-12'
         style={{
           boxShadow: "0px 3.812px 99.108px 0px rgba(0, 0, 0, 0.08)",

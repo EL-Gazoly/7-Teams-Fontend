@@ -100,7 +100,7 @@ const StageReportPage = () => {
   
   return (
     <div className=''>
-        <ControlCard icon="Reports" title='التقارير' neasted={true} />
+        <ControlCard icon="Reports" title='التقارير' neasted={true} info='stageReportPageDescription' />
         <div className=' mt-[17px] flex flex-col gap-y-4 pb-5 certificateDiv'
             style={{
                 direction: language === 'ar' ? 'rtl' : 'ltr'

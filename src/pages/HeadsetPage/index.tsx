@@ -149,7 +149,7 @@ const HeadsetPage = () => {
 
   return (
     <div className=' '>
-      <ControlCard icon="Headset" title='sidebar-headset' neasted={true} />
+      <ControlCard icon="Headset" title='sidebar-headset' neasted={true} info="HeadsetPageDescription"/>
       {
         loading || isLoading ?
           <div className=' mt-[35%]'>

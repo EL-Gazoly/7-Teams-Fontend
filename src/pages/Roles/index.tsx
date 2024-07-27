@@ -19,7 +19,7 @@ const RolesPage = () => {
 
   return (
     <div>
-      <ControlCard icon="Settings" title={getTranslation('roles')} neasted={true} />
+      <ControlCard icon="Settings" title={getTranslation('roles')} neasted={true} info='rolesPageDescription' />
       <div className="flex mt-4 flex-col items-center gap-y-4"
         style={{
           direction: language === 'ar' ? 'rtl' : 'ltr',

@@ -22,7 +22,7 @@ const Dashboard = () => {
 
   return (
     <div>
-        <ControlCard  icon='Dashboard' title='sidebar-dashboard' neasted={false}/>
+        <ControlCard  icon='Dashboard' title='sidebar-dashboard' neasted={false} info='dashboardPageDescription'/>
         <div className='mt-4 w-full flex flex-col gap-y-4 pb-5'
             style={{
                 direction: language === 'ar' ? 'rtl' : 'ltr'

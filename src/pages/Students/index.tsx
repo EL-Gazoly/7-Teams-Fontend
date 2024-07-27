@@ -62,7 +62,9 @@ const StudentsPage = () => {
 
   return (
     <React.Fragment>
-      <ControlCard icon="Students" title={getTranslation('students')} neasted={false} />
+      <ControlCard icon="Students" title={getTranslation('students')} neasted={false} 
+        info='studentPageDescription'
+      />
 
       <div className='mt-4 flex flex-col gap-y-5'
         style={{ direction: isArabic ? 'rtl' : 'ltr' }}
@@ -80,7 +82,7 @@ const StudentsPage = () => {
           <div className='w-[346px] h-12 bg-[#F0F2F4] dark:bg-[#F0F2F421] rounded-lg px-[18px] gap-x-[10px] flex items-center justify-center'>
             <input
               type='text'
-              className='flex-1 bg-transparent text-right text-xs placeholder:text-[#929496] font-medium'
+              className='flex-1 bg-transparent text-xs placeholder:text-[#929496] font-medium'
               placeholder={getTranslation('search')}
               onChange={handleSearch}
             />

@@ -20,6 +20,7 @@ const CoursesPage = () => {
           icon="Courses"
           title={getTranslation("sidebar-course")}
           neasted={false}
+          info="CoursesPageDescription"
         />
       </div>
       <div

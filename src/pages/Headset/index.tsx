@@ -17,7 +17,9 @@ const HeadsetsPage = () => {
   }, []) 
   return (
     <div className='flex flex-col gap-y-[17px] pb-5'>
-      <ControlCard icon="Headset" title={"sidebar-headset"} neasted={false}/>
+      <ControlCard icon="Headset" title={"sidebar-headset"} neasted={false}
+        info='HeadsetDescription'
+      />
       <div>
         <ChooseHeadsetSection selectedHeadsets={selectedHeadsets} setSelectedHeadsets={setSelectedHeadsets } setSearchQuery={setSearchQuery}
         showConnected={showConnected} setShowConnected={setShowConnected}

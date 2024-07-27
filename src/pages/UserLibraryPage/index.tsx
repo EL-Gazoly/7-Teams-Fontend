@@ -35,7 +35,7 @@ const LibraryPage = () => {
   return (
     <div className='max-w-full grid grid-cols-2 gap-y-3 gap-x-4'>
       <div className="col-span-2">
-        <ControlCard icon="Library" title={getTranslation('sidebar-library')} neasted={true} />
+        <ControlCard icon="Library" title={getTranslation('sidebar-library')} neasted={true} info='userLibraryDescription' />
       </div>
       <div className="col-span-2 bg-white dark:bg-primary-dark h-64 flex items-center justify-center flex-col gap-y-[14px] rounded-md">
         <div className='w-28 h-28 bg-[#F6F6F6] dark:bg-[#EEEFF21A] bg-[#EEEFF21A] flex items-center justify-center rounded-full'>

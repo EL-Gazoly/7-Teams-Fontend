@@ -102,7 +102,7 @@ const CreateStudent = () => {
 
   return (
     <div className=' pb-8'>
-      <ControlCard icon="Students" title={getTranslation("sidebar-students")} neasted={true}/>
+      <ControlCard icon="Students" title={getTranslation("sidebar-students")} neasted={true} info='createStudentPageDescription'/>
       <div
         className='mt-6 w-full h-[703px] bg-[#FDFDFE] dark:bg-primary-dark rounded-lg pt-[70px] px-[113px] flex flex-col gap-y-12'
         style={{

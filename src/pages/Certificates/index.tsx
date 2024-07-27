@@ -126,7 +126,7 @@ const CertificatesPage = () => {
 
   return (
     <React.Fragment>
-       <ControlCard icon="Certificates" title='sidebar-certificates' neasted={false}/>
+       <ControlCard icon="Certificates" title='sidebar-certificates' neasted={false} info='certificatePageDescription'/>
         <div className=' mt-7 flex flex-col gap-y-6 pb-5'>
         <FirstSection 
             course={course}

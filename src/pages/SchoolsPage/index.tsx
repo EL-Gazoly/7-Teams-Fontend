@@ -16,7 +16,7 @@ const SchoolsPage = () => {
 
   return (
     <div className="flex flex-col gap-y-8">
-      <ControlCard icon="Schools" title={getTranslation('sidebar-schools')} neasted={false} />
+      <ControlCard icon="Schools" title={getTranslation('sidebar-schools')} neasted={false} info='schoolPageDescription' />
       <div className="flex flex-col gap-y-10">
         <div className={cn("h-36 w-full bg-[#F7F9FC] dark:bg-[#252A33] flex justify-between items-center px-7",
             language === 'ar' ? 'flex-row' : 'flex-row-reverse'

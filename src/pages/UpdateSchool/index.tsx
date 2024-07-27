@@ -113,7 +113,7 @@ const UpdateSchool = () => {
   
   return (
     <div className=' flex flex-col gap-y-8 items-center'>
-         <ControlCard icon="Schools" title={getTranslation('add_new_school')} neasted={true} />
+         <ControlCard icon="Schools" title={getTranslation('add_new_school')} neasted={true} info='updateSchoolPageDescription' />
          <div className="w-full h-[655px] bg-white dark:bg-[#252A33] rounded-lg flex items-center justify-center"
               style={{
                   direction: language === 'ar' ? 'rtl' : 'ltr',
