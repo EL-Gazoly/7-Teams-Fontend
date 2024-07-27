@@ -400,7 +400,27 @@
   "sixthGradePrimary": "الصف السادس",
   "firstGradeSecondary": "الصف الاول",
   "secondGradeSecondary": "الصف الثاني",
-  "thirdGradeSecondary": "الصف الثالث"  
+  "thirdGradeSecondary": "الصف الثالث"  ,
+  "headset": "نظارة الواقع الافتراضي",
+  "connectionFailed": "فشل الاتصال تاكد ان الجهاز متصل بنفس الشبكه",
+  "tryConnectingDirectly": "اذا استمرت المشكله جرب توصيل الجهاز بالكمبيوتر مباشره" ,
+    "completed": "تم",
+    "repair": "اصلاح",
+    "help": "مساعده",
+    "noStudent": "لا يوجد",
+    "deviceActions": "اجراءات الجهاز",
+    "startStreaming": "بث الفيديو المباشر",
+    "screenshot": "لقطة شاشة",
+    "startRecording": "تسجيل الفيديو",
+    "recording": "جاري تسجيل الفيديو" ,
+    "courseCurriculums": "المناهج الدراسية",
+    "selectExperiment": "اختر التجربه",
+      "progressRecord": "سجل الانجاز",
+      "progress": "التقدم",
+      "date": "التاريخ",
+        "dateFormat": "٢٤ / نوفمبر"      
+    
+  
 
 
 

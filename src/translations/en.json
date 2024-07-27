@@ -397,7 +397,26 @@
   "sixthGradePrimary": "Sixth Grade",
   "firstGradeSecondary": "First Grade",
   "secondGradeSecondary": "Second Grade",
-  "thirdGradeSecondary": "Third Grade"    
+  "thirdGradeSecondary": "Third Grade"    ,
+  "headset": "Virtual Reality Headset",
+  "connectionFailed": "Connection failed, ensure the device is connected to the same network",
+  "tryConnectingDirectly": "If the problem persists, try connecting the device directly to the computer",
+  "completed": "Completed",
+  "repair": "Repair",
+  "help": "Help",
+  "noStudent": "No Student",
+  "deviceActions": "Device Actions",
+  "startStreaming": "Start Streaming",
+  "screenshot": "Screenshot",
+  "startRecording": "Start Recording",
+  "recording": "Recording",
+  "courseCurriculums": "Course Curriculums",
+  "selectExperiment": "Select Experiment",
+    "progressRecord": "Progress Record",
+    "progress": "Progress",
+    "date": "Date"  ,
+    "dateFormat": "November 24"
+  
   
 
 

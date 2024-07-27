@@ -15,7 +15,7 @@ import {  physicsOptions } from '../../data/expermients';
 import UploadMoadl from './_components/UploadModal';
 import { useDisclosure } from '@nextui-org/react';
 import UploadVideoModal from './_components/UploadVideoModal';
-
+import useTranslationStore from '@/stores/LanguageStore';
 type isImageUploadingState = {
   isImageUploading: boolean | null;
 }
@@ -47,6 +47,8 @@ const HeadsetPage = () => {
   const [chemistryProgres ,setChemistryProgres] = useState(0);
   const [physicsProgres ,setPhysicsProgress] = useState(0);
   const [uploadImagePath, setUploadPath] = useState()
+
+  const { language, getTranslation } = useTranslationStore();
 
   const [isImageUploading, dispatchIsImageUpload] = useReducer(dispacth , {isImageUploading: null})
 
@@ -86,8 +88,8 @@ const HeadsetPage = () => {
     const timeout = setTimeout(() => {
       if (isLoading) {
         navigate('/headsets');
-        toast.error(' اذا استمرت المشكله جرب توصيل الجهاز بالكمبيوتر مباشره ')
-        toast.error(' فشل الاتصال تاكد ان الجهاز متصل بنفس الشبكه ') 
+        toast.error(getTranslation('tryConnectingDirectly'));
+       toast.error(getTranslation('connectionFailed'));
               }
     }, 20000);// 20 seconds
 
@@ -147,7 +149,7 @@ const HeadsetPage = () => {
 
   return (
     <div className=' '>
-      <ControlCard icon="Headset" title=' نظارة الواقع الافتراضي ' neasted={true} />
+      <ControlCard icon="Headset" title='sidebar-headset' neasted={true} />
       {
         loading || isLoading ?
           <div className=' mt-[35%]'>
@@ -155,15 +157,19 @@ const HeadsetPage = () => {
           </div>
         
         : (
-          <div className='flex flex-col mt-6 items-center gap-y-6 pb-5'>
-        <div className='w-full flex flex-row-reverse items-center gap-x-4'>
+        <div className='flex flex-col mt-6 items-center gap-y-6 pb-5'
+            style={{
+              direction: language === 'ar' ? 'rtl' : 'ltr',
+            }}
+          >
+        <div className='w-full flex  items-center gap-x-4'>
           {device && <FirstCard device={device.deviceByMac} deviceState={deviceState} />}
           <SecondCard ipcRenderer={ipcRenderer} device={device.deviceByMac} 
             dispatchIsImageUpload={dispatchIsImageUpload}
             onOpen={onOpenImage}
           />
         </div>
-        <div className='w-full flex items-center gap-x-4 flex-row-reverse'>
+        <div className='w-full flex items-center gap-x-4'>
           <ThridCard />
           <FourthCard chemistryProgres={chemistryProgres} physicsProgres={physicsProgres} />
         </div>
