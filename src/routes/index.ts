@@ -3,8 +3,8 @@ import CoursesPage from "../pages/Courses";
 import CoursePage from "../pages/CoursePage";
 import StudentsPage from "../pages/Students";
 import CreateStudent from "../pages/CreateStudent";
-import LibraryPage from '../pages/LibraryPage';
-import UserLibaryPage from '../pages/UserLibraryPage'
+import LibraryPage from "../pages/LIbraryPage";
+import UserLibaryPage from "../pages/UserLibraryPage";
 import CertificatesPage from "../pages/Certificates";
 import GeneralSettingsPage from "../pages/Settings";
 import AdminsPage from "../pages/Admins";
@@ -30,7 +30,7 @@ import SchoolReports from "../pages/SchoolReports";
 import SchoolReport from "../pages/SchoolReport";
 import UpdateStudent from "../pages/UpdateStudent";
 import PicturePage from "../pages/StudentPicturesPage";
-import VideosCard from '../pages/VideosCard'
+import VideosCard from "../pages/VideosCard";
 const routes = [
   { path: "/headsets", component: HeadsetsPage },
   { path: "/headsets/:mac", component: HeadsetPage },
@@ -38,7 +38,7 @@ const routes = [
   { path: "/courses/:course", component: CoursePage },
   { path: "/students", component: StudentsPage },
   { path: "/students/create", component: CreateStudent },
-  { path: "/students/update/:id", component: UpdateStudent},
+  { path: "/students/update/:id", component: UpdateStudent },
   { path: "/library", component: LibraryPage },
   { path: "/library/students/:id", component: UserLibaryPage },
   { path: "/library/students/:id/pictures", component: PicturePage },
@@ -64,7 +64,7 @@ const routes = [
   { path: "/schools/create", component: CreateSchool },
   { path: "/schools/update/:id", component: UpdateSchool },
   { path: "/reports/schools", component: SchoolReports },
-  { path: "/reports/schools/:id", component: SchoolReport }
+  { path: "/reports/schools/:id", component: SchoolReport },
 ];
 
 export default routes;

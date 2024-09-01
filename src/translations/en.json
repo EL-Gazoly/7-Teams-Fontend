@@ -462,5 +462,9 @@
   "loadingMessage": "Logging in...",
   "loginSuccess": "Logged in successfully",
   "fillFieldsError": "Please enter email and password",
-  "invalidEmailError": "Please enter a valid email"
+  "invalidEmailError": "Please enter a valid email",
+  "boyle_law": "Boyle's Law",
+  "swinging": "The Swinging",
+  "lab_tech": "Lab technologies",
+  "torque": "Torque"
 }

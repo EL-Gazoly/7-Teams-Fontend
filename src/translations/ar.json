@@ -465,5 +465,9 @@
   "loadingMessage": "جاري تسجيل الدخول...",
   "loginSuccess": "تم تسجيل الدخول بنجاح",
   "fillFieldsError": "الرجاء ادخال البريد الالكتروني وكلمة المرور",
-  "invalidEmailError": "الرجاء ادخال بريد الكتروني صحيح"
+  "invalidEmailError": "الرجاء ادخال بريد الكتروني صحيح",
+  "boyle_law": "قانون بويل",
+  "swinging": "التأرجح",
+  "lab_tech": "تقنيات المختبر",
+  "torque": "العزم"
 }
