@@ -63,7 +63,7 @@ export const chemistryOptions = [
     name: "boyle_law",
   },
   {
-    value: "319c29ea-e854-4bac-b0a2-383cf089c8f1",
+    value: "e565686a-1df0-4798-9690-44c0cafdf24f",
     title: "Metals Test",
     icon: MetalsIcon,
     name: "metals_test",
