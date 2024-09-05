@@ -6,6 +6,7 @@ import CharlesLaw from "../assets/SelectCourse/SelectExpriment/Chemistry/Charles
 import SizeOfMole from "../assets/SelectCourse/SelectExpriment/Chemistry/SizeOfMole.svg";
 import labtech from "../assets/SelectCourse/SelectExpriment/Chemistry/lab_tech.png";
 import boylelaw from "../assets/SelectCourse/SelectExpriment/Chemistry/boyle_law.png";
+import MetalsIcon from "../assets/SelectCourse/SelectExpriment/Chemistry/metals.svg";
 
 import GeigerDevice from "../assets/SelectCourse/SelectExpriment/Physics/GeigerDevice.svg";
 import Inertia from "../assets/SelectCourse/SelectExpriment/Physics/Inertia.svg";
@@ -60,6 +61,12 @@ export const chemistryOptions = [
     title: "boylelaw",
     icon: boylelaw,
     name: "boyle_law",
+  },
+  {
+    value: "319c29ea-e854-4bac-b0a2-383cf089c8f1",
+    title: "Metals Test",
+    icon: MetalsIcon,
+    name: "metals_test",
   },
 ];
 
