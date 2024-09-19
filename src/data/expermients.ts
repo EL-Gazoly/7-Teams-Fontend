@@ -12,6 +12,9 @@ import GeigerDevice from "../assets/SelectCourse/SelectExpriment/Physics/GeigerD
 import Inertia from "../assets/SelectCourse/SelectExpriment/Physics/Inertia.svg";
 import Torque from "../assets/SelectCourse/SelectExpriment/Physics/torque.png";
 import swinging from "../assets/SelectCourse/SelectExpriment/Physics/swinging.png";
+import BallRolling from "@/assets/SelectCourse/SelectExpriment/Physics/BallRolling.svg";
+import RocksFloating from "@/assets/SelectCourse/SelectExpriment/Physics/RocksFloating.svg";
+import CarPosition from "@/assets/SelectCourse/SelectExpriment/Physics/CarPosition.svg";
 
 export const chemistryOptions = [
   {
@@ -94,5 +97,23 @@ export const physicsOptions = [
     title: "swinging",
     icon: swinging,
     name: "swinging",
+  },
+  {
+    value: "dfd8dce8-5f59-42d1-9b18-56c40c3fe2e2",
+    title: "BallRolling",
+    icon: BallRolling,
+    name: "BallRolling",
+  },
+  {
+    value: "21a3012e-e16f-4d82-bf3f-90e238346626",
+    title: "RocksFloating",
+    icon: RocksFloating,
+    name: "RocksFloating",
+  },
+  {
+    value: "a0d7cb31-c979-44d6-86cf-609485f98580",
+    title: "CarPosition",
+    icon: CarPosition,
+    name: "CarPosition",
   },
 ];

@@ -469,5 +469,8 @@
   "torque": "Torque",
   "adminsDescription": "Manage administrators by creating or editing their profiles. Assign different roles to each administrator, providing them with distinct permissions based on their responsibilities. Easily control who has access to specific features and ensure security and efficiency within your system.",
   "rolesDescription": "Create and edit roles with specific permissions that suit your organization's needs. Customize the access level for each role, ensuring that administrators and users only have the permissions necessary to perform their tasks effectively and securely.",
-  "metals_test": "Metals Test"
+  "metals_test": "Metals Test",
+  "RocksFloating": "Rocks Floating",
+  "BallRolling": "Ball Rolling",
+  "CarPosition": "Car Position"
 }
