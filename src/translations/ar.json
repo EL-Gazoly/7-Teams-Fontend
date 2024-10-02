@@ -475,5 +475,7 @@
   "metals_test": "اختبار اللهب",
   "RocksFloating": "الطفو",
   "BallRolling": "تدحرج الكرة",
-  "CarPosition": "موقع السيارة"
+  "CarPosition": "موقع السيارة",
+  "BoilingPoints": "درجة الغليان",
+  "SaltGetting": "تكون الملح"
 }

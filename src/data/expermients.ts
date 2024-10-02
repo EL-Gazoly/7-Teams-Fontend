@@ -7,6 +7,8 @@ import SizeOfMole from "../assets/SelectCourse/SelectExpriment/Chemistry/SizeOfM
 import labtech from "../assets/SelectCourse/SelectExpriment/Chemistry/lab_tech.png";
 import boylelaw from "../assets/SelectCourse/SelectExpriment/Chemistry/boyle_law.png";
 import MetalsIcon from "../assets/SelectCourse/SelectExpriment/Chemistry/metals.svg";
+import BoilingPoints from "../assets/SelectCourse/SelectExpriment/Chemistry/BoilingPoints.svg";
+import SaltGetting from "../assets/SelectCourse/SelectExpriment/Chemistry/SaltGetting.svg";
 
 import GeigerDevice from "../assets/SelectCourse/SelectExpriment/Physics/GeigerDevice.svg";
 import Inertia from "../assets/SelectCourse/SelectExpriment/Physics/Inertia.svg";
@@ -70,6 +72,18 @@ export const chemistryOptions = [
     title: "Metals Test",
     icon: MetalsIcon,
     name: "metals_test",
+  },
+  {
+    value: "3c197836-df26-4dfd-9bce-50bbe71d80fd",
+    title: "BoilingPoints",
+    icon: BoilingPoints,
+    name: "BoilingPoints",
+  },
+  {
+    value: "d0be4668-a1b2-4ed5-a47b-fa3218a055b2",
+    title: "SaltGetting",
+    icon: SaltGetting,
+    name: "SaltGetting",
   },
 ];
 

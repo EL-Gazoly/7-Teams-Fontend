@@ -472,5 +472,7 @@
   "metals_test": "Metals Test",
   "RocksFloating": "Rocks Floating",
   "BallRolling": "Ball Rolling",
-  "CarPosition": "Car Position"
+  "CarPosition": "Car Position",
+  "BoilingPoints": "Boiling Points",
+  "SaltGetting": "Salt Getting"
 }
