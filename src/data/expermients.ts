@@ -9,6 +9,7 @@ import boylelaw from "../assets/SelectCourse/SelectExpriment/Chemistry/boyle_law
 import MetalsIcon from "../assets/SelectCourse/SelectExpriment/Chemistry/metals.svg";
 import BoilingPoints from "../assets/SelectCourse/SelectExpriment/Chemistry/BoilingPoints.svg";
 import SaltGetting from "../assets/SelectCourse/SelectExpriment/Chemistry/SaltGetting.svg";
+import ObservingLimitingReactant from "../assets/SelectCourse/SelectExpriment/Chemistry/ObservingLimitingReactant.svg";
 
 import GeigerDevice from "../assets/SelectCourse/SelectExpriment/Physics/GeigerDevice.svg";
 import Inertia from "../assets/SelectCourse/SelectExpriment/Physics/Inertia.svg";
@@ -17,6 +18,7 @@ import swinging from "../assets/SelectCourse/SelectExpriment/Physics/swinging.pn
 import BallRolling from "@/assets/SelectCourse/SelectExpriment/Physics/BallRolling.svg";
 import RocksFloating from "@/assets/SelectCourse/SelectExpriment/Physics/RocksFloating.svg";
 import CarPosition from "@/assets/SelectCourse/SelectExpriment/Physics/CarPosition.svg";
+import ConservationOfEnergy from "@/assets/SelectCourse/SelectExpriment/Physics/ConservationOfEnergy.svg";
 
 export const chemistryOptions = [
   {
@@ -85,6 +87,12 @@ export const chemistryOptions = [
     icon: SaltGetting,
     name: "SaltGetting",
   },
+  {
+    value: "dc578033-729e-49e7-b8ff-e43f23e1e3c5",
+    title: "ObservingLimitingReactant",
+    icon: ObservingLimitingReactant,
+    name: "ObservingLimitingReactant",
+  },
 ];
 
 export const physicsOptions = [
@@ -129,5 +137,11 @@ export const physicsOptions = [
     title: "CarPosition",
     icon: CarPosition,
     name: "CarPosition",
+  },
+  {
+    value: "fad58648-c419-4701-985a-b8707446074b",
+    title: "ConservationOfEnergy",
+    icon: ConservationOfEnergy,
+    name: "ConservationOfEnergy",
   },
 ];

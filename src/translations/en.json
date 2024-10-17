@@ -474,5 +474,7 @@
   "BallRolling": "Ball Rolling",
   "CarPosition": "Car Position",
   "BoilingPoints": "Boiling Points",
-  "SaltGetting": "Salt Getting"
+  "SaltGetting": "Salt Getting",
+  "ObservingLimitingReactant": "Observing Limiting Reactant",
+  "ConservationOfEnergy": "Conservation Of Energy"
 }

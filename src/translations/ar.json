@@ -477,5 +477,7 @@
   "BallRolling": "تدحرج الكرة",
   "CarPosition": "موقع السيارة",
   "BoilingPoints": "درجة الغليان",
-  "SaltGetting": "تكون الملح"
+  "SaltGetting": "تكون الملح",
+  "ConservationOfEnergy": "حفظ الطاقة",
+  "ObservingLimitingReactant": "مراقبة المفاعل المحدود"
 }
