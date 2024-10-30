@@ -479,5 +479,7 @@
   "BoilingPoints": "درجة الغليان",
   "SaltGetting": "تكون الملح",
   "ConservationOfEnergy": "حفظ الطاقة",
-  "ObservingLimitingReactant": "مراقبة المفاعل المحدود"
+  "ObservingLimitingReactant": "مراقبة المفاعل المحدود",
+  "SolubilityCurve": "منحنى الذوبان",
+  "MassAndVolume": "الكتلة والحجم"
 }

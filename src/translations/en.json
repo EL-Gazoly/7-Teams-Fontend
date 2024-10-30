@@ -476,5 +476,7 @@
   "BoilingPoints": "Boiling Points",
   "SaltGetting": "Salt Getting",
   "ObservingLimitingReactant": "Observing Limiting Reactant",
-  "ConservationOfEnergy": "Conservation Of Energy"
+  "ConservationOfEnergy": "Conservation Of Energy",
+  "MassAndVolume": "Mass And Volume",
+  "SolubilityCurve": "Solubility Curve"
 }
