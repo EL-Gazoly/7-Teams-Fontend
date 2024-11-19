@@ -10,7 +10,8 @@ import MetalsIcon from "../assets/SelectCourse/SelectExpriment/Chemistry/metals.
 import BoilingPoints from "../assets/SelectCourse/SelectExpriment/Chemistry/BoilingPoints.svg";
 import SaltGetting from "../assets/SelectCourse/SelectExpriment/Chemistry/SaltGetting.svg";
 import ObservingLimitingReactant from "../assets/SelectCourse/SelectExpriment/Chemistry/ObservingLimitingReactant.svg";
-import SolubilityCurve from "assets/SelectCourse/SelectExpriment/Chemistry/SolubilityCurve.svg";
+import SolubilityCurve from "../assets/SelectCourse/SelectExpriment/Chemistry/SolubilityCurve.svg";
+import CombustionOfWax from "../assets/SelectCourse/SelectExpriment/Chemistry/CombustionOfWax.svg";
 
 import GeigerDevice from "../assets/SelectCourse/SelectExpriment/Physics/GeigerDevice.svg";
 import Inertia from "../assets/SelectCourse/SelectExpriment/Physics/Inertia.svg";
@@ -21,6 +22,7 @@ import RocksFloating from "@/assets/SelectCourse/SelectExpriment/Physics/RocksFl
 import CarPosition from "@/assets/SelectCourse/SelectExpriment/Physics/CarPosition.svg";
 import ConservationOfEnergy from "@/assets/SelectCourse/SelectExpriment/Physics/ConservationOfEnergy.svg";
 import MassAndVolume from "@/assets/SelectCourse/SelectExpriment/Physics/MassAndVolume.svg";
+import ForceOnTrain from "@/assets/SelectCourse/SelectExpriment/Physics/ForceOnTrain.svg";
 export const chemistryOptions = [
   {
     value: "bf018686-aa10-40ba-99b8-a2d272110bb3",
@@ -100,6 +102,12 @@ export const chemistryOptions = [
     icon: SolubilityCurve,
     name: "SolubilityCurve",
   },
+  {
+    value: "299b30a9-cc2b-4d90-91c3-87a4e17c181e",
+    title: "CombustionOfWax",
+    icon: CombustionOfWax,
+    name: "CombustionOfWax",
+  },
 ];
 
 export const physicsOptions = [
@@ -156,5 +164,11 @@ export const physicsOptions = [
     title: "MassAndVolume",
     icon: MassAndVolume,
     name: "MassAndVolume",
+  },
+  {
+    value: "135ae8f7-b85f-49a8-802e-cde696f1c5db",
+    title: "ForceOnTrain",
+    icon: ForceOnTrain,
+    name: "ForceOnTrain",
   },
 ];

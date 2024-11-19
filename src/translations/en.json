@@ -478,5 +478,7 @@
   "ObservingLimitingReactant": "Observing Limiting Reactant",
   "ConservationOfEnergy": "Conservation Of Energy",
   "MassAndVolume": "Mass And Volume",
-  "SolubilityCurve": "Solubility Curve"
+  "SolubilityCurve": "Solubility Curve",
+  "ForceOnTrain": "Force On Train",
+  "CombustionOfWax": "Combustion Of Wax"
 }
