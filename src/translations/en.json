@@ -480,5 +480,7 @@
   "MassAndVolume": "Mass And Volume",
   "SolubilityCurve": "Solubility Curve",
   "ForceOnTrain": "Force On Train",
-  "CombustionOfWax": "Combustion Of Wax"
+  "CombustionOfWax": "Combustion Of Wax",
+  "SlidingAngle": "Sliding Angle",
+  "TempOfReaction": "Temp Of Reaction"
 }

@@ -483,5 +483,7 @@
   "SolubilityCurve": "منحنى الذوبان",
   "MassAndVolume": "الكتلة والحجم",
   "ForceOnTrain": "القوة المؤثرة في القطار",
-  "CombustionOfWax": "حرارة احتراق مادة الشمع"
+  "CombustionOfWax": "حرارة احتراق مادة الشمع",
+  "SlidingAngle": "كيف يتحرك جسم منزلق على سطح مائل",
+  "TempOfReaction": "حرارة التفاعل و حرارة  المحلول"
 }

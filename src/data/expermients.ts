@@ -12,7 +12,8 @@ import SaltGetting from "../assets/SelectCourse/SelectExpriment/Chemistry/SaltGe
 import ObservingLimitingReactant from "../assets/SelectCourse/SelectExpriment/Chemistry/ObservingLimitingReactant.svg";
 import SolubilityCurve from "../assets/SelectCourse/SelectExpriment/Chemistry/SolubilityCurve.svg";
 import CombustionOfWax from "../assets/SelectCourse/SelectExpriment/Chemistry/CombustionOfWax.svg";
-
+import TempOfReaction from "../assets/SelectCourse/SelectExpriment/Chemistry/TempOfReaction.svg";
+// Physics
 import GeigerDevice from "../assets/SelectCourse/SelectExpriment/Physics/GeigerDevice.svg";
 import Inertia from "../assets/SelectCourse/SelectExpriment/Physics/Inertia.svg";
 import Torque from "../assets/SelectCourse/SelectExpriment/Physics/torque.png";
@@ -23,6 +24,7 @@ import CarPosition from "@/assets/SelectCourse/SelectExpriment/Physics/CarPositi
 import ConservationOfEnergy from "@/assets/SelectCourse/SelectExpriment/Physics/ConservationOfEnergy.svg";
 import MassAndVolume from "@/assets/SelectCourse/SelectExpriment/Physics/MassAndVolume.svg";
 import ForceOnTrain from "@/assets/SelectCourse/SelectExpriment/Physics/ForceOnTrain.svg";
+import SlidingAngle from "@/assets/SelectCourse/SelectExpriment/Physics/SlidingAngle.svg";
 export const chemistryOptions = [
   {
     value: "bf018686-aa10-40ba-99b8-a2d272110bb3",
@@ -108,6 +110,12 @@ export const chemistryOptions = [
     icon: CombustionOfWax,
     name: "CombustionOfWax",
   },
+  {
+    value: "fad58648-c419-4701-981a-b8707446074b",
+    title: "TempOfReaction",
+    icon: TempOfReaction,
+    name: "TempOfReaction",
+  },
 ];
 
 export const physicsOptions = [
@@ -170,5 +178,11 @@ export const physicsOptions = [
     title: "ForceOnTrain",
     icon: ForceOnTrain,
     name: "ForceOnTrain",
+  },
+  {
+    value: "fad58648-c419-4701-985a-b8707446074b",
+    title: "SlidingAngle",
+    icon: SlidingAngle,
+    name: "SlidingAngle",
   },
 ];
