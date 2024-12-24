@@ -482,5 +482,7 @@
   "ForceOnTrain": "Force On Train",
   "CombustionOfWax": "Combustion Of Wax",
   "SlidingAngle": "Sliding Angle",
-  "TempOfReaction": "Temp Of Reaction"
+  "TempOfReaction": "Temp Of Reaction",
+  "PropertiesOfWater": "Properties Of Water",
+  "Electroplating": "Electroplating"
 }

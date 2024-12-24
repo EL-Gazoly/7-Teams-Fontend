@@ -13,6 +13,7 @@ import ObservingLimitingReactant from "../assets/SelectCourse/SelectExpriment/Ch
 import SolubilityCurve from "../assets/SelectCourse/SelectExpriment/Chemistry/SolubilityCurve.svg";
 import CombustionOfWax from "../assets/SelectCourse/SelectExpriment/Chemistry/CombustionOfWax.svg";
 import TempOfReaction from "../assets/SelectCourse/SelectExpriment/Chemistry/TempOfReaction.svg";
+import PropertiesOfWater from "../assets/SelectCourse/SelectExpriment/Chemistry/PropertiesOfWater.svg";
 // Physics
 import GeigerDevice from "../assets/SelectCourse/SelectExpriment/Physics/GeigerDevice.svg";
 import Inertia from "../assets/SelectCourse/SelectExpriment/Physics/Inertia.svg";
@@ -25,6 +26,7 @@ import ConservationOfEnergy from "@/assets/SelectCourse/SelectExpriment/Physics/
 import MassAndVolume from "@/assets/SelectCourse/SelectExpriment/Physics/MassAndVolume.svg";
 import ForceOnTrain from "@/assets/SelectCourse/SelectExpriment/Physics/ForceOnTrain.svg";
 import SlidingAngle from "@/assets/SelectCourse/SelectExpriment/Physics/SlidingAngle.svg";
+import Electroplating from "@/assets/SelectCourse/SelectExpriment/Physics/Electroplating.svg";
 export const chemistryOptions = [
   {
     value: "bf018686-aa10-40ba-99b8-a2d272110bb3",
@@ -116,6 +118,12 @@ export const chemistryOptions = [
     icon: TempOfReaction,
     name: "TempOfReaction",
   },
+  {
+    value: "131ae8f7-b85f-49a8-802e-cde696f1c5db",
+    title: "PropertiesOfWater",
+    icon: PropertiesOfWater,
+    name: "PropertiesOfWater",
+  },
 ];
 
 export const physicsOptions = [
@@ -184,5 +192,11 @@ export const physicsOptions = [
     title: "SlidingAngle",
     icon: SlidingAngle,
     name: "SlidingAngle",
+  },
+  {
+    value: "2dbf3ade-eb97-4702-ab63-929cc37dab3d",
+    title: "Electroplating",
+    icon: Electroplating,
+    name: "Electroplating",
   },
 ];

@@ -485,5 +485,7 @@
   "ForceOnTrain": "القوة المؤثرة في القطار",
   "CombustionOfWax": "حرارة احتراق مادة الشمع",
   "SlidingAngle": "كيف يتحرك جسم منزلق على سطح مائل",
-  "TempOfReaction": "حرارة التفاعل و حرارة  المحلول"
+  "TempOfReaction": "حرارة التفاعل و حرارة  المحلول",
+  "PropertiesOfWater": "خصائص الماء",
+  "Electroplating": "الطلاء الكهربائي"
 }
